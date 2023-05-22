@@ -1,0 +1,33 @@
+project:
+  type: website
+  
+execute:
+  freeze: auto
+
+website:
+  title: "quarto-course-website"
+  favicon: images/warwick-university.png
+  navbar:
+    right:
+      - text: "Join"
+        file: join.qmd
+      - text: "Prerequisites"
+        file: prerequisites.qmd
+      - text: "Schedule"
+        file: schedule.qmd
+      - text: "Content"
+        file: content.qmd
+ 
+      - icon: github
+        href: https://github.com/Warwick-Stats-Resources/quarto-course-website
+  page-footer: "All material is shared under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target='_blank'} license."
+  
+format:
+  html:
+    theme: custom.scss
+    highlight-style: warwick.theme
+    css: styles.css
+    toc: true
+    link-external-newwindow: true
+    
+

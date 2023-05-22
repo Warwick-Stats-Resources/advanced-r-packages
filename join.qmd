@@ -1,0 +1,11 @@
+---
+title: "Join the class"
+---
+
+Add any instructions for joining the course here.
+
+If there are no joining instructions:
+
+- delete the `join.qmd` file
+- delete the link to the join page in the 'Session Details' section of `index.qmd`
+- remove the lines in `_quarto.yml` which add a link to this file in the navbar.

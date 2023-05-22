@@ -1,0 +1,11 @@
+---
+title: Prerequisites
+---
+
+Add any prerequisites for the course here.
+
+If there are no prerequisites:
+
+- delete the `prerequisites.qmd` file
+- delete the prerequisites section in `index.qmd`
+- remove the lines in `_quarto.yml` which add a link to this file in the navbar.
