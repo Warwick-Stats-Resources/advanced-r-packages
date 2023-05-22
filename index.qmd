@@ -1,24 +1,22 @@
 ---
-title: "quarto-course-website"
+title: "Advanced R and R Packages Workshop"
 ---
 
-Welcome to the course!
-
-This course is aimed primarily at...
+Welcome to the website for the Advanced R and R Packages Workshop.
 
 ## Syllabus overview
 
-What we're covering...
+### Advanced R
+
+### R Packages
 
 All slides and further resources can be accessed from the [content](content.qmd) page and also via the [schedule](schedule.qmd). 
 
 ## Session details
 
-{{< fa calendar >}} &nbsp; **DAY OF COURSE**
+{{< fa calendar >}} &nbsp; June 19th-21st, 2023
 
-{{< fa clock >}} &nbsp; **TIME OF COURSE**
-
-{{< fa location-dot >}} &nbsp; **LOCATION** 
+{{< fa location-dot >}} &nbsp; Room OC1.02, The Oculus, University of Warwick
 
 {{< fa calendar-alt >}} &nbsp; See the full [schedule](schedule.qmd).
 
@@ -26,9 +24,9 @@ Please see the [join](join.qmd) page for more details on how to attend the cours
 
 ## Instructor details
 
-{{< fa user >}} &nbsp; [**INSTRUCTOR**](https://INTSTRUCTOR-WEB-PAGE)
+{{< fa user >}} &nbsp; [Ella Kaye](https://warwick.ac.uk/ellakaye) and [Heather Turner](https://warwick.ac.uk/heatherturner)
 
-{{< fa envelope >}} &nbsp; [**INSTRUCTOR E-MAIL**](mailto:INSTRUCTOR-E-MAIL)
+{{< fa envelope >}} &nbsp; [ella.m.kaye@warwick.ac.uk](mailto:ella.m.kaye@warwick.ac.uk) and [h.turner.1@warwick.ac.uk](mailto:h.turner.1@warwick.ac.uk)
 
 ## Prerequistes
 
