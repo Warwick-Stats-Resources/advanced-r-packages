@@ -1,3 +1,3 @@
-# quarto-course-website
+# Advanced R and R packages workshop
 
-Template to be used for making course websites
+Material (website and slides) for the Advanced R and R packages workshop taking place at The University of Warwick, June 19-21 2023.
