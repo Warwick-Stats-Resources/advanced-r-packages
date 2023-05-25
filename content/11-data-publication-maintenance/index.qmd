@@ -17,11 +17,11 @@ draft: true
 
 ## Slides
 
-Here's a link to the [slides](/slides/UPDATE-DIR-NAME/index.qmd){target="_blank"} in a new window. 
+Here's a link to the [slides](/slides/11-data-publication-maintenance/index.qmd){target="_blank"} in a new window. 
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/UPDATE-DIR-NAME/index.html" title="UPDATE-DIR-NAME slides">
+<iframe class="slide-deck ar3x2" src="/slides/11-data-publication-maintenance/index.html" title="11-data-publication-maintenance slides">
 </iframe>
 
 ## Resources

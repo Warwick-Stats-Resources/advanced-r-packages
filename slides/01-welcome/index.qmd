@@ -1,10 +1,12 @@
 ---
-title: First Session
-subtitle: COURSE NAME
-author: INSTRUCTOR | DEPARTMENT | UNIVERSITY
+title: SESSION TITLE
+subtitle: Advanced R
+author: 
+  - name: Heather Turner and Ella Kaye
+  - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: 2023-05-01
+date: yyyy-MM-dd
 date-format: long
 format: 
   warwickpres-revealjs:
@@ -18,19 +20,6 @@ format:
 -   What we're covering
 
 # Section {background-color="#552D62"}
-
-## Some code
-
-```{r}
-library(tidyverse)
-library(palmerpenguins)
-penguins |>
-  filter(sex == "female",
-         species == "Gentoo") |>
-  slice_max(body_mass_g, n = 5) |>
-  select(contains("bill"))
-```
-
 
 # End Matter {background-color="#552D62"}
 
