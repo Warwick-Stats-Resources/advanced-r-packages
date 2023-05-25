@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "content/01-first-session/index.html",
-    "href": "content/01-first-session/index.html",
-    "title": "First session",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/01-first-session/index.html#slides",
-    "href": "content/01-first-session/index.html#slides",
-    "title": "First session",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/01-first-session/index.html#resources",
-    "href": "content/01-first-session/index.html#resources",
-    "title": "First session",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
     "objectID": "join.html",
     "href": "join.html",
     "title": "Join the class",
@@ -32,7 +11,7 @@
     "href": "content.html",
     "title": "Content",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMay 1, 2023\n\n\nFirst session\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "prerequisites.html",
@@ -84,30 +63,170 @@
     "text": "Schedule goes here"
   },
   {
-    "objectID": "slides/01-first-session/index.html#overview",
-    "href": "slides/01-first-session/index.html#overview",
-    "title": "First Session",
+    "objectID": "slides/07-package-foundations/index.html#overview",
+    "href": "slides/07-package-foundations/index.html#overview",
+    "title": "SESSION TITLE",
     "section": "Overview",
     "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "slides/01-first-session/index.html#some-code",
-    "href": "slides/01-first-session/index.html#some-code",
-    "title": "First Session",
-    "section": "Some code",
-    "text": "Some code\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\npenguins |&gt;\n  filter(sex == \"female\",\n         species == \"Gentoo\") |&gt;\n  slice_max(body_mass_g, n = 5) |&gt;\n  select(contains(\"bill\"))\n\n# A tibble: 5 × 2\n  bill_length_mm bill_depth_mm\n           &lt;dbl&gt;         &lt;dbl&gt;\n1           46.5          14.8\n2           45.2          14.8\n3           49.1          14.8\n4           44.9          13.3\n5           45.1          14.5"
-  },
-  {
-    "objectID": "slides/01-first-session/index.html#resources",
-    "href": "slides/01-first-session/index.html#resources",
-    "title": "First Session",
+    "objectID": "slides/07-package-foundations/index.html#resources",
+    "href": "slides/07-package-foundations/index.html#resources",
+    "title": "SESSION TITLE",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
-    "objectID": "slides/01-first-session/index.html#license",
-    "href": "slides/01-first-session/index.html#license",
-    "title": "First Session",
+    "objectID": "slides/07-package-foundations/index.html#license",
+    "href": "slides/07-package-foundations/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#overview",
+    "href": "slides/11-data-publication-maintenance/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
+    "href": "slides/11-data-publication-maintenance/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#license",
+    "href": "slides/11-data-publication-maintenance/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/12-Rcpp-packages/index.html#overview",
+    "href": "slides/12-Rcpp-packages/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/12-Rcpp-packages/index.html#resources",
+    "href": "slides/12-Rcpp-packages/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/12-Rcpp-packages/index.html#license",
+    "href": "slides/12-Rcpp-packages/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/09-testing/index.html#overview",
+    "href": "slides/09-testing/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/09-testing/index.html#resources",
+    "href": "slides/09-testing/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/09-testing/index.html#license",
+    "href": "slides/09-testing/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#overview",
+    "href": "slides/10-check-package-documentation/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#resources",
+    "href": "slides/10-check-package-documentation/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#license",
+    "href": "slides/10-check-package-documentation/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#overview",
+    "href": "slides/06-r-with-cpp/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#resources",
+    "href": "slides/06-r-with-cpp/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#license",
+    "href": "slides/06-r-with-cpp/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#overview",
+    "href": "slides/05-profiling/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#resources",
+    "href": "slides/05-profiling/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#license",
+    "href": "slides/05-profiling/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/02-functions/index.html#overview",
+    "href": "slides/02-functions/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/02-functions/index.html#resources",
+    "href": "slides/02-functions/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/02-functions/index.html#license",
+    "href": "slides/02-functions/index.html#license",
+    "title": "SESSION TITLE",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
@@ -128,6 +247,90 @@
   {
     "objectID": "slides/00-template/index.html#license",
     "href": "slides/00-template/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#overview",
+    "href": "slides/01-welcome/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#resources",
+    "href": "slides/01-welcome/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#license",
+    "href": "slides/01-welcome/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#overview",
+    "href": "slides/08-documentation/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#resources",
+    "href": "slides/08-documentation/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#license",
+    "href": "slides/08-documentation/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#overview",
+    "href": "slides/03-classes-methods/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#resources",
+    "href": "slides/03-classes-methods/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#license",
+    "href": "slides/03-classes-methods/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#overview",
+    "href": "slides/04-efficient-programming/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#resources",
+    "href": "slides/04-efficient-programming/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#license",
+    "href": "slides/04-efficient-programming/index.html#license",
     "title": "SESSION TITLE",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
