@@ -1,5 +1,257 @@
 [
   {
+    "objectID": "content/07-package-foundations/index.html",
+    "href": "content/07-package-foundations/index.html",
+    "title": "R Packages: Package foundations",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/07-package-foundations/index.html#slides",
+    "href": "content/07-package-foundations/index.html#slides",
+    "title": "R Packages: Package foundations",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/07-package-foundations/index.html#resources",
+    "href": "content/07-package-foundations/index.html#resources",
+    "title": "R Packages: Package foundations",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html",
+    "href": "content/11-data-publication-maintenance/index.html",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html#slides",
+    "href": "content/11-data-publication-maintenance/index.html#slides",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html#resources",
+    "href": "content/11-data-publication-maintenance/index.html#resources",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html",
+    "href": "content/12-Rcpp-packages/index.html",
+    "title": "R Packages: Rcpp",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html#slides",
+    "href": "content/12-Rcpp-packages/index.html#slides",
+    "title": "R Packages: Rcpp",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html#resources",
+    "href": "content/12-Rcpp-packages/index.html#resources",
+    "title": "R Packages: Rcpp",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/09-testing/index.html",
+    "href": "content/09-testing/index.html",
+    "title": "R Packages: Testing",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/09-testing/index.html#slides",
+    "href": "content/09-testing/index.html#slides",
+    "title": "R Packages: Testing",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/09-testing/index.html#resources",
+    "href": "content/09-testing/index.html#resources",
+    "title": "R Packages: Testing",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html",
+    "href": "content/10-check-package-documentation/index.html",
+    "title": "R Packages: Check and package documentation",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html#slides",
+    "href": "content/10-check-package-documentation/index.html#slides",
+    "title": "R Packages: Check and package documentation",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html#resources",
+    "href": "content/10-check-package-documentation/index.html#resources",
+    "title": "R Packages: Check and package documentation",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html",
+    "href": "content/06-r-with-cpp/index.html",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html#slides",
+    "href": "content/06-r-with-cpp/index.html#slides",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html#resources",
+    "href": "content/06-r-with-cpp/index.html#resources",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/05-profiling/index.html",
+    "href": "content/05-profiling/index.html",
+    "title": "Advanced R: Profiling",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/05-profiling/index.html#slides",
+    "href": "content/05-profiling/index.html#slides",
+    "title": "Advanced R: Profiling",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/05-profiling/index.html#resources",
+    "href": "content/05-profiling/index.html#resources",
+    "title": "Advanced R: Profiling",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/02-functions/index.html",
+    "href": "content/02-functions/index.html",
+    "title": "Advanced R: Functions",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/02-functions/index.html#slides",
+    "href": "content/02-functions/index.html#slides",
+    "title": "Advanced R: Functions",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/02-functions/index.html#resources",
+    "href": "content/02-functions/index.html#resources",
+    "title": "Advanced R: Functions",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/01-welcome/index.html",
+    "href": "content/01-welcome/index.html",
+    "title": "Welcome and introduction",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/01-welcome/index.html#slides",
+    "href": "content/01-welcome/index.html#slides",
+    "title": "Welcome and introduction",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/01-welcome/index.html#resources",
+    "href": "content/01-welcome/index.html#resources",
+    "title": "Welcome and introduction",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/08-documentation/index.html",
+    "href": "content/08-documentation/index.html",
+    "title": "R Packages: Documentation",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/08-documentation/index.html#slides",
+    "href": "content/08-documentation/index.html#slides",
+    "title": "R Packages: Documentation",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/08-documentation/index.html#resources",
+    "href": "content/08-documentation/index.html#resources",
+    "title": "R Packages: Documentation",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html",
+    "href": "content/03-classes-methods/index.html",
+    "title": "Advanced R: Classes and methods",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html#slides",
+    "href": "content/03-classes-methods/index.html#slides",
+    "title": "Advanced R: Classes and methods",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html#resources",
+    "href": "content/03-classes-methods/index.html#resources",
+    "title": "Advanced R: Classes and methods",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html",
+    "href": "content/04-efficient-programming/index.html",
+    "title": "Advanced R: Efficient programming",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html#slides",
+    "href": "content/04-efficient-programming/index.html#slides",
+    "title": "Advanced R: Efficient programming",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html#resources",
+    "href": "content/04-efficient-programming/index.html#resources",
+    "title": "Advanced R: Efficient programming",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
     "objectID": "join.html",
     "href": "join.html",
     "title": "Join the workshop",
@@ -11,7 +263,7 @@
     "href": "content.html",
     "title": "Content",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "prerequisites.html",
@@ -60,7 +312,7 @@
     "href": "index.html#session-details",
     "title": "Advanced R and R Packages Workshop",
     "section": "Session details",
-    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   See the full schedule."
+    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   Lunch provided each day\n   See the full schedule."
   },
   {
     "objectID": "index.html#instructor-details",
@@ -81,7 +333,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package Foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
+    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#overview",
