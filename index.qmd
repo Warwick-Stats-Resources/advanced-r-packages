@@ -23,6 +23,8 @@ For more details, see the [content](content.qmd) page.
 
 {{< fa location-dot >}} &nbsp; Room OC1.02, The Oculus, University of Warwick
 
+{{< fa utensils >}} &nbsp; Lunch provided each day
+
 {{< fa calendar-alt >}} &nbsp; See the full [schedule](schedule.qmd).
 
 
