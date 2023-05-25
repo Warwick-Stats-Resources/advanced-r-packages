@@ -2,9 +2,9 @@
   {
     "objectID": "join.html",
     "href": "join.html",
-    "title": "Join the class",
+    "title": "Join the workshop",
     "section": "",
-    "text": "Add any instructions for joining the course here.\nIf there are no joining instructions:\n\ndelete the join.qmd file\ndelete the link to the join page in the ‘Session Details’ section of index.qmd\nremove the lines in _quarto.yml which add a link to this file in the navbar."
+    "text": "This course is aimed primarily at graduate students in the Department of Statistics at the University of Warwick. It is also open to 3rd and 4th year undergraduate students and members of staff in the Department of Statistics.\nSpace permitting, the workshop is also open to all interested members of the University of Warwick.\nTo express your interest in joining the workshop, please fill in the form, linked below (it may take a moment to load).\nPlaces will be confirmed by e-mail."
   },
   {
     "objectID": "content.html",
@@ -18,28 +18,49 @@
     "href": "prerequisites.html",
     "title": "Prerequisites",
     "section": "",
-    "text": "Add any prerequisites for the course here.\nIf there are no prerequisites:\n\ndelete the prerequisites.qmd file\ndelete the prerequisites section in index.qmd\nremove the lines in _quarto.yml which add a link to this file in the navbar."
+    "text": "Please ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.3.0 and RStudio-2023.03.1.\nWe also strongly recommend you install the development tools to avoid potential issues installing packages.\n\n\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.3.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.3.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.3.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\n\nDownloads are available from https://posit.co/download/rstudio-desktop/#download\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\n\n\n\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall Command Line Tools.\nEither:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/register/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
+  },
+  {
+    "objectID": "prerequisites.html#r-and-rstudio",
+    "href": "prerequisites.html#r-and-rstudio",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "Please ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that’s R-4.3.0 and RStudio-2023.03.1.\nWe also strongly recommend you install the development tools to avoid potential issues installing packages.\n\n\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.3.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.3.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.3.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\n\nDownloads are available from https://posit.co/download/rstudio-desktop/#download\nFor Windows with no admin rights\nDownload the .zip source archive under “Zip/Tarballs”. Extract the files to a folder where you have write access, e.g. C:\\Users\\username\\RStudio. In this folder, open the bin directory and find the RStudio program: it is named rstudio.exe, but the file extension will typically be hidden, so look for rstudio. Right-click this executable to create a desktop shortcut. Double-click the executable or use the shortcut to open.\nFor all other operating systems\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\n\n\n\nSome additional tools may be required to compile R packages from source.\nFor Windows with no admin rights\nDownload the latest (recommended) Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer keeping the default settings.\nFor Windows with admin rights\nDownload the latest Rtools installer, Rtools.exe, from https://cran.r-project.org/bin/windows/Rtools/. Run the installer making the following selections: keep the default settings for the installation location and components to install; check the box to add rtools to the system PATH.\nFor Mac\nInstall Command Line Tools.\nEither:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/register/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
+  },
+  {
+    "objectID": "prerequisites.html#prior-knowledge",
+    "href": "prerequisites.html#prior-knowledge",
+    "title": "Prerequisites",
+    "section": "Prior knowledge",
+    "text": "Prior knowledge\nThis is an advanced R course, so basic knowledge of R is expected.\nThe first three sessions of Warwick-Stats-Resources R Foundations course covers the required material:\n\nIntroduction to R and RStudio\nData Wrangling\nProgramming in R\n\nMembers of the University of Warwick can have access to video recordings of these sessions being taught online in Autumn Term 2022. Please contact ella.m.kaye@warwick.ac.uk to be sent the links."
+  },
+  {
+    "objectID": "prerequisites.html#git-and-github",
+    "href": "prerequisites.html#git-and-github",
+    "title": "Prerequisites",
+    "section": "git and GitHub",
+    "text": "git and GitHub\nAlthough there will be some time dedicated to this in the workshop, it would be advantageous if you already have:\n\ngit installed on your computer. See https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\na GitHub account\na GitHub PAT configured to work with RStudio\n\nThe git and GitHub material from a previous version of this workshop walks through the setup."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Advanced R and R Packages Workshop",
     "section": "",
-    "text": "Welcome to the website for the Advanced R and R Packages Workshop."
+    "text": "Welcome to the website for the Advanced R and R Packages Workshop.\nThis is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.\nIt is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, should space all. For more details on how to register, see the join page."
   },
   {
     "objectID": "index.html#syllabus-overview",
     "href": "index.html#syllabus-overview",
     "title": "Advanced R and R Packages Workshop",
     "section": "Syllabus overview",
-    "text": "Syllabus overview\n\nAdvanced R\n\n\nR Packages\nAll slides and further resources can be accessed from the content page and also via the schedule."
+    "text": "Syllabus overview\nThe Advanced R sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.\nThe R Packages sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.\nFor more details, see the content page."
   },
   {
     "objectID": "index.html#session-details",
     "href": "index.html#session-details",
     "title": "Advanced R and R Packages Workshop",
     "section": "Session details",
-    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   See the full schedule.\nPlease see the join page for more details on how to attend the course."
+    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   See the full schedule."
   },
   {
     "objectID": "index.html#instructor-details",
@@ -53,14 +74,14 @@
     "href": "index.html#prerequistes",
     "title": "Advanced R and R Packages Workshop",
     "section": "Prerequistes",
-    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the first session."
+    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the workshop."
   },
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Schedule goes here"
+    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package Foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#overview",
