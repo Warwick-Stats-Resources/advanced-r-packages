@@ -5,21 +5,20 @@ execute:
   freeze: auto
 
 website:
-  title: "quarto-course-website"
+  title: "Advanced R and R Packages Workshop"
   favicon: images/warwick-university.png
   navbar:
     right:
       - text: "Join"
         file: join.qmd
-      - text: "Prerequisites"
-        file: prerequisites.qmd
-      - text: "Schedule"
-        file: schedule.qmd
       - text: "Content"
         file: content.qmd
- 
+      - text: "Schedule"
+        file: schedule.qmd
+      - text: "Prerequisites"
+        file: prerequisites.qmd
       - icon: github
-        href: https://github.com/Warwick-Stats-Resources/quarto-course-website
+        href: https://github.com/Warwick-Stats-Resources/advanced-r-packages
   page-footer: "All material is shared under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target='_blank'} license."
   
 format:

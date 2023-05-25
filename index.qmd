@@ -4,13 +4,18 @@ title: "Advanced R and R Packages Workshop"
 
 Welcome to the website for the Advanced R and R Packages Workshop.
 
+This is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.
+
+It is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, should space all. For more details on how to register, see the [join](join.qmd) page.
+
 ## Syllabus overview
 
-### Advanced R
+The **Advanced R** sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.
 
-### R Packages
+The **R Packages** sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.
 
-All slides and further resources can be accessed from the [content](content.qmd) page and also via the [schedule](schedule.qmd). 
+For more details, see the [content](content.qmd) page.
+
 
 ## Session details
 
@@ -20,7 +25,6 @@ All slides and further resources can be accessed from the [content](content.qmd)
 
 {{< fa calendar-alt >}} &nbsp; See the full [schedule](schedule.qmd).
 
-Please see the [join](join.qmd) page for more details on how to attend the course.
 
 ## Instructor details
 
@@ -30,4 +34,4 @@ Please see the [join](join.qmd) page for more details on how to attend the cours
 
 ## Prerequistes
 
-Please see the [prerequisites](prerequisites.qmd) page for details on getting set up in advance of the first session.
+Please see the [prerequisites](prerequisites.qmd) page for details on getting set up in advance of the workshop.

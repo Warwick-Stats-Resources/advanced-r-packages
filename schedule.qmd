@@ -2,4 +2,37 @@
 title: "Schedule"
 ---
 
-**Schedule goes here**
+### Monday June 19th
+
+| Time         | Session                           |
+|--------------|-----------------------------------|
+| 11:00--11:10 | [Welcome and introduction](content/01-welcome/index.qmd)          |
+| 11:10--12:30 | [Advanced R: Functions](content/02-functions/index.qmd)             |
+| 12:30--13:30 | Lunch                             |
+| 13:30--15:00 | [Advanced R: Classes and methods](content/03-classes-methods/index.qmd)   |
+| 15:00--15:30 | Coffee break                      |
+| 15:30--17:00 | [Advanced R: Efficient programming](content/04-efficient-programming/index.qmd) |
+
+### Tuesday June 20th
+
+| Time         | Session                           |
+|--------------|-----------------------------------|
+| 9:30--10:30  | [Advanced R: Profiling](content/05-profiling/index.qmd)             |
+| 10:30--11:00 | Coffee break                      |
+| 11:00--12:30 | [Advanced R: C++ and Rcpp](content/06-r-with-cpp/index.qmd)          |
+| 12:30--13:30 | Lunch                             |
+| 13:30--15:00 | [R Packages: Package Foundations](content/07-package-foundations/index.qmd)   |
+| 15:00--15:30 | Coffee break                      |
+| 15:30--17:00 | [R Packages: Documentation](content/08-documentation/index.qmd)         |
+
+### Wednesday June 21st
+
+| Time         | Session                           |
+|--------------|-----------------------------------|
+| 9:30--10:30  | [R Packages: Testing](content/09-testing/index.qmd)               |
+| 10:30--11:00 | Coffee break                      |
+| 11:00--12:30 | [R Packages: Check and package documentation](content/10-check-package-documentation/index.qmd)          |
+| 12:30--13:30 | Lunch                             |
+| 13:30--15:00 | [R Packages: Packaging data; publication and maintenance](content/11-data-publication-maintenance/index.qmd)  |
+| 15:00--15:30 | Coffee break                      |
+| 15:30--17:00 | [R Packages: Rcpp](content/12-Rcpp-packages/index.qmd)                  |
