@@ -1,45 +1,360 @@
 [
   {
-    "objectID": "content/07-package-foundations/index.html",
-    "href": "content/07-package-foundations/index.html",
-    "title": "R Packages: Package foundations",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "objectID": "slides/12-Rcpp-packages/index.html#overview",
+    "href": "slides/12-Rcpp-packages/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "content/07-package-foundations/index.html#slides",
-    "href": "content/07-package-foundations/index.html#slides",
-    "title": "R Packages: Package foundations",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/07-package-foundations/index.html#resources",
-    "href": "content/07-package-foundations/index.html#resources",
-    "title": "R Packages: Package foundations",
+    "objectID": "slides/12-Rcpp-packages/index.html#resources",
+    "href": "slides/12-Rcpp-packages/index.html#resources",
+    "title": "SESSION TITLE",
     "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+    "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
-    "objectID": "content/11-data-publication-maintenance/index.html",
-    "href": "content/11-data-publication-maintenance/index.html",
-    "title": "R Packages: Packaging data; publication and maintenance",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "objectID": "slides/12-Rcpp-packages/index.html#license",
+    "href": "slides/12-Rcpp-packages/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
-    "objectID": "content/11-data-publication-maintenance/index.html#slides",
-    "href": "content/11-data-publication-maintenance/index.html#slides",
-    "title": "R Packages: Packaging data; publication and maintenance",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+    "objectID": "slides/09-testing/index.html#overview",
+    "href": "slides/09-testing/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "content/11-data-publication-maintenance/index.html#resources",
-    "href": "content/11-data-publication-maintenance/index.html#resources",
-    "title": "R Packages: Packaging data; publication and maintenance",
+    "objectID": "slides/09-testing/index.html#resources",
+    "href": "slides/09-testing/index.html#resources",
+    "title": "SESSION TITLE",
     "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/09-testing/index.html#license",
+    "href": "slides/09-testing/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#overview",
+    "href": "slides/11-data-publication-maintenance/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
+    "href": "slides/11-data-publication-maintenance/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#license",
+    "href": "slides/11-data-publication-maintenance/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#overview",
+    "href": "slides/08-documentation/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#resources",
+    "href": "slides/08-documentation/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/08-documentation/index.html#license",
+    "href": "slides/08-documentation/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#overview",
+    "href": "slides/03-classes-methods/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#resources",
+    "href": "slides/03-classes-methods/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#license",
+    "href": "slides/03-classes-methods/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#overview",
+    "href": "slides/04-efficient-programming/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#resources",
+    "href": "slides/04-efficient-programming/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#license",
+    "href": "slides/04-efficient-programming/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#overview",
+    "href": "slides/06-r-with-cpp/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#resources",
+    "href": "slides/06-r-with-cpp/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#license",
+    "href": "slides/06-r-with-cpp/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#overview",
+    "href": "slides/01-welcome/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#resources",
+    "href": "slides/01-welcome/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#license",
+    "href": "slides/01-welcome/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/00-template/index.html#overview",
+    "href": "slides/00-template/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/00-template/index.html#resources",
+    "href": "slides/00-template/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/00-template/index.html#license",
+    "href": "slides/00-template/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#overview",
+    "href": "slides/10-check-package-documentation/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#resources",
+    "href": "slides/10-check-package-documentation/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#license",
+    "href": "slides/10-check-package-documentation/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#overview",
+    "href": "slides/05-profiling/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#resources",
+    "href": "slides/05-profiling/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#license",
+    "href": "slides/05-profiling/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#overview",
+    "href": "slides/07-package-foundations/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#resources",
+    "href": "slides/07-package-foundations/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#license",
+    "href": "slides/07-package-foundations/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/02-functions/index.html#overview",
+    "href": "slides/02-functions/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/02-functions/index.html#resources",
+    "href": "slides/02-functions/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/02-functions/index.html#license",
+    "href": "slides/02-functions/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
+  },
+  {
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "Content",
+    "section": "",
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "",
+    "text": "Welcome to the website for the Advanced R and R Packages Workshop.\nThis is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.\nIt is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, space permitting. For more details on how to register, see the join page."
+  },
+  {
+    "objectID": "index.html#syllabus-overview",
+    "href": "index.html#syllabus-overview",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Syllabus overview",
+    "text": "Syllabus overview\nThe Advanced R sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.\nThe R Packages sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.\nFor more details, see the content page."
+  },
+  {
+    "objectID": "index.html#session-details",
+    "href": "index.html#session-details",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Session details",
+    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   Lunch provided each day\n   See the full schedule."
+  },
+  {
+    "objectID": "index.html#instructor-details",
+    "href": "index.html#instructor-details",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Instructor details",
+    "text": "Instructor details\n   Ella Kaye and Heather Turner\n   ella.m.kaye@warwick.ac.uk and h.turner.1@warwick.ac.uk"
+  },
+  {
+    "objectID": "index.html#prerequistes",
+    "href": "index.html#prerequistes",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Prerequistes",
+    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the workshop."
+  },
+  {
+    "objectID": "join.html",
+    "href": "join.html",
+    "title": "Join the workshop",
+    "section": "",
+    "text": "This course is aimed primarily at graduate students in the Department of Statistics at the University of Warwick. It is also open to 3rd and 4th year undergraduate students and members of staff in the Department of Statistics.\nSpace permitting, the workshop is also open to all interested members of the University of Warwick.\nTo express your interest in joining the workshop, please fill in the form, linked below (it may take a moment to load).\nPlease sign-up by June 11th. Places will be confirmed by e-mail by June 12th."
+  },
+  {
+    "objectID": "prerequisites.html",
+    "href": "prerequisites.html",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "This is an advanced R course, so basic knowledge of R is expected.\nThe first three sessions of Warwick-Stats-Resources R Foundations course covers the required material:\n\nIntroduction to R and RStudio\nData Wrangling\nProgramming in R\n\nMembers of the University of Warwick can have access to video recordings of these sessions being taught online in Autumn Term 2022. Please contact ella.m.kaye@warwick.ac.uk to be sent the links."
+  },
+  {
+    "objectID": "prerequisites.html#prior-knowledge",
+    "href": "prerequisites.html#prior-knowledge",
+    "title": "Prerequisites",
+    "section": "",
+    "text": "This is an advanced R course, so basic knowledge of R is expected.\nThe first three sessions of Warwick-Stats-Resources R Foundations course covers the required material:\n\nIntroduction to R and RStudio\nData Wrangling\nProgramming in R\n\nMembers of the University of Warwick can have access to video recordings of these sessions being taught online in Autumn Term 2022. Please contact ella.m.kaye@warwick.ac.uk to be sent the links."
+  },
+  {
+    "objectID": "prerequisites.html#git-and-github",
+    "href": "prerequisites.html#git-and-github",
+    "title": "Prerequisites",
+    "section": "git and GitHub",
+    "text": "git and GitHub\nAlthough there will be some time dedicated to this in the workshop, it would be advantageous if you already have:\n\ngit installed on your computer. See https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\na GitHub account\na GitHub PAT configured to work with RStudio\n\nThe git and GitHub material from a previous version of this workshop walks through the setup."
+  },
+  {
+    "objectID": "prerequisites.html#r-and-rstudio",
+    "href": "prerequisites.html#r-and-rstudio",
+    "title": "Prerequisites",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nPlease ensure that you have up-to-date versions of R and RStudio installed prior to the first session. If you are on MacOS/Linux or a self-managed Windows laptop, install the latest versions, currently R-4.3.0 and RStudio-2023.03.1.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nITS Managed Windows Machines\nR and RStudio are available on student computers (via Start, All Programs) and also staff computers (via Start, All Programs, Software Center).\n\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.3.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.3.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.3.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/#download\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows\nNOTE: This does not require admin rights.\nDownload the Rtools installer that matches your version of R from https://cran.r-project.org/bin/windows/Rtools/. Run the installer, Rtools.exe, keeping the default settings.\nFor Mac\nInstall Command Line Tools.\nEither:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/register/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
   },
   {
     "objectID": "content/12-Rcpp-packages/index.html",
@@ -84,107 +399,23 @@
     "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
   {
-    "objectID": "content/10-check-package-documentation/index.html",
-    "href": "content/10-check-package-documentation/index.html",
-    "title": "R Packages: Check and package documentation",
+    "objectID": "content/11-data-publication-maintenance/index.html",
+    "href": "content/11-data-publication-maintenance/index.html",
+    "title": "R Packages: Packaging data; publication and maintenance",
     "section": "",
     "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "content/10-check-package-documentation/index.html#slides",
-    "href": "content/10-check-package-documentation/index.html#slides",
-    "title": "R Packages: Check and package documentation",
+    "objectID": "content/11-data-publication-maintenance/index.html#slides",
+    "href": "content/11-data-publication-maintenance/index.html#slides",
+    "title": "R Packages: Packaging data; publication and maintenance",
     "section": "Slides",
     "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
-    "objectID": "content/10-check-package-documentation/index.html#resources",
-    "href": "content/10-check-package-documentation/index.html#resources",
-    "title": "R Packages: Check and package documentation",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html",
-    "href": "content/06-r-with-cpp/index.html",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html#slides",
-    "href": "content/06-r-with-cpp/index.html#slides",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html#resources",
-    "href": "content/06-r-with-cpp/index.html#resources",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/05-profiling/index.html",
-    "href": "content/05-profiling/index.html",
-    "title": "Advanced R: Profiling",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/05-profiling/index.html#slides",
-    "href": "content/05-profiling/index.html#slides",
-    "title": "Advanced R: Profiling",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/05-profiling/index.html#resources",
-    "href": "content/05-profiling/index.html#resources",
-    "title": "Advanced R: Profiling",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/02-functions/index.html",
-    "href": "content/02-functions/index.html",
-    "title": "Advanced R: Functions",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/02-functions/index.html#slides",
-    "href": "content/02-functions/index.html#slides",
-    "title": "Advanced R: Functions",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/02-functions/index.html#resources",
-    "href": "content/02-functions/index.html#resources",
-    "title": "Advanced R: Functions",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/01-welcome/index.html",
-    "href": "content/01-welcome/index.html",
-    "title": "Welcome and introduction",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/01-welcome/index.html#slides",
-    "href": "content/01-welcome/index.html#slides",
-    "title": "Welcome and introduction",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/01-welcome/index.html#resources",
-    "href": "content/01-welcome/index.html#resources",
-    "title": "Welcome and introduction",
+    "objectID": "content/11-data-publication-maintenance/index.html#resources",
+    "href": "content/11-data-publication-maintenance/index.html#resources",
+    "title": "R Packages: Packaging data; publication and maintenance",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
@@ -252,360 +483,129 @@
     "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
   {
-    "objectID": "join.html",
-    "href": "join.html",
-    "title": "Join the workshop",
+    "objectID": "content/06-r-with-cpp/index.html",
+    "href": "content/06-r-with-cpp/index.html",
+    "title": "Advanced R: C++ and Rcpp",
     "section": "",
-    "text": "This course is aimed primarily at graduate students in the Department of Statistics at the University of Warwick. It is also open to 3rd and 4th year undergraduate students and members of staff in the Department of Statistics.\nSpace permitting, the workshop is also open to all interested members of the University of Warwick.\nTo express your interest in joining the workshop, please fill in the form, linked below (it may take a moment to load).\nPlaces will be confirmed by e-mail."
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "content.html",
-    "href": "content.html",
-    "title": "Content",
+    "objectID": "content/06-r-with-cpp/index.html#slides",
+    "href": "content/06-r-with-cpp/index.html#slides",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html#resources",
+    "href": "content/06-r-with-cpp/index.html#resources",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/01-welcome/index.html",
+    "href": "content/01-welcome/index.html",
+    "title": "Welcome and introduction",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "prerequisites.html",
-    "href": "prerequisites.html",
-    "title": "Prerequisites",
+    "objectID": "content/01-welcome/index.html#slides",
+    "href": "content/01-welcome/index.html#slides",
+    "title": "Welcome and introduction",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/01-welcome/index.html#resources",
+    "href": "content/01-welcome/index.html#resources",
+    "title": "Welcome and introduction",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html",
+    "href": "content/10-check-package-documentation/index.html",
+    "title": "R Packages: Check and package documentation",
     "section": "",
-    "text": "This is an advanced R course, so basic knowledge of R is expected.\nThe first three sessions of Warwick-Stats-Resources R Foundations course covers the required material:\n\nIntroduction to R and RStudio\nData Wrangling\nProgramming in R\n\nMembers of the University of Warwick can have access to video recordings of these sessions being taught online in Autumn Term 2022. Please contact ella.m.kaye@warwick.ac.uk to be sent the links."
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "prerequisites.html#prior-knowledge",
-    "href": "prerequisites.html#prior-knowledge",
-    "title": "Prerequisites",
+    "objectID": "content/10-check-package-documentation/index.html#slides",
+    "href": "content/10-check-package-documentation/index.html#slides",
+    "title": "R Packages: Check and package documentation",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html#resources",
+    "href": "content/10-check-package-documentation/index.html#resources",
+    "title": "R Packages: Check and package documentation",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/05-profiling/index.html",
+    "href": "content/05-profiling/index.html",
+    "title": "Advanced R: Profiling",
     "section": "",
-    "text": "This is an advanced R course, so basic knowledge of R is expected.\nThe first three sessions of Warwick-Stats-Resources R Foundations course covers the required material:\n\nIntroduction to R and RStudio\nData Wrangling\nProgramming in R\n\nMembers of the University of Warwick can have access to video recordings of these sessions being taught online in Autumn Term 2022. Please contact ella.m.kaye@warwick.ac.uk to be sent the links."
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "prerequisites.html#git-and-github",
-    "href": "prerequisites.html#git-and-github",
-    "title": "Prerequisites",
-    "section": "git and GitHub",
-    "text": "git and GitHub\nAlthough there will be some time dedicated to this in the workshop, it would be advantageous if you already have:\n\ngit installed on your computer. See https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\na GitHub account\na GitHub PAT configured to work with RStudio\n\nThe git and GitHub material from a previous version of this workshop walks through the setup."
+    "objectID": "content/05-profiling/index.html#slides",
+    "href": "content/05-profiling/index.html#slides",
+    "title": "Advanced R: Profiling",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
-    "objectID": "prerequisites.html#r-and-rstudio",
-    "href": "prerequisites.html#r-and-rstudio",
-    "title": "Prerequisites",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nPlease ensure that you have up-to-date versions of R and RStudio installed prior to the first session. If you are on MacOS/Linux or a self-managed Windows laptop, install the latest versions, currently R-4.3.0 and RStudio-2023.03.1.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nITS Managed Windows Machines\nR and RStudio are available on student computers (via Start, All Programs) and also staff computers (via Start, All Programs, Software Center).\n\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.3.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.3.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.3.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/#download\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows\nNOTE: This does not require admin rights.\nDownload the Rtools installer that matches your version of R from https://cran.r-project.org/bin/windows/Rtools/. Run the installer, Rtools.exe, keeping the default settings.\nFor Mac\nInstall Command Line Tools.\nEither:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/register/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
+    "objectID": "content/05-profiling/index.html#resources",
+    "href": "content/05-profiling/index.html#resources",
+    "title": "Advanced R: Profiling",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Advanced R and R Packages Workshop",
+    "objectID": "content/07-package-foundations/index.html",
+    "href": "content/07-package-foundations/index.html",
+    "title": "R Packages: Package foundations",
     "section": "",
-    "text": "Welcome to the website for the Advanced R and R Packages Workshop.\nThis is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.\nIt is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, space permitting. For more details on how to register, see the join page."
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "index.html#syllabus-overview",
-    "href": "index.html#syllabus-overview",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Syllabus overview",
-    "text": "Syllabus overview\nThe Advanced R sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.\nThe R Packages sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.\nFor more details, see the content page."
+    "objectID": "content/07-package-foundations/index.html#slides",
+    "href": "content/07-package-foundations/index.html#slides",
+    "title": "R Packages: Package foundations",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
-    "objectID": "index.html#session-details",
-    "href": "index.html#session-details",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Session details",
-    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   Lunch provided each day\n   See the full schedule."
+    "objectID": "content/07-package-foundations/index.html#resources",
+    "href": "content/07-package-foundations/index.html#resources",
+    "title": "R Packages: Package foundations",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
   {
-    "objectID": "index.html#instructor-details",
-    "href": "index.html#instructor-details",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Instructor details",
-    "text": "Instructor details\n   Ella Kaye and Heather Turner\n   ella.m.kaye@warwick.ac.uk and h.turner.1@warwick.ac.uk"
-  },
-  {
-    "objectID": "index.html#prerequistes",
-    "href": "index.html#prerequistes",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Prerequistes",
-    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the workshop."
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
+    "objectID": "content/02-functions/index.html",
+    "href": "content/02-functions/index.html",
+    "title": "Advanced R: Functions",
     "section": "",
-    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
+    "text": "This page and the slides for this session are still under development"
   },
   {
-    "objectID": "slides/07-package-foundations/index.html#overview",
-    "href": "slides/07-package-foundations/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "objectID": "content/02-functions/index.html#slides",
+    "href": "content/02-functions/index.html#slides",
+    "title": "Advanced R: Functions",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
-    "objectID": "slides/07-package-foundations/index.html#resources",
-    "href": "slides/07-package-foundations/index.html#resources",
-    "title": "SESSION TITLE",
+    "objectID": "content/02-functions/index.html#resources",
+    "href": "content/02-functions/index.html#resources",
+    "title": "Advanced R: Functions",
     "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/07-package-foundations/index.html#license",
-    "href": "slides/07-package-foundations/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#overview",
-    "href": "slides/11-data-publication-maintenance/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
-    "href": "slides/11-data-publication-maintenance/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#license",
-    "href": "slides/11-data-publication-maintenance/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/12-Rcpp-packages/index.html#overview",
-    "href": "slides/12-Rcpp-packages/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/12-Rcpp-packages/index.html#resources",
-    "href": "slides/12-Rcpp-packages/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/12-Rcpp-packages/index.html#license",
-    "href": "slides/12-Rcpp-packages/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#overview",
-    "href": "slides/09-testing/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#resources",
-    "href": "slides/09-testing/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#license",
-    "href": "slides/09-testing/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#overview",
-    "href": "slides/10-check-package-documentation/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#resources",
-    "href": "slides/10-check-package-documentation/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#license",
-    "href": "slides/10-check-package-documentation/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/06-r-with-cpp/index.html#overview",
-    "href": "slides/06-r-with-cpp/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/06-r-with-cpp/index.html#resources",
-    "href": "slides/06-r-with-cpp/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/06-r-with-cpp/index.html#license",
-    "href": "slides/06-r-with-cpp/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#overview",
-    "href": "slides/05-profiling/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#resources",
-    "href": "slides/05-profiling/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#license",
-    "href": "slides/05-profiling/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/02-functions/index.html#overview",
-    "href": "slides/02-functions/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/02-functions/index.html#resources",
-    "href": "slides/02-functions/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/02-functions/index.html#license",
-    "href": "slides/02-functions/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/00-template/index.html#overview",
-    "href": "slides/00-template/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/00-template/index.html#resources",
-    "href": "slides/00-template/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/00-template/index.html#license",
-    "href": "slides/00-template/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/01-welcome/index.html#overview",
-    "href": "slides/01-welcome/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/01-welcome/index.html#resources",
-    "href": "slides/01-welcome/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/01-welcome/index.html#license",
-    "href": "slides/01-welcome/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/08-documentation/index.html#overview",
-    "href": "slides/08-documentation/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/08-documentation/index.html#resources",
-    "href": "slides/08-documentation/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/08-documentation/index.html#license",
-    "href": "slides/08-documentation/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#overview",
-    "href": "slides/03-classes-methods/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#resources",
-    "href": "slides/03-classes-methods/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#license",
-    "href": "slides/03-classes-methods/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#overview",
-    "href": "slides/04-efficient-programming/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#resources",
-    "href": "slides/04-efficient-programming/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#license",
-    "href": "slides/04-efficient-programming/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   }
 ]
