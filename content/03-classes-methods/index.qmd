@@ -4,8 +4,6 @@ date: 2023-06-19T13:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/03-classes-methods/index.qmd){target="_blank"} in a new window. 
@@ -19,9 +17,11 @@ Here are the slides embedded:
 
 ### Reading
 
-- TITLE
+-  Main reference for this section, goes a bit further (including R6):
+Wickham, H, _Advanced R_ (2nd edn), _Object-oriented programming_ section
 
-  <LINK>
+  <https://adv-r.hadley.nz/oo.html>
 
+- Fun example creating `Turtle` and `TurtleWithPen` classes to create simple graphics by moving the turtle
 
-### Packages
+  <https://stuartlee.org/2019/07/09/s4-short-guide/> 
