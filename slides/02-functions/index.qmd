@@ -425,6 +425,7 @@ f1(10)
 ```{r, results = "hide"}
 traceback()
 ```
+
 ```{r, echo = FALSE}
 cat("2: f2(2) at #1\n1: f1(10)")
 ```
@@ -531,11 +532,17 @@ Can you think how to improve the function? See if you can modify the function to
 
 ## Resources
 
-Material (with minor adaptations) from Heather Turner:
+- Functions chapter from Advanced R, Hadley Wickham
 
-<https://hturner.github.io/IISA2022/01_developing_r_functions.html>
+  <https://adv-r.hadley.nz/functions.html>
 
-(with permission)
+- Debugging chapter from Advanced R, Hadley Wickham
+
+  <https://adv-r.hadley.nz/debugging.html>
+  
+- Debugging from the RStudio User Guide
+
+  <https://docs.posit.co/ide/user/ide/guide/code/debugging.html>
 
 ## License
 
