@@ -4,8 +4,6 @@ date: 2023-06-19T11:10:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/02-functions/index.qmd){target="_blank"} in a new window. 
@@ -19,9 +17,15 @@ Here are the slides embedded:
 
 ### Reading
 
-- TITLE
+- Functions chapter from Advanced R, Hadley Wickham
 
-  <LINK>
+  <https://adv-r.hadley.nz/functions.html>
 
+- Debugging chapter from Advanced R, Hadley Wickham
 
-### Packages
+  <https://adv-r.hadley.nz/debugging.html>
+  
+- Debugging from the RStudio User Guide
+
+  <https://docs.posit.co/ide/user/ide/guide/code/debugging.html>
+
