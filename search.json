@@ -373,21 +373,175 @@
   {
     "objectID": "slides/04-efficient-programming/index.html#overview",
     "href": "slides/04-efficient-programming/index.html#overview",
-    "title": "SESSION TITLE",
+    "title": "Efficient Programming",
     "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "text": "Overview\n\nMemory management\nBenchmarking\nImproving run time\nParallelisation\nOutlook to package development"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#overview-1",
+    "href": "slides/04-efficient-programming/index.html#overview-1",
+    "title": "Efficient Programming",
+    "section": "Overview",
+    "text": "Overview\nObjects created in R are stored in memory. This has the advantage that objects can be accessed faster, but R slows down as the memory fills up. Creating objects also takes time.\nTherefore:\n\n\nRe-use temporary variables. The allocated storage will be re-used if the vector has the same length.\nSave results for re-use, e.g. index variables\nDon’t save intermediate results unnecessarily – compute on-the-fly\nRemove large objects when no longer needed (with rm())"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#basic-data-structures",
+    "href": "slides/04-efficient-programming/index.html#basic-data-structures",
+    "title": "Efficient Programming",
+    "section": "Basic data structures",
+    "text": "Basic data structures\nTry to use the simplest data structure for your purpose\n\nmatrices vs. data frames\ncharacter or integer vectors vs. factors\nlogical or integer vectors vs. numeric vectors\nunnamed objects vs. named objects\n\n\nIt is especially important to use low-level structures for computation\nYou can create richer objects as a final step before returning to the user.\n\nL for integer"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#big-data",
+    "href": "slides/04-efficient-programming/index.html#big-data",
+    "title": "Efficient Programming",
+    "section": "Big Data",
+    "text": "Big Data\nModern computers have enough RAM to work with millions of records using standard functions.\nSome packages to work more efficiently with big data:\n\ndata.table faster operations on data frames; read/write large CSVs\ndplyr + dbplyr processing of data in databases.\narrow read/write large CSVs or binary files e.g. Parquet; processing larger-than-memory data with dplyr commands.\nbigmemory, biganalytics faster matrix operations, generalized linear models, kmeans\n\n\nN.B. sparse matrices not as efficient as you might expect for general programming, may need big data for it to be important.\nParallelisation can also help, see later"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#growing-objects",
+    "href": "slides/04-efficient-programming/index.html#growing-objects",
+    "title": "Efficient Programming",
+    "section": "Growing Objects",
+    "text": "Growing Objects\nAdding to an object in a loop\n\nres &lt;- NULL\nfor (i in 1:5000) res &lt;- c(res, 1)\n\nmay force a copy to be made at each iteration, with each copy stored until the loop has completed.\n\nIt is far better to create an object of the necessary size first\n\nres &lt;- numeric(5000)\nfor (i in seq_along(res)) res[i] &lt;- 1\n\nTo initialise a list we can use\n\nres &lt;- vector(mode = \"list\", length = 100)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#copy-on-change",
+    "href": "slides/04-efficient-programming/index.html#copy-on-change",
+    "title": "Efficient Programming",
+    "section": "Copy-on-Change",
+    "text": "Copy-on-Change\nR usually copies an object to make changes to it.\ntracemem can be used to trace copies of an object\n\nz &lt;- NULL\nfor (i in 1:3){ z &lt;- c(z,1); print(tracemem(z)) }\n\n[1] \"&lt;0x159494e98&gt;\"\n[1] \"&lt;0x11d8bb188&gt;\"\n[1] \"&lt;0x159356ee8&gt;\"\n\n\n\n\nz &lt;- numeric(2); print(tracemem(z))\n\n[1] \"&lt;0x11a698788&gt;\"\n\n\n\n\n\nfor (i in 1:2){z[i] &lt;- i;print(tracemem(z))}\n\ntracemem[0x11a698788 -&gt; 0x11a620648]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main \n[1] \"&lt;0x11a620648&gt;\"\n[1] \"&lt;0x11a620648&gt;\"\n\n\n\nmakes copy for each separate block of code e.g. if run with above in one go interactively no copies if run in separate chunks 1 copy"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchmarking-1",
+    "href": "slides/04-efficient-programming/index.html#benchmarking-1",
+    "title": "Efficient Programming",
+    "section": "Benchmarking",
+    "text": "Benchmarking\nThere will usually be many ways to write code for a given task. To compare alternatives, we can use benchmark the code.\nIf the code is more than a single expression, create wrappers for each alternative\n\ngrow &lt;- function(n){\n  res &lt;- NULL\n  for (i in 1:n) res &lt;- c(res, 1)\n  res\n}\npre_specify &lt;- function(n){\n  res &lt;- numeric(n)\n  for (i in seq_along(res)) res[i] &lt;- 1\n  res\n}"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchmark",
+    "href": "slides/04-efficient-programming/index.html#benchmark",
+    "title": "Efficient Programming",
+    "section": "bench::mark()",
+    "text": "bench::mark()\nRun the two alternatives with bench::mark(). This function\n\nRuns alternatives ≥ 1 time; at most enough times to take 0.5s\nMakes sure the two expressions return the same result!\n\n\n\nlibrary(bench)\n(bm &lt;- bench::mark(grow(5000), pre_specify(5000)))\n\nWarning: Some expressions had a GC in every iteration; so filtering is\ndisabled.\n\n\n# A tibble: 2 × 6\n  expression             min   median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 grow(5000)          26.1ms   30.1ms      32.7    95.6MB    59.6 \n2 pre_specify(5000)   98.9µs  107.9µs    9036.     55.8KB     6.00\n\n\n\nGC is the garbage collector which tidies up deleted objects\nitr/sec is how many times the expression could be run in 1s"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#plotting-benchmarks",
+    "href": "slides/04-efficient-programming/index.html#plotting-benchmarks",
+    "title": "Efficient Programming",
+    "section": "Plotting benchmarks",
+    "text": "Plotting benchmarks\nDistribution tends to be right-skewed - focus on the median!\n\nplot(bm)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#scaling",
+    "href": "slides/04-efficient-programming/index.html#scaling",
+    "title": "Efficient Programming",
+    "section": "Scaling",
+    "text": "Scaling\nBenchmarking can be difficult as the best option can depend on the size of the data, e.g. memory allocation can overshadow run time for small objects.\nWhen thinking about how our code scales to bigger, we need to consider what we mean by “big”\n\nnumber of rows or number of columns?\nnumber of observations or number of factor levels?\n\nbench::press() compares a function over a grid of parameters"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchpress",
+    "href": "slides/04-efficient-programming/index.html#benchpress",
+    "title": "Efficient Programming",
+    "section": "bench::press()",
+    "text": "bench::press()\n\n\nbench::press(n = c(10, 100), k = c(10, 1),\n  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels\n)\n\nRunning with:\n      n     k\n\n\n1    10    10\n\n\n2   100    10\n\n\n3    10     1\n\n\n4   100     1\n\n\n# A tibble: 4 × 8\n  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 gl(n, k, length = 100…    10    10 3.12µs  3.61µs   244789.    12.4KB     24.5\n2 gl(n, k, length = 100…   100    10 9.47µs 10.25µs    94884.   11.05KB     19.0\n3 gl(n, k, length = 100…    10     1 2.79µs   3.2µs   300082.    3.95KB     30.0\n4 gl(n, k, length = 100…   100     1  6.4µs  7.09µs   135881.    7.53KB     13.6"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-1",
+    "href": "slides/04-efficient-programming/index.html#exercise-1",
+    "title": "Efficient Programming",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nSuppose we have a matrix of data and a two-level factor\n\nnr &lt;- 10\nnc &lt;- 50\nX &lt;- matrix(rnorm(nr * nc, 10, 3), nrow = nr)\ngrp &lt;- gl(2, nc/2)\n\nUse bench::mark() to compare the following ways to find the coefficients of a linear model fitted to each row\n\n# one\nres &lt;- vector(\"list\", nr)\nfor(i in seq_len(nr)){\n  res[[i]] &lt;- coef(lm(X[i,] ~ grp))\n}\ndo.call(\"cbind\", res)\n# two\nres2 &lt;- coef(lm(t(X) ~ grp))"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#faster-common-operations",
+    "href": "slides/04-efficient-programming/index.html#faster-common-operations",
+    "title": "Efficient Programming",
+    "section": "Faster common operations",
+    "text": "Faster common operations\n\nSorting\n\nUse sort(x, partial = 1:10) to get the top 10\nUse sort(x, decreasing = TRUE) vs rev(sort(x))\n\n\n\n\nGenerating numeric vectors\n\nseq.int(), seq_along(x), seq_len(n) vs seq()\n\nrep.int() or rep_len(n) vs rep()\n\n\n\n\n\nwhich.min(), which.max() vs e.g. which(x == min(x))\n\n\n\n\nanyNA(x) vs any(is.na(x))\n\n\n“int” stands for internal!"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#for-loops",
+    "href": "slides/04-efficient-programming/index.html#for-loops",
+    "title": "Efficient Programming",
+    "section": "For loops",
+    "text": "For loops\nFor loops are an intuitive way to write code, but can be very inefficient.\nfor is a function, : or seq_along is another function, each use of [ is a call to a function, …, so a loop involves many nested function calls.\n\nTry to keep for loops for truly iterative computations or tasks that are fast in any case (optimizing code takes time!)\nOtherwise make loops as lean as possible, by pre-computing values that do not need be be computed iteratively."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#vectorization",
+    "href": "slides/04-efficient-programming/index.html#vectorization",
+    "title": "Efficient Programming",
+    "section": "Vectorization",
+    "text": "Vectorization\nVectorization is operating on vectors (or vector-like objects) rather than individual elements.\nMany operations in R are vectorized, e.g.\n\nx &lt;- 1:3\ny &lt;- 3:1\nx == y\n\n[1] FALSE  TRUE FALSE\n\nlog(x)\n\n[1] 0.0000000 0.6931472 1.0986123\n\nres &lt;- list(a = 1:3, b = 1:6)\nlengths(res)\n\na b \n3 6 \n\n\nWe do not need to loop through each element!"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#recycling",
+    "href": "slides/04-efficient-programming/index.html#recycling",
+    "title": "Efficient Programming",
+    "section": "Recycling",
+    "text": "Recycling\nVectorized functions will recycle shorter vectors to create vectors of the same length\n\n1:4 + 0:1 + 2 # 1+0+2, 2+1+2, 3+0+2, 4+1+2\n\n[1] 3 5 5 7\n\n\nThis is particularly useful for single values\n\ncbind(1, 3:4)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    1    4\n\n\nand for generating regular patterns\n\npaste0(rep(1:3, each = 2), c(\"a\", \"b\"))\n\n[1] \"1a\" \"1b\" \"2a\" \"2b\" \"3a\" \"3b\""
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#ifelse",
+    "href": "slides/04-efficient-programming/index.html#ifelse",
+    "title": "Efficient Programming",
+    "section": "ifelse()",
+    "text": "ifelse()\nifelse is a vectorised version of if and else blocks\n\nx &lt;- c(5, 2, 9, 12)\nifelse(x &gt; 6, 2 * x, 3 * x)\n\n[1] 15  6 18 24\n\n\nRecycling is also very useful here\n\nx &lt;- 1:10\nifelse(x %% 2 == 0, 5, 12)\n\n [1] 12  5 12  5 12  5 12  5 12  5\n\n\nHowever indexing is more efficient than ifelse\n\ny &lt;- rep.int(12, 10)\ny[x %% 2 == 0] &lt;- 5\ny\n\n [1] 12  5 12  5 12  5 12  5 12  5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#logical-operations",
+    "href": "slides/04-efficient-programming/index.html#logical-operations",
+    "title": "Efficient Programming",
+    "section": "Logical operations",
+    "text": "Logical operations\nLogical operators such as & and | are vectorized, e.g.\n\nx &lt;- c(1, 0.6, 1.2, 0.4, 0.5)\nx &gt; 0.4 & x &lt; 0.8\n\n[1] FALSE  TRUE FALSE FALSE  TRUE\n\n\nIf we only want to compare vectors of length 1 the operators && and || are more efficient as they only compute the RHS if needed\n\nx[1] &gt; 0.4 && x[1] &lt; 0.8\n\n[1] FALSE\n\n\nMake sure the vectors are of length 1, otherwise you get an error. This change was introduced in R ≥ 4.3.\n\nx &gt; 0.4 && x &lt; 0.8\n\nError in x &gt; 0.4 && x &lt; 0.8: 'length = 5' in coercion to 'logical(1)'\n\n\n\nIn R &ge 4.2.0 you get a warning but it still returns a comparison of only the first element. In earlier versions, there was no warning."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
+    "href": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
+    "title": "Efficient Programming",
+    "section": "Vectorization and Matrices",
+    "text": "Vectorization and Matrices\nVectorizations applies to matices too, not only through matrix algebra\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nM + M\n\n     [,1] [,2]\n[1,]    2    6\n[2,]    4    8\n\n\nbut also vectorized functions\n\nM &lt;- M + rep(1.3, 4)\nround(M)\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#matrices-and-recycling",
+    "href": "slides/04-efficient-programming/index.html#matrices-and-recycling",
+    "title": "Efficient Programming",
+    "section": "Matrices and Recycling",
+    "text": "Matrices and Recycling\nValues are recycled down matrix, which is convenient for row-wise operations\n\nM &lt;- matrix(1:6, nrow = 2, ncol = 3)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nM - 1:2\n\n     [,1] [,2] [,3]\n[1,]    0    2    4\n[2,]    0    2    4\n\n\nTo do the same for columns we would need to explicitly replicate, which is not so efficient.\n\nM - rep(1:3, each = 2)\n\n     [,1] [,2] [,3]\n[1,]    0    1    2\n[2,]    1    2    3"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
+    "href": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
+    "title": "Efficient Programming",
+    "section": "Row/Column-wise Operations",
+    "text": "Row/Column-wise Operations\nSeveral functions are available implementing efficient row/column-wise operations, e.g. colMeans(), rowMeans(), colSums(), rowSums(), sweep()\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nrowMeans(M)\n\n[1] 2 3\n\n\nThese provide an alternative to iterating though rows and columns in R (the iteration happens in C, which is faster).\nThe matrixStats provides further “matricised” methods, including medians and standard deviations."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
+    "href": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
+    "title": "Efficient Programming",
+    "section": "Exercise 2 (h/t Raju Bhakta)",
+    "text": "Exercise 2 (h/t Raju Bhakta)\nSampling from 0.3 × N(0, 1) + 0.5 × N(10, 1) + 0.2 × N(3, 0.1):\n\n# Set the random seed and the number of values to sample\nset.seed(1); n &lt;- 100000                 \n\n# Sample the component each value belongs to\ncomponent &lt;- sample(1:3, prob = c(0.3, 0.5, 0.2), \n                    size = n, replace = TRUE)\n\n# Sample from the corresponding Normal for each value\nx &lt;- numeric(n)\nfor(i in seq_len(n)){\n  if (component[i] == 1){\n    x[i] &lt;- rnorm(1, 0, 1)\n  } else if (component[i] == 2) {\n    x[i] &lt;- rnorm(1, 10, 1)\n  } else {\n    x[i] &lt;- rnorm(1, 3, sqrt(0.1))\n  }\n}"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-2-continued",
+    "href": "slides/04-efficient-programming/index.html#exercise-2-continued",
+    "title": "Efficient Programming",
+    "section": "Exercise 2 (continued)",
+    "text": "Exercise 2 (continued)\nThe for loop in the previous code is suitable for vectorization: the iterations are completely independent.\nrnorm() is vectorized in the arguments mu and sd, e.g. to simulate a value from the 1st and 3rd component we could write:\n\nmu &lt;- c(0, 10, 3)\nsd &lt;- sqrt(c(1, 1, 0.1))\nrnorm(2, mu[c(1, 3)], sd[c(1, 3)])\n\n[1] 0.6528158 2.7948388\n\n\nUse this information to replace the for loop, using a single call to rnorm() to simulate n values from the mixture distribution.\nUse bench::mark() to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#resources",
     "href": "slides/04-efficient-programming/index.html#resources",
-    "title": "SESSION TITLE",
+    "title": "Efficient Programming",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#license",
     "href": "slides/04-efficient-programming/index.html#license",
-    "title": "SESSION TITLE",
+    "title": "Efficient Programming",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
@@ -478,21 +632,119 @@
   {
     "objectID": "slides/05-profiling/index.html#overview",
     "href": "slides/05-profiling/index.html#overview",
-    "title": "SESSION TITLE",
+    "title": "Profiling",
     "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "text": "Overview\n\nProfiling\nMAYBE BRING IN SOMETHING FROM THE BOTTLENECKS SESSION?"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#profiling-code",
+    "href": "slides/05-profiling/index.html#profiling-code",
+    "title": "Profiling",
+    "section": "Profiling code",
+    "text": "Profiling code\nTo make our code more efficient, we first need to identify the bottlenecks, in terms of time and/or memory usage.\nProfiling stops the execution of code every few milliseconds and records\n\nThe call stack: the function currently being executed, the function that it was called from and so on up to the top-level function call.\nThe memory allocated and released since the last record.\n\nWe will use the profvis package to visualise profiling results."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#example-nested-pause-functions",
+    "href": "slides/05-profiling/index.html#example-nested-pause-functions",
+    "title": "Profiling",
+    "section": "Example: nested pause functions",
+    "text": "Example: nested pause functions\nThe following code is saved in profiling-example.R and uses profvis::pause() to wait 0.1s inside each function\n\ntop_level &lt;- function() {\n  profvis::pause(0.1)\n  middle_level()\n  bottom_level()\n}\nmiddle_level &lt;- function() {\n  profvis::pause(0.1)\n  bottom_level()\n}\nbottom_level &lt;- function() {\n  profvis::pause(0.1)\n}\n\n\nSys.sleep() can not be used as it would not show in profiling output"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#using-profvis",
+    "href": "slides/05-profiling/index.html#using-profvis",
+    "title": "Profiling",
+    "section": "Using profvis",
+    "text": "Using profvis\nSource the code to be profiled and pass the function call to be profiled to profvis()\n\nlibrary(profvis)\nsource(\"profiling-example.R\")\nprofvis(top_level())\n\nAn interactive HTML document will open with the results.\nIn RStudio this will open in the source pane; click “show in new window” button to open the document in a new window."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#section",
+    "href": "slides/05-profiling/index.html#section",
+    "title": "Profiling",
+    "section": "",
+    "text": "Screenshot of the profvis HTML output. At the bottom, a stacked set of horizontal bars along a time axis, representing the length of time in each function. At a given time, the top-level function is at the bottom of the stack with each nested function stacked on top. The source code is shown at the top of the screenshot, with a horizontal bar for each line, showing the time spent. Interpretation on next slide"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#interpretation",
+    "href": "slides/05-profiling/index.html#interpretation",
+    "title": "Profiling",
+    "section": "Interpretation",
+    "text": "Interpretation\nIn the flame graph the yellow bars correspond to lines in the source file shown above the graph. The plot is interactive.\nIn the overall time of 250ms we see:\n\n4 equal-sized blocks for each pause of 0.1s\nNearly all time is spent in the top-level function\nNearly half the time is spent in the mid-level function\nNearly half the time is also spent in the bottom-level function\nThe cmp function is called as R tries to compile new functions so that it can call the compiled version in subsequent calls.\n\nNo objects are created or deleted: no memory changes."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#data-tab",
+    "href": "slides/05-profiling/index.html#data-tab",
+    "title": "Profiling",
+    "section": "Data tab",
+    "text": "Data tab\nThe Data tab shows a table with the memory and time usage for each function call. The nested calls can be expanded/collapsed to show/hide the corresponding lines.\n\nScreenshot of the data tab in the profvis HTML output. A table with columns “Code” (function name), “File” (name of source file containing function), “Memory (MB)” and “Time (ms)”."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#memory-profiling",
+    "href": "slides/05-profiling/index.html#memory-profiling",
+    "title": "Profiling",
+    "section": "Memory profiling",
+    "text": "Memory profiling\nTo illustrate memory profiling we can consider a loop that concatenates values.\nAs it is a small code snippet, we can pass to profvis() directly\n\nprofvis({\n  x &lt;- integer()\n  for (i in 1:10000) {\n    x &lt;- c(x, i)\n  }\n})"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#section-1",
+    "href": "slides/05-profiling/index.html#section-1",
+    "title": "Profiling",
+    "section": "",
+    "text": "Flame graph for profiling the contenation example. Interpretation on next slide."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#gc",
+    "href": "slides/05-profiling/index.html#gc",
+    "title": "Profiling",
+    "section": "<GC>",
+    "text": "&lt;GC&gt;\nAs expected, the majority of the time is spent within c(), but we also see a lot time spent in &lt;GC&gt;, the garbage collector.\nIn the memory column next to the corresponding line in the source code, we see a bar to left labelled -123.0 and a bar to the right labelled 137.2. This means that 137 MB of memory was allocated and 123 MB of memory was released.\nEach call to c() causes a new copy of x to be created.\nMemory profiling can help to identify short-lived objects that might be avoided by changes to the code."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#monopoly",
+    "href": "slides/05-profiling/index.html#monopoly",
+    "title": "Profiling",
+    "section": "Monopoly",
+    "text": "Monopoly\n\n\nIn the game of Monopoly, players roll two die to move round the board. Players buy assets on which they can charge rent or taxes and aim to make the most money.\nThe squares on the board represent\n\n\n\n\n\nProperties, train stations or utility companies to buy\nEvents that trigger an action, e.g. paying a tax or going to jail\n\nThe efficient package contains the simulate_monopoly() function to simulate game play; we’ll use this to practice profiling."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#your-turn",
+    "href": "slides/05-profiling/index.html#your-turn",
+    "title": "Profiling",
+    "section": "Your turn!",
+    "text": "Your turn!\n\nInstall the efficient package with the following code to keep the code source files:\n\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\n\nUse profvis() to profile simulate_monopoly(10000). Explore the output. Which parts of the code are slow?\nMost of the time is spent in the function move_square(). Use View(move_square) to view the source code. Copy the code to a new .R file and rename the function move_square2. Edit move_square2() to speed up the slow parts of the code. (Go to next slide for testing the updates)"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#your-turn-continued",
+    "href": "slides/05-profiling/index.html#your-turn-continued",
+    "title": "Profiling",
+    "section": "Your turn! (continued)",
+    "text": "Your turn! (continued)\nCreate a wrapper to run a specified move square function n times with different seeds:\n\nrun &lt;- function(n, fun){\n  x &lt;- numeric(n)\n  for (i in seq_len(n)) {\n    set.seed(i)\n    x[i] &lt;- fun(1)\n  }\n  x\n}\n\nRun bench::mark(run(n, move_square), run(n, move_square2)) with n = 1000 to test your changes.\nFinally, compare profvis(run(n, move_square)) with profvis(run(n, move_square2))."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#general-principles",
+    "href": "slides/05-profiling/index.html#general-principles",
+    "title": "Profiling",
+    "section": "General principles",
+    "text": "General principles\n\nAvoid optimizing too soon\n\nGet the code right first\n\nAvoid over-optimization\n\nFocus on the bottlenecks\nKeep an eye on the units - will real gains be made?\nThink about maintainability: readability, simplicity, dependencies\n\nAvoid anonymous functions\n\nName utility functions to see them in the profile\n\nUse benchmarking to assess alternative implementations"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#c-and-rcpp",
+    "href": "slides/05-profiling/index.html#c-and-rcpp",
+    "title": "Profiling",
+    "section": "C++ and Rcpp",
+    "text": "C++ and Rcpp\nIn the next session, we’ll cover using C++ via Rcpp to rewrite R code that has been identified through profiling as causing bottlenecks in your code."
   },
   {
     "objectID": "slides/05-profiling/index.html#resources",
     "href": "slides/05-profiling/index.html#resources",
-    "title": "SESSION TITLE",
+    "title": "Profiling",
     "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
+    "text": "Resources"
   },
   {
     "objectID": "slides/05-profiling/index.html#license",
     "href": "slides/05-profiling/index.html#license",
-    "title": "SESSION TITLE",
+    "title": "Profiling",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },

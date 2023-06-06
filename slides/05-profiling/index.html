@@ -13,7 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <title>Advanced R and R Packages Workshop - SESSION TITLE</title>
+  <meta name="dcterms.date" content="2023-06-20">
+  <title>Advanced R and R Packages Workshop - Profiling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #adadbd;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #adadbd;  padding-left: 4px; }
+    div.sourceCode
+      { color: #2e2e2f;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #2e2e2f; } /* Normal */
+    code span.al { color: #ae4240; } /* Alert */
+    code span.an { color: #494957; } /* Annotation */
+    code span.at { color: #775781; } /* Attribute */
+    code span.bn { color: #ae4240; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #956133; } /* ControlFlow */
+    code span.ch { color: #618157; } /* Char */
+    code span.cn { color: #956133; } /* Constant */
+    code span.co { color: #494957; } /* Comment */
+    code span.cv { color: #494957; font-style: italic; } /* CommentVar */
+    code span.do { color: #494957; font-style: italic; } /* Documentation */
+    code span.dt { color: #ae4240; } /* DataType */
+    code span.dv { color: #ae4240; } /* DecVal */
+    code span.er { color: #ae4240; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ae4240; } /* Float */
+    code span.fu { color: #336695; } /* Function */
+    code span.im { color: #775781; } /* Import */
+    code span.in { color: #494957; } /* Information */
+    code span.kw { color: #2e2e2f; } /* Keyword */
+    code span.op { color: #494957; } /* Operator */
+    code span.ot { color: #494957; } /* Other */
+    code span.pp { color: #ae4240; } /* Preprocessor */
+    code span.re { color: #336695; } /* RegionMarker */
+    code span.sc { color: #494957; } /* SpecialChar */
+    code span.ss { color: #618157; } /* SpecialString */
+    code span.st { color: #618157; } /* String */
+    code span.va { color: #2e2e2f; } /* Variable */
+    code span.vs { color: #618157; } /* VerbatimString */
+    code span.wa { color: #494957; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -327,7 +394,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">SESSION TITLE</h1>
+  <h1 class="title">Profiling</h1>
   <p class="subtitle">Advanced R</p>
 
 <div class="quarto-title-authors">
@@ -343,30 +410,195 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">June 20, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>What we’re covering</li>
+<li>Profiling</li>
+<li>MAYBE BRING IN SOMETHING FROM THE BOTTLENECKS SESSION?</li>
 </ul>
 </section>
-<section id="section" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>Section</h1>
+<section>
+<section id="profiling" class="title-slide slide level1 inverse center">
+<h1>Profiling</h1>
 
 </section>
+<section id="profiling-code" class="slide level2">
+<h2>Profiling code</h2>
+<p>To make our code more efficient, we first need to identify the bottlenecks, in terms of time and/or memory usage.</p>
+<p>Profiling stops the execution of code every few milliseconds and records</p>
+<ul>
+<li>The call stack: the function currently being executed, the function that it was called from and so on up to the top-level function call.</li>
+<li>The memory allocated and released since the last record.</li>
+</ul>
+<p>We will use the <strong>profvis</strong> package to visualise profiling results.</p>
+</section>
+<section id="example-nested-pause-functions" class="slide level2">
+<h2>Example: nested pause functions</h2>
+<p>The following code is saved in <code>profiling-example.R</code> and uses <code>profvis::pause()</code> to wait 0.1s inside each function</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>top_level <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  profvis<span class="sc">::</span><span class="fu">pause</span>(<span class="fl">0.1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">middle_level</span>()</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">bottom_level</span>()</span>
+<span id="cb1-5"><a href="#cb1-5"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6"></a>middle_level <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  profvis<span class="sc">::</span><span class="fu">pause</span>(<span class="fl">0.1</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">bottom_level</span>()</span>
+<span id="cb1-9"><a href="#cb1-9"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10"></a>bottom_level <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  profvis<span class="sc">::</span><span class="fu">pause</span>(<span class="fl">0.1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p><code>Sys.sleep()</code> can not be used as it would not show in profiling output</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="using-profvis" class="slide level2">
+<h2>Using profvis</h2>
+<p>Source the code to be profiled and pass the function call to be profiled to <code>profvis()</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(profvis)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">source</span>(<span class="st">"profiling-example.R"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">profvis</span>(<span class="fu">top_level</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>An interactive HTML document will open with the results.</p>
+<p>In RStudio this will open in the source pane; click “show in new window” button to open the document in a new window.</p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 
+<img data-src="images/profiling-example.png" class="r-stretch quarto-figure-center"><p class="caption">Screenshot of the profvis HTML output. At the bottom, a stacked set of horizontal bars along a time axis, representing the length of time in each function. At a given time, the top-level function is at the bottom of the stack with each nested function stacked on top. The source code is shown at the top of the screenshot, with a horizontal bar for each line, showing the time spent. Interpretation on next slide</p></section>
+<section id="interpretation" class="slide level2">
+<h2>Interpretation</h2>
+<p>In the <em>flame graph</em> the yellow bars correspond to lines in the source file shown above the graph. The plot is interactive.</p>
+<p>In the overall time of 250ms we see:</p>
+<ul>
+<li>4 equal-sized blocks for each pause of 0.1s</li>
+<li>Nearly all time is spent in the top-level function</li>
+<li>Nearly half the time is spent in the mid-level function</li>
+<li>Nearly half the time is also spent in the bottom-level function</li>
+<li>The <code>cmp</code> function is called as R tries to compile new functions so that it can call the compiled version in subsequent calls.</li>
+</ul>
+<p>No objects are created or deleted: no memory changes.</p>
+</section>
+<section id="data-tab" class="slide level2">
+<h2>Data tab</h2>
+<p>The Data tab shows a table with the memory and time usage for each function call. The nested calls can be expanded/collapsed to show/hide the corresponding lines.</p>
+
+<img data-src="images/profiling-example-data-tab.png" class="r-stretch quarto-figure-center"><p class="caption">Screenshot of the data tab in the profvis HTML output. A table with columns “Code” (function name), “File” (name of source file containing function), “Memory (MB)” and “Time (ms)”.</p></section>
+<section id="memory-profiling" class="slide level2">
+<h2>Memory profiling</h2>
+<p>To illustrate memory profiling we can consider a loop that concatenates values.</p>
+<p>As it is a small code snippet, we can pass to <code>profvis()</code> directly</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">profvis</span>({</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  x <span class="ot">&lt;-</span> <span class="fu">integer</span>()</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>) {</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, i)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  }</span>
+<span id="cb3-6"><a href="#cb3-6"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="images/profiling-memory.png" class="r-stretch quarto-figure-center"><p class="caption">Flame graph for profiling the contenation example. Interpretation on next slide.</p></section>
+<section id="gc" class="slide level2">
+<h2><code>&lt;GC&gt;</code></h2>
+<p>As expected, the majority of the time is spent within <code>c()</code>, but we also see a lot time spent in <code>&lt;GC&gt;</code>, the garbage collector.</p>
+<p>In the memory column next to the corresponding line in the source code, we see a bar to left labelled -123.0 and a bar to the right labelled 137.2. This means that 137 MB of memory was allocated and 123 MB of memory was released.</p>
+<p>Each call to <code>c()</code> causes a new copy of <code>x</code> to be created.</p>
+<p>Memory profiling can help to identify short-lived objects that might be avoided by changes to the code.</p>
+</section>
+<section id="monopoly" class="slide level2">
+<h2>Monopoly</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>In the game of Monopoly, players roll two die to move round the board. Players buy assets on which they can charge rent or taxes and aim to make the most money.</p>
+<p>The squares on the board represent</p>
+</div><div class="column" style="width:30%;">
+<p><img data-src="images/monopoly.jpg"></p>
+</div>
+</div>
+<ul>
+<li>Properties, train stations or utility companies to buy</li>
+<li>Events that trigger an action, e.g.&nbsp;paying a tax or going to jail</li>
+</ul>
+<p>The <strong>efficient</strong> package contains the <code>simulate_monopoly()</code> function to simulate game play; we’ll use this to practice profiling.</p>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn!</h2>
+<ol type="1">
+<li>Install the <strong>efficient</strong> package with the following code to keep the code source files:</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"csgillespie/efficient"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                         <span class="at">INSTALL_opts =</span> <span class="st">"--with-keep.source"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li><p>Use <code>profvis()</code> to profile <code>simulate_monopoly(10000)</code>. Explore the output. Which parts of the code are slow?</p></li>
+<li><p>Most of the time is spent in the function <code>move_square()</code>. Use <code>View(move_square)</code> to view the source code. Copy the code to a new <code>.R file</code> and rename the function <code>move_square2</code>. Edit <code>move_square2()</code> to speed up the slow parts of the code. (Go to next slide for testing the updates)</p></li>
+</ol>
+</section>
+<section id="your-turn-continued" class="slide level2">
+<h2>Your turn! (continued)</h2>
+<p>Create a wrapper to run a specified move square function <code>n</code> times with different seeds:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>run <span class="ot">&lt;-</span> <span class="cf">function</span>(n, fun){</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  x <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n)) {</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="fu">set.seed</span>(i)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    x[i] <span class="ot">&lt;-</span> <span class="fu">fun</span>(<span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  }</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  x</span>
+<span id="cb5-8"><a href="#cb5-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Run <code>bench::mark(run(n, move_square), run(n, move_square2))</code> with <code>n = 1000</code> to test your changes.</p>
+<p>Finally, compare <code>profvis(run(n, move_square))</code> with <code>profvis(run(n, move_square2))</code>.</p>
+</section>
+<section id="general-principles" class="slide level2">
+<h2>General principles</h2>
+<ul>
+<li>Avoid optimizing too soon
+<ul>
+<li>Get the code right first</li>
+</ul></li>
+<li>Avoid over-optimization
+<ul>
+<li>Focus on the bottlenecks</li>
+<li>Keep an eye on the units - will real gains be made?</li>
+<li>Think about maintainability: readability, simplicity, dependencies</li>
+</ul></li>
+<li>Avoid anonymous functions
+<ul>
+<li>Name utility functions to see them in the profile</li>
+</ul></li>
+<li>Use benchmarking to assess alternative implementations</li>
+</ul>
+</section>
+<section id="c-and-rcpp" class="slide level2">
+<h2>C++ and Rcpp</h2>
+<p>In the next session, we’ll cover using C++ via <strong>Rcpp</strong> to rewrite R code that has been identified through profiling as causing bottlenecks in your code.</p>
+</section></section>
 <section>
-<section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
+<section id="end-matter" class="title-slide slide level1 inverse center">
 <h1>End Matter</h1>
 
 </section>
 <section id="resources" class="slide level2">
 <h2>Resources</h2>
-<p>Material inspired by and remixed from:</p>
-<ul>
-<li></li>
-</ul>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>
@@ -587,6 +819,44 @@ Department of Statistics, University of Warwick
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

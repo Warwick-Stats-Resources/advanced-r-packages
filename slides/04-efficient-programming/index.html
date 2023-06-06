@@ -13,7 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <title>Advanced R and R Packages Workshop - SESSION TITLE</title>
+  <meta name="dcterms.date" content="2023-06-19">
+  <title>Advanced R and R Packages Workshop - Efficient Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #adadbd;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #adadbd;  padding-left: 4px; }
+    div.sourceCode
+      { color: #2e2e2f;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #2e2e2f; } /* Normal */
+    code span.al { color: #ae4240; } /* Alert */
+    code span.an { color: #494957; } /* Annotation */
+    code span.at { color: #775781; } /* Attribute */
+    code span.bn { color: #ae4240; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #956133; } /* ControlFlow */
+    code span.ch { color: #618157; } /* Char */
+    code span.cn { color: #956133; } /* Constant */
+    code span.co { color: #494957; } /* Comment */
+    code span.cv { color: #494957; font-style: italic; } /* CommentVar */
+    code span.do { color: #494957; font-style: italic; } /* Documentation */
+    code span.dt { color: #ae4240; } /* DataType */
+    code span.dv { color: #ae4240; } /* DecVal */
+    code span.er { color: #ae4240; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ae4240; } /* Float */
+    code span.fu { color: #336695; } /* Function */
+    code span.im { color: #775781; } /* Import */
+    code span.in { color: #494957; } /* Information */
+    code span.kw { color: #2e2e2f; } /* Keyword */
+    code span.op { color: #494957; } /* Operator */
+    code span.ot { color: #494957; } /* Other */
+    code span.pp { color: #ae4240; } /* Preprocessor */
+    code span.re { color: #336695; } /* RegionMarker */
+    code span.sc { color: #494957; } /* SpecialChar */
+    code span.ss { color: #618157; } /* SpecialString */
+    code span.st { color: #618157; } /* String */
+    code span.va { color: #2e2e2f; } /* Variable */
+    code span.vs { color: #618157; } /* VerbatimString */
+    code span.wa { color: #494957; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -327,7 +394,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">SESSION TITLE</h1>
+  <h1 class="title">Efficient Programming</h1>
   <p class="subtitle">Advanced R</p>
 
 <div class="quarto-title-authors">
@@ -343,21 +410,556 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">June 19, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>What we’re covering</li>
+<li>Memory management</li>
+<li>Benchmarking</li>
+<li>Improving run time</li>
+<li>Parallelisation</li>
+<li>Outlook to package development</li>
 </ul>
 </section>
-<section id="section" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>Section</h1>
+<section>
+<section id="memory-management" class="title-slide slide level1 inverse center">
+<h1>Memory management</h1>
 
 </section>
-
+<section id="overview-1" class="slide level2">
+<h2>Overview</h2>
+<p>Objects created in R are stored in memory. This has the advantage that objects can be accessed faster, but R slows down as the memory fills up. Creating objects also takes time.</p>
+<p>Therefore:</p>
+<div>
+<ul>
+<li class="fragment">Re-use temporary variables. The allocated storage will be re-used if the vector has the same length.</li>
+<li class="fragment">Save results for re-use, e.g.&nbsp;index variables</li>
+<li class="fragment">Don’t save intermediate results unnecessarily – compute on-the-fly</li>
+<li class="fragment">Remove large objects when no longer needed (with <code>rm()</code>)</li>
+</ul>
+</div>
+</section>
+<section id="basic-data-structures" class="slide level2">
+<h2>Basic data structures</h2>
+<p>Try to use the simplest data structure for your purpose</p>
+<ul>
+<li>matrices vs.&nbsp;data frames</li>
+<li>character or integer vectors vs.&nbsp;factors</li>
+<li>logical or integer vectors vs.&nbsp;numeric vectors</li>
+<li>unnamed objects vs.&nbsp;named objects</li>
+</ul>
+<div class="fragment">
+<p>It is especially important to use low-level structures for computation</p>
+<p>You can create richer objects as a final step before returning to the user.</p>
+<aside class="notes">
+<p>L for integer</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="big-data" class="slide level2">
+<h2>Big Data</h2>
+<p>Modern computers have enough RAM to work with millions of records using standard functions.</p>
+<p>Some packages to work more efficiently with big data:</p>
+<ul>
+<li><strong>data.table</strong> faster operations on data frames; read/write large CSVs</li>
+<li><strong>dplyr</strong> + <strong>dbplyr</strong> processing of data in databases.</li>
+<li><strong>arrow</strong> read/write large CSVs or binary files e.g.&nbsp;Parquet; processing larger-than-memory data with <strong>dplyr</strong> commands.</li>
+<li><strong>bigmemory</strong>, <strong>biganalytics</strong> faster matrix operations, generalized linear models, kmeans</li>
+</ul>
+<aside class="notes">
+<p>N.B. sparse matrices not as efficient as you might expect for general programming, may need big data for it to be important.</p>
+<p>Parallelisation can also help, see later</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="growing-objects" class="slide level2">
+<h2>Growing Objects</h2>
+<p>Adding to an object in a loop</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>res <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>) res <span class="ot">&lt;-</span> <span class="fu">c</span>(res, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>may force a copy to be made at each iteration, with each copy stored until the loop has completed.</p>
+<div class="fragment">
+<p>It is <strong>far better</strong> to create an object of the necessary size first</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>res <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">5000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(res)) res[i] <span class="ot">&lt;-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To initialise a list we can use</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="copy-on-change" class="slide level2">
+<h2>Copy-on-Change</h2>
+<p>R usually copies an object to make changes to it.</p>
+<p><code>tracemem</code> can be used to trace copies of an object</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>z <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ z <span class="ot">&lt;-</span> <span class="fu">c</span>(z,<span class="dv">1</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z)) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "&lt;0x159494e98&gt;"
+[1] "&lt;0x11d8bb188&gt;"
+[1] "&lt;0x159356ee8&gt;"</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>z <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "&lt;0x11a698788&gt;"</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){z[i] <span class="ot">&lt;-</span> i;<span class="fu">print</span>(<span class="fu">tracemem</span>(z))}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tracemem[0x11a698788 -&gt; 0x11a620648]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main 
+[1] "&lt;0x11a620648&gt;"
+[1] "&lt;0x11a620648&gt;"</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>makes copy for each separate block of code e.g.&nbsp;if run with above in one go interactively no copies if run in separate chunks 1 copy</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section>
 <section>
-<section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
+<section id="benchmarking" class="title-slide slide level1 inverse center">
+<h1>Benchmarking</h1>
+
+</section>
+<section id="benchmarking-1" class="slide level2">
+<h2>Benchmarking</h2>
+<p>There will usually be many ways to write code for a given task. To compare alternatives, we can use benchmark the code.</p>
+<p>If the code is more than a single expression, create wrappers for each alternative</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>grow <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  res <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) res <span class="ot">&lt;-</span> <span class="fu">c</span>(res, <span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  res</span>
+<span id="cb10-5"><a href="#cb10-5"></a>}</span>
+<span id="cb10-6"><a href="#cb10-6"></a>pre_specify <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  res <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(res)) res[i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  res</span>
+<span id="cb10-10"><a href="#cb10-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="benchmark" class="slide level2">
+<h2><code>bench::mark()</code></h2>
+<p>Run the two alternatives with <code>bench::mark()</code>. This function</p>
+<ul>
+<li>Runs alternatives ≥ 1 time; at most enough times to take 0.5s</li>
+<li>Makes sure the two expressions return the same result!</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(bench)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>(bm <span class="ot">&lt;-</span> bench<span class="sc">::</span><span class="fu">mark</span>(<span class="fu">grow</span>(<span class="dv">5000</span>), <span class="fu">pre_specify</span>(<span class="dv">5000</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Some expressions had a GC in every iteration; so filtering is
+disabled.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  expression             min   median `itr/sec` mem_alloc `gc/sec`
+  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
+1 grow(5000)          26.1ms   30.1ms      32.7    95.6MB    59.6 
+2 pre_specify(5000)   98.9µs  107.9µs    9036.     55.8KB     6.00</code></pre>
+</div>
+</div>
+<ul>
+<li><code>GC</code> is the garbage collector which tidies up deleted objects</li>
+<li><code>itr/sec</code> is how many times the expression could be run in 1s</li>
+</ul>
+</div>
+</section>
+<section id="plotting-benchmarks" class="slide level2">
+<h2>Plotting benchmarks</h2>
+<p>Distribution tends to be right-skewed - focus on the median!</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(bm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"></section>
+<section id="scaling" class="slide level2">
+<h2>Scaling</h2>
+<p>Benchmarking can be difficult as the best option can depend on the size of the data, e.g.&nbsp;memory allocation can overshadow run time for small objects.</p>
+<p>When thinking about how our code scales to bigger, we need to consider what we mean by “big”</p>
+<ul>
+<li>number of rows or number of columns?</li>
+<li>number of observations or number of factor levels?</li>
+</ul>
+<p><code>bench::press()</code> compares a function over a grid of parameters</p>
+</section>
+<section id="benchpress" class="slide level2">
+<h2><code>bench::press()</code></h2>
+<div class="smaller90">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>bench<span class="sc">::</span><span class="fu">press</span>(<span class="at">n =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>), <span class="at">k =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">1</span>),</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  bench<span class="sc">::</span><span class="fu">mark</span>(<span class="fu">gl</span>(n, k, <span class="at">length =</span> <span class="dv">1000</span>)) <span class="co"># `gl` generates factor levels</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Running with:
+      n     k</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>1    10    10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2   100    10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>3    10     1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>4   100     1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 8
+  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`
+  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
+1 gl(n, k, length = 100…    10    10 3.12µs  3.61µs   244789.    12.4KB     24.5
+2 gl(n, k, length = 100…   100    10 9.47µs 10.25µs    94884.   11.05KB     19.0
+3 gl(n, k, length = 100…    10     1 2.79µs   3.2µs   300082.    3.95KB     30.0
+4 gl(n, k, length = 100…   100     1  6.4µs  7.09µs   135881.    7.53KB     13.6</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise 1</h2>
+<p>Suppose we have a matrix of data and a two-level factor</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>nr <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>nc <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(nr <span class="sc">*</span> nc, <span class="dv">10</span>, <span class="dv">3</span>), <span class="at">nrow =</span> nr)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>grp <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">2</span>, nc<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use <code>bench::mark()</code> to compare the following ways to find the coefficients of a linear model fitted to each row</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># one</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, nr)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_len</span>(nr)){</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  res[[i]] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(X[i,] <span class="sc">~</span> grp))</span>
+<span id="cb23-5"><a href="#cb23-5"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="fu">do.call</span>(<span class="st">"cbind"</span>, res)</span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="co"># two</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>res2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(<span class="fu">t</span>(X) <span class="sc">~</span> grp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="improving-run-time" class="title-slide slide level1 inverse center">
+<h1>Improving run time</h1>
+
+</section>
+<section id="faster-common-operations" class="slide level2">
+<h2>Faster common operations</h2>
+<ul>
+<li>Sorting
+<ul>
+<li>Use <code>sort(x, partial = 1:10)</code> to get the top 10</li>
+<li>Use <code>sort(x, decreasing = TRUE)</code> vs <code>rev(sort(x))</code></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Generating numeric vectors
+<ul>
+<li><code>seq.int()</code>, <code>seq_along(x)</code>, <code>seq_len(n)</code> vs <code>seq()</code><br>
+</li>
+<li><code>rep.int()</code> or <code>rep_len(n)</code> vs <code>rep()</code></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><code>which.min()</code>, <code>which.max()</code> vs e.g.&nbsp;<code>which(x == min(x))</code></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><code>anyNA(x)</code> vs <code>any(is.na(x))</code></li>
+</ul>
+<aside class="notes">
+<p>“int” stands for internal!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>For loops</h2>
+<p>For loops are an intuitive way to write code, but can be very inefficient.</p>
+<p><code>for</code> is a function, <code>:</code> or <code>seq_along</code> is another function, each use of <code>[</code> is a call to a function, …, so a loop involves many nested function calls.</p>
+<div class="fragment">
+<p>Try to keep for loops for truly iterative computations or tasks that are fast in any case (optimizing code takes time!)</p>
+<p>Otherwise make loops as lean as possible, by pre-computing values that do not need be be computed iteratively.</p>
+</div>
+</section>
+<section id="vectorization" class="slide level2">
+<h2>Vectorization</h2>
+<p>Vectorization is operating on vectors (or vector-like objects) rather than individual elements.</p>
+<p>Many operations in R are vectorized, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>x <span class="sc">==</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">log</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0000000 0.6931472 1.0986123</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>res <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">lengths</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a b 
+3 6 </code></pre>
+</div>
+</div>
+<p>We do not need to loop through each element!</p>
+</section>
+<section id="recycling" class="slide level2">
+<h2>Recycling</h2>
+<p>Vectorized functions will recycle shorter vectors to create vectors of the same length</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="co"># 1+0+2, 2+1+2, 3+0+2, 4+1+2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 5 5 7</code></pre>
+</div>
+</div>
+<p>This is particularly useful for single values</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">cbind</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    1    4</code></pre>
+</div>
+</div>
+<p>and for generating regular patterns</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">paste0</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">2</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1a" "1b" "2a" "2b" "3a" "3b"</code></pre>
+</div>
+</div>
+</section>
+<section id="ifelse" class="slide level2">
+<h2><code>ifelse()</code></h2>
+<p><code>ifelse</code> is a vectorised version of <code>if</code> and <code>else</code> blocks</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">12</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> <span class="dv">6</span>, <span class="dv">2</span> <span class="sc">*</span> x, <span class="dv">3</span> <span class="sc">*</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15  6 18 24</code></pre>
+</div>
+</div>
+<p>Recycling is also very useful here</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">ifelse</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 12  5 12  5 12  5 12  5 12  5</code></pre>
+</div>
+</div>
+<p>However indexing is more efficient than <code>ifelse</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="dv">12</span>, <span class="dv">10</span>)</span>
+<span id="cb40-2"><a href="#cb40-2"></a>y[x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 12  5 12  5 12  5 12  5 12  5</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-operations" class="slide level2">
+<h2>Logical operations</h2>
+<p>Logical operators such as <code>&amp;</code> and <code>|</code> are vectorized, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.6</span>, <span class="fl">1.2</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)</span>
+<span id="cb42-2"><a href="#cb42-2"></a>x <span class="sc">&gt;</span> <span class="fl">0.4</span> <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="fl">0.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>If we only want to compare vectors of length 1 the operators <code>&amp;&amp;</code> and <code>||</code> are more efficient as they only compute the RHS if needed</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>x[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="fl">0.4</span> <span class="sc">&amp;&amp;</span> x[<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="fl">0.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Make sure the vectors are of length 1, otherwise you get an error. This change was introduced in R ≥ 4.3.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>x <span class="sc">&gt;</span> <span class="fl">0.4</span> <span class="sc">&amp;&amp;</span> x <span class="sc">&lt;</span> <span class="fl">0.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in x &gt; 0.4 &amp;&amp; x &lt; 0.8: 'length = 5' in coercion to 'logical(1)'</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>In R &amp;ge 4.2.0 you get a warning but it still returns a comparison of only the first element. In earlier versions, there was no warning.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="vectorization-and-matrices" class="slide level2">
+<h2>Vectorization and Matrices</h2>
+<p>Vectorizations applies to matices too, not only through matrix algebra</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>M <span class="sc">+</span> M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    2    6
+[2,]    4    8</code></pre>
+</div>
+</div>
+<p>but also vectorized functions</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>M <span class="ot">&lt;-</span> M <span class="sc">+</span> <span class="fu">rep</span>(<span class="fl">1.3</span>, <span class="dv">4</span>)</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="fu">round</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    2    4
+[2,]    3    5</code></pre>
+</div>
+</div>
+</section>
+<section id="matrices-and-recycling" class="slide level2">
+<h2>Matrices and Recycling</h2>
+<p>Values are recycled down matrix, which is convenient for row-wise operations</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb52-2"><a href="#cb52-2"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>M <span class="sc">-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    0    2    4
+[2,]    0    2    4</code></pre>
+</div>
+</div>
+<p>To do the same for columns we would need to explicitly replicate, which is not so efficient.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>M <span class="sc">-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    0    1    2
+[2,]    1    2    3</code></pre>
+</div>
+</div>
+</section>
+<section id="rowcolumn-wise-operations" class="slide level2">
+<h2>Row/Column-wise Operations</h2>
+<p>Several functions are available implementing efficient row/column-wise operations, e.g.&nbsp;<code>colMeans()</code>, <code>rowMeans()</code>, <code>colSums()</code>, <code>rowSums()</code>, <code>sweep()</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="fu">rowMeans</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3</code></pre>
+</div>
+</div>
+<p>These provide an alternative to iterating though rows and columns in R (the iteration happens in C, which is faster).</p>
+<p>The <strong>matrixStats</strong> provides further “matricised” methods, including medians and standard deviations.</p>
+</section>
+<section id="exercise-2-ht-raju-bhakta" class="slide level2">
+<h2>Exercise 2 (h/t Raju Bhakta)</h2>
+<p>Sampling from 0.3 × N(0, 1) + 0.5 × N(10, 1) + 0.2 × N(3, 0.1):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># Set the random seed and the number of values to sample</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="fu">set.seed</span>(<span class="dv">1</span>); n <span class="ot">&lt;-</span> <span class="dv">100000</span>                 </span>
+<span id="cb60-3"><a href="#cb60-3"></a></span>
+<span id="cb60-4"><a href="#cb60-4"></a><span class="co"># Sample the component each value belongs to</span></span>
+<span id="cb60-5"><a href="#cb60-5"></a>component <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>), </span>
+<span id="cb60-6"><a href="#cb60-6"></a>                    <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb60-7"><a href="#cb60-7"></a></span>
+<span id="cb60-8"><a href="#cb60-8"></a><span class="co"># Sample from the corresponding Normal for each value</span></span>
+<span id="cb60-9"><a href="#cb60-9"></a>x <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb60-10"><a href="#cb60-10"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_len</span>(n)){</span>
+<span id="cb60-11"><a href="#cb60-11"></a>  <span class="cf">if</span> (component[i] <span class="sc">==</span> <span class="dv">1</span>){</span>
+<span id="cb60-12"><a href="#cb60-12"></a>    x[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb60-13"><a href="#cb60-13"></a>  } <span class="cf">else</span> <span class="cf">if</span> (component[i] <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb60-14"><a href="#cb60-14"></a>    x[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb60-15"><a href="#cb60-15"></a>  } <span class="cf">else</span> {</span>
+<span id="cb60-16"><a href="#cb60-16"></a>    x[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="fu">sqrt</span>(<span class="fl">0.1</span>))</span>
+<span id="cb60-17"><a href="#cb60-17"></a>  }</span>
+<span id="cb60-18"><a href="#cb60-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2-continued" class="slide level2">
+<h2>Exercise 2 (continued)</h2>
+<p>The for loop in the previous code is suitable for vectorization: the iterations are completely independent.</p>
+<p><code>rnorm()</code> is vectorized in the arguments <code>mu</code> and <code>sd</code>, e.g.&nbsp;to simulate a value from the 1st and 3rd component we could write:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">3</span>)</span>
+<span id="cb61-2"><a href="#cb61-2"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb61-3"><a href="#cb61-3"></a><span class="fu">rnorm</span>(<span class="dv">2</span>, mu[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], sd[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6528158 2.7948388</code></pre>
+</div>
+</div>
+<p>Use this information to replace the for loop, using a single call to <code>rnorm()</code> to simulate <code>n</code> values from the mixture distribution.</p>
+<p>Use <code>bench::mark()</code> to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!</p>
+</section></section>
+<section>
+<section id="end-matter" class="title-slide slide level1 inverse center">
 <h1>End Matter</h1>
 
 </section>
@@ -587,6 +1189,44 @@ Department of Statistics, University of Warwick
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
