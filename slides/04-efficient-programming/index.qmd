@@ -1,12 +1,12 @@
 ---
-title: SESSION TITLE
+title: Efficient Programming
 subtitle: Advanced R
 author: 
   - name: Heather Turner and Ella Kaye
   - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: yyyy-MM-dd
+date: 2023-06-19
 date-format: long
 format: 
   warwickpres-revealjs:
@@ -17,11 +17,438 @@ format:
 
 ## Overview
 
--   What we're covering
+- Memory management
+- Benchmarking
+- Improving run time
+- Parallelisation
+- Outlook to package development
 
-# Section {background-color="#552D62"}
+# Memory management {.inverse}
 
-# End Matter {background-color="#552D62"}
+## Overview
+
+Objects created in R are stored in memory. This has the advantage that
+objects can be accessed faster, but R slows down as the memory fills up.
+Creating objects also takes time. 
+
+Therefore:
+
+::: {.incremental}
+- Re-use temporary variables. The allocated storage will be re-used if
+the vector has the same length.
+- Save results for re-use, e.g. index variables
+- Don't save intermediate results unnecessarily -- compute on-the-fly
+- Remove large objects when no longer needed (with `rm()`)
+:::
+
+## Basic data structures
+
+Try to use the simplest data structure for your purpose
+
+ - matrices vs. data frames 
+ - character or integer vectors vs. factors
+ - logical or integer vectors vs. numeric vectors
+ - unnamed objects vs. named objects
+
+. . .
+
+It is especially important to use low-level structures for computation
+
+You can create richer objects as a final step before returning to the user.
+
+::: {.notes}
+L for integer
+:::
+
+## Big Data
+
+Modern computers have enough RAM to work with millions of records 
+using standard functions.
+
+Some packages to work more efficiently with big data:
+
+ - **data.table** faster operations on data frames; read/write 
+large CSVs
+ - **dplyr** + **dbplyr** processing of data in databases.
+ - **arrow** read/write large CSVs or binary files e.g. Parquet; processing larger-than-memory data with **dplyr** commands.
+ - **bigmemory**, **biganalytics** faster matrix operations,
+generalized linear models, kmeans
+
+::: {.notes}
+N.B. sparse matrices not as efficient as you might expect for general programming, may need big data for it to be important.
+
+Parallelisation can also help, see later
+:::
+
+## Growing Objects
+
+Adding to an object in a loop
+
+```{r adding}
+res <- NULL
+for (i in 1:5000) res <- c(res, 1)
+``` 
+   
+may force a copy to be made at each iteration, with each copy stored until the
+loop has completed. 
+
+. . .
+
+It is **far better** to create an object of the necessary size first  
+
+```{r empty.object}
+res <- numeric(5000)
+for (i in seq_along(res)) res[i] <- 1
+```
+
+To initialise a list we can use
+```{r}
+res <- vector(mode = "list", length = 100)
+```
+
+## Copy-on-Change
+
+R usually copies an object to make changes to it.
+
+`tracemem` can be used to trace copies of an object
+
+```{r trace.growing}
+z <- NULL
+for (i in 1:3){ z <- c(z,1); print(tracemem(z)) }
+```
+
+. . .
+
+```{r trace.growing2}
+z <- numeric(2); print(tracemem(z))
+```
+
+. . .
+
+```{r trace.growing3}
+for (i in 1:2){z[i] <- i;print(tracemem(z))}
+``` 
+
+
+::: {.notes}
+makes copy for each separate block of code
+e.g. if run with above in one go interactively no copies
+     if run in separate chunks 1 copy  
+:::
+     
+
+
+# Benchmarking {.inverse}
+
+## Benchmarking
+
+There will usually be many ways to write code for a given task. To compare
+alternatives, we can use benchmark the code.
+
+If the code is more than a single expression, create wrappers for each alternative
+
+```{r benchmark-alternatives, eval = TRUE}
+grow <- function(n){
+  res <- NULL
+  for (i in 1:n) res <- c(res, 1)
+  res
+}
+pre_specify <- function(n){
+  res <- numeric(n)
+  for (i in seq_along(res)) res[i] <- 1
+  res
+}
+``` 
+
+## `bench::mark()`
+
+Run the two alternatives with `bench::mark()`. This function 
+
+ - Runs alternatives &ge; 1 time; at most enough times to take 0.5s
+ - Makes sure the two expressions return the same result!  
+
+. . .
+
+```{r benchmark}
+#| label: benchmark
+#| eval: true
+#| warning: true
+
+library(bench)
+(bm <- bench::mark(grow(5000), pre_specify(5000)))
+```
+
+* `GC` is the garbage collector which tidies up deleted objects
+* `itr/sec` is how many times the expression could be run in 1s
+
+## Plotting benchmarks
+
+Distribution tends to be right-skewed - focus on the median!
+
+```{r, fig.align = "center", fig.height = 3, out.width = "75%"}
+plot(bm)
+```
+
+## Scaling
+
+Benchmarking can be difficult as the best option can depend on the size of the data, e.g. memory allocation can overshadow run time for small objects.
+
+When thinking about how our code scales to bigger, we need to consider what we mean by "big"
+
+ - number of rows or number of columns?
+ - number of observations or number of factor levels?
+ 
+ `bench::press()` compares a function over a grid of parameters 
+
+## `bench::press()`
+
+::: {.smaller90}
+```{r}
+#| message: true
+bench::press(n = c(10, 100), k = c(10, 1),
+  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels
+)
+```
+:::
+
+## Exercise 1
+
+Suppose we have a matrix of data and a two-level factor
+```{r}
+nr <- 10
+nc <- 50
+X <- matrix(rnorm(nr * nc, 10, 3), nrow = nr)
+grp <- gl(2, nc/2)
+```
+
+Use `bench::mark()` to compare the following ways to find the coefficients of a linear model fitted to each row
+
+```{r, eval = FALSE}
+# one
+res <- vector("list", nr)
+for(i in seq_len(nr)){
+  res[[i]] <- coef(lm(X[i,] ~ grp))
+}
+do.call("cbind", res)
+# two
+res2 <- coef(lm(t(X) ~ grp))
+```
+
+
+# Improving run time {.inverse}
+
+## Faster common operations
+
+* Sorting
+  - Use `sort(x, partial = 1:10)` to get the top 10
+  - Use `sort(x, decreasing = TRUE)` vs `rev(sort(x))`
+
+. . .
+
+* Generating numeric vectors
+  - `seq.int()`, `seq_along(x)`, `seq_len(n)` vs `seq()`    
+  - `rep.int()` or `rep_len(n)` vs `rep()` 
+
+. . .
+
+* `which.min()`, `which.max()` vs e.g. `which(x == min(x))`
+
+. . .
+
+* `anyNA(x)` vs `any(is.na(x))`
+
+
+::: {.notes}
+"int" stands for internal!
+:::
+
+## For loops
+
+For loops are an intuitive way to write code, but can be very inefficient. 
+
+`for` is a function, `:` or `seq_along` is another
+function, each use of `[` is a call to a function, ..., so a loop
+involves many nested function calls.
+
+. . .
+
+Try to keep for loops for truly iterative computations or tasks that are fast
+in any case (optimizing code takes time!)
+
+Otherwise make loops as lean as possible, by pre-computing values that do not need be be computed iteratively.
+
+## Vectorization
+
+Vectorization is operating on vectors (or vector-like objects) rather than individual elements.
+
+Many operations in R are vectorized, e.g.
+
+```{r}
+x <- 1:3
+y <- 3:1
+x == y
+log(x)
+res <- list(a = 1:3, b = 1:6)
+lengths(res)
+```
+
+We do not need to loop through each element!
+
+## Recycling
+
+Vectorized functions will recycle shorter vectors to create vectors of 
+the same length
+```{r}
+1:4 + 0:1 + 2 # 1+0+2, 2+1+2, 3+0+2, 4+1+2
+```
+This is particularly useful for single values
+```{r}
+cbind(1, 3:4)
+```
+and for generating regular patterns
+```{r}
+paste0(rep(1:3, each = 2), c("a", "b"))
+```
+
+## `ifelse()`
+
+`ifelse` is a vectorised version of `if` and `else` blocks
+
+```{r ifelse}
+x <- c(5, 2, 9, 12)
+ifelse(x > 6, 2 * x, 3 * x)
+``` 
+
+Recycling is also very useful here
+
+```{r recycleIfElse}
+x <- 1:10
+ifelse(x %% 2 == 0, 5, 12)
+``` 
+
+However indexing is more efficient than `ifelse`
+
+```{r indexing}
+y <- rep.int(12, 10)
+y[x %% 2 == 0] <- 5
+y
+```
+
+## Logical operations
+
+Logical operators such as `&` and `|` are vectorized, e.g.
+
+```{r}
+x <- c(1, 0.6, 1.2, 0.4, 0.5)
+x > 0.4 & x < 0.8
+```
+
+If we only want to compare vectors of length 1 the operators `&&` and `||` are more efficient as they only compute the RHS if needed
+
+```{r}
+x[1] > 0.4 && x[1] < 0.8
+```
+
+Make sure the vectors are of length 1, otherwise you get an error. This change was introduced in R &ge; 4.3. 
+
+```{r}
+#| error: true
+x > 0.4 && x < 0.8
+```
+
+::: {.notes}
+In R &ge 4.2.0 you get a warning but it still returns a comparison of only the first element. In earlier versions, there was no warning.  
+:::
+
+## Vectorization and Matrices
+
+Vectorizations applies to matices too, not only through matrix algebra
+```{r}
+M <- matrix(1:4, nrow = 2, ncol = 2)
+M + M
+```
+but also vectorized functions
+```{r}
+M <- M + rep(1.3, 4)
+round(M)
+```
+
+## Matrices and Recycling
+
+Values are recycled down matrix, which is convenient for 
+row-wise operations
+
+```{r}
+M <- matrix(1:6, nrow = 2, ncol = 3)
+M
+M - 1:2
+```
+To do the same for columns we would need to explicitly replicate, 
+which is not so efficient.
+```{r}
+M - rep(1:3, each = 2)
+```
+
+## Row/Column-wise Operations
+
+Several functions are available implementing efficient row/column-wise
+operations, e.g. `colMeans()`, `rowMeans()`, `colSums()`, `rowSums()`, `sweep()`
+
+```{r}
+M <- matrix(1:4, nrow = 2, ncol = 2)
+rowMeans(M)
+```
+
+These provide an alternative to iterating though rows and columns in R (the 
+iteration happens in C, which is faster).
+
+The **matrixStats** provides further "matricised" methods, including medians and standard deviations.
+
+## Exercise 2 (h/t Raju Bhakta)
+
+Sampling from 0.3 × N(0, 1) + 0.5 × N(10, 1) + 0.2 × N(3, 0.1):
+
+```{r, eval = FALSE}
+# Set the random seed and the number of values to sample
+set.seed(1); n <- 100000                 
+
+# Sample the component each value belongs to
+component <- sample(1:3, prob = c(0.3, 0.5, 0.2), 
+                    size = n, replace = TRUE)
+
+# Sample from the corresponding Normal for each value
+x <- numeric(n)
+for(i in seq_len(n)){
+  if (component[i] == 1){
+    x[i] <- rnorm(1, 0, 1)
+  } else if (component[i] == 2) {
+    x[i] <- rnorm(1, 10, 1)
+  } else {
+    x[i] <- rnorm(1, 3, sqrt(0.1))
+  }
+}
+```
+
+## Exercise 2 (continued)
+
+The for loop in the previous code is suitable for vectorization: the iterations are completely independent.
+
+`rnorm()` is vectorized in the arguments `mu` and `sd`, e.g. to simulate a value from the 1st and 3rd component we could write:
+
+```{r}
+mu <- c(0, 10, 3)
+sd <- sqrt(c(1, 1, 0.1))
+rnorm(2, mu[c(1, 3)], sd[c(1, 3)])
+```
+
+Use this information to replace the for loop, using a single call to `rnorm()` to simulate `n` values from the mixture distribution.
+
+Use `bench::mark()` to compare the two approaches - don't forget to set the same seed so the simulations are equivalent!
+
+
+
+
+# End Matter {.inverse}
 
 ## Resources
 
