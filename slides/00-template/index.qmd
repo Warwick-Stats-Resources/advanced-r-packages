@@ -23,6 +23,8 @@ format:
 
 # End Matter {.inverse}
 
+## References
+
 ## Resources
 
 Material inspired by and remixed from:

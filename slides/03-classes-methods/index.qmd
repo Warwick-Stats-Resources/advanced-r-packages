@@ -656,9 +656,9 @@ The `MISSING` pseudo-class is useful for dispatch on two arguments: allow differ
 
 # End Matter {.inverse}
 
-## Resources
+## References
 
-- Main reference for this section, goes a bit further (including R6):
+- Main reference for this session, goes a bit further (including R6):
 Wickham, H, _Advanced R_ (2nd edn), _Object-oriented programming section_, <https://adv-r.hadley.nz/oo.html>
 
 - Fun example creating `Turtle` and `TurtleWithPen` classes to create simple graphics by moving the turtle:

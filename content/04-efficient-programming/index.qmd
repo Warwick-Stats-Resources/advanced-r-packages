@@ -19,9 +19,24 @@ Here are the slides embedded:
 
 ### Reading
 
-- TITLE
+Good references on optimizing R code:
 
-  <LINK>
+- Wickham, H, _Advanced R_ (2nd edn), _Improving performance section_, <https://adv-r.hadley.nz/perf-improve.html>
 
+- Gillespie, C and Lovelace, R, _Efficient R programming_, <https://csgillespie.github.io/efficientR/>
+
+Tutorials on the Futureverse:
+
+- <https://www.futureverse.org/tutorials.html>
 
 ### Packages
+
+- **efficient**
+
+  <https://github.com/csgillespie/efficient> 
+
+- **future** and **future.apply** from the Futureverse
+
+  <https://future.futureverse.org>
+  
+  <https://future.apply.futureverse.org>

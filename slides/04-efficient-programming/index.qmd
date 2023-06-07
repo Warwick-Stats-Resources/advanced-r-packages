@@ -389,6 +389,41 @@ which is not so efficient.
 M - rep(1:3, each = 2)
 ```
 
+## `apply()`
+
+`apply` provides a way to apply a function to every row or column of a matrix
+```{r apply}
+M <- matrix(1:20, 2, 10)
+M
+# MARGIN 1 over rows
+apply(M, 1, quantile, 0.75)
+# MARGIN 2 over columns
+apply(M, 2, mean)
+``` 
+
+## `lapply()`
+
+`lapply` applies a given function to each element of a list
+```{r lapply}
+l <- list()
+l$x <- 1:3
+l$y <- 4:6
+lapply(l, mean)
+``` 
+
+## `sapply()` and `vapply()`
+
+`sapply` acts similarly to `lapply`, but tries to simplify the result
+```{r sapply}
+sapply(l, mean)
+``` 
+
+It is better to use `vapply()` in programming as it ensures the returned object is of the expected type (and is slightly faster)
+
+```{r vapply}
+vapply(l, mean, numeric(1))
+``` 
+
 ## Row/Column-wise Operations
 
 Several functions are available implementing efficient row/column-wise
@@ -445,16 +480,162 @@ Use this information to replace the for loop, using a single call to `rnorm()` t
 
 Use `bench::mark()` to compare the two approaches - don't forget to set the same seed so the simulations are equivalent!
 
+# Parallelisation {.inverse}
+
+## Parallelisation
+
+Most functions in R run on a single core of your machine. The 
+**future.apply** package, part of the futureverse, provides 
+parallel versions of all the `apply`-type functions.
+
+<https://www.futureverse.org>
+
+Parallelisation is most straight-forward to implement for
+*embarrassingly parallel* problems, such as applying a function to
+elements of a list.
+
+## Example setup
+
+Adapted from <https://henrikbengtsson.github.io/course-stanford-futureverse-2023/>
+
+Let's create a slow function:
+
+```{r}
+slow_sum <- function(x) {
+  sum <- 0
+  
+  for (value in x) {
+    Sys.sleep(0.5)  ## half-second slowdown per value
+    sum <- sum + value
+  }
+  
+  sum
+}
+```
+
+```{r}
+#| cache: true
+library(tictoc)
+tic()
+y <- slow_sum(1:10)
+toc()
+```
+
+## Parallelising map-reduce calls
+
+Now suppose we have four sets of numeric vectors, in a list, and we want to calculate `slow_sum()` for each:
+
+```{r}
+xs <- list(1:10, 11:20, 21:30, 31:40)
+```
+
+We *could* run `lapply()` over this, but it takes a while as it handles each list item in turn:
+
+```{r}
+#| cache: true
+tic()
+ys <- lapply(xs, slow_sum)
+toc()
+```
+
+## Setting up for parallel processing
+
+The **future.apply** package comes to the rescue! 
+
+The first step is to make a cluster from the available cores.
+
+To parallelise on a local machine, use `multisession` in `plan()`:
+
+```{r plan}
+library(future.apply)
+plan(multisession)
+``` 
+
+The default number of workers is `availableCores()`.
+
+We'll also use the **tictoc** package for timings:
+
+```{r}
+library(tictoc)
+```
 
 
+## Using `future_lapply()`
+
+`future_lapply()` is a drop-in parallel replacement for `lapply()`
+
+```{r}
+plan(multisession, workers = 4)
+```
+
+```{r}
+#| cache: true
+tic()
+ys <- future_lapply(xs, slow_sum)
+toc()
+```
+
+The four slow sums are calculated in about the same time as it takes to calculate one, since they are being calculated simultaneously on separate cores.
+
+## Your turn!
+
+The **efficient** package contains a function to simulate a game of snakes and 
+ladders, returning the number of rolls required to win.
+
+```{r}
+#| eval: false
+remotes::install_github("csgillespie/efficient",
+                         INSTALL_opts = "--with-keep.source")
+```
+
+Parallelise the following code:
+```{r}
+#| message: false
+#| eval: false
+library(efficient)
+N <- 100
+nrolls <- sapply(seq_len(N), snakes_ladders)
+```
+
+Use **tictoc** to compare the run-times. Roughly large does `N` have to be for the parallel version to be worth using?
+
+```{r}
+#| echo: false
+#| eval: false
+library(efficient)
+N <- 10000
+tic()
+nrolls <- sapply(seq_len(N), snakes_ladders)
+toc()
+
+tic()
+nrolls <- future_sapply(seq_len(N), snakes_ladders, future.seed = TRUE)
+toc()
+```
+
+## General Principles
+
+- Try to use vectorized functions where possible.
+
+- Otherwise use the `apply` family (and parellelise if necessary). Custom
+functions will often be useful here to pass to `apply` etc.
+
+- Try to keep for loops for true iterative computations or tasks that are fast
+in any case (optimizing code takes time!)
 
 # End Matter {.inverse}
 
-## Resources
+## References
 
-Material inspired by and remixed from:
+Good references on optimizing R code:
 
-- 
+- Wickham, H, _Advanced R_ (2nd edn), _Improving performance section_, <https://adv-r.hadley.nz/perf-improve.html>
+
+- Gillespie, C and Lovelace, R, _Efficient R programming_, <https://csgillespie.github.io/efficientR/>
+
+Tutorials on the Futureverse:
+
+- <https://www.futureverse.org/tutorials.html>
 
 ## License
 

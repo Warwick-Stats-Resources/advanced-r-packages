@@ -527,10 +527,9 @@ Try running `f(1)` - is the result what you expected? Use `debugonce()` to set d
 
 Can you think how to improve the function? See if you can modify the function to give a sensible result for any integer.
 
+# End Matter {.inverse}
 
-# End Matter {background-color="#552D62"}
-
-## Resources
+## References
 
 - Functions chapter from Advanced R, Hadley Wickham
 
@@ -543,6 +542,7 @@ Can you think how to improve the function? See if you can modify the function to
 - Debugging from the RStudio User Guide
 
   <https://docs.posit.co/ide/user/ide/guide/code/debugging.html>
+
 
 ## License
 

@@ -199,7 +199,7 @@ In the next session, we'll cover using C++ via **Rcpp** to rewrite R code that h
 
 # End Matter {.inverse}
 
-## Resources
+## References
 
 
 ## License
