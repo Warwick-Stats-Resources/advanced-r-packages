@@ -1,63 +1,63 @@
 [
   {
-    "objectID": "slides/12-Rcpp-packages/index.html#overview",
-    "href": "slides/12-Rcpp-packages/index.html#overview",
+    "objectID": "join.html",
+    "href": "join.html",
+    "title": "Join the workshop",
+    "section": "",
+    "text": "This course is aimed primarily at graduate students in the Department of Statistics at the University of Warwick. It is also open to 3rd and 4th year undergraduate students and members of staff in the Department of Statistics.\nSpace permitting, the workshop is also open to all interested members of the University of Warwick.\nTo express your interest in joining the workshop, please fill in the form, linked below (it may take a moment to load).\nPlease sign-up by June 11th. Places will be confirmed by e-mail by June 12th."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "",
+    "text": "Welcome to the website for the Advanced R and R Packages Workshop.\nThis is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.\nIt is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, space permitting. For more details on how to register, see the join page."
+  },
+  {
+    "objectID": "index.html#syllabus-overview",
+    "href": "index.html#syllabus-overview",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Syllabus overview",
+    "text": "Syllabus overview\nThe Advanced R sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.\nThe R Packages sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.\nFor more details, see the content page."
+  },
+  {
+    "objectID": "index.html#session-details",
+    "href": "index.html#session-details",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Session details",
+    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   Lunch provided each day\n   See the full schedule."
+  },
+  {
+    "objectID": "index.html#instructor-details",
+    "href": "index.html#instructor-details",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Instructor details",
+    "text": "Instructor details\n   Ella Kaye and Heather Turner\n   ella.m.kaye@warwick.ac.uk and h.turner.1@warwick.ac.uk"
+  },
+  {
+    "objectID": "index.html#prerequistes",
+    "href": "index.html#prerequistes",
+    "title": "Advanced R and R Packages Workshop",
+    "section": "Prerequistes",
+    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the workshop."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#overview",
+    "href": "slides/10-check-package-documentation/index.html#overview",
     "title": "SESSION TITLE",
     "section": "Overview",
     "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "slides/12-Rcpp-packages/index.html#resources",
-    "href": "slides/12-Rcpp-packages/index.html#resources",
+    "objectID": "slides/10-check-package-documentation/index.html#resources",
+    "href": "slides/10-check-package-documentation/index.html#resources",
     "title": "SESSION TITLE",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
-    "objectID": "slides/12-Rcpp-packages/index.html#license",
-    "href": "slides/12-Rcpp-packages/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#overview",
-    "href": "slides/09-testing/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#resources",
-    "href": "slides/09-testing/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#license",
-    "href": "slides/09-testing/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#overview",
-    "href": "slides/11-data-publication-maintenance/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
-    "href": "slides/11-data-publication-maintenance/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/11-data-publication-maintenance/index.html#license",
-    "href": "slides/11-data-publication-maintenance/index.html#license",
+    "objectID": "slides/10-check-package-documentation/index.html#license",
+    "href": "slides/10-check-package-documentation/index.html#license",
     "title": "SESSION TITLE",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
@@ -84,687 +84,43 @@
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
-    "objectID": "slides/03-classes-methods/index.html#overview",
-    "href": "slides/03-classes-methods/index.html#overview",
-    "title": "Classes and Methods",
-    "section": "Overview",
-    "text": "Overview\n\nObject-oriented programming\nS3\nS4"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#object-oriented-programming-oop",
-    "href": "slides/03-classes-methods/index.html#object-oriented-programming-oop",
-    "title": "Classes and Methods",
-    "section": "Object-oriented programming (OOP)",
-    "text": "Object-oriented programming (OOP)\nGeneric functions provide a unified interface to methods for objects of a particular class, e.g.\n\nlibrary(palmerpenguins)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n    172     190     197     201     213     231       2 \n\n\nHere, we use the same function, summary(), on objects of classes factor and integer and get different output for each."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#why-use-oop",
-    "href": "slides/03-classes-methods/index.html#why-use-oop",
-    "title": "Classes and Methods",
-    "section": "Why use OOP?",
-    "text": "Why use OOP?\nsummary() could contain several if-else statements, but\n\nthe code would become hard to follow\nonly the function authors (R Core) could add new implementations\n\nOOP\n\nseparates the code for different data types\navoids duplicating code by method inheritance from parent class(es) to child class (subclass)\nmakes it possible for external developers to add methods for new types of object\n\nthis can be particularly useful when writing R packages"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#oop-systems-in-r",
-    "href": "slides/03-classes-methods/index.html#oop-systems-in-r",
-    "title": "Classes and Methods",
-    "section": "OOP Systems in R",
-    "text": "OOP Systems in R\nThere are 3 main OOP systems in use:\n\n\nS3\n\nUsed in base R and most recommended/CRAN packages\nUse unless you have good reason not to\n\nS4\n\nUsed on Bioconductor\nAllow more complex relationships between classes and methods\n\nR6\n\nMore similar to OOP in other languages\nMay prefer if S3 insufficient and not aiming for Bioconductor\n\n\nA new OOP system, S7, is in development as a successor to S3 and S4.\n\n\nR6 v similar to Python OOP (also Java, C++) Julia not an OOP language, but does have concept of multiple dispatch - so maybe a bit more like S3 idea?"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s3-objects",
-    "href": "slides/03-classes-methods/index.html#s3-objects",
-    "title": "Classes and Methods",
-    "section": "S3 objects",
-    "text": "S3 objects\nAn S3 object has a \"class\" attribute:\n\nattr(penguins$species, \"class\")\n\n[1] \"factor\"\n\nunique(penguins$species)\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo\n\n\nWith unclass() we obtain the underlying object, here an integer vector\n\nspecies_no &lt;- unclass(penguins$species)\nclass(species_no)\n\n[1] \"integer\"\n\nunique(species_no)\n\n[1] 1 3 2\n\nattributes(species_no)\n\n$levels\n[1] \"Adelie\"    \"Chinstrap\" \"Gentoo\""
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#creating-an-s3-object-with-stucture",
-    "href": "slides/03-classes-methods/index.html#creating-an-s3-object-with-stucture",
-    "title": "Classes and Methods",
-    "section": "Creating an S3 object with stucture()",
-    "text": "Creating an S3 object with stucture()\nYou can use structure() to define an S3 object with a class attribute:\n\ndp &lt;- 2\nstructure(list(pi = trunc(10^dp * pi)/10^dp, dp = dp),\n          class = \"pi_trunc\")\n\n$pi\n[1] 3.14\n\n$dp\n[1] 2\n\nattr(,\"class\")\n[1] \"pi_trunc\"\n\n\nPotentially further attributes can be added at the same time, but typically we would use a list to return all the required values."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#creating-an-s3-object-with-class",
-    "href": "slides/03-classes-methods/index.html#creating-an-s3-object-with-class",
-    "title": "Classes and Methods",
-    "section": "Creating an S3 object with class()",
-    "text": "Creating an S3 object with class()\nAlternatively, we can add a class attribute using the class() helper function:\n\npi2dp &lt;- list(pi = trunc(10^dp * pi)/10^dp, dp = dp)\nclass(pi2dp) &lt;- \"pi_trunc\"\npi2dp\n\n$pi\n[1] 3.14\n\n$dp\n[1] 2\n\nattr(,\"class\")\n[1] \"pi_trunc\""
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s3-generic-functions",
-    "href": "slides/03-classes-methods/index.html#s3-generic-functions",
-    "title": "Classes and Methods",
-    "section": "S3 Generic Functions",
-    "text": "S3 Generic Functions\nS3 generic functions are simple wrappers to UseMethod()\n\nprint\n\nfunction (x, ...) \nUseMethod(\"print\")\n&lt;bytecode: 0x123c228e0&gt;\n&lt;environment: namespace:base&gt;\n\n\nThe UseMethod() function takes care of method dispatch: selecting the S3 method according to the class of the object passed as the first argument.\n\nclass(penguins$species[1:3])\n\n[1] \"factor\"\n\nprint(penguins$species[1:3])\n\n[1] Adelie Adelie Adelie\nLevels: Adelie Chinstrap Gentoo\n\n\nHere print() dispatches to the method print.factor()."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#inheritance",
-    "href": "slides/03-classes-methods/index.html#inheritance",
-    "title": "Classes and Methods",
-    "section": "Inheritance",
-    "text": "Inheritance\nThe class of an S3 object can be a vector of classes\n\nfit &lt;- glm(y ~ x, data = data.frame(y = 1:3, x = 4:6))\nclass(fit)\n\n[1] \"glm\" \"lm\" \n\n\nWe say fit is a \"glm\" object that inherits from class \"lm\".\nThe inherits() function can be used to test if an object inherits from a given class\n\ninherits(fit, \"glm\")\n\n[1] TRUE"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#method-dispatch",
-    "href": "slides/03-classes-methods/index.html#method-dispatch",
-    "title": "Classes and Methods",
-    "section": "Method dispatch",
-    "text": "Method dispatch\nAn S3 object can have more than one class e.g.\n\nclass(penguins)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\nUseMethod() works along the vector of classes (from the first class to the last), looks for a method for each class and dispatches to the first method it finds.\nIf no methods are defined for any of class, the default is used , e.g. print.default().\nIf there is no default, an error is thrown."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s3-methods",
-    "href": "slides/03-classes-methods/index.html#s3-methods",
-    "title": "Classes and Methods",
-    "section": "S3 Methods",
-    "text": "S3 Methods\nSee the methods for a given S3 class\n\n# nls is nonlinear least squares\nmethods(class = \"nls\")\n\n [1] anova       coef        confint     deviance    df.residual fitted     \n [7] formula     logLik      nobs        predict     print       profile    \n[13] residuals   summary     vcov        weights    \nsee '?methods' for accessing help and source code\n\n\nSee the methods for a given generic function\n\nmethods(\"coef\")\n\n[1] coef.aov*     coef.Arima*   coef.default* coef.listof*  coef.maov*   \n[6] coef.nls*    \nsee '?methods' for accessing help and source code\n\n\nAsterisked methods are not exported."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#view-s3-methods",
-    "href": "slides/03-classes-methods/index.html#view-s3-methods",
-    "title": "Classes and Methods",
-    "section": "View S3 methods",
-    "text": "View S3 methods\nS3 methods need not be in the same package as the generic.\nFind an unexported method with getS3method()\n\ngetS3method(\"coef\", \"default\")\n\nfunction (object, complete = TRUE, ...) \n{\n    cf &lt;- object$coefficients\n    if (complete) \n        cf\n    else cf[!is.na(cf)]\n}\n&lt;bytecode: 0x125926470&gt;\n&lt;environment: namespace:stats&gt;\n\n\nIn code, call the generic, rather than calling the method directly."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#writing-s3-methods",
-    "href": "slides/03-classes-methods/index.html#writing-s3-methods",
-    "title": "Classes and Methods",
-    "section": "Writing S3 Methods",
-    "text": "Writing S3 Methods\nThe arguments of a new method should be a superset of the arguments of the generic\n\nargs(print)\n\nfunction (x, ...) \nNULL\n\n\nNew methods have the name format generic.class:\n\nprint.pi_trunc &lt;- function(x, abbreviate = TRUE, ...){\n  dp_text &lt;- ifelse(abbreviate, \"d.p.\", \"decimal places\")\n  cat(\"pi: \", x$pi, \" (\", x$dp, \" \", dp_text, \")\", sep = \"\")\n}\nprint(pi2dp)\n\npi: 3.14 (2 d.p.)"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#nextmethod",
-    "href": "slides/03-classes-methods/index.html#nextmethod",
-    "title": "Classes and Methods",
-    "section": "NextMethod()",
-    "text": "NextMethod()\nWe can explicitly call the next method that would be called by UseMethod() to reuse code whilst customising as required\n\nbody(t.data.frame)\n\n{\n    x &lt;- as.matrix(x)\n    NextMethod(\"t\")\n}\n\n\n\nbody(rep.factor)\n\n{\n    y &lt;- NextMethod()\n    structure(y, class = class(x), levels = levels(x))\n}\n\n\nIt is possible to call NextMethod() with arguments but it is safer to recall the generic with new arguments in this case.\n\nWe have seen that UseMethod() will dispatch to the method of the next class in the class vector if a method is not defined for the first class."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#implicit-classes",
-    "href": "slides/03-classes-methods/index.html#implicit-classes",
-    "title": "Classes and Methods",
-    "section": "Implicit classes",
-    "text": "Implicit classes\nis.object() can be used to find out if an object has a class (S3/S4/R6)\n\nis.object(factor(1:3))\n\n[1] TRUE\n\nis.object(1:3)\n\n[1] FALSE\n\n\nAn object that does not have an explicit class has an implicit class that will be used for S3 method dispatch. The implicit class can be found with .class2()\n\nM &lt;- matrix(1:12, nrow = 4)\nattr(M, \"class\")\n\nNULL\n\n.class2(M)\n\n[1] \"matrix\"  \"array\"   \"integer\" \"numeric\"\n\n\n\n.class2 since R 4.0.0"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#attributes",
-    "href": "slides/03-classes-methods/index.html#attributes",
-    "title": "Classes and Methods",
-    "section": "Attributes",
-    "text": "Attributes\n\nWe can take advantage of existing S3 methods by returning an object of a existing S3 class or an implicit class, using attributes to add custom information\n\nx &lt;- matrix(c(1:5, 2*(1:5)), ncol = 2)\ncenter_x &lt;- scale(x, scale = FALSE)\nclass(center_x)\n\n[1] \"matrix\" \"array\" \n\nsummary(center_x)\n\n       V1           V2    \n Min.   :-2   Min.   :-4  \n 1st Qu.:-1   1st Qu.:-2  \n Median : 0   Median : 0  \n Mean   : 0   Mean   : 0  \n 3rd Qu.: 1   3rd Qu.: 2  \n Max.   : 2   Max.   : 4  \n\n\n\nattr(center_x, \"scaled:center\")\n\n[1] 3 6\n\n\nThis can avoid the need to define new classes and methods, in simple cases."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#your-turn-part-1",
-    "href": "slides/03-classes-methods/index.html#your-turn-part-1",
-    "title": "Classes and Methods",
-    "section": "Your turn (part 1)",
-    "text": "Your turn (part 1)\n\nCreate a function to fit an ordinary least squares model given a response y and an explanatory variable x, that returns an object of a new class \"ols\", that inherits from \"lm\".\nDefine a print method for your function that it works as follows:\n\n\nset.seed(1)\nres &lt;- ols(x = 1:3, y = rnorm(3))\nres\n\nIntercept:  -0.217 \nSlope:  -0.1046 \n\n\nNote: I have set options(digits = 4) to limit the number of digits printed by default throughout this presentation (default is 7)."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#your-turn-part-2",
-    "href": "slides/03-classes-methods/index.html#your-turn-part-2",
-    "title": "Classes and Methods",
-    "section": "Your turn (part 2)",
-    "text": "Your turn (part 2)\n\nWrite a summary method for your ols class that uses NextMethod() to compute the usual lm summary, but return an object of class \"summary.ols\".\nWrite a print method for the \"summary.ols\" which works as follows:\n\n\nsummary(res)\n\nCoefficients: \n            Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)  -0.2170     1.1408 -0.1902   0.8804\nx            -0.1046     0.5281 -0.1980   0.8755\n\nResidual standard error:  0.7468 \nMultiple R-squared:  0.03774 \n\n\n\nwill get issues with inheriting e.g. add1 method"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#overview-of-s4",
-    "href": "slides/03-classes-methods/index.html#overview-of-s4",
-    "title": "Classes and Methods",
-    "section": "Overview of S4",
-    "text": "Overview of S4\nS4 methods\n\nuse specialised functions for creating classes, generics and methods\nallow multiple inheritance: a class can have multiple parents\nallow multiple dispatch: method selection based on the class of multiple objects\n\nThe methods package provides the functions required to use S4 classes and methods, so always load this package when using S4.\n\nuse import instead"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s4-classes",
-    "href": "slides/03-classes-methods/index.html#s4-classes",
-    "title": "Classes and Methods",
-    "section": "S4 Classes",
-    "text": "S4 Classes\nAn S4 class can be defined with setClass(), with at least two arguments\n\nA name, by convention in UpperCamelCase.\nA named character vector specifying the names and classes of the slots (fields). Using the pseudo class ANY allows a slot to accept any type of object.\n\n\nsetClass(\"Person\", \n  slots = c(\n    name = \"character\", \n    date_of_birth = \"Date\",\n    date_of_death = \"Date\",\n    age_at_death = \"numeric\"\n  )\n)"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#creating-a-new-instance",
-    "href": "slides/03-classes-methods/index.html#creating-a-new-instance",
-    "title": "Classes and Methods",
-    "section": "Creating a new instance",
-    "text": "Creating a new instance\nA new instance of the S4 object can be created using new()\n\nflorence &lt;- new(\"Person\", \n                name = \"Florence Nightingale\",\n                date_of_birth = as.Date(\"1820-05-12\"),\n                date_of_death = as.Date(\"1910-08-13\"),\n                age_at_death = 90)\nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-13\"\n  ..@ age_at_death : num 90\n\n\nNote that the second onwards argument names in new are the names in the vector passed to slots() when defining the class."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#examining-s4-objects",
-    "href": "slides/03-classes-methods/index.html#examining-s4-objects",
-    "title": "Classes and Methods",
-    "section": "Examining S4 objects",
-    "text": "Examining S4 objects\nFind the type of S4 class\n\nis.object(florence)\n\n[1] TRUE\n\nisS4(florence)\n\n[1] TRUE\n\n.class2(florence)\n\n[1] \"Person\"\n\n\nExtract the value of a slot (use @)\n\ngetSlots(\"Person\")\n\n         name date_of_birth date_of_death  age_at_death \n  \"character\"        \"Date\"        \"Date\"     \"numeric\" \n\nflorence@age_at_death # or slot(florence, \"age_at_death\")\n\n[1] 90\n\n\n\nclass() will only show class itself, not classes it inherits from"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#prototype",
-    "href": "slides/03-classes-methods/index.html#prototype",
-    "title": "Classes and Methods",
-    "section": "Prototype",
-    "text": "Prototype\nThe prototype argument can be used to specify default values, enabling partial specification\n\nsetClass(\"Person\", \n  slots = c(\n    name = \"character\", \n    date_of_birth = \"Date\",\n    date_of_death = \"Date\",\n    age_at_death = \"numeric\"\n  ),\n  prototype = list(\n    name = NA_character_, \n    date_of_birth = as.Date(NA),\n    date_of_death = as.Date(NA),\n    age_at_death = NA_real_\n  )\n)\n\nBe sure to use list() not c() for prototype – easy mistake to make!"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#initialize",
-    "href": "slides/03-classes-methods/index.html#initialize",
-    "title": "Classes and Methods",
-    "section": "initialize()",
-    "text": "initialize()\nAn initialize() method can be used for more control over initialization\n\n\nsetMethod(\"initialize\", \"Person\", \n  function(.Object, ...) {\n    # initialize with default method \n    # (named arguments override defaults)\n    .Object &lt;- callNextMethod(.Object, ...)\n    \n    # compute age at death if not specified\n    year &lt;- function(x) as.numeric(format(x, \"%Y\"))\n    m_day &lt;- function(x) as.numeric(format(x, \"%m%d\"))\n    \n    if (is.na(.Object@age_at_death)){\n      n_year &lt;- year(.Object@date_of_death) - year(.Object@date_of_birth)\n      birthday &lt;- m_day(.Object@date_of_death) &gt;= m_day(.Object@date_of_birth)\n      .Object@age_at_death &lt;- n_year - !birthday\n    }\n    .Object\n  })"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#creating-a-new-s4-obect-from-an-old-one",
-    "href": "slides/03-classes-methods/index.html#creating-a-new-s4-obect-from-an-old-one",
-    "title": "Classes and Methods",
-    "section": "Creating a new S4 obect from an old one",
-    "text": "Creating a new S4 obect from an old one\n\nflorence &lt;- new(\"Person\", \n                name = \"Florence Nightingale\",\n                date_of_birth = as.Date(\"1820-05-12\"))\nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: NA\n  ..@ age_at_death : num NA\n\n\n\nflorence &lt;- initialize(florence, \n                       date_of_death = as.Date(\"1910-08-13\")) \nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-13\"\n  ..@ age_at_death : num 90"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#inheritance-1",
-    "href": "slides/03-classes-methods/index.html#inheritance-1",
-    "title": "Classes and Methods",
-    "section": "Inheritance",
-    "text": "Inheritance\nThe contains argument to setClass() specifies a class or classes to inherit slots and behaviour from\n\nsetClass(\"BanknoteCharacter\", \n  contains = \"Person\", \n  slots = c(\n    denomination = \"numeric\",\n    first_issue = \"Date\",\n    last_legal = \"Date\"\n  ),\n  prototype = list(\n    denomination = NA_real_,\n    first_issue = as.Date(NA),\n    last_legal = as.Date(NA)\n  )\n)"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#new-instance-of-subclass",
-    "href": "slides/03-classes-methods/index.html#new-instance-of-subclass",
-    "title": "Classes and Methods",
-    "section": "New instance of subclass",
-    "text": "New instance of subclass\nCreating a new instance of the subclass will fill in the slots of the superclass\n\nseriesD_10GBP &lt;- new(\"BanknoteCharacter\", \n                     name = \"Florence Nightingale\", \n                     date_of_birth = as.Date(\"1820-05-12\"), \n                     date_of_death = as.Date(\"1910-08-12\"))\nstr(seriesD_10GBP)\n\nFormal class 'BanknoteCharacter' [package \".GlobalEnv\"] with 7 slots\n  ..@ denomination : num NA\n  ..@ first_issue  : Date[1:1], format: NA\n  ..@ last_legal   : Date[1:1], format: NA\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-12\"\n  ..@ age_at_death : num 90"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#show-defined-s4-class",
-    "href": "slides/03-classes-methods/index.html#show-defined-s4-class",
-    "title": "Classes and Methods",
-    "section": "Show defined S4 Class",
-    "text": "Show defined S4 Class\nUse showClass() to show (print) an S4 Class\n\nshowClass(\"Person\")\n\nClass \"Person\" [in \".GlobalEnv\"]\n\nSlots:\n                                                              \nName:           name date_of_birth date_of_death  age_at_death\nClass:     character          Date          Date       numeric\n\nKnown Subclasses: \"BanknoteCharacter\""
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#helper-function",
-    "href": "slides/03-classes-methods/index.html#helper-function",
-    "title": "Classes and Methods",
-    "section": "Helper function",
-    "text": "Helper function\nIf a user is to create these objects, define a helper function named by the class\n\nPerson &lt;- function(name = NA, date_of_birth = NA, date_of_death = NA) {\n  new(\"Person\", \n      name = as.character(name), \n      date_of_birth = as.Date(date_of_birth), \n      date_of_death = as.Date(date_of_death))\n}\n\n\nada &lt;- Person(\"Ada Lovelace\", \"1815-12-10\", \"1852-11-27\")\nstr(ada)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Ada Lovelace\"\n  ..@ date_of_birth: Date[1:1], format: \"1815-12-10\"\n  ..@ date_of_death: Date[1:1], format: \"1852-11-27\"\n  ..@ age_at_death : num 36\n\n\nPut computation in the initialize method where possible, so that it can be reused by subclasses."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#validator-function",
-    "href": "slides/03-classes-methods/index.html#validator-function",
-    "title": "Classes and Methods",
-    "section": "Validator function",
-    "text": "Validator function\nUse setValidity() to check constraints beyond data type, e.g. that all slots have the same length\n\nsetValidity(\"Person\", function(object) {\n  len &lt;- vapply(slotNames(\"Person\"), \n                function(x) length(slot(object, x)),\n                numeric(1))\n  if (!all(len == len[1])){\n    \"slots should all be the same length\"\n  } else {\n    TRUE\n  }\n})\n\n\nPerson(name = c(\"Ada Lovelace\", \"Grace Hopper\"), \n       date_of_birth = \"1815-12-10\")\n\nError in validObject(.Object): invalid class \"Person\" object: slots should all be the same length"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s4-generic-functions",
-    "href": "slides/03-classes-methods/index.html#s4-generic-functions",
-    "title": "Classes and Methods",
-    "section": "S4 generic functions",
-    "text": "S4 generic functions\nS4 generic functions are (usually) a wrapper to standardGeneric(), e.g.\n\ngetGeneric(\"kronecker\")\n\nstandardGeneric for \"kronecker\" defined from package \"base\"\n\nfunction (X, Y, FUN = \"*\", make.dimnames = FALSE, ...) \nstandardGeneric(\"kronecker\")\n&lt;bytecode: 0x107189b98&gt;\n&lt;environment: 0x10717ade0&gt;\nMethods may be defined for arguments: X, Y, FUN, make.dimnames\nUse  showMethods(kronecker)  for currently available ones.\n\n\nBy default, all arguments apart from ... are used for method dispatch."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#writing-s4-generic-functions",
-    "href": "slides/03-classes-methods/index.html#writing-s4-generic-functions",
-    "title": "Classes and Methods",
-    "section": "Writing S4 generic functions",
-    "text": "Writing S4 generic functions\nUse setGeneric to define a new generic, with the optional signature argument to specify the arguments to use for method dispatch\n\nsetGeneric(\"myGeneric\", \n  function(x, ..., verbose = TRUE) standardGeneric(\"myGeneric\"),\n  signature = \"x\"\n)\n\n[1] \"myGeneric\"\n\n\nDo not use {} in the function definition here.\nS4 generics use lowerCamelCase names by convention."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#s4-methods",
-    "href": "slides/03-classes-methods/index.html#s4-methods",
-    "title": "Classes and Methods",
-    "section": "S4 Methods",
-    "text": "S4 Methods\nS4 methods for a generic function are defined with setMethod(), which takes three main arguments\n\nThe name of the generic function.\nThe signature specifying the classes for one or more of the arguments used for method dispatch\nThe method, defined as a function with a superset of the arguments of the generic"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#writing-s4-methods",
-    "href": "slides/03-classes-methods/index.html#writing-s4-methods",
-    "title": "Classes and Methods",
-    "section": "Writing S4 Methods",
-    "text": "Writing S4 Methods\n\nargs(getGeneric(\"show\"))\n\nfunction (object) \nNULL\n\n\n\nsetMethod(\"show\", \"Person\", function(object) {\n  cat(object@name, \"\\n\",\n      \"Born: \", format(object@date_of_birth, \"%d %B %Y\"), \"\\n\",\n      \"Died: \", format(object@date_of_death, \"%d %B %Y\"), \n                \" (aged \", object@age_at_death, \")\\n\",\n      sep = \"\")\n})\nflorence\n\nFlorence Nightingale\nBorn: 12 May 1820\nDied: 13 August 1910 (aged 90)"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#accessor-generics",
-    "href": "slides/03-classes-methods/index.html#accessor-generics",
-    "title": "Classes and Methods",
-    "section": "Accessor generics",
-    "text": "Accessor generics\nIt is good practice to define generics to get and set slots that the user should have access to.\nFor example, a generic to get and set the date of birth\n\nsetGeneric(\"dob\", function(x) standardGeneric(\"dob\"))\n\n[1] \"dob\"\n\nsetGeneric(\"dob&lt;-\", function(x, value) standardGeneric(\"dob&lt;-\"))\n\n[1] \"dob&lt;-\""
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#accessor-methods",
-    "href": "slides/03-classes-methods/index.html#accessor-methods",
-    "title": "Classes and Methods",
-    "section": "Accessor methods",
-    "text": "Accessor methods\nMethods can then be defined for multiple classes using the same interface.\nAccess the date of birth from a Person object\n\nsetMethod(\"dob\", \"Person\", function(x) x@date_of_birth)\ndob(florence)\n\n[1] \"1820-05-12\"\n\n\nChange the date of birth\n\nsetMethod(\"dob&lt;-\", \"Person\", function(x, value) {\n  x@date_of_birth &lt;- as.Date(value)\n  validObject(x)\n  x\n})\ndob(florence) &lt;- \"1820-05-11\"\ndob(florence)\n\n[1] \"1820-05-11\""
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#method-dispatch-1",
-    "href": "slides/03-classes-methods/index.html#method-dispatch-1",
-    "title": "Classes and Methods",
-    "section": "Method dispatch",
-    "text": "Method dispatch\n\nOne argument, single inheritance along vector of classes:\n\nSame as for S3\n\nOne argument, multiple inheritance:\n\nFollow all possible paths from child class to parent classes\nDispatch to first method found with the shortest path\n\nMultiple dispatch\n\nAs multiple inheritance, but follow possible paths for multiple arguments\n\n\nKeep it simple: dispatch on one or two arguments usually sufficient.\nAvoid ambiguous cases by defining methods earlier in path."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#pseudo-classes",
-    "href": "slides/03-classes-methods/index.html#pseudo-classes",
-    "title": "Classes and Methods",
-    "section": "Pseudo-classes",
-    "text": "Pseudo-classes\nMethods can be defined for the ANY pseudo-class\n\nOnly selected if no method found for real classes\n\nThe MISSING pseudo-class is useful for dispatch on two arguments: allow different behaviour if only one argument specified."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#your-turn",
-    "href": "slides/03-classes-methods/index.html#your-turn",
-    "title": "Classes and Methods",
-    "section": "Your turn",
-    "text": "Your turn\n\n\nCreate an S4 class Diag to represent a diagonal matrix with two slots:\n\n\nn the number of rows/cols\nx the numeric values of the diagonal elements Add a prototype to specify default values.\n\n\nTest your class by creating a new instance first without providing any values for the slots and then providing some example values.\nCreate an initialize method so that the n slot is computed automatically and does not have to be provided.\nCreate a Diag() helper function to create a new Diag object, with the user only having to specify the off-diaognal elements.\nCreate a show method to state the size of the matrix and print the off-diagonal elements."
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#resources",
-    "href": "slides/03-classes-methods/index.html#resources",
-    "title": "Classes and Methods",
-    "section": "Resources",
-    "text": "Resources\n\nMain reference for this section, goes a bit further (including R6): Wickham, H, Advanced R (2nd edn), Object-oriented programming section, https://adv-r.hadley.nz/oo.html\nFun example creating Turtle and TurtleWithPen classes to create simple graphics by moving the turtle: https://stuartlee.org/2019/07/09/s4-short-guide/"
-  },
-  {
-    "objectID": "slides/03-classes-methods/index.html#license",
-    "href": "slides/03-classes-methods/index.html#license",
-    "title": "Classes and Methods",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#overview",
-    "href": "slides/04-efficient-programming/index.html#overview",
-    "title": "Efficient Programming",
-    "section": "Overview",
-    "text": "Overview\n\nMemory management\nBenchmarking\nImproving run time\nParallelisation\nOutlook to package development"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#overview-1",
-    "href": "slides/04-efficient-programming/index.html#overview-1",
-    "title": "Efficient Programming",
-    "section": "Overview",
-    "text": "Overview\nObjects created in R are stored in memory. This has the advantage that objects can be accessed faster, but R slows down as the memory fills up. Creating objects also takes time.\nTherefore:\n\n\nRe-use temporary variables. The allocated storage will be re-used if the vector has the same length.\nSave results for re-use, e.g. index variables\nDon’t save intermediate results unnecessarily – compute on-the-fly\nRemove large objects when no longer needed (with rm())"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#basic-data-structures",
-    "href": "slides/04-efficient-programming/index.html#basic-data-structures",
-    "title": "Efficient Programming",
-    "section": "Basic data structures",
-    "text": "Basic data structures\nTry to use the simplest data structure for your purpose\n\nmatrices vs. data frames\ncharacter or integer vectors vs. factors\nlogical or integer vectors vs. numeric vectors\nunnamed objects vs. named objects\n\n\nIt is especially important to use low-level structures for computation\nYou can create richer objects as a final step before returning to the user.\n\nL for integer"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#big-data",
-    "href": "slides/04-efficient-programming/index.html#big-data",
-    "title": "Efficient Programming",
-    "section": "Big Data",
-    "text": "Big Data\nModern computers have enough RAM to work with millions of records using standard functions.\nSome packages to work more efficiently with big data:\n\ndata.table faster operations on data frames; read/write large CSVs\ndplyr + dbplyr processing of data in databases.\narrow read/write large CSVs or binary files e.g. Parquet; processing larger-than-memory data with dplyr commands.\nbigmemory, biganalytics faster matrix operations, generalized linear models, kmeans\n\n\nN.B. sparse matrices not as efficient as you might expect for general programming, may need big data for it to be important.\nParallelisation can also help, see later"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#growing-objects",
-    "href": "slides/04-efficient-programming/index.html#growing-objects",
-    "title": "Efficient Programming",
-    "section": "Growing Objects",
-    "text": "Growing Objects\nAdding to an object in a loop\n\nres &lt;- NULL\nfor (i in 1:5000) res &lt;- c(res, 1)\n\nmay force a copy to be made at each iteration, with each copy stored until the loop has completed.\n\nIt is far better to create an object of the necessary size first\n\nres &lt;- numeric(5000)\nfor (i in seq_along(res)) res[i] &lt;- 1\n\nTo initialise a list we can use\n\nres &lt;- vector(mode = \"list\", length = 100)"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#copy-on-change",
-    "href": "slides/04-efficient-programming/index.html#copy-on-change",
-    "title": "Efficient Programming",
-    "section": "Copy-on-Change",
-    "text": "Copy-on-Change\nR usually copies an object to make changes to it.\ntracemem can be used to trace copies of an object\n\nz &lt;- NULL\nfor (i in 1:3){ z &lt;- c(z,1); print(tracemem(z)) }\n\n[1] \"&lt;0x159494e98&gt;\"\n[1] \"&lt;0x11d8bb188&gt;\"\n[1] \"&lt;0x159356ee8&gt;\"\n\n\n\n\nz &lt;- numeric(2); print(tracemem(z))\n\n[1] \"&lt;0x11a698788&gt;\"\n\n\n\n\n\nfor (i in 1:2){z[i] &lt;- i;print(tracemem(z))}\n\ntracemem[0x11a698788 -&gt; 0x11a620648]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main \n[1] \"&lt;0x11a620648&gt;\"\n[1] \"&lt;0x11a620648&gt;\"\n\n\n\nmakes copy for each separate block of code e.g. if run with above in one go interactively no copies if run in separate chunks 1 copy"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#benchmarking-1",
-    "href": "slides/04-efficient-programming/index.html#benchmarking-1",
-    "title": "Efficient Programming",
-    "section": "Benchmarking",
-    "text": "Benchmarking\nThere will usually be many ways to write code for a given task. To compare alternatives, we can use benchmark the code.\nIf the code is more than a single expression, create wrappers for each alternative\n\ngrow &lt;- function(n){\n  res &lt;- NULL\n  for (i in 1:n) res &lt;- c(res, 1)\n  res\n}\npre_specify &lt;- function(n){\n  res &lt;- numeric(n)\n  for (i in seq_along(res)) res[i] &lt;- 1\n  res\n}"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#benchmark",
-    "href": "slides/04-efficient-programming/index.html#benchmark",
-    "title": "Efficient Programming",
-    "section": "bench::mark()",
-    "text": "bench::mark()\nRun the two alternatives with bench::mark(). This function\n\nRuns alternatives ≥ 1 time; at most enough times to take 0.5s\nMakes sure the two expressions return the same result!\n\n\n\nlibrary(bench)\n(bm &lt;- bench::mark(grow(5000), pre_specify(5000)))\n\nWarning: Some expressions had a GC in every iteration; so filtering is\ndisabled.\n\n\n# A tibble: 2 × 6\n  expression             min   median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 grow(5000)          26.1ms   30.1ms      32.7    95.6MB    59.6 \n2 pre_specify(5000)   98.9µs  107.9µs    9036.     55.8KB     6.00\n\n\n\nGC is the garbage collector which tidies up deleted objects\nitr/sec is how many times the expression could be run in 1s"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#plotting-benchmarks",
-    "href": "slides/04-efficient-programming/index.html#plotting-benchmarks",
-    "title": "Efficient Programming",
-    "section": "Plotting benchmarks",
-    "text": "Plotting benchmarks\nDistribution tends to be right-skewed - focus on the median!\n\nplot(bm)"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#scaling",
-    "href": "slides/04-efficient-programming/index.html#scaling",
-    "title": "Efficient Programming",
-    "section": "Scaling",
-    "text": "Scaling\nBenchmarking can be difficult as the best option can depend on the size of the data, e.g. memory allocation can overshadow run time for small objects.\nWhen thinking about how our code scales to bigger, we need to consider what we mean by “big”\n\nnumber of rows or number of columns?\nnumber of observations or number of factor levels?\n\nbench::press() compares a function over a grid of parameters"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#benchpress",
-    "href": "slides/04-efficient-programming/index.html#benchpress",
-    "title": "Efficient Programming",
-    "section": "bench::press()",
-    "text": "bench::press()\n\n\nbench::press(n = c(10, 100), k = c(10, 1),\n  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels\n)\n\nRunning with:\n      n     k\n\n\n1    10    10\n\n\n2   100    10\n\n\n3    10     1\n\n\n4   100     1\n\n\n# A tibble: 4 × 8\n  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 gl(n, k, length = 100…    10    10 3.12µs  3.61µs   244789.    12.4KB     24.5\n2 gl(n, k, length = 100…   100    10 9.47µs 10.25µs    94884.   11.05KB     19.0\n3 gl(n, k, length = 100…    10     1 2.79µs   3.2µs   300082.    3.95KB     30.0\n4 gl(n, k, length = 100…   100     1  6.4µs  7.09µs   135881.    7.53KB     13.6"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#exercise-1",
-    "href": "slides/04-efficient-programming/index.html#exercise-1",
-    "title": "Efficient Programming",
-    "section": "Exercise 1",
-    "text": "Exercise 1\nSuppose we have a matrix of data and a two-level factor\n\nnr &lt;- 10\nnc &lt;- 50\nX &lt;- matrix(rnorm(nr * nc, 10, 3), nrow = nr)\ngrp &lt;- gl(2, nc/2)\n\nUse bench::mark() to compare the following ways to find the coefficients of a linear model fitted to each row\n\n# one\nres &lt;- vector(\"list\", nr)\nfor(i in seq_len(nr)){\n  res[[i]] &lt;- coef(lm(X[i,] ~ grp))\n}\ndo.call(\"cbind\", res)\n# two\nres2 &lt;- coef(lm(t(X) ~ grp))"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#faster-common-operations",
-    "href": "slides/04-efficient-programming/index.html#faster-common-operations",
-    "title": "Efficient Programming",
-    "section": "Faster common operations",
-    "text": "Faster common operations\n\nSorting\n\nUse sort(x, partial = 1:10) to get the top 10\nUse sort(x, decreasing = TRUE) vs rev(sort(x))\n\n\n\n\nGenerating numeric vectors\n\nseq.int(), seq_along(x), seq_len(n) vs seq()\n\nrep.int() or rep_len(n) vs rep()\n\n\n\n\n\nwhich.min(), which.max() vs e.g. which(x == min(x))\n\n\n\n\nanyNA(x) vs any(is.na(x))\n\n\n“int” stands for internal!"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#for-loops",
-    "href": "slides/04-efficient-programming/index.html#for-loops",
-    "title": "Efficient Programming",
-    "section": "For loops",
-    "text": "For loops\nFor loops are an intuitive way to write code, but can be very inefficient.\nfor is a function, : or seq_along is another function, each use of [ is a call to a function, …, so a loop involves many nested function calls.\n\nTry to keep for loops for truly iterative computations or tasks that are fast in any case (optimizing code takes time!)\nOtherwise make loops as lean as possible, by pre-computing values that do not need be be computed iteratively."
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#vectorization",
-    "href": "slides/04-efficient-programming/index.html#vectorization",
-    "title": "Efficient Programming",
-    "section": "Vectorization",
-    "text": "Vectorization\nVectorization is operating on vectors (or vector-like objects) rather than individual elements.\nMany operations in R are vectorized, e.g.\n\nx &lt;- 1:3\ny &lt;- 3:1\nx == y\n\n[1] FALSE  TRUE FALSE\n\nlog(x)\n\n[1] 0.0000000 0.6931472 1.0986123\n\nres &lt;- list(a = 1:3, b = 1:6)\nlengths(res)\n\na b \n3 6 \n\n\nWe do not need to loop through each element!"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#recycling",
-    "href": "slides/04-efficient-programming/index.html#recycling",
-    "title": "Efficient Programming",
-    "section": "Recycling",
-    "text": "Recycling\nVectorized functions will recycle shorter vectors to create vectors of the same length\n\n1:4 + 0:1 + 2 # 1+0+2, 2+1+2, 3+0+2, 4+1+2\n\n[1] 3 5 5 7\n\n\nThis is particularly useful for single values\n\ncbind(1, 3:4)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    1    4\n\n\nand for generating regular patterns\n\npaste0(rep(1:3, each = 2), c(\"a\", \"b\"))\n\n[1] \"1a\" \"1b\" \"2a\" \"2b\" \"3a\" \"3b\""
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#ifelse",
-    "href": "slides/04-efficient-programming/index.html#ifelse",
-    "title": "Efficient Programming",
-    "section": "ifelse()",
-    "text": "ifelse()\nifelse is a vectorised version of if and else blocks\n\nx &lt;- c(5, 2, 9, 12)\nifelse(x &gt; 6, 2 * x, 3 * x)\n\n[1] 15  6 18 24\n\n\nRecycling is also very useful here\n\nx &lt;- 1:10\nifelse(x %% 2 == 0, 5, 12)\n\n [1] 12  5 12  5 12  5 12  5 12  5\n\n\nHowever indexing is more efficient than ifelse\n\ny &lt;- rep.int(12, 10)\ny[x %% 2 == 0] &lt;- 5\ny\n\n [1] 12  5 12  5 12  5 12  5 12  5"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#logical-operations",
-    "href": "slides/04-efficient-programming/index.html#logical-operations",
-    "title": "Efficient Programming",
-    "section": "Logical operations",
-    "text": "Logical operations\nLogical operators such as & and | are vectorized, e.g.\n\nx &lt;- c(1, 0.6, 1.2, 0.4, 0.5)\nx &gt; 0.4 & x &lt; 0.8\n\n[1] FALSE  TRUE FALSE FALSE  TRUE\n\n\nIf we only want to compare vectors of length 1 the operators && and || are more efficient as they only compute the RHS if needed\n\nx[1] &gt; 0.4 && x[1] &lt; 0.8\n\n[1] FALSE\n\n\nMake sure the vectors are of length 1, otherwise you get an error. This change was introduced in R ≥ 4.3.\n\nx &gt; 0.4 && x &lt; 0.8\n\nError in x &gt; 0.4 && x &lt; 0.8: 'length = 5' in coercion to 'logical(1)'\n\n\n\nIn R &ge 4.2.0 you get a warning but it still returns a comparison of only the first element. In earlier versions, there was no warning."
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
-    "href": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
-    "title": "Efficient Programming",
-    "section": "Vectorization and Matrices",
-    "text": "Vectorization and Matrices\nVectorizations applies to matices too, not only through matrix algebra\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nM + M\n\n     [,1] [,2]\n[1,]    2    6\n[2,]    4    8\n\n\nbut also vectorized functions\n\nM &lt;- M + rep(1.3, 4)\nround(M)\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#matrices-and-recycling",
-    "href": "slides/04-efficient-programming/index.html#matrices-and-recycling",
-    "title": "Efficient Programming",
-    "section": "Matrices and Recycling",
-    "text": "Matrices and Recycling\nValues are recycled down matrix, which is convenient for row-wise operations\n\nM &lt;- matrix(1:6, nrow = 2, ncol = 3)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nM - 1:2\n\n     [,1] [,2] [,3]\n[1,]    0    2    4\n[2,]    0    2    4\n\n\nTo do the same for columns we would need to explicitly replicate, which is not so efficient.\n\nM - rep(1:3, each = 2)\n\n     [,1] [,2] [,3]\n[1,]    0    1    2\n[2,]    1    2    3"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
-    "href": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
-    "title": "Efficient Programming",
-    "section": "Row/Column-wise Operations",
-    "text": "Row/Column-wise Operations\nSeveral functions are available implementing efficient row/column-wise operations, e.g. colMeans(), rowMeans(), colSums(), rowSums(), sweep()\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nrowMeans(M)\n\n[1] 2 3\n\n\nThese provide an alternative to iterating though rows and columns in R (the iteration happens in C, which is faster).\nThe matrixStats provides further “matricised” methods, including medians and standard deviations."
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
-    "href": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
-    "title": "Efficient Programming",
-    "section": "Exercise 2 (h/t Raju Bhakta)",
-    "text": "Exercise 2 (h/t Raju Bhakta)\nSampling from 0.3 × N(0, 1) + 0.5 × N(10, 1) + 0.2 × N(3, 0.1):\n\n# Set the random seed and the number of values to sample\nset.seed(1); n &lt;- 100000                 \n\n# Sample the component each value belongs to\ncomponent &lt;- sample(1:3, prob = c(0.3, 0.5, 0.2), \n                    size = n, replace = TRUE)\n\n# Sample from the corresponding Normal for each value\nx &lt;- numeric(n)\nfor(i in seq_len(n)){\n  if (component[i] == 1){\n    x[i] &lt;- rnorm(1, 0, 1)\n  } else if (component[i] == 2) {\n    x[i] &lt;- rnorm(1, 10, 1)\n  } else {\n    x[i] &lt;- rnorm(1, 3, sqrt(0.1))\n  }\n}"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#exercise-2-continued",
-    "href": "slides/04-efficient-programming/index.html#exercise-2-continued",
-    "title": "Efficient Programming",
-    "section": "Exercise 2 (continued)",
-    "text": "Exercise 2 (continued)\nThe for loop in the previous code is suitable for vectorization: the iterations are completely independent.\nrnorm() is vectorized in the arguments mu and sd, e.g. to simulate a value from the 1st and 3rd component we could write:\n\nmu &lt;- c(0, 10, 3)\nsd &lt;- sqrt(c(1, 1, 0.1))\nrnorm(2, mu[c(1, 3)], sd[c(1, 3)])\n\n[1] 0.6528158 2.7948388\n\n\nUse this information to replace the for loop, using a single call to rnorm() to simulate n values from the mixture distribution.\nUse bench::mark() to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#resources",
-    "href": "slides/04-efficient-programming/index.html#resources",
-    "title": "Efficient Programming",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/04-efficient-programming/index.html#license",
-    "href": "slides/04-efficient-programming/index.html#license",
-    "title": "Efficient Programming",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/06-r-with-cpp/index.html#overview",
-    "href": "slides/06-r-with-cpp/index.html#overview",
+    "objectID": "slides/11-data-publication-maintenance/index.html#overview",
+    "href": "slides/11-data-publication-maintenance/index.html#overview",
     "title": "SESSION TITLE",
     "section": "Overview",
     "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "slides/06-r-with-cpp/index.html#resources",
-    "href": "slides/06-r-with-cpp/index.html#resources",
+    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
+    "href": "slides/11-data-publication-maintenance/index.html#resources",
     "title": "SESSION TITLE",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
-    "objectID": "slides/06-r-with-cpp/index.html#license",
-    "href": "slides/06-r-with-cpp/index.html#license",
+    "objectID": "slides/11-data-publication-maintenance/index.html#license",
+    "href": "slides/11-data-publication-maintenance/index.html#license",
     "title": "SESSION TITLE",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
-    "objectID": "slides/01-welcome/index.html#overview",
-    "href": "slides/01-welcome/index.html#overview",
+    "objectID": "slides/12-Rcpp-packages/index.html#overview",
+    "href": "slides/12-Rcpp-packages/index.html#overview",
     "title": "SESSION TITLE",
     "section": "Overview",
     "text": "Overview\n\nWhat we’re covering"
   },
   {
-    "objectID": "slides/01-welcome/index.html#resources",
-    "href": "slides/01-welcome/index.html#resources",
+    "objectID": "slides/12-Rcpp-packages/index.html#resources",
+    "href": "slides/12-Rcpp-packages/index.html#resources",
     "title": "SESSION TITLE",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
-    "objectID": "slides/01-welcome/index.html#license",
-    "href": "slides/01-welcome/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/00-template/index.html#overview",
-    "href": "slides/00-template/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/00-template/index.html#resources",
-    "href": "slides/00-template/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/00-template/index.html#license",
-    "href": "slides/00-template/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#overview",
-    "href": "slides/10-check-package-documentation/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#resources",
-    "href": "slides/10-check-package-documentation/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/10-check-package-documentation/index.html#license",
-    "href": "slides/10-check-package-documentation/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#overview",
-    "href": "slides/05-profiling/index.html#overview",
-    "title": "Profiling",
-    "section": "Overview",
-    "text": "Overview\n\nProfiling\nMAYBE BRING IN SOMETHING FROM THE BOTTLENECKS SESSION?"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#profiling-code",
-    "href": "slides/05-profiling/index.html#profiling-code",
-    "title": "Profiling",
-    "section": "Profiling code",
-    "text": "Profiling code\nTo make our code more efficient, we first need to identify the bottlenecks, in terms of time and/or memory usage.\nProfiling stops the execution of code every few milliseconds and records\n\nThe call stack: the function currently being executed, the function that it was called from and so on up to the top-level function call.\nThe memory allocated and released since the last record.\n\nWe will use the profvis package to visualise profiling results."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#example-nested-pause-functions",
-    "href": "slides/05-profiling/index.html#example-nested-pause-functions",
-    "title": "Profiling",
-    "section": "Example: nested pause functions",
-    "text": "Example: nested pause functions\nThe following code is saved in profiling-example.R and uses profvis::pause() to wait 0.1s inside each function\n\ntop_level &lt;- function() {\n  profvis::pause(0.1)\n  middle_level()\n  bottom_level()\n}\nmiddle_level &lt;- function() {\n  profvis::pause(0.1)\n  bottom_level()\n}\nbottom_level &lt;- function() {\n  profvis::pause(0.1)\n}\n\n\nSys.sleep() can not be used as it would not show in profiling output"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#using-profvis",
-    "href": "slides/05-profiling/index.html#using-profvis",
-    "title": "Profiling",
-    "section": "Using profvis",
-    "text": "Using profvis\nSource the code to be profiled and pass the function call to be profiled to profvis()\n\nlibrary(profvis)\nsource(\"profiling-example.R\")\nprofvis(top_level())\n\nAn interactive HTML document will open with the results.\nIn RStudio this will open in the source pane; click “show in new window” button to open the document in a new window."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#section",
-    "href": "slides/05-profiling/index.html#section",
-    "title": "Profiling",
-    "section": "",
-    "text": "Screenshot of the profvis HTML output. At the bottom, a stacked set of horizontal bars along a time axis, representing the length of time in each function. At a given time, the top-level function is at the bottom of the stack with each nested function stacked on top. The source code is shown at the top of the screenshot, with a horizontal bar for each line, showing the time spent. Interpretation on next slide"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#interpretation",
-    "href": "slides/05-profiling/index.html#interpretation",
-    "title": "Profiling",
-    "section": "Interpretation",
-    "text": "Interpretation\nIn the flame graph the yellow bars correspond to lines in the source file shown above the graph. The plot is interactive.\nIn the overall time of 250ms we see:\n\n4 equal-sized blocks for each pause of 0.1s\nNearly all time is spent in the top-level function\nNearly half the time is spent in the mid-level function\nNearly half the time is also spent in the bottom-level function\nThe cmp function is called as R tries to compile new functions so that it can call the compiled version in subsequent calls.\n\nNo objects are created or deleted: no memory changes."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#data-tab",
-    "href": "slides/05-profiling/index.html#data-tab",
-    "title": "Profiling",
-    "section": "Data tab",
-    "text": "Data tab\nThe Data tab shows a table with the memory and time usage for each function call. The nested calls can be expanded/collapsed to show/hide the corresponding lines.\n\nScreenshot of the data tab in the profvis HTML output. A table with columns “Code” (function name), “File” (name of source file containing function), “Memory (MB)” and “Time (ms)”."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#memory-profiling",
-    "href": "slides/05-profiling/index.html#memory-profiling",
-    "title": "Profiling",
-    "section": "Memory profiling",
-    "text": "Memory profiling\nTo illustrate memory profiling we can consider a loop that concatenates values.\nAs it is a small code snippet, we can pass to profvis() directly\n\nprofvis({\n  x &lt;- integer()\n  for (i in 1:10000) {\n    x &lt;- c(x, i)\n  }\n})"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#section-1",
-    "href": "slides/05-profiling/index.html#section-1",
-    "title": "Profiling",
-    "section": "",
-    "text": "Flame graph for profiling the contenation example. Interpretation on next slide."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#gc",
-    "href": "slides/05-profiling/index.html#gc",
-    "title": "Profiling",
-    "section": "<GC>",
-    "text": "&lt;GC&gt;\nAs expected, the majority of the time is spent within c(), but we also see a lot time spent in &lt;GC&gt;, the garbage collector.\nIn the memory column next to the corresponding line in the source code, we see a bar to left labelled -123.0 and a bar to the right labelled 137.2. This means that 137 MB of memory was allocated and 123 MB of memory was released.\nEach call to c() causes a new copy of x to be created.\nMemory profiling can help to identify short-lived objects that might be avoided by changes to the code."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#monopoly",
-    "href": "slides/05-profiling/index.html#monopoly",
-    "title": "Profiling",
-    "section": "Monopoly",
-    "text": "Monopoly\n\n\nIn the game of Monopoly, players roll two die to move round the board. Players buy assets on which they can charge rent or taxes and aim to make the most money.\nThe squares on the board represent\n\n\n\n\n\nProperties, train stations or utility companies to buy\nEvents that trigger an action, e.g. paying a tax or going to jail\n\nThe efficient package contains the simulate_monopoly() function to simulate game play; we’ll use this to practice profiling."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#your-turn",
-    "href": "slides/05-profiling/index.html#your-turn",
-    "title": "Profiling",
-    "section": "Your turn!",
-    "text": "Your turn!\n\nInstall the efficient package with the following code to keep the code source files:\n\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\n\nUse profvis() to profile simulate_monopoly(10000). Explore the output. Which parts of the code are slow?\nMost of the time is spent in the function move_square(). Use View(move_square) to view the source code. Copy the code to a new .R file and rename the function move_square2. Edit move_square2() to speed up the slow parts of the code. (Go to next slide for testing the updates)"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#your-turn-continued",
-    "href": "slides/05-profiling/index.html#your-turn-continued",
-    "title": "Profiling",
-    "section": "Your turn! (continued)",
-    "text": "Your turn! (continued)\nCreate a wrapper to run a specified move square function n times with different seeds:\n\nrun &lt;- function(n, fun){\n  x &lt;- numeric(n)\n  for (i in seq_len(n)) {\n    set.seed(i)\n    x[i] &lt;- fun(1)\n  }\n  x\n}\n\nRun bench::mark(run(n, move_square), run(n, move_square2)) with n = 1000 to test your changes.\nFinally, compare profvis(run(n, move_square)) with profvis(run(n, move_square2))."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#general-principles",
-    "href": "slides/05-profiling/index.html#general-principles",
-    "title": "Profiling",
-    "section": "General principles",
-    "text": "General principles\n\nAvoid optimizing too soon\n\nGet the code right first\n\nAvoid over-optimization\n\nFocus on the bottlenecks\nKeep an eye on the units - will real gains be made?\nThink about maintainability: readability, simplicity, dependencies\n\nAvoid anonymous functions\n\nName utility functions to see them in the profile\n\nUse benchmarking to assess alternative implementations"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#c-and-rcpp",
-    "href": "slides/05-profiling/index.html#c-and-rcpp",
-    "title": "Profiling",
-    "section": "C++ and Rcpp",
-    "text": "C++ and Rcpp\nIn the next session, we’ll cover using C++ via Rcpp to rewrite R code that has been identified through profiling as causing bottlenecks in your code."
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#resources",
-    "href": "slides/05-profiling/index.html#resources",
-    "title": "Profiling",
-    "section": "Resources",
-    "text": "Resources"
-  },
-  {
-    "objectID": "slides/05-profiling/index.html#license",
-    "href": "slides/05-profiling/index.html#license",
-    "title": "Profiling",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
-  },
-  {
-    "objectID": "slides/07-package-foundations/index.html#overview",
-    "href": "slides/07-package-foundations/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
-  },
-  {
-    "objectID": "slides/07-package-foundations/index.html#resources",
-    "href": "slides/07-package-foundations/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
-  },
-  {
-    "objectID": "slides/07-package-foundations/index.html#license",
-    "href": "slides/07-package-foundations/index.html#license",
+    "objectID": "slides/12-Rcpp-packages/index.html#license",
+    "href": "slides/12-Rcpp-packages/index.html#license",
     "title": "SESSION TITLE",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
@@ -802,7 +158,7 @@
     "href": "slides/02-functions/index.html#name-and-order-of-arguments",
     "title": "Functions",
     "section": "Name and order of arguments",
-    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1]   3.176854  -2.243561   8.284291 -21.530589   1.259725\n\nrnorm(5, sd = 10)\n\n[1] 16.709199 -6.822982 21.836873 11.941988 -8.928574\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
+    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1] -9.0235560 10.1127715 11.7354364 16.3617247  0.6612166\n\nrnorm(5, sd = 10)\n\n[1] -15.113257 -10.603837 -10.987158   6.461319   3.524185\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
   },
   {
     "objectID": "slides/02-functions/index.html#using-arguments",
@@ -977,7 +333,7 @@
     "href": "slides/02-functions/index.html#start-debugging-from-breakpoints",
     "title": "Functions",
     "section": "Start debugging from breakpoints",
-    "text": "Start debugging from breakpoints\n\n\nhere::here()\n\n[1] \"/Users/ellakaye/Rprojs/mine/advanced-r-packages\"\n\n\n\nn is automatically printed, so the first prompt is at the breakpoint"
+    "text": "Start debugging from breakpoints\n\n\nhere::here()\n\n[1] \"/Users/u2175871/Library/CloudStorage/OneDrive-UniversityofWarwick/Rprojs/Mine/advanced-r-packages\"\n\n\n\nn is automatically printed, so the first prompt is at the breakpoint"
   },
   {
     "objectID": "slides/02-functions/index.html#rstudios-rerun-with-debug",
@@ -994,11 +350,11 @@
     "text": "Exercise 3\nOpen debug_practice.R and source the function f().\nTry to run f(10) - there’s an error! Use traceback() to see which function call generated the error, then fix the problem.\nRun f(10) again - there is another error! Can you fix this directly given the error message?\nTry running f(1) - is the result what you expected? Use debugonce() to set debugging on f() and re-run f(1). Step through the function, printing each object as it is created to see what is happening.\nCan you think how to improve the function? See if you can modify the function to give a sensible result for any integer."
   },
   {
-    "objectID": "slides/02-functions/index.html#resources",
-    "href": "slides/02-functions/index.html#resources",
+    "objectID": "slides/02-functions/index.html#references",
+    "href": "slides/02-functions/index.html#references",
     "title": "Functions",
-    "section": "Resources",
-    "text": "Resources\n\nFunctions chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/functions.html\nDebugging chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/debugging.html\nDebugging from the RStudio User Guide\nhttps://docs.posit.co/ide/user/ide/guide/code/debugging.html"
+    "section": "References",
+    "text": "References\n\nFunctions chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/functions.html\nDebugging chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/debugging.html\nDebugging from the RStudio User Guide\nhttps://docs.posit.co/ide/user/ide/guide/code/debugging.html"
   },
   {
     "objectID": "slides/02-functions/index.html#license",
@@ -1057,60 +413,1026 @@
     "text": "Your turn!\nCopy the qq function to a new R script and save as functions.R. Add roxygen comments at the start of the function body to define a title and parameter documentation.\nRun the documentation chunk of exercises.Rmd to view your documentation.\nOpen the tests.R script. Using expect_equal add some tests for the following\n\na sample of 100,000 from N(0, 1) gives approximately slope 1, intercept 0\na sample of 100,000 from N(0, 1/2) gives approximately slope 2, intercept 0\nsample of 100,000 from N(2, 1) gives approximately slope 1, intercept -2\n\nUse the tol argument in expect_equal to set a tolerance of 0.01.\nRun the tests chunk of exercises.Rmd to run your tests with test_file. Try changing the expected tolerance to get a test to fail."
   },
   {
+    "objectID": "slides/09-testing/index.html#overview",
+    "href": "slides/09-testing/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/09-testing/index.html#resources",
+    "href": "slides/09-testing/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/09-testing/index.html#license",
+    "href": "slides/09-testing/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#overview",
+    "href": "slides/03-classes-methods/index.html#overview",
+    "title": "Classes and Methods",
+    "section": "Overview",
+    "text": "Overview\n\nObject-oriented programming\nS3\nS4"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#object-oriented-programming-oop",
+    "href": "slides/03-classes-methods/index.html#object-oriented-programming-oop",
+    "title": "Classes and Methods",
+    "section": "Object-oriented programming (OOP)",
+    "text": "Object-oriented programming (OOP)\nGeneric functions provide a unified interface to methods for objects of a particular class, e.g.\n\nlibrary(palmerpenguins)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n    172     190     197     201     213     231       2 \n\n\nHere, we use the same function, summary(), on objects of classes factor and integer and get different output for each."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#why-use-oop",
+    "href": "slides/03-classes-methods/index.html#why-use-oop",
+    "title": "Classes and Methods",
+    "section": "Why use OOP?",
+    "text": "Why use OOP?\nsummary() could contain several if-else statements, but\n\nthe code would become hard to follow\nonly the function authors (R Core) could add new implementations\n\nOOP\n\nseparates the code for different data types\navoids duplicating code by method inheritance from parent class(es) to child class (subclass)\nmakes it possible for external developers to add methods for new types of object\n\nthis can be particularly useful when writing R packages"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#oop-systems-in-r",
+    "href": "slides/03-classes-methods/index.html#oop-systems-in-r",
+    "title": "Classes and Methods",
+    "section": "OOP Systems in R",
+    "text": "OOP Systems in R\nThere are 3 main OOP systems in use:\n\n\nS3\n\nUsed in base R and most recommended/CRAN packages\nUse unless you have good reason not to\n\nS4\n\nUsed on Bioconductor\nAllow more complex relationships between classes and methods\n\nR6\n\nMore similar to OOP in other languages\nMay prefer if S3 insufficient and not aiming for Bioconductor\n\n\nA new OOP system, S7, is in development as a successor to S3 and S4.\n\n\nR6 v similar to Python OOP (also Java, C++) Julia not an OOP language, but does have concept of multiple dispatch - so maybe a bit more like S3 idea?"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s3-objects",
+    "href": "slides/03-classes-methods/index.html#s3-objects",
+    "title": "Classes and Methods",
+    "section": "S3 objects",
+    "text": "S3 objects\nAn S3 object has a \"class\" attribute:\n\nattr(penguins$species, \"class\")\n\n[1] \"factor\"\n\nunique(penguins$species)\n\n[1] Adelie    Gentoo    Chinstrap\nLevels: Adelie Chinstrap Gentoo\n\n\nWith unclass() we obtain the underlying object, here an integer vector\n\nspecies_no &lt;- unclass(penguins$species)\nclass(species_no)\n\n[1] \"integer\"\n\nunique(species_no)\n\n[1] 1 3 2\n\nattributes(species_no)\n\n$levels\n[1] \"Adelie\"    \"Chinstrap\" \"Gentoo\""
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#creating-an-s3-object-with-stucture",
+    "href": "slides/03-classes-methods/index.html#creating-an-s3-object-with-stucture",
+    "title": "Classes and Methods",
+    "section": "Creating an S3 object with stucture()",
+    "text": "Creating an S3 object with stucture()\nYou can use structure() to define an S3 object with a class attribute:\n\ndp &lt;- 2\nstructure(list(pi = trunc(10^dp * pi)/10^dp, dp = dp),\n          class = \"pi_trunc\")\n\n$pi\n[1] 3.14\n\n$dp\n[1] 2\n\nattr(,\"class\")\n[1] \"pi_trunc\"\n\n\nPotentially further attributes can be added at the same time, but typically we would use a list to return all the required values."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#creating-an-s3-object-with-class",
+    "href": "slides/03-classes-methods/index.html#creating-an-s3-object-with-class",
+    "title": "Classes and Methods",
+    "section": "Creating an S3 object with class()",
+    "text": "Creating an S3 object with class()\nAlternatively, we can add a class attribute using the class() helper function:\n\npi2dp &lt;- list(pi = trunc(10^dp * pi)/10^dp, dp = dp)\nclass(pi2dp) &lt;- \"pi_trunc\"\npi2dp\n\n$pi\n[1] 3.14\n\n$dp\n[1] 2\n\nattr(,\"class\")\n[1] \"pi_trunc\""
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s3-generic-functions",
+    "href": "slides/03-classes-methods/index.html#s3-generic-functions",
+    "title": "Classes and Methods",
+    "section": "S3 Generic Functions",
+    "text": "S3 Generic Functions\nS3 generic functions are simple wrappers to UseMethod()\n\nprint\n\nfunction (x, ...) \nUseMethod(\"print\")\n&lt;bytecode: 0x13edf3948&gt;\n&lt;environment: namespace:base&gt;\n\n\nThe UseMethod() function takes care of method dispatch: selecting the S3 method according to the class of the object passed as the first argument.\n\nclass(penguins$species[1:3])\n\n[1] \"factor\"\n\nprint(penguins$species[1:3])\n\n[1] Adelie Adelie Adelie\nLevels: Adelie Chinstrap Gentoo\n\n\nHere print() dispatches to the method print.factor()."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#inheritance",
+    "href": "slides/03-classes-methods/index.html#inheritance",
+    "title": "Classes and Methods",
+    "section": "Inheritance",
+    "text": "Inheritance\nThe class of an S3 object can be a vector of classes\n\nfit &lt;- glm(y ~ x, data = data.frame(y = 1:3, x = 4:6))\nclass(fit)\n\n[1] \"glm\" \"lm\" \n\n\nWe say fit is a \"glm\" object that inherits from class \"lm\".\nThe inherits() function can be used to test if an object inherits from a given class\n\ninherits(fit, \"glm\")\n\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#method-dispatch",
+    "href": "slides/03-classes-methods/index.html#method-dispatch",
+    "title": "Classes and Methods",
+    "section": "Method dispatch",
+    "text": "Method dispatch\nAn S3 object can have more than one class e.g.\n\nclass(penguins)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\nUseMethod() works along the vector of classes (from the first class to the last), looks for a method for each class and dispatches to the first method it finds.\nIf no methods are defined for any of class, the default is used , e.g. print.default().\nIf there is no default, an error is thrown."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s3-methods",
+    "href": "slides/03-classes-methods/index.html#s3-methods",
+    "title": "Classes and Methods",
+    "section": "S3 Methods",
+    "text": "S3 Methods\nSee the methods for a given S3 class\n\n# nls is nonlinear least squares\nmethods(class = \"nls\")\n\n [1] anova       coef        confint     deviance    df.residual fitted     \n [7] formula     logLik      nobs        predict     print       profile    \n[13] residuals   summary     vcov        weights    \nsee '?methods' for accessing help and source code\n\n\nSee the methods for a given generic function\n\nmethods(\"coef\")\n\n[1] coef.aov*     coef.Arima*   coef.default* coef.listof*  coef.maov*   \n[6] coef.nls*    \nsee '?methods' for accessing help and source code\n\n\nAsterisked methods are not exported."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#view-s3-methods",
+    "href": "slides/03-classes-methods/index.html#view-s3-methods",
+    "title": "Classes and Methods",
+    "section": "View S3 methods",
+    "text": "View S3 methods\nS3 methods need not be in the same package as the generic.\nFind an unexported method with getS3method()\n\ngetS3method(\"coef\", \"default\")\n\nfunction (object, complete = TRUE, ...) \n{\n    cf &lt;- object$coefficients\n    if (complete) \n        cf\n    else cf[!is.na(cf)]\n}\n&lt;bytecode: 0x12e39b090&gt;\n&lt;environment: namespace:stats&gt;\n\n\nIn code, call the generic, rather than calling the method directly."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#writing-s3-methods",
+    "href": "slides/03-classes-methods/index.html#writing-s3-methods",
+    "title": "Classes and Methods",
+    "section": "Writing S3 Methods",
+    "text": "Writing S3 Methods\nThe arguments of a new method should be a superset of the arguments of the generic\n\nargs(print)\n\nfunction (x, ...) \nNULL\n\n\nNew methods have the name format generic.class:\n\nprint.pi_trunc &lt;- function(x, abbreviate = TRUE, ...){\n  dp_text &lt;- ifelse(abbreviate, \"d.p.\", \"decimal places\")\n  cat(\"pi: \", x$pi, \" (\", x$dp, \" \", dp_text, \")\", sep = \"\")\n}\nprint(pi2dp)\n\npi: 3.14 (2 d.p.)"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#nextmethod",
+    "href": "slides/03-classes-methods/index.html#nextmethod",
+    "title": "Classes and Methods",
+    "section": "NextMethod()",
+    "text": "NextMethod()\nWe can explicitly call the next method that would be called by UseMethod() to reuse code whilst customising as required\n\nbody(t.data.frame)\n\n{\n    x &lt;- as.matrix(x)\n    NextMethod(\"t\")\n}\n\n\n\nbody(rep.factor)\n\n{\n    y &lt;- NextMethod()\n    structure(y, class = class(x), levels = levels(x))\n}\n\n\nIt is possible to call NextMethod() with arguments but it is safer to recall the generic with new arguments in this case.\n\nWe have seen that UseMethod() will dispatch to the method of the next class in the class vector if a method is not defined for the first class."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#implicit-classes",
+    "href": "slides/03-classes-methods/index.html#implicit-classes",
+    "title": "Classes and Methods",
+    "section": "Implicit classes",
+    "text": "Implicit classes\nis.object() can be used to find out if an object has a class (S3/S4/R6)\n\nis.object(factor(1:3))\n\n[1] TRUE\n\nis.object(1:3)\n\n[1] FALSE\n\n\nAn object that does not have an explicit class has an implicit class that will be used for S3 method dispatch. The implicit class can be found with .class2()\n\nM &lt;- matrix(1:12, nrow = 4)\nattr(M, \"class\")\n\nNULL\n\n.class2(M)\n\n[1] \"matrix\"  \"array\"   \"integer\" \"numeric\"\n\n\n\n.class2 since R 4.0.0"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#attributes",
+    "href": "slides/03-classes-methods/index.html#attributes",
+    "title": "Classes and Methods",
+    "section": "Attributes",
+    "text": "Attributes\n\nWe can take advantage of existing S3 methods by returning an object of a existing S3 class or an implicit class, using attributes to add custom information\n\nx &lt;- matrix(c(1:5, 2*(1:5)), ncol = 2)\ncenter_x &lt;- scale(x, scale = FALSE)\nclass(center_x)\n\n[1] \"matrix\" \"array\" \n\nsummary(center_x)\n\n       V1           V2    \n Min.   :-2   Min.   :-4  \n 1st Qu.:-1   1st Qu.:-2  \n Median : 0   Median : 0  \n Mean   : 0   Mean   : 0  \n 3rd Qu.: 1   3rd Qu.: 2  \n Max.   : 2   Max.   : 4  \n\n\n\nattr(center_x, \"scaled:center\")\n\n[1] 3 6\n\n\nThis can avoid the need to define new classes and methods, in simple cases."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#your-turn-part-1",
+    "href": "slides/03-classes-methods/index.html#your-turn-part-1",
+    "title": "Classes and Methods",
+    "section": "Your turn (part 1)",
+    "text": "Your turn (part 1)\n\nCreate a function to fit an ordinary least squares model given a response y and an explanatory variable x, that returns an object of a new class \"ols\", that inherits from \"lm\".\nDefine a print method for your function that it works as follows:\n\n\nset.seed(1)\nres &lt;- ols(x = 1:3, y = rnorm(3))\nres\n\nIntercept:  -0.217 \nSlope:  -0.1046 \n\n\nNote: I have set options(digits = 4) to limit the number of digits printed by default throughout this presentation (default is 7)."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#your-turn-part-2",
+    "href": "slides/03-classes-methods/index.html#your-turn-part-2",
+    "title": "Classes and Methods",
+    "section": "Your turn (part 2)",
+    "text": "Your turn (part 2)\n\nWrite a summary method for your ols class that uses NextMethod() to compute the usual lm summary, but return an object of class \"summary.ols\".\nWrite a print method for the \"summary.ols\" which works as follows:\n\n\nsummary(res)\n\nCoefficients: \n            Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)  -0.2170     1.1408 -0.1902   0.8804\nx            -0.1046     0.5281 -0.1980   0.8755\n\nResidual standard error:  0.7468 \nMultiple R-squared:  0.03774 \n\n\n\nwill get issues with inheriting e.g. add1 method"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#overview-of-s4",
+    "href": "slides/03-classes-methods/index.html#overview-of-s4",
+    "title": "Classes and Methods",
+    "section": "Overview of S4",
+    "text": "Overview of S4\nS4 methods\n\nuse specialised functions for creating classes, generics and methods\nallow multiple inheritance: a class can have multiple parents\nallow multiple dispatch: method selection based on the class of multiple objects\n\nThe methods package provides the functions required to use S4 classes and methods, so always load this package when using S4.\n\nuse import instead"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s4-classes",
+    "href": "slides/03-classes-methods/index.html#s4-classes",
+    "title": "Classes and Methods",
+    "section": "S4 Classes",
+    "text": "S4 Classes\nAn S4 class can be defined with setClass(), with at least two arguments\n\nA name, by convention in UpperCamelCase.\nA named character vector specifying the names and classes of the slots (fields). Using the pseudo class ANY allows a slot to accept any type of object.\n\n\nsetClass(\"Person\", \n  slots = c(\n    name = \"character\", \n    date_of_birth = \"Date\",\n    date_of_death = \"Date\",\n    age_at_death = \"numeric\"\n  )\n)"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#creating-a-new-instance",
+    "href": "slides/03-classes-methods/index.html#creating-a-new-instance",
+    "title": "Classes and Methods",
+    "section": "Creating a new instance",
+    "text": "Creating a new instance\nA new instance of the S4 object can be created using new()\n\nflorence &lt;- new(\"Person\", \n                name = \"Florence Nightingale\",\n                date_of_birth = as.Date(\"1820-05-12\"),\n                date_of_death = as.Date(\"1910-08-13\"),\n                age_at_death = 90)\nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-13\"\n  ..@ age_at_death : num 90\n\n\nNote that the second onwards argument names in new are the names in the vector passed to slots() when defining the class."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#examining-s4-objects",
+    "href": "slides/03-classes-methods/index.html#examining-s4-objects",
+    "title": "Classes and Methods",
+    "section": "Examining S4 objects",
+    "text": "Examining S4 objects\nFind the type of S4 class\n\nis.object(florence)\n\n[1] TRUE\n\nisS4(florence)\n\n[1] TRUE\n\n.class2(florence)\n\n[1] \"Person\"\n\n\nExtract the value of a slot (use @)\n\ngetSlots(\"Person\")\n\n         name date_of_birth date_of_death  age_at_death \n  \"character\"        \"Date\"        \"Date\"     \"numeric\" \n\nflorence@age_at_death # or slot(florence, \"age_at_death\")\n\n[1] 90\n\n\n\nclass() will only show class itself, not classes it inherits from"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#prototype",
+    "href": "slides/03-classes-methods/index.html#prototype",
+    "title": "Classes and Methods",
+    "section": "Prototype",
+    "text": "Prototype\nThe prototype argument can be used to specify default values, enabling partial specification\n\nsetClass(\"Person\", \n  slots = c(\n    name = \"character\", \n    date_of_birth = \"Date\",\n    date_of_death = \"Date\",\n    age_at_death = \"numeric\"\n  ),\n  prototype = list(\n    name = NA_character_, \n    date_of_birth = as.Date(NA),\n    date_of_death = as.Date(NA),\n    age_at_death = NA_real_\n  )\n)\n\nBe sure to use list() not c() for prototype – easy mistake to make!"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#initialize",
+    "href": "slides/03-classes-methods/index.html#initialize",
+    "title": "Classes and Methods",
+    "section": "initialize()",
+    "text": "initialize()\nAn initialize() method can be used for more control over initialization\n\n\nsetMethod(\"initialize\", \"Person\", \n  function(.Object, ...) {\n    # initialize with default method \n    # (named arguments override defaults)\n    .Object &lt;- callNextMethod(.Object, ...)\n    \n    # compute age at death if not specified\n    year &lt;- function(x) as.numeric(format(x, \"%Y\"))\n    m_day &lt;- function(x) as.numeric(format(x, \"%m%d\"))\n    \n    if (is.na(.Object@age_at_death)){\n      n_year &lt;- year(.Object@date_of_death) - year(.Object@date_of_birth)\n      birthday &lt;- m_day(.Object@date_of_death) &gt;= m_day(.Object@date_of_birth)\n      .Object@age_at_death &lt;- n_year - !birthday\n    }\n    .Object\n  })"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#creating-a-new-s4-obect-from-an-old-one",
+    "href": "slides/03-classes-methods/index.html#creating-a-new-s4-obect-from-an-old-one",
+    "title": "Classes and Methods",
+    "section": "Creating a new S4 obect from an old one",
+    "text": "Creating a new S4 obect from an old one\n\nflorence &lt;- new(\"Person\", \n                name = \"Florence Nightingale\",\n                date_of_birth = as.Date(\"1820-05-12\"))\nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: NA\n  ..@ age_at_death : num NA\n\n\n\nflorence &lt;- initialize(florence, \n                       date_of_death = as.Date(\"1910-08-13\")) \nstr(florence)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-13\"\n  ..@ age_at_death : num 90"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#inheritance-1",
+    "href": "slides/03-classes-methods/index.html#inheritance-1",
+    "title": "Classes and Methods",
+    "section": "Inheritance",
+    "text": "Inheritance\nThe contains argument to setClass() specifies a class or classes to inherit slots and behaviour from\n\nsetClass(\"BanknoteCharacter\", \n  contains = \"Person\", \n  slots = c(\n    denomination = \"numeric\",\n    first_issue = \"Date\",\n    last_legal = \"Date\"\n  ),\n  prototype = list(\n    denomination = NA_real_,\n    first_issue = as.Date(NA),\n    last_legal = as.Date(NA)\n  )\n)"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#new-instance-of-subclass",
+    "href": "slides/03-classes-methods/index.html#new-instance-of-subclass",
+    "title": "Classes and Methods",
+    "section": "New instance of subclass",
+    "text": "New instance of subclass\nCreating a new instance of the subclass will fill in the slots of the superclass\n\nseriesD_10GBP &lt;- new(\"BanknoteCharacter\", \n                     name = \"Florence Nightingale\", \n                     date_of_birth = as.Date(\"1820-05-12\"), \n                     date_of_death = as.Date(\"1910-08-12\"))\nstr(seriesD_10GBP)\n\nFormal class 'BanknoteCharacter' [package \".GlobalEnv\"] with 7 slots\n  ..@ denomination : num NA\n  ..@ first_issue  : Date[1:1], format: NA\n  ..@ last_legal   : Date[1:1], format: NA\n  ..@ name         : chr \"Florence Nightingale\"\n  ..@ date_of_birth: Date[1:1], format: \"1820-05-12\"\n  ..@ date_of_death: Date[1:1], format: \"1910-08-12\"\n  ..@ age_at_death : num 90"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#show-defined-s4-class",
+    "href": "slides/03-classes-methods/index.html#show-defined-s4-class",
+    "title": "Classes and Methods",
+    "section": "Show defined S4 Class",
+    "text": "Show defined S4 Class\nUse showClass() to show (print) an S4 Class\n\nshowClass(\"Person\")\n\nClass \"Person\" [in \".GlobalEnv\"]\n\nSlots:\n                                                              \nName:           name date_of_birth date_of_death  age_at_death\nClass:     character          Date          Date       numeric\n\nKnown Subclasses: \"BanknoteCharacter\""
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#helper-function",
+    "href": "slides/03-classes-methods/index.html#helper-function",
+    "title": "Classes and Methods",
+    "section": "Helper function",
+    "text": "Helper function\nIf a user is to create these objects, define a helper function named by the class\n\nPerson &lt;- function(name = NA, date_of_birth = NA, date_of_death = NA) {\n  new(\"Person\", \n      name = as.character(name), \n      date_of_birth = as.Date(date_of_birth), \n      date_of_death = as.Date(date_of_death))\n}\n\n\nada &lt;- Person(\"Ada Lovelace\", \"1815-12-10\", \"1852-11-27\")\nstr(ada)\n\nFormal class 'Person' [package \".GlobalEnv\"] with 4 slots\n  ..@ name         : chr \"Ada Lovelace\"\n  ..@ date_of_birth: Date[1:1], format: \"1815-12-10\"\n  ..@ date_of_death: Date[1:1], format: \"1852-11-27\"\n  ..@ age_at_death : num 36\n\n\nPut computation in the initialize method where possible, so that it can be reused by subclasses."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#validator-function",
+    "href": "slides/03-classes-methods/index.html#validator-function",
+    "title": "Classes and Methods",
+    "section": "Validator function",
+    "text": "Validator function\nUse setValidity() to check constraints beyond data type, e.g. that all slots have the same length\n\nsetValidity(\"Person\", function(object) {\n  len &lt;- vapply(slotNames(\"Person\"), \n                function(x) length(slot(object, x)),\n                numeric(1))\n  if (!all(len == len[1])){\n    \"slots should all be the same length\"\n  } else {\n    TRUE\n  }\n})\n\n\nPerson(name = c(\"Ada Lovelace\", \"Grace Hopper\"), \n       date_of_birth = \"1815-12-10\")\n\nError in validObject(.Object): invalid class \"Person\" object: slots should all be the same length"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s4-generic-functions",
+    "href": "slides/03-classes-methods/index.html#s4-generic-functions",
+    "title": "Classes and Methods",
+    "section": "S4 generic functions",
+    "text": "S4 generic functions\nS4 generic functions are (usually) a wrapper to standardGeneric(), e.g.\n\ngetGeneric(\"kronecker\")\n\nstandardGeneric for \"kronecker\" defined from package \"base\"\n\nfunction (X, Y, FUN = \"*\", make.dimnames = FALSE, ...) \nstandardGeneric(\"kronecker\")\n&lt;bytecode: 0x14849cb98&gt;\n&lt;environment: 0x14848dde0&gt;\nMethods may be defined for arguments: X, Y, FUN, make.dimnames\nUse  showMethods(kronecker)  for currently available ones.\n\n\nBy default, all arguments apart from ... are used for method dispatch."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#writing-s4-generic-functions",
+    "href": "slides/03-classes-methods/index.html#writing-s4-generic-functions",
+    "title": "Classes and Methods",
+    "section": "Writing S4 generic functions",
+    "text": "Writing S4 generic functions\nUse setGeneric to define a new generic, with the optional signature argument to specify the arguments to use for method dispatch\n\nsetGeneric(\"myGeneric\", \n  function(x, ..., verbose = TRUE) standardGeneric(\"myGeneric\"),\n  signature = \"x\"\n)\n\n[1] \"myGeneric\"\n\n\nDo not use {} in the function definition here.\nS4 generics use lowerCamelCase names by convention."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#s4-methods",
+    "href": "slides/03-classes-methods/index.html#s4-methods",
+    "title": "Classes and Methods",
+    "section": "S4 Methods",
+    "text": "S4 Methods\nS4 methods for a generic function are defined with setMethod(), which takes three main arguments\n\nThe name of the generic function.\nThe signature specifying the classes for one or more of the arguments used for method dispatch\nThe method, defined as a function with a superset of the arguments of the generic"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#writing-s4-methods",
+    "href": "slides/03-classes-methods/index.html#writing-s4-methods",
+    "title": "Classes and Methods",
+    "section": "Writing S4 Methods",
+    "text": "Writing S4 Methods\n\nargs(getGeneric(\"show\"))\n\nfunction (object) \nNULL\n\n\n\nsetMethod(\"show\", \"Person\", function(object) {\n  cat(object@name, \"\\n\",\n      \"Born: \", format(object@date_of_birth, \"%d %B %Y\"), \"\\n\",\n      \"Died: \", format(object@date_of_death, \"%d %B %Y\"), \n                \" (aged \", object@age_at_death, \")\\n\",\n      sep = \"\")\n})\nflorence\n\nFlorence Nightingale\nBorn: 12 May 1820\nDied: 13 August 1910 (aged 90)"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#accessor-generics",
+    "href": "slides/03-classes-methods/index.html#accessor-generics",
+    "title": "Classes and Methods",
+    "section": "Accessor generics",
+    "text": "Accessor generics\nIt is good practice to define generics to get and set slots that the user should have access to.\nFor example, a generic to get and set the date of birth\n\nsetGeneric(\"dob\", function(x) standardGeneric(\"dob\"))\n\n[1] \"dob\"\n\nsetGeneric(\"dob&lt;-\", function(x, value) standardGeneric(\"dob&lt;-\"))\n\n[1] \"dob&lt;-\""
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#accessor-methods",
+    "href": "slides/03-classes-methods/index.html#accessor-methods",
+    "title": "Classes and Methods",
+    "section": "Accessor methods",
+    "text": "Accessor methods\nMethods can then be defined for multiple classes using the same interface.\nAccess the date of birth from a Person object\n\nsetMethod(\"dob\", \"Person\", function(x) x@date_of_birth)\ndob(florence)\n\n[1] \"1820-05-12\"\n\n\nChange the date of birth\n\nsetMethod(\"dob&lt;-\", \"Person\", function(x, value) {\n  x@date_of_birth &lt;- as.Date(value)\n  validObject(x)\n  x\n})\ndob(florence) &lt;- \"1820-05-11\"\ndob(florence)\n\n[1] \"1820-05-11\""
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#method-dispatch-1",
+    "href": "slides/03-classes-methods/index.html#method-dispatch-1",
+    "title": "Classes and Methods",
+    "section": "Method dispatch",
+    "text": "Method dispatch\n\nOne argument, single inheritance along vector of classes:\n\nSame as for S3\n\nOne argument, multiple inheritance:\n\nFollow all possible paths from child class to parent classes\nDispatch to first method found with the shortest path\n\nMultiple dispatch\n\nAs multiple inheritance, but follow possible paths for multiple arguments\n\n\nKeep it simple: dispatch on one or two arguments usually sufficient.\nAvoid ambiguous cases by defining methods earlier in path."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#pseudo-classes",
+    "href": "slides/03-classes-methods/index.html#pseudo-classes",
+    "title": "Classes and Methods",
+    "section": "Pseudo-classes",
+    "text": "Pseudo-classes\nMethods can be defined for the ANY pseudo-class\n\nOnly selected if no method found for real classes\n\nThe MISSING pseudo-class is useful for dispatch on two arguments: allow different behaviour if only one argument specified."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#your-turn",
+    "href": "slides/03-classes-methods/index.html#your-turn",
+    "title": "Classes and Methods",
+    "section": "Your turn",
+    "text": "Your turn\n\n\nCreate an S4 class Diag to represent a diagonal matrix with two slots:\n\n\nn the number of rows/cols\nx the numeric values of the diagonal elements Add a prototype to specify default values.\n\n\nTest your class by creating a new instance first without providing any values for the slots and then providing some example values.\nCreate an initialize method so that the n slot is computed automatically and does not have to be provided.\nCreate a Diag() helper function to create a new Diag object, with the user only having to specify the off-diaognal elements.\nCreate a show method to state the size of the matrix and print the off-diagonal elements."
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#references",
+    "href": "slides/03-classes-methods/index.html#references",
+    "title": "Classes and Methods",
+    "section": "References",
+    "text": "References\n\nMain reference for this session, goes a bit further (including R6): Wickham, H, Advanced R (2nd edn), Object-oriented programming section, https://adv-r.hadley.nz/oo.html\nFun example creating Turtle and TurtleWithPen classes to create simple graphics by moving the turtle: https://stuartlee.org/2019/07/09/s4-short-guide/"
+  },
+  {
+    "objectID": "slides/03-classes-methods/index.html#license",
+    "href": "slides/03-classes-methods/index.html#license",
+    "title": "Classes and Methods",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#overview",
+    "href": "slides/06-r-with-cpp/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#resources",
+    "href": "slides/06-r-with-cpp/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#license",
+    "href": "slides/06-r-with-cpp/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#overview",
+    "href": "slides/07-package-foundations/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#resources",
+    "href": "slides/07-package-foundations/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#license",
+    "href": "slides/07-package-foundations/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#overview",
+    "href": "slides/04-efficient-programming/index.html#overview",
+    "title": "Efficient Programming",
+    "section": "Overview",
+    "text": "Overview\n\nMemory management\nBenchmarking\nImproving run time\nParallelisation\nOutlook to package development"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#overview-1",
+    "href": "slides/04-efficient-programming/index.html#overview-1",
+    "title": "Efficient Programming",
+    "section": "Overview",
+    "text": "Overview\nObjects created in R are stored in memory. This has the advantage that objects can be accessed faster, but R slows down as the memory fills up. Creating objects also takes time.\nTherefore:\n\n\nRe-use temporary variables. The allocated storage will be re-used if the vector has the same length.\nSave results for re-use, e.g. index variables\nDon’t save intermediate results unnecessarily – compute on-the-fly\nRemove large objects when no longer needed (with rm())"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#basic-data-structures",
+    "href": "slides/04-efficient-programming/index.html#basic-data-structures",
+    "title": "Efficient Programming",
+    "section": "Basic data structures",
+    "text": "Basic data structures\nTry to use the simplest data structure for your purpose\n\nmatrices vs. data frames\ncharacter or integer vectors vs. factors\nlogical or integer vectors vs. numeric vectors\nunnamed objects vs. named objects\n\n\nIt is especially important to use low-level structures for computation\nYou can create richer objects as a final step before returning to the user.\n\nL for integer"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#big-data",
+    "href": "slides/04-efficient-programming/index.html#big-data",
+    "title": "Efficient Programming",
+    "section": "Big Data",
+    "text": "Big Data\nModern computers have enough RAM to work with millions of records using standard functions.\nSome packages to work more efficiently with big data:\n\ndata.table faster operations on data frames; read/write large CSVs\ndplyr + dbplyr processing of data in databases.\narrow read/write large CSVs or binary files e.g. Parquet; processing larger-than-memory data with dplyr commands.\nbigmemory, biganalytics faster matrix operations, generalized linear models, kmeans\n\n\nN.B. sparse matrices not as efficient as you might expect for general programming, may need big data for it to be important.\nParallelisation can also help, see later"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#growing-objects",
+    "href": "slides/04-efficient-programming/index.html#growing-objects",
+    "title": "Efficient Programming",
+    "section": "Growing Objects",
+    "text": "Growing Objects\nAdding to an object in a loop\n\nres &lt;- NULL\nfor (i in 1:5000) res &lt;- c(res, 1)\n\nmay force a copy to be made at each iteration, with each copy stored until the loop has completed.\n\nIt is far better to create an object of the necessary size first\n\nres &lt;- numeric(5000)\nfor (i in seq_along(res)) res[i] &lt;- 1\n\nTo initialise a list we can use\n\nres &lt;- vector(mode = \"list\", length = 100)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#copy-on-change",
+    "href": "slides/04-efficient-programming/index.html#copy-on-change",
+    "title": "Efficient Programming",
+    "section": "Copy-on-Change",
+    "text": "Copy-on-Change\nR usually copies an object to make changes to it.\ntracemem can be used to trace copies of an object\n\nz &lt;- NULL\nfor (i in 1:3){ z &lt;- c(z,1); print(tracemem(z)) }\n\n[1] \"&lt;0x11b5aac88&gt;\"\n[1] \"&lt;0x13b299908&gt;\"\n[1] \"&lt;0x12b07f0f8&gt;\"\n\n\n\n\nz &lt;- numeric(2); print(tracemem(z))\n\n[1] \"&lt;0x15b8f3788&gt;\"\n\n\n\n\n\nfor (i in 1:2){z[i] &lt;- i;print(tracemem(z))}\n\ntracemem[0x15b8f3788 -&gt; 0x15bbaaa08]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main \n[1] \"&lt;0x15bbaaa08&gt;\"\n[1] \"&lt;0x15bbaaa08&gt;\"\n\n\n\nmakes copy for each separate block of code e.g. if run with above in one go interactively no copies if run in separate chunks 1 copy"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchmarking-1",
+    "href": "slides/04-efficient-programming/index.html#benchmarking-1",
+    "title": "Efficient Programming",
+    "section": "Benchmarking",
+    "text": "Benchmarking\nThere will usually be many ways to write code for a given task. To compare alternatives, we can use benchmark the code.\nIf the code is more than a single expression, create wrappers for each alternative\n\ngrow &lt;- function(n){\n  res &lt;- NULL\n  for (i in 1:n) res &lt;- c(res, 1)\n  res\n}\npre_specify &lt;- function(n){\n  res &lt;- numeric(n)\n  for (i in seq_along(res)) res[i] &lt;- 1\n  res\n}"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchmark",
+    "href": "slides/04-efficient-programming/index.html#benchmark",
+    "title": "Efficient Programming",
+    "section": "bench::mark()",
+    "text": "bench::mark()\nRun the two alternatives with bench::mark(). This function\n\nRuns alternatives ≥ 1 time; at most enough times to take 0.5s\nMakes sure the two expressions return the same result!\n\n\n\nlibrary(bench)\n(bm &lt;- bench::mark(grow(5000), pre_specify(5000)))\n\nWarning: Some expressions had a GC in every iteration; so filtering is\ndisabled.\n\n\n# A tibble: 2 × 6\n  expression             min   median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 grow(5000)          25.6ms   28.3ms      33.8    95.6MB    61.7 \n2 pre_specify(5000)   98.9µs    105µs    9196.     55.8KB     8.00\n\n\n\nGC is the garbage collector which tidies up deleted objects\nitr/sec is how many times the expression could be run in 1s"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#plotting-benchmarks",
+    "href": "slides/04-efficient-programming/index.html#plotting-benchmarks",
+    "title": "Efficient Programming",
+    "section": "Plotting benchmarks",
+    "text": "Plotting benchmarks\nDistribution tends to be right-skewed - focus on the median!\n\nplot(bm)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#scaling",
+    "href": "slides/04-efficient-programming/index.html#scaling",
+    "title": "Efficient Programming",
+    "section": "Scaling",
+    "text": "Scaling\nBenchmarking can be difficult as the best option can depend on the size of the data, e.g. memory allocation can overshadow run time for small objects.\nWhen thinking about how our code scales to bigger, we need to consider what we mean by “big”\n\nnumber of rows or number of columns?\nnumber of observations or number of factor levels?\n\nbench::press() compares a function over a grid of parameters"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#benchpress",
+    "href": "slides/04-efficient-programming/index.html#benchpress",
+    "title": "Efficient Programming",
+    "section": "bench::press()",
+    "text": "bench::press()\n\n\nbench::press(n = c(10, 100), k = c(10, 1),\n  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels\n)\n\nRunning with:\n      n     k\n\n\n1    10    10\n\n\n2   100    10\n\n\n3    10     1\n\n\n4   100     1\n\n\n# A tibble: 4 × 8\n  expression                  n     k    min median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 gl(n, k, length = 1000)    10    10 3.08µs  3.4µs   259050.    12.4KB     25.9\n2 gl(n, k, length = 1000)   100    10 8.86µs 9.88µs    98407.   11.05KB     19.7\n3 gl(n, k, length = 1000)    10     1 2.75µs 3.12µs   300903.    3.95KB     30.1\n4 gl(n, k, length = 1000)   100     1 5.82µs  6.6µs   145322.    7.53KB     29.1"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-1",
+    "href": "slides/04-efficient-programming/index.html#exercise-1",
+    "title": "Efficient Programming",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nSuppose we have a matrix of data and a two-level factor\n\nnr &lt;- 10\nnc &lt;- 50\nX &lt;- matrix(rnorm(nr * nc, 10, 3), nrow = nr)\ngrp &lt;- gl(2, nc/2)\n\nUse bench::mark() to compare the following ways to find the coefficients of a linear model fitted to each row\n\n# one\nres &lt;- vector(\"list\", nr)\nfor(i in seq_len(nr)){\n  res[[i]] &lt;- coef(lm(X[i,] ~ grp))\n}\ndo.call(\"cbind\", res)\n# two\nres2 &lt;- coef(lm(t(X) ~ grp))"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#faster-common-operations",
+    "href": "slides/04-efficient-programming/index.html#faster-common-operations",
+    "title": "Efficient Programming",
+    "section": "Faster common operations",
+    "text": "Faster common operations\n\nSorting\n\nUse sort(x, partial = 1:10) to get the top 10\nUse sort(x, decreasing = TRUE) vs rev(sort(x))\n\n\n\n\nGenerating numeric vectors\n\nseq.int(), seq_along(x), seq_len(n) vs seq()\n\nrep.int() or rep_len(n) vs rep()\n\n\n\n\n\nwhich.min(), which.max() vs e.g. which(x == min(x))\n\n\n\n\nanyNA(x) vs any(is.na(x))\n\n\n“int” stands for internal!"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#for-loops",
+    "href": "slides/04-efficient-programming/index.html#for-loops",
+    "title": "Efficient Programming",
+    "section": "For loops",
+    "text": "For loops\nFor loops are an intuitive way to write code, but can be very inefficient.\nfor is a function, : or seq_along is another function, each use of [ is a call to a function, …, so a loop involves many nested function calls.\n\nTry to keep for loops for truly iterative computations or tasks that are fast in any case (optimizing code takes time!)\nOtherwise make loops as lean as possible, by pre-computing values that do not need be be computed iteratively."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#vectorization",
+    "href": "slides/04-efficient-programming/index.html#vectorization",
+    "title": "Efficient Programming",
+    "section": "Vectorization",
+    "text": "Vectorization\nVectorization is operating on vectors (or vector-like objects) rather than individual elements.\nMany operations in R are vectorized, e.g.\n\nx &lt;- 1:3\ny &lt;- 3:1\nx == y\n\n[1] FALSE  TRUE FALSE\n\nlog(x)\n\n[1] 0.0000000 0.6931472 1.0986123\n\nres &lt;- list(a = 1:3, b = 1:6)\nlengths(res)\n\na b \n3 6 \n\n\nWe do not need to loop through each element!"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#recycling",
+    "href": "slides/04-efficient-programming/index.html#recycling",
+    "title": "Efficient Programming",
+    "section": "Recycling",
+    "text": "Recycling\nVectorized functions will recycle shorter vectors to create vectors of the same length\n\n1:4 + 0:1 + 2 # 1+0+2, 2+1+2, 3+0+2, 4+1+2\n\n[1] 3 5 5 7\n\n\nThis is particularly useful for single values\n\ncbind(1, 3:4)\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    1    4\n\n\nand for generating regular patterns\n\npaste0(rep(1:3, each = 2), c(\"a\", \"b\"))\n\n[1] \"1a\" \"1b\" \"2a\" \"2b\" \"3a\" \"3b\""
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#ifelse",
+    "href": "slides/04-efficient-programming/index.html#ifelse",
+    "title": "Efficient Programming",
+    "section": "ifelse()",
+    "text": "ifelse()\nifelse is a vectorised version of if and else blocks\n\nx &lt;- c(5, 2, 9, 12)\nifelse(x &gt; 6, 2 * x, 3 * x)\n\n[1] 15  6 18 24\n\n\nRecycling is also very useful here\n\nx &lt;- 1:10\nifelse(x %% 2 == 0, 5, 12)\n\n [1] 12  5 12  5 12  5 12  5 12  5\n\n\nHowever indexing is more efficient than ifelse\n\ny &lt;- rep.int(12, 10)\ny[x %% 2 == 0] &lt;- 5\ny\n\n [1] 12  5 12  5 12  5 12  5 12  5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#logical-operations",
+    "href": "slides/04-efficient-programming/index.html#logical-operations",
+    "title": "Efficient Programming",
+    "section": "Logical operations",
+    "text": "Logical operations\nLogical operators such as & and | are vectorized, e.g.\n\nx &lt;- c(1, 0.6, 1.2, 0.4, 0.5)\nx &gt; 0.4 & x &lt; 0.8\n\n[1] FALSE  TRUE FALSE FALSE  TRUE\n\n\nIf we only want to compare vectors of length 1 the operators && and || are more efficient as they only compute the RHS if needed\n\nx[1] &gt; 0.4 && x[1] &lt; 0.8\n\n[1] FALSE\n\n\nMake sure the vectors are of length 1, otherwise you get an error. This change was introduced in R ≥ 4.3.\n\nx &gt; 0.4 && x &lt; 0.8\n\nError in x &gt; 0.4 && x &lt; 0.8: 'length = 5' in coercion to 'logical(1)'\n\n\n\nIn R &ge 4.2.0 you get a warning but it still returns a comparison of only the first element. In earlier versions, there was no warning."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
+    "href": "slides/04-efficient-programming/index.html#vectorization-and-matrices",
+    "title": "Efficient Programming",
+    "section": "Vectorization and Matrices",
+    "text": "Vectorization and Matrices\nVectorizations applies to matices too, not only through matrix algebra\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nM + M\n\n     [,1] [,2]\n[1,]    2    6\n[2,]    4    8\n\n\nbut also vectorized functions\n\nM &lt;- M + rep(1.3, 4)\nround(M)\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#matrices-and-recycling",
+    "href": "slides/04-efficient-programming/index.html#matrices-and-recycling",
+    "title": "Efficient Programming",
+    "section": "Matrices and Recycling",
+    "text": "Matrices and Recycling\nValues are recycled down matrix, which is convenient for row-wise operations\n\nM &lt;- matrix(1:6, nrow = 2, ncol = 3)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nM - 1:2\n\n     [,1] [,2] [,3]\n[1,]    0    2    4\n[2,]    0    2    4\n\n\nTo do the same for columns we would need to explicitly replicate, which is not so efficient.\n\nM - rep(1:3, each = 2)\n\n     [,1] [,2] [,3]\n[1,]    0    1    2\n[2,]    1    2    3"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#apply",
+    "href": "slides/04-efficient-programming/index.html#apply",
+    "title": "Efficient Programming",
+    "section": "apply()",
+    "text": "apply()\napply provides a way to apply a function to every row or column of a matrix\n\nM &lt;- matrix(1:20, 2, 10)\nM\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n[1,]    1    3    5    7    9   11   13   15   17    19\n[2,]    2    4    6    8   10   12   14   16   18    20\n\n# MARGIN 1 over rows\napply(M, 1, quantile, 0.75)\n\n[1] 14.5 15.5\n\n# MARGIN 2 over columns\napply(M, 2, mean)\n\n [1]  1.5  3.5  5.5  7.5  9.5 11.5 13.5 15.5 17.5 19.5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#lapply",
+    "href": "slides/04-efficient-programming/index.html#lapply",
+    "title": "Efficient Programming",
+    "section": "lapply()",
+    "text": "lapply()\nlapply applies a given function to each element of a list\n\nl &lt;- list()\nl$x &lt;- 1:3\nl$y &lt;- 4:6\nlapply(l, mean)\n\n$x\n[1] 2\n\n$y\n[1] 5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#sapply-and-vapply",
+    "href": "slides/04-efficient-programming/index.html#sapply-and-vapply",
+    "title": "Efficient Programming",
+    "section": "sapply() and vapply()",
+    "text": "sapply() and vapply()\nsapply acts similarly to lapply, but tries to simplify the result\n\nsapply(l, mean)\n\nx y \n2 5 \n\n\nIt is better to use vapply() in programming as it ensures the returned object is of the expected type (and is slightly faster)\n\nvapply(l, mean, numeric(1))\n\nx y \n2 5"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
+    "href": "slides/04-efficient-programming/index.html#rowcolumn-wise-operations",
+    "title": "Efficient Programming",
+    "section": "Row/Column-wise Operations",
+    "text": "Row/Column-wise Operations\nSeveral functions are available implementing efficient row/column-wise operations, e.g. colMeans(), rowMeans(), colSums(), rowSums(), sweep()\n\nM &lt;- matrix(1:4, nrow = 2, ncol = 2)\nrowMeans(M)\n\n[1] 2 3\n\n\nThese provide an alternative to iterating though rows and columns in R (the iteration happens in C, which is faster).\nThe matrixStats provides further “matricised” methods, including medians and standard deviations."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
+    "href": "slides/04-efficient-programming/index.html#exercise-2-ht-raju-bhakta",
+    "title": "Efficient Programming",
+    "section": "Exercise 2 (h/t Raju Bhakta)",
+    "text": "Exercise 2 (h/t Raju Bhakta)\nSampling from 0.3 × N(0, 1) + 0.5 × N(10, 1) + 0.2 × N(3, 0.1):\n\n# Set the random seed and the number of values to sample\nset.seed(1); n &lt;- 100000                 \n\n# Sample the component each value belongs to\ncomponent &lt;- sample(1:3, prob = c(0.3, 0.5, 0.2), \n                    size = n, replace = TRUE)\n\n# Sample from the corresponding Normal for each value\nx &lt;- numeric(n)\nfor(i in seq_len(n)){\n  if (component[i] == 1){\n    x[i] &lt;- rnorm(1, 0, 1)\n  } else if (component[i] == 2) {\n    x[i] &lt;- rnorm(1, 10, 1)\n  } else {\n    x[i] &lt;- rnorm(1, 3, sqrt(0.1))\n  }\n}"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#exercise-2-continued",
+    "href": "slides/04-efficient-programming/index.html#exercise-2-continued",
+    "title": "Efficient Programming",
+    "section": "Exercise 2 (continued)",
+    "text": "Exercise 2 (continued)\nThe for loop in the previous code is suitable for vectorization: the iterations are completely independent.\nrnorm() is vectorized in the arguments mu and sd, e.g. to simulate a value from the 1st and 3rd component we could write:\n\nmu &lt;- c(0, 10, 3)\nsd &lt;- sqrt(c(1, 1, 0.1))\nrnorm(2, mu[c(1, 3)], sd[c(1, 3)])\n\n[1] -0.9814571  3.1011124\n\n\nUse this information to replace the for loop, using a single call to rnorm() to simulate n values from the mixture distribution.\nUse bench::mark() to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#parallelisation-1",
+    "href": "slides/04-efficient-programming/index.html#parallelisation-1",
+    "title": "Efficient Programming",
+    "section": "Parallelisation",
+    "text": "Parallelisation\nMost functions in R run on a single core of your machine. The future.apply package, part of the futureverse, provides parallel versions of all the apply-type functions.\nhttps://www.futureverse.org\nParallelisation is most straight-forward to implement for embarrassingly parallel problems, such as applying a function to elements of a list."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#example-setup",
+    "href": "slides/04-efficient-programming/index.html#example-setup",
+    "title": "Efficient Programming",
+    "section": "Example setup",
+    "text": "Example setup\nAdapted from https://henrikbengtsson.github.io/course-stanford-futureverse-2023/\nLet’s create a slow function:\n\nslow_sum &lt;- function(x) {\n  sum &lt;- 0\n  \n  for (value in x) {\n    Sys.sleep(0.5)  ## half-second slowdown per value\n    sum &lt;- sum + value\n  }\n  \n  sum\n}\n\n\nlibrary(tictoc)\ntic()\ny &lt;- slow_sum(1:10)\ntoc()\n\n5.032 sec elapsed"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#parallelising-map-reduce-calls",
+    "href": "slides/04-efficient-programming/index.html#parallelising-map-reduce-calls",
+    "title": "Efficient Programming",
+    "section": "Parallelising map-reduce calls",
+    "text": "Parallelising map-reduce calls\nNow suppose we have four sets of numeric vectors, in a list, and we want to calculate slow_sum() for each:\n\nxs &lt;- list(1:10, 11:20, 21:30, 31:40)\n\nWe could run lapply() over this, but it takes a while as it handles each list item in turn:\n\ntic()\nys &lt;- lapply(xs, slow_sum)\ntoc()\n\n20.139 sec elapsed"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#setting-up-for-parallel-processing",
+    "href": "slides/04-efficient-programming/index.html#setting-up-for-parallel-processing",
+    "title": "Efficient Programming",
+    "section": "Setting up for parallel processing",
+    "text": "Setting up for parallel processing\nThe future.apply package comes to the rescue!\nThe first step is to make a cluster from the available cores.\nTo parallelise on a local machine, use multisession in plan():\n\nlibrary(future.apply)\nplan(multisession)\n\nThe default number of workers is availableCores().\nWe’ll also use the tictoc package for timings:\n\nlibrary(tictoc)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#using-future_lapply",
+    "href": "slides/04-efficient-programming/index.html#using-future_lapply",
+    "title": "Efficient Programming",
+    "section": "Using future_lapply()",
+    "text": "Using future_lapply()\nfuture_lapply() is a drop-in parallel replacement for lapply()\n\nplan(multisession, workers = 4)\n\n\ntic()\nys &lt;- future_lapply(xs, slow_sum)\ntoc()\n\n5.266 sec elapsed\n\n\nThe four slow sums are calculated in about the same time as it takes to calculate one, since they are being calculated simultaneously on separate cores."
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#your-turn",
+    "href": "slides/04-efficient-programming/index.html#your-turn",
+    "title": "Efficient Programming",
+    "section": "Your turn!",
+    "text": "Your turn!\nThe efficient package contains a function to simulate a game of snakes and ladders, returning the number of rolls required to win.\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\nParallelise the following code:\n\nlibrary(efficient)\nN &lt;- 100\nnrolls &lt;- sapply(seq_len(N), snakes_ladders)\n\nUse tictoc to compare the run-times. Roughly large does N have to be for the parallel version to be worth using?"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#general-principles",
+    "href": "slides/04-efficient-programming/index.html#general-principles",
+    "title": "Efficient Programming",
+    "section": "General Principles",
+    "text": "General Principles\n\nTry to use vectorized functions where possible.\nOtherwise use the apply family (and parellelise if necessary). Custom functions will often be useful here to pass to apply etc.\nTry to keep for loops for true iterative computations or tasks that are fast in any case (optimizing code takes time!)"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#references",
+    "href": "slides/04-efficient-programming/index.html#references",
+    "title": "Efficient Programming",
+    "section": "References",
+    "text": "References\nGood references on optimizing R code:\n\nWickham, H, Advanced R (2nd edn), Improving performance section, https://adv-r.hadley.nz/perf-improve.html\nGillespie, C and Lovelace, R, Efficient R programming, https://csgillespie.github.io/efficientR/\n\nTutorials on the Futureverse:\n\nhttps://www.futureverse.org/tutorials.html"
+  },
+  {
+    "objectID": "slides/04-efficient-programming/index.html#license",
+    "href": "slides/04-efficient-programming/index.html#license",
+    "title": "Efficient Programming",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#overview",
+    "href": "slides/01-welcome/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#resources",
+    "href": "slides/01-welcome/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#license",
+    "href": "slides/01-welcome/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#overview",
+    "href": "slides/05-profiling/index.html#overview",
+    "title": "Profiling",
+    "section": "Overview",
+    "text": "Overview\n\nProfiling\nMAYBE BRING IN SOMETHING FROM THE BOTTLENECKS SESSION?"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#profiling-code",
+    "href": "slides/05-profiling/index.html#profiling-code",
+    "title": "Profiling",
+    "section": "Profiling code",
+    "text": "Profiling code\nTo make our code more efficient, we first need to identify the bottlenecks, in terms of time and/or memory usage.\nProfiling stops the execution of code every few milliseconds and records\n\nThe call stack: the function currently being executed, the function that it was called from and so on up to the top-level function call.\nThe memory allocated and released since the last record.\n\nWe will use the profvis package to visualise profiling results."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#example-nested-pause-functions",
+    "href": "slides/05-profiling/index.html#example-nested-pause-functions",
+    "title": "Profiling",
+    "section": "Example: nested pause functions",
+    "text": "Example: nested pause functions\nThe following code is saved in profiling-example.R and uses profvis::pause() to wait 0.1s inside each function\n\ntop_level &lt;- function() {\n  profvis::pause(0.1)\n  middle_level()\n  bottom_level()\n}\nmiddle_level &lt;- function() {\n  profvis::pause(0.1)\n  bottom_level()\n}\nbottom_level &lt;- function() {\n  profvis::pause(0.1)\n}\n\n\nSys.sleep() can not be used as it would not show in profiling output"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#using-profvis",
+    "href": "slides/05-profiling/index.html#using-profvis",
+    "title": "Profiling",
+    "section": "Using profvis",
+    "text": "Using profvis\nSource the code to be profiled and pass the function call to be profiled to profvis()\n\nlibrary(profvis)\nsource(\"profiling-example.R\")\nprofvis(top_level())\n\nAn interactive HTML document will open with the results.\nIn RStudio this will open in the source pane; click “show in new window” button to open the document in a new window."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#section",
+    "href": "slides/05-profiling/index.html#section",
+    "title": "Profiling",
+    "section": "",
+    "text": "Screenshot of the profvis HTML output. At the bottom, a stacked set of horizontal bars along a time axis, representing the length of time in each function. At a given time, the top-level function is at the bottom of the stack with each nested function stacked on top. The source code is shown at the top of the screenshot, with a horizontal bar for each line, showing the time spent. Interpretation on next slide"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#interpretation",
+    "href": "slides/05-profiling/index.html#interpretation",
+    "title": "Profiling",
+    "section": "Interpretation",
+    "text": "Interpretation\nIn the flame graph the yellow bars correspond to lines in the source file shown above the graph. The plot is interactive.\nIn the overall time of 250ms we see:\n\n4 equal-sized blocks for each pause of 0.1s\nNearly all time is spent in the top-level function\nNearly half the time is spent in the mid-level function\nNearly half the time is also spent in the bottom-level function\nThe cmp function is called as R tries to compile new functions so that it can call the compiled version in subsequent calls.\n\nNo objects are created or deleted: no memory changes."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#data-tab",
+    "href": "slides/05-profiling/index.html#data-tab",
+    "title": "Profiling",
+    "section": "Data tab",
+    "text": "Data tab\nThe Data tab shows a table with the memory and time usage for each function call. The nested calls can be expanded/collapsed to show/hide the corresponding lines.\n\nScreenshot of the data tab in the profvis HTML output. A table with columns “Code” (function name), “File” (name of source file containing function), “Memory (MB)” and “Time (ms)”."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#memory-profiling",
+    "href": "slides/05-profiling/index.html#memory-profiling",
+    "title": "Profiling",
+    "section": "Memory profiling",
+    "text": "Memory profiling\nTo illustrate memory profiling we can consider a loop that concatenates values.\nAs it is a small code snippet, we can pass to profvis() directly\n\nprofvis({\n  x &lt;- integer()\n  for (i in 1:10000) {\n    x &lt;- c(x, i)\n  }\n})"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#section-1",
+    "href": "slides/05-profiling/index.html#section-1",
+    "title": "Profiling",
+    "section": "",
+    "text": "Flame graph for profiling the contenation example. Interpretation on next slide."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#gc",
+    "href": "slides/05-profiling/index.html#gc",
+    "title": "Profiling",
+    "section": "<GC>",
+    "text": "&lt;GC&gt;\nAs expected, the majority of the time is spent within c(), but we also see a lot time spent in &lt;GC&gt;, the garbage collector.\nIn the memory column next to the corresponding line in the source code, we see a bar to left labelled -123.0 and a bar to the right labelled 137.2. This means that 137 MB of memory was allocated and 123 MB of memory was released.\nEach call to c() causes a new copy of x to be created.\nMemory profiling can help to identify short-lived objects that might be avoided by changes to the code."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#monopoly",
+    "href": "slides/05-profiling/index.html#monopoly",
+    "title": "Profiling",
+    "section": "Monopoly",
+    "text": "Monopoly\n\n\nIn the game of Monopoly, players roll two die to move round the board. Players buy assets on which they can charge rent or taxes and aim to make the most money.\nThe squares on the board represent\n\n\n\n\n\nProperties, train stations or utility companies to buy\nEvents that trigger an action, e.g. paying a tax or going to jail\n\nThe efficient package contains the simulate_monopoly() function to simulate game play; we’ll use this to practice profiling."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#your-turn",
+    "href": "slides/05-profiling/index.html#your-turn",
+    "title": "Profiling",
+    "section": "Your turn!",
+    "text": "Your turn!\n\nInstall the efficient package with the following code to keep the code source files:\n\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\n\nUse profvis() to profile simulate_monopoly(10000). Explore the output. Which parts of the code are slow?\nMost of the time is spent in the function move_square(). Use View(move_square) to view the source code. Copy the code to a new .R file and rename the function move_square2. Edit move_square2() to speed up the slow parts of the code. (Go to next slide for testing the updates)"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#your-turn-continued",
+    "href": "slides/05-profiling/index.html#your-turn-continued",
+    "title": "Profiling",
+    "section": "Your turn! (continued)",
+    "text": "Your turn! (continued)\nCreate a wrapper to run a specified move square function n times with different seeds:\n\nrun &lt;- function(n, fun){\n  x &lt;- numeric(n)\n  for (i in seq_len(n)) {\n    set.seed(i)\n    x[i] &lt;- fun(1)\n  }\n  x\n}\n\nRun bench::mark(run(n, move_square), run(n, move_square2)) with n = 1000 to test your changes.\nFinally, compare profvis(run(n, move_square)) with profvis(run(n, move_square2))."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#general-principles",
+    "href": "slides/05-profiling/index.html#general-principles",
+    "title": "Profiling",
+    "section": "General principles",
+    "text": "General principles\n\nAvoid optimizing too soon\n\nGet the code right first\n\nAvoid over-optimization\n\nFocus on the bottlenecks\nKeep an eye on the units - will real gains be made?\nThink about maintainability: readability, simplicity, dependencies\n\nAvoid anonymous functions\n\nName utility functions to see them in the profile\n\nUse benchmarking to assess alternative implementations"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#c-and-rcpp",
+    "href": "slides/05-profiling/index.html#c-and-rcpp",
+    "title": "Profiling",
+    "section": "C++ and Rcpp",
+    "text": "C++ and Rcpp\nIn the next session, we’ll cover using C++ via Rcpp to rewrite R code that has been identified through profiling as causing bottlenecks in your code."
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#references",
+    "href": "slides/05-profiling/index.html#references",
+    "title": "Profiling",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "slides/05-profiling/index.html#license",
+    "href": "slides/05-profiling/index.html#license",
+    "title": "Profiling",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "slides/00-template/index.html#overview",
+    "href": "slides/00-template/index.html#overview",
+    "title": "SESSION TITLE",
+    "section": "Overview",
+    "text": "Overview\n\nWhat we’re covering"
+  },
+  {
+    "objectID": "slides/00-template/index.html#references",
+    "href": "slides/00-template/index.html#references",
+    "title": "SESSION TITLE",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "slides/00-template/index.html#resources",
+    "href": "slides/00-template/index.html#resources",
+    "title": "SESSION TITLE",
+    "section": "Resources",
+    "text": "Resources\nMaterial inspired by and remixed from:"
+  },
+  {
+    "objectID": "slides/00-template/index.html#license",
+    "href": "slides/00-template/index.html#license",
+    "title": "SESSION TITLE",
+    "section": "License",
+    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html",
+    "href": "content/10-check-package-documentation/index.html",
+    "title": "R Packages: Check and package documentation",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html#slides",
+    "href": "content/10-check-package-documentation/index.html#slides",
+    "title": "R Packages: Check and package documentation",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/10-check-package-documentation/index.html#resources",
+    "href": "content/10-check-package-documentation/index.html#resources",
+    "title": "R Packages: Check and package documentation",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/08-documentation/index.html",
+    "href": "content/08-documentation/index.html",
+    "title": "R Packages: Documentation",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/08-documentation/index.html#slides",
+    "href": "content/08-documentation/index.html#slides",
+    "title": "R Packages: Documentation",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/08-documentation/index.html#resources",
+    "href": "content/08-documentation/index.html#resources",
+    "title": "R Packages: Documentation",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html",
+    "href": "content/11-data-publication-maintenance/index.html",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html#slides",
+    "href": "content/11-data-publication-maintenance/index.html#slides",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/11-data-publication-maintenance/index.html#resources",
+    "href": "content/11-data-publication-maintenance/index.html#resources",
+    "title": "R Packages: Packaging data; publication and maintenance",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html",
+    "href": "content/12-Rcpp-packages/index.html",
+    "title": "R Packages: Rcpp",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html#slides",
+    "href": "content/12-Rcpp-packages/index.html#slides",
+    "title": "R Packages: Rcpp",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/12-Rcpp-packages/index.html#resources",
+    "href": "content/12-Rcpp-packages/index.html#resources",
+    "title": "R Packages: Rcpp",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/02-functions/index.html",
+    "href": "content/02-functions/index.html",
+    "title": "Advanced R: Functions",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/02-functions/index.html#slides",
+    "href": "content/02-functions/index.html#slides",
+    "title": "Advanced R: Functions",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/02-functions/index.html#resources",
+    "href": "content/02-functions/index.html#resources",
+    "title": "Advanced R: Functions",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nFunctions chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/functions.html\nDebugging chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/debugging.html\nDebugging from the RStudio User Guide\nhttps://docs.posit.co/ide/user/ide/guide/code/debugging.html"
+  },
+  {
+    "objectID": "content/09-testing/index.html",
+    "href": "content/09-testing/index.html",
+    "title": "R Packages: Testing",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/09-testing/index.html#slides",
+    "href": "content/09-testing/index.html#slides",
+    "title": "R Packages: Testing",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/09-testing/index.html#resources",
+    "href": "content/09-testing/index.html#resources",
+    "title": "R Packages: Testing",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html",
+    "href": "content/03-classes-methods/index.html",
+    "title": "Advanced R: Classes and methods",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html#slides",
+    "href": "content/03-classes-methods/index.html#slides",
+    "title": "Advanced R: Classes and methods",
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/03-classes-methods/index.html#resources",
+    "href": "content/03-classes-methods/index.html#resources",
+    "title": "Advanced R: Classes and methods",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nMain reference for this section, goes a bit further (including R6): Wickham, H, Advanced R (2nd edn), Object-oriented programming section\n\nhttps://adv-r.hadley.nz/oo.html\n\nFun example creating Turtle and TurtleWithPen classes to create simple graphics by moving the turtle\nhttps://stuartlee.org/2019/07/09/s4-short-guide/"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html",
+    "href": "content/06-r-with-cpp/index.html",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html#slides",
+    "href": "content/06-r-with-cpp/index.html#slides",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/06-r-with-cpp/index.html#resources",
+    "href": "content/06-r-with-cpp/index.html#resources",
+    "title": "Advanced R: C++ and Rcpp",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/07-package-foundations/index.html",
+    "href": "content/07-package-foundations/index.html",
+    "title": "R Packages: Package foundations",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/07-package-foundations/index.html#slides",
+    "href": "content/07-package-foundations/index.html#slides",
+    "title": "R Packages: Package foundations",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/07-package-foundations/index.html#resources",
+    "href": "content/07-package-foundations/index.html#resources",
+    "title": "R Packages: Package foundations",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html",
+    "href": "content/04-efficient-programming/index.html",
+    "title": "Advanced R: Efficient programming",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html#slides",
+    "href": "content/04-efficient-programming/index.html#slides",
+    "title": "Advanced R: Efficient programming",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/04-efficient-programming/index.html#resources",
+    "href": "content/04-efficient-programming/index.html#resources",
+    "title": "Advanced R: Efficient programming",
+    "section": "Resources",
+    "text": "Resources\n\nReading\nGood references on optimizing R code:\n\nWickham, H, Advanced R (2nd edn), Improving performance section, https://adv-r.hadley.nz/perf-improve.html\nGillespie, C and Lovelace, R, Efficient R programming, https://csgillespie.github.io/efficientR/\n\nTutorials on the Futureverse:\n\nhttps://www.futureverse.org/tutorials.html\n\n\n\nPackages\n\nefficient\nhttps://github.com/csgillespie/efficient\nfuture and future.apply from the Futureverse\nhttps://future.futureverse.org\nhttps://future.apply.futureverse.org"
+  },
+  {
+    "objectID": "content/01-welcome/index.html",
+    "href": "content/01-welcome/index.html",
+    "title": "Welcome and introduction",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/01-welcome/index.html#slides",
+    "href": "content/01-welcome/index.html#slides",
+    "title": "Welcome and introduction",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/01-welcome/index.html#resources",
+    "href": "content/01-welcome/index.html#resources",
+    "title": "Welcome and introduction",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
+    "objectID": "content/05-profiling/index.html",
+    "href": "content/05-profiling/index.html",
+    "title": "Advanced R: Profiling",
+    "section": "",
+    "text": "This page and the slides for this session are still under development"
+  },
+  {
+    "objectID": "content/05-profiling/index.html#slides",
+    "href": "content/05-profiling/index.html#slides",
+    "title": "Advanced R: Profiling",
+    "section": "Slides",
+    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+  },
+  {
+    "objectID": "content/05-profiling/index.html#resources",
+    "href": "content/05-profiling/index.html#resources",
+    "title": "Advanced R: Profiling",
+    "section": "Resources",
+    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
     "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
-  },
-  {
-    "objectID": "content.html",
-    "href": "content.html",
-    "title": "Content",
-    "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "",
-    "text": "Welcome to the website for the Advanced R and R Packages Workshop.\nThis is a three-day workshop, taking place at The University of Warwick, June 19th-21st, 2023.\nIt is aimed primarily at graduate students in the Department of Statistics, but open to all interested members of the university, space permitting. For more details on how to register, see the join page."
-  },
-  {
-    "objectID": "index.html#syllabus-overview",
-    "href": "index.html#syllabus-overview",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Syllabus overview",
-    "text": "Syllabus overview\nThe Advanced R sections of the workshop covers functions, classes and methods, efficient programming, profiling, C++ and Rcpp.\nThe R Packages sections of the workshop covers the entire process of creating a package, including data, checking and testing, all levels of documentation, publication and maintenance. The final session covers the advanced topic of using Rcpp code in a package.\nFor more details, see the content page."
-  },
-  {
-    "objectID": "index.html#session-details",
-    "href": "index.html#session-details",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Session details",
-    "text": "Session details\n   June 19th-21st, 2023\n   Room OC1.02, The Oculus, University of Warwick\n   Lunch provided each day\n   See the full schedule."
-  },
-  {
-    "objectID": "index.html#instructor-details",
-    "href": "index.html#instructor-details",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Instructor details",
-    "text": "Instructor details\n   Ella Kaye and Heather Turner\n   ella.m.kaye@warwick.ac.uk and h.turner.1@warwick.ac.uk"
-  },
-  {
-    "objectID": "index.html#prerequistes",
-    "href": "index.html#prerequistes",
-    "title": "Advanced R and R Packages Workshop",
-    "section": "Prerequistes",
-    "text": "Prerequistes\nPlease see the prerequisites page for details on getting set up in advance of the workshop."
-  },
-  {
-    "objectID": "join.html",
-    "href": "join.html",
-    "title": "Join the workshop",
-    "section": "",
-    "text": "This course is aimed primarily at graduate students in the Department of Statistics at the University of Warwick. It is also open to 3rd and 4th year undergraduate students and members of staff in the Department of Statistics.\nSpace permitting, the workshop is also open to all interested members of the University of Warwick.\nTo express your interest in joining the workshop, please fill in the form, linked below (it may take a moment to load).\nPlease sign-up by June 11th. Places will be confirmed by e-mail by June 12th."
   },
   {
     "objectID": "prerequisites.html",
@@ -1141,255 +1463,10 @@
     "text": "R and RStudio\nPlease ensure that you have up-to-date versions of R and RStudio installed prior to the first session. If you are on MacOS/Linux or a self-managed Windows laptop, install the latest versions, currently R-4.3.0 and RStudio-2023.03.1.\nWe also strongly recommend all participants to install the development tools to avoid potential issues installing packages.\n\nITS Managed Windows Machines\nR and RStudio are available on student computers (via Start, All Programs) and also staff computers (via Start, All Programs, Software Center).\n\n\nInstalling R\nDownload the pre-compiled binary for your OS from https://cloud.r-project.org/ and install. More specifically:\nFor Windows\nClick “Download R for Windows”, then “base”, then “Download R-4.3.0 for Windows”. This will download an .exe file; once downloaded, open to start the installation.\nFor Mac\nClick “Download R for macOS”, then “R-4.3.0-arm64.pkg” (the first option) to download the installer for Macs with Apple Silicon chips or “R-4.3.0-x86_64.pkg” (the second option) to download the installer for Macs with Intel chips. Run the installer to complete installation.\nFor Linux\nClick “Download R for Linux”. Instructions on installing are given for Debian, Fedora, Redhat, Suse and Ubuntu distributions. Where there is a choice, install both r-base and r-base-dev.\n\n\nInstalling R Studio Desktop (Open Source Edition)\nDownloads are available from https://posit.co/download/rstudio-desktop/#download\nDownload the relevant installer either under the “Install RStudio” header or, scrolling down the page, from the ‘All installers and Tarballs’ section. Run the installer to complete installation.\n\n\nDevelopment Tools\nSome additional tools may be required to compile R packages from source.\nFor Windows\nNOTE: This does not require admin rights.\nDownload the Rtools installer that matches your version of R from https://cran.r-project.org/bin/windows/Rtools/. Run the installer, Rtools.exe, keeping the default settings.\nFor Mac\nInstall Command Line Tools.\nEither:\n\nDownload and install XCode from the Mac AppStore: http://itunes.apple.com/us/app/xcode/id497799835?mt=12\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\n\nOr for a smaller download size:\n\nRegister as an Apple Developer (free) here: https://developer.apple.com/programs/register/\nDownload the Command Line Tools for XCode appropriate for the version of OS X you are running from here: https://developer.apple.com/downloads/\n\nFor Linux\nIf you installed r-base-dev, when installing R, you should have all you need to build packages from source. Otherwise return to the instructions for installing R for your distribution and follow the instructions there to install the additional tools."
   },
   {
-    "objectID": "content/12-Rcpp-packages/index.html",
-    "href": "content/12-Rcpp-packages/index.html",
-    "title": "R Packages: Rcpp",
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "Content",
     "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/12-Rcpp-packages/index.html#slides",
-    "href": "content/12-Rcpp-packages/index.html#slides",
-    "title": "R Packages: Rcpp",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/12-Rcpp-packages/index.html#resources",
-    "href": "content/12-Rcpp-packages/index.html#resources",
-    "title": "R Packages: Rcpp",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/09-testing/index.html",
-    "href": "content/09-testing/index.html",
-    "title": "R Packages: Testing",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/09-testing/index.html#slides",
-    "href": "content/09-testing/index.html#slides",
-    "title": "R Packages: Testing",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/09-testing/index.html#resources",
-    "href": "content/09-testing/index.html#resources",
-    "title": "R Packages: Testing",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/11-data-publication-maintenance/index.html",
-    "href": "content/11-data-publication-maintenance/index.html",
-    "title": "R Packages: Packaging data; publication and maintenance",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/11-data-publication-maintenance/index.html#slides",
-    "href": "content/11-data-publication-maintenance/index.html#slides",
-    "title": "R Packages: Packaging data; publication and maintenance",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/11-data-publication-maintenance/index.html#resources",
-    "href": "content/11-data-publication-maintenance/index.html#resources",
-    "title": "R Packages: Packaging data; publication and maintenance",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/08-documentation/index.html",
-    "href": "content/08-documentation/index.html",
-    "title": "R Packages: Documentation",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/08-documentation/index.html#slides",
-    "href": "content/08-documentation/index.html#slides",
-    "title": "R Packages: Documentation",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/08-documentation/index.html#resources",
-    "href": "content/08-documentation/index.html#resources",
-    "title": "R Packages: Documentation",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/03-classes-methods/index.html",
-    "href": "content/03-classes-methods/index.html",
-    "title": "Advanced R: Classes and methods",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/03-classes-methods/index.html#slides",
-    "href": "content/03-classes-methods/index.html#slides",
-    "title": "Advanced R: Classes and methods",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/03-classes-methods/index.html#resources",
-    "href": "content/03-classes-methods/index.html#resources",
-    "title": "Advanced R: Classes and methods",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nMain reference for this section, goes a bit further (including R6): Wickham, H, Advanced R (2nd edn), Object-oriented programming section\n\nhttps://adv-r.hadley.nz/oo.html\n\nFun example creating Turtle and TurtleWithPen classes to create simple graphics by moving the turtle\nhttps://stuartlee.org/2019/07/09/s4-short-guide/"
-  },
-  {
-    "objectID": "content/04-efficient-programming/index.html",
-    "href": "content/04-efficient-programming/index.html",
-    "title": "Advanced R: Efficient programming",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/04-efficient-programming/index.html#slides",
-    "href": "content/04-efficient-programming/index.html#slides",
-    "title": "Advanced R: Efficient programming",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/04-efficient-programming/index.html#resources",
-    "href": "content/04-efficient-programming/index.html#resources",
-    "title": "Advanced R: Efficient programming",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html",
-    "href": "content/06-r-with-cpp/index.html",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html#slides",
-    "href": "content/06-r-with-cpp/index.html#slides",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/06-r-with-cpp/index.html#resources",
-    "href": "content/06-r-with-cpp/index.html#resources",
-    "title": "Advanced R: C++ and Rcpp",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/01-welcome/index.html",
-    "href": "content/01-welcome/index.html",
-    "title": "Welcome and introduction",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/01-welcome/index.html#slides",
-    "href": "content/01-welcome/index.html#slides",
-    "title": "Welcome and introduction",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/01-welcome/index.html#resources",
-    "href": "content/01-welcome/index.html#resources",
-    "title": "Welcome and introduction",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/10-check-package-documentation/index.html",
-    "href": "content/10-check-package-documentation/index.html",
-    "title": "R Packages: Check and package documentation",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/10-check-package-documentation/index.html#slides",
-    "href": "content/10-check-package-documentation/index.html#slides",
-    "title": "R Packages: Check and package documentation",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/10-check-package-documentation/index.html#resources",
-    "href": "content/10-check-package-documentation/index.html#resources",
-    "title": "R Packages: Check and package documentation",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/05-profiling/index.html",
-    "href": "content/05-profiling/index.html",
-    "title": "Advanced R: Profiling",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/05-profiling/index.html#slides",
-    "href": "content/05-profiling/index.html#slides",
-    "title": "Advanced R: Profiling",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/05-profiling/index.html#resources",
-    "href": "content/05-profiling/index.html#resources",
-    "title": "Advanced R: Profiling",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/07-package-foundations/index.html",
-    "href": "content/07-package-foundations/index.html",
-    "title": "R Packages: Package foundations",
-    "section": "",
-    "text": "This page and the slides for this session are still under development"
-  },
-  {
-    "objectID": "content/07-package-foundations/index.html#slides",
-    "href": "content/07-package-foundations/index.html#slides",
-    "title": "R Packages: Package foundations",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/07-package-foundations/index.html#resources",
-    "href": "content/07-package-foundations/index.html#resources",
-    "title": "R Packages: Package foundations",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
-  },
-  {
-    "objectID": "content/02-functions/index.html",
-    "href": "content/02-functions/index.html",
-    "title": "Advanced R: Functions",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/02-functions/index.html#slides",
-    "href": "content/02-functions/index.html#slides",
-    "title": "Advanced R: Functions",
-    "section": "",
-    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/02-functions/index.html#resources",
-    "href": "content/02-functions/index.html#resources",
-    "title": "Advanced R: Functions",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nFunctions chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/functions.html\nDebugging chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/debugging.html\nDebugging from the RStudio User Guide\nhttps://docs.posit.co/ide/user/ide/guide/code/debugging.html"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
   }
 ]
