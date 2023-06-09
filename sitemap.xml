@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/join.html</loc>
-    <lastmod>2023-06-07T14:08:55.895Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/index.html</loc>
-    <lastmod>2023-06-07T14:08:56.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/10-check-package-documentation/index.html</loc>
-    <lastmod>2023-06-07T14:08:57.951Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/08-documentation/index.html</loc>
-    <lastmod>2023-06-07T14:08:58.267Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/11-data-publication-maintenance/index.html</loc>
-    <lastmod>2023-06-07T14:08:58.527Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/12-Rcpp-packages/index.html</loc>
-    <lastmod>2023-06-07T14:08:58.783Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/02-functions/index.html</loc>
-    <lastmod>2023-06-07T14:08:59.899Z</lastmod>
+    <lastmod>2023-06-09T06:19:38.248Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/09-testing/index.html</loc>
-    <lastmod>2023-06-07T14:09:00.167Z</lastmod>
+    <lastmod>2023-06-09T06:19:39.580Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/11-data-publication-maintenance/index.html</loc>
+    <lastmod>2023-06-09T06:19:39.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/08-documentation/index.html</loc>
+    <lastmod>2023-06-09T06:19:40.092Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/03-classes-methods/index.html</loc>
-    <lastmod>2023-06-07T14:09:01.371Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/06-r-with-cpp/index.html</loc>
-    <lastmod>2023-06-07T14:09:01.627Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/07-package-foundations/index.html</loc>
-    <lastmod>2023-06-07T14:09:01.927Z</lastmod>
+    <lastmod>2023-06-09T06:19:41.284Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/04-efficient-programming/index.html</loc>
-    <lastmod>2023-06-07T14:09:02.979Z</lastmod>
+    <lastmod>2023-06-09T06:19:42.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/06-r-with-cpp/index.html</loc>
+    <lastmod>2023-06-09T06:19:42.588Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/01-welcome/index.html</loc>
-    <lastmod>2023-06-07T14:09:03.235Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/05-profiling/index.html</loc>
-    <lastmod>2023-06-07T14:09:03.895Z</lastmod>
+    <lastmod>2023-06-09T06:19:42.864Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/00-template/index.html</loc>
-    <lastmod>2023-06-07T14:09:04.187Z</lastmod>
+    <lastmod>2023-06-09T06:19:43.120Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/10-check-package-documentation/index.html</loc>
-    <lastmod>2023-06-07T14:09:04.843Z</lastmod>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/10-check-package-documentation/index.html</loc>
+    <lastmod>2023-06-09T06:19:43.400Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/08-documentation/index.html</loc>
-    <lastmod>2023-06-07T14:09:05.147Z</lastmod>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/05-profiling/index.html</loc>
+    <lastmod>2023-06-09T06:19:44.064Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/11-data-publication-maintenance/index.html</loc>
-    <lastmod>2023-06-07T14:09:05.455Z</lastmod>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/07-package-foundations/index.html</loc>
+    <lastmod>2023-06-09T06:19:44.320Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/12-Rcpp-packages/index.html</loc>
-    <lastmod>2023-06-07T14:09:05.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/02-functions/index.html</loc>
-    <lastmod>2023-06-07T14:09:06.067Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/09-testing/index.html</loc>
-    <lastmod>2023-06-07T14:09:06.407Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/03-classes-methods/index.html</loc>
-    <lastmod>2023-06-07T14:09:06.715Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/06-r-with-cpp/index.html</loc>
-    <lastmod>2023-06-07T14:09:07.019Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/07-package-foundations/index.html</loc>
-    <lastmod>2023-06-07T14:09:07.327Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/04-efficient-programming/index.html</loc>
-    <lastmod>2023-06-07T14:09:07.647Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/01-welcome/index.html</loc>
-    <lastmod>2023-06-07T14:09:07.951Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/05-profiling/index.html</loc>
-    <lastmod>2023-06-07T14:09:08.295Z</lastmod>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/slides/02-functions/index.html</loc>
+    <lastmod>2023-06-09T06:19:45.364Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/schedule.html</loc>
-    <lastmod>2023-06-07T14:09:08.947Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/prerequisites.html</loc>
-    <lastmod>2023-06-07T14:09:09.327Z</lastmod>
+    <lastmod>2023-06-09T06:19:46.160Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content.html</loc>
-    <lastmod>2023-06-07T14:09:09.743Z</lastmod>
+    <lastmod>2023-06-09T06:19:46.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/index.html</loc>
+    <lastmod>2023-06-09T06:19:46.932Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/join.html</loc>
+    <lastmod>2023-06-09T06:19:47.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/prerequisites.html</loc>
+    <lastmod>2023-06-09T06:19:47.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/12-Rcpp-packages/index.html</loc>
+    <lastmod>2023-06-09T06:19:47.852Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/09-testing/index.html</loc>
+    <lastmod>2023-06-09T06:19:48.140Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/11-data-publication-maintenance/index.html</loc>
+    <lastmod>2023-06-09T06:19:48.456Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/08-documentation/index.html</loc>
+    <lastmod>2023-06-09T06:19:48.736Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/03-classes-methods/index.html</loc>
+    <lastmod>2023-06-09T06:19:49.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/04-efficient-programming/index.html</loc>
+    <lastmod>2023-06-09T06:19:49.340Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/06-r-with-cpp/index.html</loc>
+    <lastmod>2023-06-09T06:19:49.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/01-welcome/index.html</loc>
+    <lastmod>2023-06-09T06:19:49.908Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/10-check-package-documentation/index.html</loc>
+    <lastmod>2023-06-09T06:19:50.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/05-profiling/index.html</loc>
+    <lastmod>2023-06-09T06:19:50.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/07-package-foundations/index.html</loc>
+    <lastmod>2023-06-09T06:19:51.080Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/Warwick-Stats-Resources/advanced-r-packages/content/02-functions/index.html</loc>
+    <lastmod>2023-06-09T06:19:51.368Z</lastmod>
   </url>
 </urlset>
