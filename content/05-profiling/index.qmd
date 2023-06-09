@@ -4,8 +4,6 @@ date: 2023-06-20T09:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/05-profiling/index.qmd){target="_blank"} in a new window. 
@@ -19,9 +17,17 @@ Here are the slides embedded:
 
 ### Reading
 
-- TITLE
+- Wickham, H, _Advanced R_ (2nd edn), _Improving performance section_ 
 
-  <LINK>
+  <https://adv-r.hadley.nz/perf-improve.html>
+
+- Gillespie, C and Lovelace, R, _Efficient R programming_
+ 
+  <https://csgillespie.github.io/efficientR/>
 
 
 ### Packages
+
+- **profvis**
+
+  <https://rstudio.github.io/profvis/>
