@@ -32,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #adadbd;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #adadbd;  padding-left: 4px; }
+    div.sourceCode
+      { color: #2e2e2f;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #2e2e2f; } /* Normal */
+    code span.al { color: #ae4240; } /* Alert */
+    code span.an { color: #494957; } /* Annotation */
+    code span.at { color: #775781; } /* Attribute */
+    code span.bn { color: #ae4240; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #956133; } /* ControlFlow */
+    code span.ch { color: #618157; } /* Char */
+    code span.cn { color: #956133; } /* Constant */
+    code span.co { color: #494957; } /* Comment */
+    code span.cv { color: #494957; font-style: italic; } /* CommentVar */
+    code span.do { color: #494957; font-style: italic; } /* Documentation */
+    code span.dt { color: #ae4240; } /* DataType */
+    code span.dv { color: #ae4240; } /* DecVal */
+    code span.er { color: #ae4240; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ae4240; } /* Float */
+    code span.fu { color: #336695; } /* Function */
+    code span.im { color: #775781; } /* Import */
+    code span.in { color: #494957; } /* Information */
+    code span.kw { color: #2e2e2f; } /* Keyword */
+    code span.op { color: #494957; } /* Operator */
+    code span.ot { color: #494957; } /* Other */
+    code span.pp { color: #ae4240; } /* Preprocessor */
+    code span.re { color: #336695; } /* RegionMarker */
+    code span.sc { color: #494957; } /* SpecialChar */
+    code span.ss { color: #618157; } /* SpecialString */
+    code span.st { color: #618157; } /* String */
+    code span.va { color: #2e2e2f; } /* Variable */
+    code span.vs { color: #618157; } /* VerbatimString */
+    code span.wa { color: #494957; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -351,7 +417,7 @@ Department of Statistics, University of Warwick
 <ul>
 <li>Why write a package?</li>
 <li>Package structure and state</li>
-<li>Setting up development tools</li>
+<li>Package development setup</li>
 <li>Creating a package with a working function</li>
 </ul>
 </section>
@@ -657,14 +723,353 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 </div>
+</section>
+<section id="buildinginstalling-packages-from-source" class="slide level2">
+<h2>Building/Installing Packages from Source</h2>
+<p>There are various reasons we may wish to build or install from source:</p>
+<ul>
+<li>Installing a CRAN package where a binary has not yet been built for the latest version.</li>
+<li>Installing a package from GitHub/other version-controlled source code repository, e.g.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"r-lib/revdepcheck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Installing our own package from the source code or building it to submit to CRAN.</li>
+</ul>
+<p>If the package includes C/C++/Fortran code, we will need a suitable compiler.</p>
 </section></section>
 <section>
-<section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>End Matter</h1>
+<section id="build-tools" class="title-slide slide level1 inverse center">
+<h1>Build tools</h1>
+<aside class="notes">
+<p>Covered in the course prerequisites and in Session 6 on R with C++, but put here for completeness</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="linux" class="slide level2">
+<h2>Linux</h2>
+<p>Debian/Ubuntu:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">apt-get</span> install r-base-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fedora/RedHat: should be set up already.</p>
+</section>
+<section id="macos" class="slide level2">
+<h2>MacOS</h2>
+<p>Option 1</p>
+<ul>
+<li><a href="https://developer.apple.com/programs/register/">Register as an Apple developer (for free)</a>
+<ul>
+<li><p>Then, in the terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+<p>Option 2</p>
+<ul>
+<li>Install the current release of full <a href="https://itunes.apple.com/ca/app/xcode/id497799835?mt=12">Xcode from the Mac App Store</a></li>
+<li>Within XCode go to Preferences -&gt; Downloads and install the Command Line Tools</li>
+<li>More convenient but installs a lot you don’t need</li>
+</ul>
+</section>
+<section id="windows" class="slide level2">
+<h2>Windows</h2>
+<ul>
+<li>Download the Rtools installer that matches your version of R from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a></li>
+<li>Run the installer, <code>Rtools.exe</code>, keeping the default settings.</li>
+</ul>
+</section></section>
+<section>
+<section id="package-development-setup" class="title-slide slide level1 inverse center">
+<h1>Package development setup</h1>
 
 </section>
-<section id="resources" class="slide level2">
-<h2>Resources</h2>
+<section id="the-setup-well-be-using" class="slide level2">
+<h2>The setup we’ll be using</h2>
+<p>We’ll be using the following tools for package development:</p>
+<ul>
+<li>RStudio: to manage and edit the package source code</li>
+<li>git + GitHub: to version control the package source code</li>
+<li><strong>devtools</strong> and <strong>usethis</strong> R packages:
+<ul>
+<li><strong>devtools</strong> for functions supporting the development workflow</li>
+<li><strong>usethis</strong> for setup tasks</li>
+<li><strong>devtools</strong> depends on <strong>usethis</strong> package</li>
+<li>Integrated with RStudio: projects, menu items/shortcuts</li>
+<li>Uses system utilities internally: <code>R CMD</code> utilities bundled with R</li>
+</ul></li>
+</ul>
+</section>
+<section id="follow-along" class="slide level2">
+<h2>Follow along</h2>
+<p>For the rest of this session, follow along on your own computer to make sure you’re set up for package development and to create our example package.</p>
+</section>
+<section id="devtools-and-usethis" class="slide level2">
+<h2><strong>devtools</strong> and <strong>usethis</strong></h2>
+<p>We can use <strong>devtools</strong> right away to check our system is setup for package development.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">has_devel</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Your system is ready to build packages!</code></pre>
+</div>
+</div>
+<p>Installing <strong>devtools</strong> will also install <strong>usethis</strong>.</p>
+<p>Check you have the latest version of <strong>usethis</strong> – 2.2.0 was recently released – and update if not:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">packageVersion</span>(<span class="st">"usethis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '2.2.0'</code></pre>
+</div>
+</div>
+</section>
+<section id="create-a-github-pat" class="slide level2">
+<h2>Create a GitHub PAT</h2>
+<p>The <strong>usethis</strong> package uses personal access tokens (PAT) to communicate with GitHub.</p>
+<p>First, make sure you’re signed into GitHub. Then run</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Add Note describing the computer or use- case (e.g.&nbsp;personal-macbook-pro-2021, project-xyz)</li>
+<li>Select expiration (recommend default 30 days)</li>
+<li>Check scope (default selection is fine)</li>
+<li>Click ‘Generate Token’</li>
+<li><strong>Important!</strong> Copy token to clipboard, do not close window until stored (see next slide)!</li>
+<li>You may want to store token in a secure vault, like 1Password or BitWarden</li>
+</ul>
+</section>
+<section id="store-your-pat" class="slide level2">
+<h2>Store your PAT</h2>
+<p>By installing <strong>usethis</strong>, you will also have the <strong>gitcreds</strong> package to manage git credentials.</p>
+<p>Put your PAT into the Git credential store by running the following command and entering your copied PAT at the prompt (assume the PAT is on your clipboard).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>If you don’t have a PAT stored, will prompt you to enter: paste!</li>
+<li>If you do, you will be given a choice to keep/replace/see the password
+<ul>
+<li>choose as appropriate</li>
+<li>if replacing, paste!</li>
+</ul></li>
+</ul>
+</section>
+<section id="sitrep-and-vaccinate" class="slide level2">
+<h2>sitrep and vaccinate</h2>
+<p>Ask for a <strong>sit</strong>uation <strong>rep</strong>ort:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check that the PAT is discovered.</p>
+<p>Check that your user name and email are defined, else follow the <a href="https://hturner.github.io/advanced-r/01_open_code_and_software.html#17">configuration instructions</a> from a previous Advanced R workshop.</p>
+<p>It’s also a good idea to vaccinate. This implements best practice by adding files to your global <code>.gitignore</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>usethis<span class="sc">::</span><span class="fu">git_vaccinate</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-on-usethis-and-github-creds" class="slide level2">
+<h2>More on usethis and GitHub creds</h2>
+<p>It is well worth reading (and following all the instructions) in the following two <strong>usethis</strong> vignettes:</p>
+<ul>
+<li><a href="https://usethis.r-lib.org/articles/usethis-setup.html">usethis setup</a></li>
+<li><a href="https://usethis.r-lib.org/articles/git-credentials.html">Managing Git(Hub) Credentials</a>
+<ul>
+<li>See in particular the section on <a href="https://usethis.r-lib.org/articles/git-credentials.html#ongoing-pat-maintenance">ongoing PAT maintenance</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="create-a-package" class="title-slide slide level1 inverse center">
+<h1>Create a package!</h1>
+
+</section>
+<section id="package-name" class="slide level2">
+<h2>Package name</h2>
+<p>Can only contain the characters [A-Z, a-z, 0-9, .]. Some tips:</p>
+<ul>
+<li>Unique name you can easily Google</li>
+<li>Avoid mixing upper and lower case</li>
+<li>Use abbreviations</li>
+<li>Add an r to make unique, e.g <strong>stringr</strong></li>
+<li>Use wordplay, e.g.&nbsp;<strong>lubridate</strong></li>
+<li>Avoid trademarked names</li>
+<li>Use the <strong>available</strong> package to check name not taken</li>
+</ul>
+<p>For now, we will use <strong>mypackage</strong></p>
+</section>
+<section id="create-a-package-1" class="slide level2">
+<h2>Create a package!</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"~/Desktop/mypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Be deliberate about where you create your package.</p></li>
+<li><p>Do not nest inside another RStudio project, R package or git repo.</p></li>
+<li><p>You may want to use a different path!</p></li>
+</ul>
+</section>
+<section id="create_package" class="slide level2">
+<h2><code>create_package()</code></h2>
+<p>What happens when we run <code>create_package()</code>?</p>
+<ul>
+<li>R will create a folder called <code>mypackage</code> which is a package and an RStudio project</li>
+<li>restart R in the new project</li>
+<li>create the some infrastructure for your package with the minimal components for a working package</li>
+<li>start the RStudio Build pane</li>
+</ul>
+</section>
+<section id="r-studio-build-panemenu" class="slide level2">
+<h2>R Studio Build pane/menu</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/rstudio_build_pane.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/rstudio_build_menu.png"></p>
+</div>
+</div>
+</section>
+<section id="minimal-components" class="slide level2">
+<h2>Minimal components</h2>
+<p><strong>usethis</strong> will create the minimal components of a package that we have already seen:</p>
+<ul>
+<li><code>DESCRIPTION</code> provides metadata about your package.</li>
+<li><code>NAMESPACE</code> declares the functions your package exports for external use and the external functions your package imports from other packages.</li>
+<li>The <code>/R</code> directory is where we will put <code>.R</code> files with function definitions.</li>
+</ul>
+</section>
+<section id="auxiliary-files" class="slide level2">
+<h2>Auxiliary files</h2>
+<p><strong>usethis</strong> also adds some auxiliary files:</p>
+<ul>
+<li><code>mypackage.Rproj</code> is the file that makes this directory an RStudio Project.</li>
+<li><code>.Rbuildignore</code> lists files that we need but that should not be included when building the R package from source.</li>
+<li><code>.gitignore</code> anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio.</li>
+</ul>
+</section></section>
+<section>
+<section id="git-and-github" class="title-slide slide level1 inverse center">
+<h1>git and GitHub</h1>
+<aside class="notes">
+<p>Now will make our package a version controlled project on our local machine and then put it on GitHub.</p>
+<ul>
+<li>version control, best-practice open-source development</li>
+</ul>
+<p>usethis has functions to help with this.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="use-git" class="slide level2">
+<h2>Use git</h2>
+<p>To make our project agGit repository, or ‘repo’, on our local machine we use <code>usethis::use_git()</code></p>
+<p>Make your package a git repo:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use_git-output-part-1" class="slide level2">
+<h2><code>use_git()</code> output (part 1)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a> ✔ Initialising Git repo</span>
+<span id="cb17-2"><a href="#cb17-2"></a> ✔ Adding <span class="st">'.Rhistory'</span>, <span class="st">'.Rdata'</span>, <span class="st">'.httr-oauth'</span>, <span class="st">'.DS_Store'</span> to  <span class="st">'.gitignore'</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a> There are <span class="dv">5</span> uncommitted files<span class="sc">:</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a> <span class="er">*</span> <span class="st">'.gitignore'</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a> <span class="sc">*</span> <span class="st">'.Rbuildignore'</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a> <span class="sc">*</span> <span class="st">'DESCRIPTION'</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a> <span class="sc">*</span> <span class="st">'mypackage.Rproj'</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a> <span class="sc">*</span> <span class="st">'NAMESPACE'</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a> Is it ok to commit them?</span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a> <span class="dv">1</span><span class="sc">:</span> I agree</span>
+<span id="cb17-12"><a href="#cb17-12"></a> <span class="dv">2</span><span class="sc">:</span> Absolutely not</span>
+<span id="cb17-13"><a href="#cb17-13"></a> <span class="dv">3</span><span class="sc">:</span> No way</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+</section>
+<section id="use_git-output-part-2" class="slide level2">
+<h2><code>use_git()</code> output (part 2)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>√ Adding files</span>
+<span id="cb18-2"><a href="#cb18-2"></a>√ Commit with message <span class="st">'Initial commit'</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>• A restart of RStudio is required to activate the Git pane</span>
+<span id="cb18-4"><a href="#cb18-4"></a>Restart now?</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="dv">1</span><span class="sc">:</span> Nope</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="dv">2</span><span class="sc">:</span> Definitely</span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="dv">3</span><span class="sc">:</span> No</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+<aside class="notes">
+<p>You should find the git pane has opened.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="use-github" class="slide level2">
+<h2>Use GitHub</h2>
+<p>To create a copy on GitHub we use <code>usethis::use_github()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Choose one of the following:</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>() <span class="co"># creates a public repo</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">private =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This takes a local project, creates an associated repo on GitHub, adds it to your local repo as the “origin remote”, and makes an initial “push” to synchronize.</p>
+<div class="fragment">
+<div class="smaller80">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Warwick GitHub</strong></p>
+</div>
+<div class="callout-content">
+<p>University of Warwick members can use the University’s private GitHub instance, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="st">"https://github.warwick.ac.uk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, Warwick GitHub does not support GitHub Actions or GitHub Pages, so for packages using your personal account is better – we’ll be using both Actions and Pages later.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="end-matter" class="title-slide slide level1 inverse center">
+<h1>End matter</h1>
+
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
 <p>Material inspired by and remixed from:</p>
 <ul>
 <li></li>

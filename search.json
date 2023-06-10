@@ -1082,7 +1082,7 @@
     "href": "slides/07-package-foundations/index.html#overview",
     "title": "Package Foundations",
     "section": "Overview",
-    "text": "Overview\n\nWhy write a package?\nPackage structure and state\nSetting up development tools\nCreating a package with a working function"
+    "text": "Overview\n\nWhy write a package?\nPackage structure and state\nPackage development setup\nCreating a package with a working function"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#why-write-a-package-1",
@@ -1141,11 +1141,158 @@
     "text": "Package states\n\n\n\nsource\nbundled\nbinary\ninstalled\n\n\n\n\nin-memory\n\n\n\n\n\n\n\n\n\n\n\n\nin-memory\n\n\nIf a package is installed, library() makes its function available by loading the package into memory and attaching it to the search path."
   },
   {
-    "objectID": "slides/07-package-foundations/index.html#resources",
-    "href": "slides/07-package-foundations/index.html#resources",
+    "objectID": "slides/07-package-foundations/index.html#buildinginstalling-packages-from-source",
+    "href": "slides/07-package-foundations/index.html#buildinginstalling-packages-from-source",
     "title": "Package Foundations",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
+    "section": "Building/Installing Packages from Source",
+    "text": "Building/Installing Packages from Source\nThere are various reasons we may wish to build or install from source:\n\nInstalling a CRAN package where a binary has not yet been built for the latest version.\nInstalling a package from GitHub/other version-controlled source code repository, e.g.\n\n\nremotes::install_github(\"r-lib/revdepcheck\")\n\n\nInstalling our own package from the source code or building it to submit to CRAN.\n\nIf the package includes C/C++/Fortran code, we will need a suitable compiler."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#linux",
+    "href": "slides/07-package-foundations/index.html#linux",
+    "title": "Package Foundations",
+    "section": "Linux",
+    "text": "Linux\nDebian/Ubuntu:\napt-get update\napt-get install r-base-dev\nFedora/RedHat: should be set up already."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#macos",
+    "href": "slides/07-package-foundations/index.html#macos",
+    "title": "Package Foundations",
+    "section": "MacOS",
+    "text": "MacOS\nOption 1\n\nRegister as an Apple developer (for free)\n\nThen, in the terminal:\nxcode-select --install\n\n\nOption 2\n\nInstall the current release of full Xcode from the Mac App Store\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\nMore convenient but installs a lot you don’t need"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#windows",
+    "href": "slides/07-package-foundations/index.html#windows",
+    "title": "Package Foundations",
+    "section": "Windows",
+    "text": "Windows\n\nDownload the Rtools installer that matches your version of R from https://cran.r-project.org/bin/windows/Rtools/\nRun the installer, Rtools.exe, keeping the default settings."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#the-setup-well-be-using",
+    "href": "slides/07-package-foundations/index.html#the-setup-well-be-using",
+    "title": "Package Foundations",
+    "section": "The setup we’ll be using",
+    "text": "The setup we’ll be using\nWe’ll be using the following tools for package development:\n\nRStudio: to manage and edit the package source code\ngit + GitHub: to version control the package source code\ndevtools and usethis R packages:\n\ndevtools for functions supporting the development workflow\nusethis for setup tasks\ndevtools depends on usethis package\nIntegrated with RStudio: projects, menu items/shortcuts\nUses system utilities internally: R CMD utilities bundled with R"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#follow-along",
+    "href": "slides/07-package-foundations/index.html#follow-along",
+    "title": "Package Foundations",
+    "section": "Follow along",
+    "text": "Follow along\nFor the rest of this session, follow along on your own computer to make sure you’re set up for package development and to create our example package."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#devtools-and-usethis",
+    "href": "slides/07-package-foundations/index.html#devtools-and-usethis",
+    "title": "Package Foundations",
+    "section": "devtools and usethis",
+    "text": "devtools and usethis\nWe can use devtools right away to check our system is setup for package development.\n\ninstall.packages(\"devtools\")\n\n\nlibrary(devtools)\n\n\nhas_devel()\n\nYour system is ready to build packages!\n\n\nInstalling devtools will also install usethis.\nCheck you have the latest version of usethis – 2.2.0 was recently released – and update if not:\n\npackageVersion(\"usethis\")\n\n[1] '2.2.0'"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#create-a-github-pat",
+    "href": "slides/07-package-foundations/index.html#create-a-github-pat",
+    "title": "Package Foundations",
+    "section": "Create a GitHub PAT",
+    "text": "Create a GitHub PAT\nThe usethis package uses personal access tokens (PAT) to communicate with GitHub.\nFirst, make sure you’re signed into GitHub. Then run\n\nusethis::create_github_token()\n\n\nAdd Note describing the computer or use- case (e.g. personal-macbook-pro-2021, project-xyz)\nSelect expiration (recommend default 30 days)\nCheck scope (default selection is fine)\nClick ‘Generate Token’\nImportant! Copy token to clipboard, do not close window until stored (see next slide)!\nYou may want to store token in a secure vault, like 1Password or BitWarden"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#store-your-pat",
+    "href": "slides/07-package-foundations/index.html#store-your-pat",
+    "title": "Package Foundations",
+    "section": "Store your PAT",
+    "text": "Store your PAT\nBy installing usethis, you will also have the gitcreds package to manage git credentials.\nPut your PAT into the Git credential store by running the following command and entering your copied PAT at the prompt (assume the PAT is on your clipboard).\n\ngitcreds::gitcreds_set()\n\n\nIf you don’t have a PAT stored, will prompt you to enter: paste!\nIf you do, you will be given a choice to keep/replace/see the password\n\nchoose as appropriate\nif replacing, paste!"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#sitrep-and-vaccinate",
+    "href": "slides/07-package-foundations/index.html#sitrep-and-vaccinate",
+    "title": "Package Foundations",
+    "section": "sitrep and vaccinate",
+    "text": "sitrep and vaccinate\nAsk for a situation report:\n\nusethis::git_sitrep()\n\nCheck that the PAT is discovered.\nCheck that your user name and email are defined, else follow the configuration instructions from a previous Advanced R workshop.\nIt’s also a good idea to vaccinate. This implements best practice by adding files to your global .gitignore:\n\nusethis::git_vaccinate()"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#more-on-usethis-and-github-creds",
+    "href": "slides/07-package-foundations/index.html#more-on-usethis-and-github-creds",
+    "title": "Package Foundations",
+    "section": "More on usethis and GitHub creds",
+    "text": "More on usethis and GitHub creds\nIt is well worth reading (and following all the instructions) in the following two usethis vignettes:\n\nusethis setup\nManaging Git(Hub) Credentials\n\nSee in particular the section on ongoing PAT maintenance"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-name",
+    "href": "slides/07-package-foundations/index.html#package-name",
+    "title": "Package Foundations",
+    "section": "Package name",
+    "text": "Package name\nCan only contain the characters [A-Z, a-z, 0-9, .]. Some tips:\n\nUnique name you can easily Google\nAvoid mixing upper and lower case\nUse abbreviations\nAdd an r to make unique, e.g stringr\nUse wordplay, e.g. lubridate\nAvoid trademarked names\nUse the available package to check name not taken\n\nFor now, we will use mypackage"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#create-a-package-1",
+    "href": "slides/07-package-foundations/index.html#create-a-package-1",
+    "title": "Package Foundations",
+    "section": "Create a package!",
+    "text": "Create a package!\n\nusethis::create_package(\"~/Desktop/mypackage\")\n\n\nBe deliberate about where you create your package.\nDo not nest inside another RStudio project, R package or git repo.\nYou may want to use a different path!"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#create_package",
+    "href": "slides/07-package-foundations/index.html#create_package",
+    "title": "Package Foundations",
+    "section": "create_package()",
+    "text": "create_package()\nWhat happens when we run create_package()?\n\nR will create a folder called mypackage which is a package and an RStudio project\nrestart R in the new project\ncreate the some infrastructure for your package with the minimal components for a working package\nstart the RStudio Build pane"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#r-studio-build-panemenu",
+    "href": "slides/07-package-foundations/index.html#r-studio-build-panemenu",
+    "title": "Package Foundations",
+    "section": "R Studio Build pane/menu",
+    "text": "R Studio Build pane/menu"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#minimal-components",
+    "href": "slides/07-package-foundations/index.html#minimal-components",
+    "title": "Package Foundations",
+    "section": "Minimal components",
+    "text": "Minimal components\nusethis will create the minimal components of a package that we have already seen:\n\nDESCRIPTION provides metadata about your package.\nNAMESPACE declares the functions your package exports for external use and the external functions your package imports from other packages.\nThe /R directory is where we will put .R files with function definitions."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#auxiliary-files",
+    "href": "slides/07-package-foundations/index.html#auxiliary-files",
+    "title": "Package Foundations",
+    "section": "Auxiliary files",
+    "text": "Auxiliary files\nusethis also adds some auxiliary files:\n\nmypackage.Rproj is the file that makes this directory an RStudio Project.\n.Rbuildignore lists files that we need but that should not be included when building the R package from source.\n.gitignore anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#use-git",
+    "href": "slides/07-package-foundations/index.html#use-git",
+    "title": "Package Foundations",
+    "section": "Use git",
+    "text": "Use git\nTo make our project agGit repository, or ‘repo’, on our local machine we use usethis::use_git()\nMake your package a git repo:\n\nusethis::use_git()"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#use_git-output-part-1",
+    "href": "slides/07-package-foundations/index.html#use_git-output-part-1",
+    "title": "Package Foundations",
+    "section": "use_git() output (part 1)",
+    "text": "use_git() output (part 1)\n\n ✔ Initialising Git repo\n ✔ Adding '.Rhistory', '.Rdata', '.httr-oauth', '.DS_Store' to  '.gitignore' \n There are 5 uncommitted files:\n * '.gitignore'\n * '.Rbuildignore'\n * 'DESCRIPTION'\n * 'mypackage.Rproj'\n * 'NAMESPACE'\n Is it ok to commit them?\n\n 1: I agree\n 2: Absolutely not\n 3: No way\n\nChoose the affirmative option! (The exact options may vary.)"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#use_git-output-part-2",
+    "href": "slides/07-package-foundations/index.html#use_git-output-part-2",
+    "title": "Package Foundations",
+    "section": "use_git() output (part 2)",
+    "text": "use_git() output (part 2)\n\n√ Adding files\n√ Commit with message 'Initial commit'\n• A restart of RStudio is required to activate the Git pane\nRestart now?\n\n1: Nope\n2: Definitely\n3: No\n\nChoose the affirmative option! (The exact options may vary.)\n\nYou should find the git pane has opened."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#use-github",
+    "href": "slides/07-package-foundations/index.html#use-github",
+    "title": "Package Foundations",
+    "section": "Use GitHub",
+    "text": "Use GitHub\nTo create a copy on GitHub we use usethis::use_github().\n\n# Choose one of the following:\nusethis::use_github() # creates a public repo\nusethis::use_github(private = TRUE)\n\nThis takes a local project, creates an associated repo on GitHub, adds it to your local repo as the “origin remote”, and makes an initial “push” to synchronize.\n\n\n\n\n\nWarwick GitHub\n\n\nUniversity of Warwick members can use the University’s private GitHub instance, e.g.\n\nusethis::use_github(\"https://github.warwick.ac.uk\")\n\nHowever, Warwick GitHub does not support GitHub Actions or GitHub Pages, so for packages using your personal account is better – we’ll be using both Actions and Pages later."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#references",
+    "href": "slides/07-package-foundations/index.html#references",
+    "title": "Package Foundations",
+    "section": "References",
+    "text": "References\nMaterial inspired by and remixed from:"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#license",
