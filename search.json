@@ -618,21 +618,273 @@
   {
     "objectID": "slides/06-r-with-cpp/index.html#overview",
     "href": "slides/06-r-with-cpp/index.html#overview",
-    "title": "SESSION TITLE",
+    "title": "C++ and Rcpp",
     "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "text": "Overview\n\nWhen to use C++\nGetting set up\nC++ basics and Rcpp\nRcpp sugar"
   },
   {
-    "objectID": "slides/06-r-with-cpp/index.html#resources",
-    "href": "slides/06-r-with-cpp/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
+    "objectID": "slides/06-r-with-cpp/index.html#limits-of-r",
+    "href": "slides/06-r-with-cpp/index.html#limits-of-r",
+    "title": "C++ and Rcpp",
+    "section": "Limits of R",
+    "text": "Limits of R\nSometimes you reach the limits of R:\n\nYour code is still slow despite optimizing the computational approach and the R implementation\nYou could speed up the R code, but it results in very obscure, convoluted code\n\nIn this case it can make sense to code parts in C++."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#typical-scenarios",
+    "href": "slides/06-r-with-cpp/index.html#typical-scenarios",
+    "title": "C++ and Rcpp",
+    "section": "Typical scenarios",
+    "text": "Typical scenarios\nThere are some typical scenarios where C++ is likely to be a good idea\n\nLoops that can’t be vectorized because iterations depend on previous results\nRecursive functions, or problems which involve calling functions millions of times.\nProblems that require advanced data structures and algorithms that R doesn’t provide.\n\n\nThe overhead of calling a function in C++ is much lower than in R."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#set-up-to-use-c",
+    "href": "slides/06-r-with-cpp/index.html#set-up-to-use-c",
+    "title": "C++ and Rcpp",
+    "section": "Set up to use C++",
+    "text": "Set up to use C++\nTo use C++, you need a working C++ compiler.\nOn MacOS/Windows there is some setup to do, but it will also set you up to\n\nDevelop packages in R\nInstall packages from GitHub that include C/C++ code\n\nOn Linux, you will usually have a C++ compiler installed, but you might as well get set up to develop R packages too.\n\nIf you’ve followed the development tools section of the course prerequisites, you should be fully set-up for this already."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#linux",
+    "href": "slides/06-r-with-cpp/index.html#linux",
+    "title": "C++ and Rcpp",
+    "section": "Linux",
+    "text": "Linux\nDebian/Ubuntu:\napt-get update\napt-get install r-base-dev\nFedora/RedHat: should be set up already."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#macos",
+    "href": "slides/06-r-with-cpp/index.html#macos",
+    "title": "C++ and Rcpp",
+    "section": "MacOS",
+    "text": "MacOS\nOption 1\n\nRegister as an Apple developer (for free)\n\nThen, in the terminal:\nxcode-select --install\n\n\nOption 2\n\nInstall the current release of full Xcode from the Mac App Store\nWithin XCode go to Preferences -&gt; Downloads and install the Command Line Tools\nMore convenient but installs a lot you don’t need"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#windows",
+    "href": "slides/06-r-with-cpp/index.html#windows",
+    "title": "C++ and Rcpp",
+    "section": "Windows",
+    "text": "Windows\n\nDownload the Rtools installer that matches your version of R from https://cran.r-project.org/bin/windows/Rtools/\nRun the installer, Rtools.exe, keeping the default settings."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#a-first-c-function",
+    "href": "slides/06-r-with-cpp/index.html#a-first-c-function",
+    "title": "C++ and Rcpp",
+    "section": "A first C++ function",
+    "text": "A first C++ function\nConsider an R function add_r() to add two numbers\n\nadd_r &lt;- function(x, y) x + y\n\nHere’s how we might write an equivalent add_cpp() function in C++\n\ndouble add_cpp(double x, double y) { \n  double value = x + y;\n  return value;\n}\n\n\nThe type for the return value is declared first\nThe type of each argument must be declared\nThe type of intermediate objects must be declared\nReturn statements must use return"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#rcpp",
+    "href": "slides/06-r-with-cpp/index.html#rcpp",
+    "title": "C++ and Rcpp",
+    "section": "Rcpp",
+    "text": "Rcpp\nTo use add_cpp() in R we need to compile the C++ code and construct an R function that connects to the compiled C++ function.\nThe R package Rcpp takes care of these steps for us.\nOne way is to use the cppFunction(), e.g.\n\nlibrary(Rcpp)\ncppFunction('\n  double add_cpp(double x, double y) {\n    double value = x + y;\n    return value;\n  }\n')"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#using-the-c-function",
+    "href": "slides/06-r-with-cpp/index.html#using-the-c-function",
+    "title": "C++ and Rcpp",
+    "section": "Using the C++ function",
+    "text": "Using the C++ function\nAfter defining add_cpp() via cppFunction(), add_cpp() is available to use as a R function\n\nadd_cpp\n\nfunction (x, y) \n.Call(&lt;pointer: 0x100300b40&gt;, x, y)\n\nadd_cpp(3, 5)\n\n[1] 8"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#stand-alone-c-files",
+    "href": "slides/06-r-with-cpp/index.html#stand-alone-c-files",
+    "title": "C++ and Rcpp",
+    "section": "Stand-alone C++ files",
+    "text": "Stand-alone C++ files\nIt is better to define functions in C++ files (extension .cpp). These files will be recognised by RStudio and other IDEs, with the usual benefits.\nThe C++ file should have these lines at the top:\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n\n\nThe compiler will locate the Rcpp header file with functions and class definitions supplied by Rcpp and include the contents.\nAdding the namespace means that we can use Rcpp functions in the C++ code without prefixing the function names by Rcpp::.\n\nAbove each function we want to use in R, add // [[Rcpp::export]]"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-c-file",
+    "href": "slides/06-r-with-cpp/index.html#example-c-file",
+    "title": "C++ and Rcpp",
+    "section": "Example C++ file",
+    "text": "Example C++ file\nThe following is in the file add_cpp2.cpp\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n\n// [[Rcpp::export]]\ndouble add_cpp2(double x, double y) {\n  double value = x + y;\n  return value;\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#sourcecpp",
+    "href": "slides/06-r-with-cpp/index.html#sourcecpp",
+    "title": "C++ and Rcpp",
+    "section": "sourceCpp()",
+    "text": "sourceCpp()\nNow we can use sourceCpp() to make the C++ functions available in R\n\npath &lt;- here::here(\"C++\", \"add_cpp2.cpp\")\nsourceCpp(path)\nadd_cpp2(5, 9)\n\n[1] 14"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#benefits-of-separate-c-files",
+    "href": "slides/06-r-with-cpp/index.html#benefits-of-separate-c-files",
+    "title": "C++ and Rcpp",
+    "section": "Benefits of separate C++ files",
+    "text": "Benefits of separate C++ files\nThere are a number of benefits to writing C++ code in separate .cpp files, compared to cppFunction()\n\nsyntax highlighting\navoid mistakes switching from R to C code\nline numbers for compilation errors\nhighlighting errors (e.g. missing “;”)"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#c-basics",
+    "href": "slides/06-r-with-cpp/index.html#c-basics",
+    "title": "C++ and Rcpp",
+    "section": "C++ Basics",
+    "text": "C++ Basics\n\nEvery statement within { } must be terminated by a ;.\nUse = for assignment (&lt;- is not valid).\nAddition, subtraction, multiplication and division use the same operators as R (+, -, *, /).\nComparison operators are the same as R (==, !=, &gt;, etc)\nOne-line comments start with //.\nMulti-line comments use /* */ delimiters\n\n/*\nExample\nmulti-line comment\n*/"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#data-types",
+    "href": "slides/06-r-with-cpp/index.html#data-types",
+    "title": "C++ and Rcpp",
+    "section": "Data types",
+    "text": "Data types\nThe basic C++ data types are scalars. Rcpp provides vector versions  \n\n\n\nR\nC++ (scalar)\nRcpp (vector)\n\n\n\n\nnumeric\ndouble\nNumericVector\n\n\ninteger\nint\nIntegerVector\n\n\ncharacter\nchar\nCharacterVector\n\n\nlogical\nbool\nLogicalVector\n\n\n\n\nRcpp also provides String as an alternative to char\n\nCare needed with NA double: more bits used to represent a real number vs single precision - range 2-(210) to 2(210). vs same with 2^7 - precision ~15 d.p. vs 7"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-no-inputs-scalar-output",
+    "href": "slides/06-r-with-cpp/index.html#example-no-inputs-scalar-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: no inputs, scalar output",
+    "text": "Example: no inputs, scalar output\n\nint one() {\n  return 1;\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-ifelse-scalar-input-scalar-output",
+    "href": "slides/06-r-with-cpp/index.html#example-ifelse-scalar-input-scalar-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: if/else (scalar input, scalar output)",
+    "text": "Example: if/else (scalar input, scalar output)\n\nint signC(int x) {\n  if (x &gt; 0) {\n    return 1;\n  } else if (x == 0) {\n    return 0;\n  } else {\n    return -1;\n  }\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#for-loop-syntax",
+    "href": "slides/06-r-with-cpp/index.html#for-loop-syntax",
+    "title": "C++ and Rcpp",
+    "section": "For loop syntax",
+    "text": "For loop syntax\nA C++ for loop has the form\n\nfor (int i = 0; i &lt; n; ++i) {\n  total += x[i];\n}\n\n\nSyntax: for (initialisation; condition; increment)\n\nInitialize integer i at zero\nContinue as long as i is less than n\nIncrement i by 1 after each iteration\n\n++i is equivalent to i = i + 1\n\n\ntotal += x[i] is equivalent to total = total + x[i]\nVector indices start at zero"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-for-loop-vector-input-scalar-output",
+    "href": "slides/06-r-with-cpp/index.html#example-for-loop-vector-input-scalar-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: for loop (vector input, scalar output)",
+    "text": "Example: for loop (vector input, scalar output)\n\ndouble sumC(NumericVector x) {\n  int n = x.size();\n  double total = 0;\n  for (int i = 0; i &lt; n; ++i) {\n    total += x[i];\n  }\n  return total;\n}\n\n\nUse .size() method to find the length of a vector"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-while-loop-vector-input-scalar-output",
+    "href": "slides/06-r-with-cpp/index.html#example-while-loop-vector-input-scalar-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: while loop (vector input, scalar output)",
+    "text": "Example: while loop (vector input, scalar output)\n\ndouble sumC(NumericVector x) {\n  int n = x.size();\n  double total = 0;\n  int i = 0;\n  while (i &lt; n) {\n    total += x[i];\n    ++i;\n  }\n  return total;\n}\n\n\nUse break to break from a while or for loop\nUse continue to skip to the next iteration (vs next in R)"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-vector-output",
+    "href": "slides/06-r-with-cpp/index.html#example-vector-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: vector output",
+    "text": "Example: vector output\nThe following computes the Euclidean distances\n\\[d_i  = \\sqrt{(x - y_i)^2}\\]\n\nNumericVector distC(double x, NumericVector y) {\n  int n = y.size();\n  NumericVector dist(n);\n  for(int i = 0; i &lt; n; ++i) {\n    dist[i] = sqrt(pow(ys[i] - x, 2.0));\n  }\n  return out;\n}\n\n\ndist(n) is used to create a numeric vector named dist of length n.\nv(n) would create a vector named v."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#c-functions",
+    "href": "slides/06-r-with-cpp/index.html#c-functions",
+    "title": "C++ and Rcpp",
+    "section": "C++ Functions",
+    "text": "C++ Functions\npow is a standard C++ function for computing a value raised to a power.\nBoth pow and sqrt are functions from the &lt;cmath&gt; library, see e.g. w3schools C++ math.\nTo use &lt;cmath&gt; functions in C++ code, we would normally need to include the &lt;cmath&gt; header in our .cpp file. However, Rcpp defines its own version of these functions, so we can use them with just the Rcpp header."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#creating-a-c-file-in-rstudio",
+    "href": "slides/06-r-with-cpp/index.html#creating-a-c-file-in-rstudio",
+    "title": "C++ and Rcpp",
+    "section": "Creating a C++ file in RStudio",
+    "text": "Creating a C++ file in RStudio\nFrom the menu bar:\n\nGo to File &gt; New File &gt; C++ file\nThis template already incleas the headers required for Rcpp\nDelete the extra content, apart from the comment //[Rcpp::export]\n\nYou can also create a C++ file from the new file drop-down in the Files pane, but this will be blank."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#your-turn",
+    "href": "slides/06-r-with-cpp/index.html#your-turn",
+    "title": "C++ and Rcpp",
+    "section": "Your turn",
+    "text": "Your turn\n\nCreate a new C++ file (recommend using the RStudio template)\nConvert the following R function that computes a weighted mean to C++\n\n\nwmean_r &lt;- function(x, w){\n  n &lt;- length(x)\n  total &lt;- total_w &lt;- 0\n  for (i in 1:n){\n    total &lt;- total + x[i] * w[i]\n    total_w &lt;- total_w + w[i]\n  }  \n  total/total_w\n}\n\n\nUse sourceCpp() to source in your function.\nUse bench::mark() to compare wmean_r(), wmean_cpp() and the stats function weighted.mean()."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#missing-values-in-c-data-types",
+    "href": "slides/06-r-with-cpp/index.html#missing-values-in-c-data-types",
+    "title": "C++ and Rcpp",
+    "section": "Missing values in C++ data types",
+    "text": "Missing values in C++ data types\nC++ data types do not handle NAs in input well\n\nint: use a length 1 IntegerVector instead\ndouble: NAs okay (converted to NAN)\nchar: use String instead\nbool: NAs converted to true; use int instead"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#missing-values-in-rcpp-vectors",
+    "href": "slides/06-r-with-cpp/index.html#missing-values-in-rcpp-vectors",
+    "title": "C++ and Rcpp",
+    "section": "Missing values in Rcpp vectors",
+    "text": "Missing values in Rcpp vectors\nRcpp vectors handle NAs in the corresponding type\n\n\n\nRcpp (vector)\nNA\n\n\n\n\nNumericVector\nNA_REAL\n\n\nIntegerVector\nNA_INTEGER\n\n\nCharacterVector\nNA_STRING\n\n\nLogicalVector\nNA_LOGICAL"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#matrices",
+    "href": "slides/06-r-with-cpp/index.html#matrices",
+    "title": "C++ and Rcpp",
+    "section": "Matrices",
+    "text": "Matrices\nEach vector type has a corresponding matrix equivalent: NumericMatrix, IntegerMatrix, CharacterMatrix and LogicalMatrix.\nCreate a matrix called named m1\n\nNumericMatrix m1(10, 5);\n\n\nSubset with (), e.g. m1(3, 2) for the value in row 3, column 2.\nThe first element is m1(0, 0).\nUse .nrow and .ncol methods to get the number of rows and columns\nAssign matrix elements as follows\n\n\nm1(0, 0) = 1;"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-row-sums-matrix-input-vector-output",
+    "href": "slides/06-r-with-cpp/index.html#example-row-sums-matrix-input-vector-output",
+    "title": "C++ and Rcpp",
+    "section": "Example: row sums (matrix input, vector output)",
+    "text": "Example: row sums (matrix input, vector output)\n\nNumericVector rowSumsC(NumericMatrix x) {\n  int nrow = x.nrow(), ncol = x.ncol();\n  NumericVector out(nrow);\n  \n  for (int i = 0; i &lt; nrow; i++) {\n    double total = 0;\n    for (int j = 0; j &lt; ncol; j++) {\n      total += x(i, j);\n    }\n    out[i] = total;\n  }\n  return out;\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#statistical-distributions",
+    "href": "slides/06-r-with-cpp/index.html#statistical-distributions",
+    "title": "C++ and Rcpp",
+    "section": "Statistical distributions",
+    "text": "Statistical distributions\nAs in R, Rcpp provides d/p/q/r functions for the density, distribution function, quantile function and random generation. - Functions in the Rcpp:: namespace return a vector. - Functions in the R:: namespace (also provided by the Rcpp R package) return a scalar\nFor example we can sample a single value from a \\(N(0, 1)\\) distribution by extracting the first element from a vector\nrgamma(1, 3, 1 / (y * y + 4))[0];\nOr use the R::rgamma() function to sample a single value directly\nR::rgamma(3, 1 / (y * y + 4))"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#your-turn-part-1",
+    "href": "slides/06-r-with-cpp/index.html#your-turn-part-1",
+    "title": "C++ and Rcpp",
+    "section": "Your turn (part 1)",
+    "text": "Your turn (part 1)\nIn a new C++ file, convert the following Gibbs sampler to C++\n\ngibbs_r &lt;- function(N, thin) {\n  mat &lt;- matrix(nrow = N, ncol = 2)\n  x &lt;- y &lt;- 0\n\n  for (i in 1:N) {\n    for (j in 1:thin) {\n      x &lt;- rgamma(1, 3, y * y + 4)\n      y &lt;- rnorm(1, 1 / (x + 1), 1 / sqrt(2 * (x + 1)))\n    }\n    mat[i, ] &lt;- c(x, y)\n  }\n  mat\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#your-turn-part-2",
+    "href": "slides/06-r-with-cpp/index.html#your-turn-part-2",
+    "title": "C++ and Rcpp",
+    "section": "Your turn (part 2)",
+    "text": "Your turn (part 2)\nCreate a wrapper function to set the seed as follows:\n\nset_seed &lt;- function(expr){\n  set.seed(1)\n  eval(expr)\n}\n\nBenchmark your gibbs_r() and gibbs_c() functions with N = 100 and thin = 10, using your wrapper function to set the seed."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#rcpp-sugar-1",
+    "href": "slides/06-r-with-cpp/index.html#rcpp-sugar-1",
+    "title": "C++ and Rcpp",
+    "section": "Rcpp sugar",
+    "text": "Rcpp sugar\nRcpp provides some “syntactic sugar” to allow us to write C++ code that is more like R code.\nOne example is operating on rows or columns of matrices. So far we have seen how to update individual elements of a NumericMatrix. Rcpp lets us extract an update whole rows/columns, e.g.\n\nmat(i, _) = NumericVector::create(x,y);\n\nA whole column would be extracted with mat(_, j)."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#vectorized-functions",
+    "href": "slides/06-r-with-cpp/index.html#vectorized-functions",
+    "title": "C++ and Rcpp",
+    "section": "Vectorized functions",
+    "text": "Vectorized functions\nThe vectorized random generation functions are another example of Rcpp sugar.\nRcpp provide many more vectorized functions, for example:\n\narithmetic operators (+, -, *, \\)\nlogical operators (==, !, =&lt;)\narithmetic functions (sqrt, pow, …)\nstatistical summaries (mean, median, )\n\nIn addition, Rcpp provides many R-like functions, such as which_max or rowSums, see Unofficial API documentation for a full list."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#rcpp-sugar-vectorized-functions",
+    "href": "slides/06-r-with-cpp/index.html#rcpp-sugar-vectorized-functions",
+    "title": "C++ and Rcpp",
+    "section": "Rcpp sugar: vectorized functions",
+    "text": "Rcpp sugar: vectorized functions\nRecall our distance function from earlier:\n\nNumericVector distC(double x, NumericVector y) {\n  int n = y.size();\n  NumericVector out(n);\n  for(int i = 0; i &lt; n; ++i) {\n    out[i] = sqrt(pow(ys[i] - x, 2.0));\n  }\n  return out;\n}\n\nWith Rcpp vectorization, we can simplify this to:\n\nNumericVector dist_sugar(double x, NumericVector y) {\n  return sqrt(pow(x - y, 2));\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#example-row-maximums",
+    "href": "slides/06-r-with-cpp/index.html#example-row-maximums",
+    "title": "C++ and Rcpp",
+    "section": "Example: row maximums",
+    "text": "Example: row maximums\nThis example combines row-indexing and a vectorized function, max().\n\nNumericVector row_max(NumericMatrix mat) {\n  int nrow = mat.nrow();\n  NumericVector max(nrow);\n  for (int i = 0; i &lt; nrow; i++)\n    max[i] = max( m(i,_) );\n  return max;\n}"
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#your-turn-1",
+    "href": "slides/06-r-with-cpp/index.html#your-turn-1",
+    "title": "C++ and Rcpp",
+    "section": "Your turn",
+    "text": "Your turn\nThe following R function can be used to simulate the value of \\(\\pi\\):\n\npiR &lt;- function(N) {\n    x &lt;- runif(N)\n    y &lt;- runif(N)\n    d &lt;- sqrt(x^2 + y^2)\n    return(4 * sum(d &lt; 1.0) / N)\n}\n\nConvert this to C++, taking advantage of the vectorized Rcpp functions."
+  },
+  {
+    "objectID": "slides/06-r-with-cpp/index.html#references",
+    "href": "slides/06-r-with-cpp/index.html#references",
+    "title": "C++ and Rcpp",
+    "section": "References",
+    "text": "References\n\n\nSimilar scope to this module: Gillespie, C and Lovelace, R, Efficient R programming, Rcpp section, https://csgillespie.github.io/efficientR/performance.html#rcpp\nGoing a bit further: Wickham, H, Advanced R (2nd edn), Rewriting R code in C++ chapter, https://adv-r.hadley.nz/rcpp.html\nNot very polished, but broader coverage of Rcpp functionality: Tsuda, M.E., Rcpp for everyone, https://teuder.github.io/rcpp4everyone_en/300_Rmath.html\nThe Rcpp vignettes, accessed via browseVignettes(\"Rcpp\") or CRAN\nThe unofficial Rcpp API documentation\nCase studies (optimising by improving R code and/or using C++)\n\nhttps://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/\nhttps://gallery.rcpp.org/articles/bayesian-time-series-changepoint/\nThe Rcpp Gallery has all sorts of examples, many illustrating advanced features of Rcpp)."
   },
   {
     "objectID": "slides/06-r-with-cpp/index.html#license",
     "href": "slides/06-r-with-cpp/index.html#license",
-    "title": "SESSION TITLE",
+    "title": "C++ and Rcpp",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
@@ -1348,21 +1600,21 @@
     "href": "content/06-r-with-cpp/index.html",
     "title": "Advanced R: C++ and Rcpp",
     "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/06-r-with-cpp/index.html#slides",
     "href": "content/06-r-with-cpp/index.html#slides",
     "title": "Advanced R: C++ and Rcpp",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/06-r-with-cpp/index.html#resources",
     "href": "content/06-r-with-cpp/index.html#resources",
     "title": "Advanced R: C++ and Rcpp",
     "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+    "text": "Resources\n\nReading\n\nSimilar scope to this module: Gillespie, C and Lovelace, R, Efficient R programming, Rcpp section\nhttps://csgillespie.github.io/efficientR/performance.html#rcpp\nGoing a bit further: Wickham, H, Advanced R (2nd edn), Rewriting R code in C++ chapter\nhttps://adv-r.hadley.nz/rcpp.html\nNot very polished, but broader coverage of Rcpp functionality: Tsuda, M.E., Rcpp for everyone\nhttps://teuder.github.io/rcpp4everyone_en/300_Rmath.html\nThe Rcpp vignettes, accessed via browseVignettes(\"Rcpp\") or CRAN\nThe unofficial Rcpp API documentation\nCase studies (optimising by improving R code and/or using C++)\n\nhttps://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/\nhttps://gallery.rcpp.org/articles/bayesian-time-series-changepoint/\nThe Rcpp Gallery has all sorts of examples, many illustrating advanced features of Rcpp).\n\n\n\n\nPackages\n\nRcpp\n\nhttps://www.rcpp.org\nhttps://github.com/RcppCore/Rcpp\nhttps://dirk.eddelbuettel.com/code/rcpp.html"
   },
   {
     "objectID": "content/01-welcome/index.html",

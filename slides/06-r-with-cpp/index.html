@@ -13,7 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <title>Advanced R and R Packages Workshop - SESSION TITLE</title>
+  <meta name="dcterms.date" content="2023-06-20">
+  <title>Advanced R and R Packages Workshop - C++ and Rcpp</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #adadbd;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #adadbd;  padding-left: 4px; }
+    div.sourceCode
+      { color: #2e2e2f;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #2e2e2f; } /* Normal */
+    code span.al { color: #ae4240; } /* Alert */
+    code span.an { color: #494957; } /* Annotation */
+    code span.at { color: #775781; } /* Attribute */
+    code span.bn { color: #ae4240; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #956133; } /* ControlFlow */
+    code span.ch { color: #618157; } /* Char */
+    code span.cn { color: #956133; } /* Constant */
+    code span.co { color: #494957; } /* Comment */
+    code span.cv { color: #494957; font-style: italic; } /* CommentVar */
+    code span.do { color: #494957; font-style: italic; } /* Documentation */
+    code span.dt { color: #ae4240; } /* DataType */
+    code span.dv { color: #ae4240; } /* DecVal */
+    code span.er { color: #ae4240; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ae4240; } /* Float */
+    code span.fu { color: #336695; } /* Function */
+    code span.im { color: #775781; } /* Import */
+    code span.in { color: #494957; } /* Information */
+    code span.kw { color: #2e2e2f; } /* Keyword */
+    code span.op { color: #494957; } /* Operator */
+    code span.ot { color: #494957; } /* Other */
+    code span.pp { color: #ae4240; } /* Preprocessor */
+    code span.re { color: #336695; } /* RegionMarker */
+    code span.sc { color: #494957; } /* SpecialChar */
+    code span.ss { color: #618157; } /* SpecialString */
+    code span.st { color: #618157; } /* String */
+    code span.va { color: #2e2e2f; } /* Variable */
+    code span.vs { color: #618157; } /* VerbatimString */
+    code span.wa { color: #494957; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -327,7 +394,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">SESSION TITLE</h1>
+  <h1 class="title">C++ and Rcpp</h1>
   <p class="subtitle">Advanced R</p>
 
 <div class="quarto-title-authors">
@@ -343,30 +410,625 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">June 20, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>What we’re covering</li>
+<li>When to use C++</li>
+<li>Getting set up</li>
+<li>C++ basics and Rcpp</li>
+<li>Rcpp sugar</li>
 </ul>
 </section>
-<section id="section" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>Section</h1>
-
-</section>
-
 <section>
-<section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>End Matter</h1>
+<section id="when-to-use-c" class="title-slide slide level1 inverse center">
+<h1>When to use C++</h1>
 
 </section>
-<section id="resources" class="slide level2">
-<h2>Resources</h2>
-<p>Material inspired by and remixed from:</p>
+<section id="limits-of-r" class="slide level2">
+<h2>Limits of R</h2>
+<p>Sometimes you reach the limits of R:</p>
 <ul>
-<li></li>
+<li>Your code is still slow despite optimizing the computational approach and the R implementation</li>
+<li>You could speed up the R code, but it results in very obscure, convoluted code</li>
 </ul>
+<p>In this case it can make sense to code parts in C++.</p>
+</section>
+<section id="typical-scenarios" class="slide level2">
+<h2>Typical scenarios</h2>
+<p>There are some typical scenarios where C++ is likely to be a good idea</p>
+<ul>
+<li>Loops that can’t be vectorized because iterations depend on previous results</li>
+<li>Recursive functions, or problems which involve calling functions millions of times.</li>
+<li>Problems that require advanced data structures and algorithms that R doesn’t provide.</li>
+</ul>
+<aside class="notes">
+<p>The overhead of calling a function in C++ is much lower than in R.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="getting-set-up" class="title-slide slide level1 inverse center">
+<h1>Getting set up</h1>
+
+</section>
+<section id="set-up-to-use-c" class="slide level2">
+<h2>Set up to use C++</h2>
+<p>To use C++, you need a working C++ compiler.</p>
+<p>On MacOS/Windows there is some setup to do, but it will also set you up to</p>
+<ul>
+<li>Develop packages in R</li>
+<li>Install packages from GitHub that include C/C++ code</li>
+</ul>
+<p>On Linux, you will usually have a C++ compiler installed, but you might as well get set up to develop R packages too.</p>
+<aside class="notes">
+<p>If you’ve followed the development tools section of the course prerequisites, you should be fully set-up for this already.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="linux" class="slide level2">
+<h2>Linux</h2>
+<p>Debian/Ubuntu:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">apt-get</span> install r-base-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fedora/RedHat: should be set up already.</p>
+</section>
+<section id="macos" class="slide level2">
+<h2>MacOS</h2>
+<p>Option 1</p>
+<ul>
+<li><a href="https://developer.apple.com/programs/register/">Register as an Apple developer (for free)</a>
+<ul>
+<li><p>Then, in the terminal:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+<p>Option 2</p>
+<ul>
+<li>Install the current release of full <a href="https://itunes.apple.com/ca/app/xcode/id497799835?mt=12">Xcode from the Mac App Store</a></li>
+<li>Within XCode go to Preferences -&gt; Downloads and install the Command Line Tools</li>
+<li>More convenient but installs a lot you don’t need</li>
+</ul>
+</section>
+<section id="windows" class="slide level2">
+<h2>Windows</h2>
+<ul>
+<li>Download the Rtools installer that matches your version of R from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a></li>
+<li>Run the installer, <code>Rtools.exe</code>, keeping the default settings.</li>
+</ul>
+</section></section>
+<section>
+<section id="c-basics-and-rcpp" class="title-slide slide level1 inverse center">
+<h1>C++ basics and Rcpp</h1>
+
+</section>
+<section id="a-first-c-function" class="slide level2">
+<h2>A first C++ function</h2>
+<p>Consider an R function <code>add_r()</code> to add two numbers</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>add_r <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s how we might write an equivalent <code>add_cpp()</code> function in C++</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">double</span> add_cpp<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">)</span> <span class="op">{</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">double</span> value <span class="op">=</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="cf">return</span> value<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The type for the return value is declared first</li>
+<li>The type of each argument must be declared</li>
+<li>The type of intermediate objects must be declared</li>
+<li>Return statements must use <code>return</code></li>
+</ul>
+</section>
+<section id="rcpp" class="slide level2">
+<h2>Rcpp</h2>
+<p>To use <code>add_cpp()</code> in R we need to compile the C++ code and construct an R function that connects to the compiled C++ function.</p>
+<p>The R package <strong>Rcpp</strong> takes care of these steps for us.</p>
+<p>One way is to use the <code>cppFunction()</code>, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(Rcpp)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">cppFunction</span>(<span class="st">'</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="st">  double add_cpp(double x, double y) {</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="st">    double value = x + y;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="st">    return value;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="st">  }</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-the-c-function" class="slide level2">
+<h2>Using the C++ function</h2>
+<p>After defining <code>add_cpp()</code> via <code>cppFunction()</code>, <code>add_cpp()</code> is available to use as a R function</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>add_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, y) 
+.Call(&lt;pointer: 0x100300b40&gt;, x, y)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">add_cpp</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</section>
+<section id="stand-alone-c-files" class="slide level2">
+<h2>Stand-alone C++ files</h2>
+<p>It is better to define functions in C++ files (extension <code>.cpp</code>). These files will be recognised by RStudio and other IDEs, with the usual benefits.</p>
+<p>The C++ file should have these lines at the top:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The compiler will locate the Rcpp header file with functions and class definitions supplied by <strong>Rcpp</strong> and include the contents.</li>
+<li>Adding the namespace means that we can use <strong>Rcpp</strong> functions in the C++ code without prefixing the function names by <code>Rcpp::</code>.</li>
+</ul>
+<p>Above each function we want to use in R, add <code>// [[Rcpp::export]]</code></p>
+</section>
+<section id="example-c-file" class="slide level2">
+<h2>Example C++ file</h2>
+<p>The following is in the file <code>add_cpp2.cpp</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="dt">double</span> add_cpp2<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="dt">double</span> value <span class="op">=</span> x <span class="op">+</span> y<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="cf">return</span> value<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sourcecpp" class="slide level2">
+<h2><code>sourceCpp()</code></h2>
+<p>Now we can use <code>sourceCpp()</code> to make the C++ functions available in R</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"C++"</span>, <span class="st">"add_cpp2.cpp"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">sourceCpp</span>(path)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">add_cpp2</span>(<span class="dv">5</span>, <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+</div>
+</section>
+<section id="benefits-of-separate-c-files" class="slide level2">
+<h2>Benefits of separate C++ files</h2>
+<p>There are a number of benefits to writing C++ code in separate <code>.cpp</code> files, compared to <code>cppFunction()</code></p>
+<ul>
+<li>syntax highlighting</li>
+<li>avoid mistakes switching from R to C code</li>
+<li>line numbers for compilation errors</li>
+<li>highlighting errors (e.g.&nbsp;missing “;”)</li>
+</ul>
+</section>
+<section id="c-basics" class="slide level2">
+<h2>C++ Basics</h2>
+<ul>
+<li>Every statement within <code>{</code> <code>}</code> must be terminated by a <code>;</code>.</li>
+<li>Use <code>=</code> for assignment (<code>&lt;-</code> is not valid).</li>
+<li>Addition, subtraction, multiplication and division use the same operators as R (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>).</li>
+<li>Comparison operators are the same as R (<code>==</code>, <code>!=</code>, <code>&gt;</code>, etc)</li>
+<li>One-line comments start with <code>//</code>.</li>
+<li>Multi-line comments use <code>/*</code> <code>*/</code> delimiters</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">/*</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co">Example</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">multi-line comment</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-types" class="slide level2">
+<h2>Data types</h2>
+<p>The basic C++ data types are scalars. <strong>Rcpp</strong> provides vector versions <br> <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>R</th>
+<th>C++ (scalar)</th>
+<th>Rcpp (vector)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>numeric</td>
+<td>double</td>
+<td>NumericVector</td>
+</tr>
+<tr class="even">
+<td>integer</td>
+<td>int</td>
+<td>IntegerVector</td>
+</tr>
+<tr class="odd">
+<td>character</td>
+<td>char</td>
+<td>CharacterVector</td>
+</tr>
+<tr class="even">
+<td>logical</td>
+<td>bool</td>
+<td>LogicalVector</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Rcpp</strong> also provides <code>String</code> as an alternative to <code>char</code></p>
+<aside class="notes">
+<p>Care needed with NA double: more bits used to represent a real number vs single precision - range 2<sup>-(2</sup>10) to 2<sup>(2</sup>10). vs same with 2^7 - precision ~15 d.p. vs 7</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-no-inputs-scalar-output" class="slide level2">
+<h2>Example: no inputs, scalar output</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="dt">int</span> one<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-ifelse-scalar-input-scalar-output" class="slide level2">
+<h2>Example: if/else (scalar input, scalar output)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1"></a><span class="dt">int</span> signC<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="op">}</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="for-loop-syntax" class="slide level2">
+<h2>For loop syntax</h2>
+<p>A C++ <code>for</code> loop has the form</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  total <span class="op">+=</span> x<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Syntax: <code>for (initialisation; condition; increment)</code>
+<ul>
+<li>Initialize integer <code>i</code> at zero</li>
+<li>Continue as long as <code>i</code> is less than <code>n</code></li>
+<li>Increment <code>i</code> by 1 after each iteration
+<ul>
+<li><code>++i</code> is equivalent to <code>i = i + 1</code></li>
+</ul></li>
+</ul></li>
+<li><code>total += x[i]</code> is equivalent to <code>total = total + x[i]</code></li>
+<li><strong>Vector indices start at zero</strong></li>
+</ul>
+</section>
+<section id="example-for-loop-vector-input-scalar-output" class="slide level2">
+<h2>Example: <code>for</code> loop (vector input, scalar output)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1"></a><span class="dt">double</span> sumC<span class="op">(</span>NumericVector x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="dt">int</span> n <span class="op">=</span> x<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="dt">double</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>    total <span class="op">+=</span> x<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="op">}</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use <code>.size()</code> method to find the length of a vector</li>
+</ul>
+</section>
+<section id="example-while-loop-vector-input-scalar-output" class="slide level2">
+<h2>Example: <code>while</code> loop (vector input, scalar output)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a><span class="dt">double</span> sumC<span class="op">(</span>NumericVector x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="dt">int</span> n <span class="op">=</span> x<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="dt">double</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>    total <span class="op">+=</span> x<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>    <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="op">}</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>  <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Use <code>break</code> to break from a while or for loop</li>
+<li>Use <code>continue</code> to skip to the next iteration (vs <code>next</code> in R)</li>
+</ul>
+</section>
+<section id="example-vector-output" class="slide level2">
+<h2>Example: vector output</h2>
+<p>The following computes the Euclidean distances</p>
+<p><span class="math display">\[d_i  = \sqrt{(x - y_i)^2}\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a>NumericVector distC<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="dt">int</span> n <span class="op">=</span> y<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  NumericVector dist<span class="op">(</span>n<span class="op">);</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>    dist<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> sqrt<span class="op">(</span>pow<span class="op">(</span>ys<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> x<span class="op">,</span> <span class="fl">2.0</span><span class="op">));</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="op">}</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>dist(n)</code> is used to create a numeric vector named <code>dist</code> of length <code>n</code>.</li>
+<li><code>v(n)</code> would create a vector named <code>v</code>.</li>
+</ul>
+</section>
+<section id="c-functions" class="slide level2">
+<h2>C++ Functions</h2>
+<p><code>pow</code> is a standard C++ function for computing a value raised to a power.</p>
+<p>Both <code>pow</code> and <code>sqrt</code> are functions from the <code>&lt;cmath&gt;</code> library, see e.g.&nbsp;<a href="https://www.w3schools.com/cpp/cpp_math.asp">w3schools C++ math</a>.</p>
+<p>To use <code>&lt;cmath&gt;</code> functions in C++ code, we would normally need to include the <code>&lt;cmath&gt;</code> header in our <code>.cpp</code> file. However, <strong>Rcpp</strong> defines its own version of these functions, so we can use them with just the <strong>Rcpp</strong> header.</p>
+</section>
+<section id="creating-a-c-file-in-rstudio" class="slide level2">
+<h2>Creating a C++ file in RStudio</h2>
+<p>From the menu bar:</p>
+<ul>
+<li>Go to File &gt; New File &gt; C++ file</li>
+<li>This template already incleas the headers required for Rcpp</li>
+<li>Delete the extra content, apart from the comment <code>//[Rcpp::export]</code></li>
+</ul>
+<p>You can also create a C++ file from the new file drop-down in the Files pane, but this will be blank.</p>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Create a new C++ file (recommend using the RStudio template)</li>
+<li>Convert the following R function that computes a weighted mean to C++</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>wmean_r <span class="ot">&lt;-</span> <span class="cf">function</span>(x, w){</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  total <span class="ot">&lt;-</span> total_w <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb21-5"><a href="#cb21-5"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> x[i] <span class="sc">*</span> w[i]</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    total_w <span class="ot">&lt;-</span> total_w <span class="sc">+</span> w[i]</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  }  </span>
+<span id="cb21-8"><a href="#cb21-8"></a>  total<span class="sc">/</span>total_w</span>
+<span id="cb21-9"><a href="#cb21-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Use <code>sourceCpp()</code> to source in your function.</li>
+<li>Use <code>bench::mark()</code> to compare <code>wmean_r()</code>, <code>wmean_cpp()</code> and the <strong>stats</strong> function <code>weighted.mean()</code>.</li>
+</ol>
+</section>
+<section id="missing-values-in-c-data-types" class="slide level2">
+<h2>Missing values in C++ data types</h2>
+<p>C++ data types do not handle <code>NA</code>s in input well</p>
+<ul>
+<li><code>int</code>: use a length 1 <code>IntegerVector</code> instead</li>
+<li><code>double</code>: <code>NA</code>s okay (converted to <code>NAN</code>)</li>
+<li><code>char</code>: use <code>String</code> instead</li>
+<li><code>bool</code>: <code>NA</code>s converted to <code>true</code>; use <code>int</code> instead</li>
+</ul>
+</section>
+<section id="missing-values-in-rcpp-vectors" class="slide level2">
+<h2>Missing values in Rcpp vectors</h2>
+<p>Rcpp vectors handle <code>NA</code>s in the corresponding type<br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Rcpp (vector)</th>
+<th>NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NumericVector</code></td>
+<td><code>NA_REAL</code></td>
+</tr>
+<tr class="even">
+<td><code>IntegerVector</code></td>
+<td><code>NA_INTEGER</code></td>
+</tr>
+<tr class="odd">
+<td><code>CharacterVector</code></td>
+<td><code>NA_STRING</code></td>
+</tr>
+<tr class="even">
+<td><code>LogicalVector</code></td>
+<td><code>NA_LOGICAL</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="matrices" class="slide level2">
+<h2>Matrices</h2>
+<p>Each vector type has a corresponding matrix equivalent: <code>NumericMatrix</code>, <code>IntegerMatrix</code>, <code>CharacterMatrix</code> and <code>LogicalMatrix</code>.</p>
+<p>Create a matrix called named <code>m1</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1"></a>NumericMatrix m1<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Subset with <code>()</code>, e.g.&nbsp;<code>m1(3, 2)</code> for the value in row 3, column 2.</li>
+<li>The first element is <code>m1(0, 0)</code>.</li>
+<li>Use <code>.nrow</code> and <code>.ncol</code> methods to get the number of rows and columns</li>
+<li>Assign matrix elements as follows</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1"></a>m1<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">)</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-row-sums-matrix-input-vector-output" class="slide level2">
+<h2>Example: row sums (matrix input, vector output)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1"></a>NumericVector rowSumsC<span class="op">(</span>NumericMatrix x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="dt">int</span> nrow <span class="op">=</span> x<span class="op">.</span>nrow<span class="op">(),</span> ncol <span class="op">=</span> x<span class="op">.</span>ncol<span class="op">();</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  NumericVector out<span class="op">(</span>nrow<span class="op">);</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  </span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nrow<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="dt">double</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> ncol<span class="op">;</span> j<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>      total <span class="op">+=</span> x<span class="op">(</span>i<span class="op">,</span> j<span class="op">);</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>    <span class="op">}</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>    out<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> total<span class="op">;</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="op">}</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="statistical-distributions" class="slide level2">
+<h2>Statistical distributions</h2>
+<p>As in R, <strong>Rcpp</strong> provides d/p/q/r functions for the density, distribution function, quantile function and random generation. - Functions in the <code>Rcpp::</code> namespace return a vector. - Functions in the <code>R::</code> namespace (also provided by the <strong>Rcpp</strong> R package) return a scalar</p>
+<p>For example we can sample a single value from a <span class="math inline">\(N(0, 1)\)</span> distribution by extracting the first element from a vector</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1"></a>rgamma<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="op">(</span>y <span class="op">*</span> y <span class="op">+</span> <span class="dv">4</span><span class="op">))[</span><span class="dv">0</span><span class="op">];</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or use the <code>R::rgamma()</code> function to sample a single value directly</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1"></a>R<span class="op">::</span>rgamma<span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">1</span> <span class="op">/</span> <span class="op">(</span>y <span class="op">*</span> y <span class="op">+</span> <span class="dv">4</span><span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="your-turn-part-1" class="slide level2">
+<h2>Your turn (part 1)</h2>
+<p>In a new C++ file, convert the following Gibbs sampler to C++</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>gibbs_r <span class="ot">&lt;-</span> <span class="cf">function</span>(N, thin) {</span>
+<span id="cb27-2"><a href="#cb27-2"></a>  mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> N, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb27-3"><a href="#cb27-3"></a>  x <span class="ot">&lt;-</span> y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb27-6"><a href="#cb27-6"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>thin) {</span>
+<span id="cb27-7"><a href="#cb27-7"></a>      x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">1</span>, <span class="dv">3</span>, y <span class="sc">*</span> y <span class="sc">+</span> <span class="dv">4</span>)</span>
+<span id="cb27-8"><a href="#cb27-8"></a>      y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">1</span> <span class="sc">/</span> (x <span class="sc">+</span> <span class="dv">1</span>), <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb27-9"><a href="#cb27-9"></a>    }</span>
+<span id="cb27-10"><a href="#cb27-10"></a>    mat[i, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(x, y)</span>
+<span id="cb27-11"><a href="#cb27-11"></a>  }</span>
+<span id="cb27-12"><a href="#cb27-12"></a>  mat</span>
+<span id="cb27-13"><a href="#cb27-13"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-part-2" class="slide level2">
+<h2>Your turn (part 2)</h2>
+<p>Create a wrapper function to set the seed as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>set_seed <span class="ot">&lt;-</span> <span class="cf">function</span>(expr){</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">eval</span>(expr)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Benchmark your <code>gibbs_r()</code> and <code>gibbs_c()</code> functions with N = 100 and thin = 10, using your wrapper function to set the seed.</p>
+</section></section>
+<section>
+<section id="rcpp-sugar" class="title-slide slide level1 inverse center">
+<h1>Rcpp sugar</h1>
+
+</section>
+<section id="rcpp-sugar-1" class="slide level2">
+<h2>Rcpp sugar</h2>
+<p>Rcpp provides some “syntactic sugar” to allow us to write C++ code that is more like R code.</p>
+<p>One example is operating on rows or columns of matrices. So far we have seen how to update individual elements of a <code>NumericMatrix</code>. Rcpp lets us extract an update whole rows/columns, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource rcpp number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href="#cb29-1"></a>mat(i, _) = NumericVector::create(x,y);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A whole column would be extracted with <code>mat(_, j)</code>.</p>
+</section>
+<section id="vectorized-functions" class="slide level2">
+<h2>Vectorized functions</h2>
+<p>The vectorized random generation functions are another example of Rcpp sugar.</p>
+<p>Rcpp provide many more vectorized functions, for example:</p>
+<ul>
+<li>arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>\</code>)</li>
+<li>logical operators (<code>==</code>, <code>!</code>, <code>=&lt;</code>)</li>
+<li>arithmetic functions (<code>sqrt</code>, <code>pow</code>, …)</li>
+<li>statistical summaries (<code>mean</code>, <code>median</code>, )</li>
+</ul>
+<p>In addition, Rcpp provides many R-like functions, such as <code>which_max</code> or <code>rowSums</code>, see <a href="https://thecoatlessprofessor.com/programming/cpp/unofficial-rcpp-api-documentation/#sugar">Unofficial API documentation</a> for a full list.</p>
+</section>
+<section id="rcpp-sugar-vectorized-functions" class="slide level2">
+<h2>Rcpp sugar: vectorized functions</h2>
+<p>Recall our distance function from earlier:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1"></a>NumericVector distC<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="dt">int</span> n <span class="op">=</span> y<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  NumericVector out<span class="op">(</span>n<span class="op">);</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>    out<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> sqrt<span class="op">(</span>pow<span class="op">(</span>ys<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> x<span class="op">,</span> <span class="fl">2.0</span><span class="op">));</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="op">}</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With Rcpp vectorization, we can simplify this to:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1"></a>NumericVector dist_sugar<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="cf">return</span> sqrt<span class="op">(</span>pow<span class="op">(</span>x <span class="op">-</span> y<span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-row-maximums" class="slide level2">
+<h2>Example: row maximums</h2>
+<p>This example combines row-indexing and a vectorized function, <code>max()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1"></a>NumericVector row_max<span class="op">(</span>NumericMatrix mat<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="dt">int</span> nrow <span class="op">=</span> mat<span class="op">.</span>nrow<span class="op">();</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  NumericVector max<span class="op">(</span>nrow<span class="op">);</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nrow<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>    max<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> max<span class="op">(</span> m<span class="op">(</span>i<span class="op">,</span>_<span class="op">)</span> <span class="op">);</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="cf">return</span> max<span class="op">;</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your turn</h2>
+<p>The following R function can be used to simulate the value of <span class="math inline">\(\pi\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>piR <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
+<span id="cb33-2"><a href="#cb33-2"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>    y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb33-4"><a href="#cb33-4"></a>    d <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a>    <span class="fu">return</span>(<span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(d <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">/</span> N)</span>
+<span id="cb33-6"><a href="#cb33-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Convert this to C++, taking advantage of the vectorized Rcpp functions.</p>
+</section></section>
+<section>
+<section id="end-matter" class="title-slide slide level1 inverse center">
+<h1>End matter</h1>
+
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<div class="smaller80">
+<ul>
+<li><p>Similar scope to this module: Gillespie, C and Lovelace, R, <em>Efficient R programming</em>, <em>Rcpp section</em>, <a href="https://csgillespie.github.io/efficientR/performance.html#rcpp" class="uri">https://csgillespie.github.io/efficientR/performance.html#rcpp</a></p></li>
+<li><p>Going a bit further: Wickham, H, <em>Advanced R</em> (2nd edn), <em>Rewriting R code in C++ chapter</em>, <a href="https://adv-r.hadley.nz/rcpp.html" class="uri">https://adv-r.hadley.nz/rcpp.html</a></p></li>
+<li><p>Not very polished, but broader coverage of Rcpp functionality: Tsuda, M.E., <em>Rcpp for everyone</em>, <a href="https://teuder.github.io/rcpp4everyone_en/300_Rmath.html" class="uri">https://teuder.github.io/rcpp4everyone_en/300_Rmath.html</a></p></li>
+<li><p>The <strong>Rcpp</strong> vignettes, accessed via <code>browseVignettes("Rcpp")</code> or <a href="https://CRAN.R-project.org/package=Rcpp">CRAN</a></p></li>
+<li><p>The unofficial <a href="https://thecoatlessprofessor.com/programming/cpp/unofficial-rcpp-api-documentation">Rcpp API documentation</a></p></li>
+<li><p>Case studies (optimising by improving R code and/or using C++)</p>
+<ul>
+<li><a href="https://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/" class="uri">https://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/</a></li>
+<li><a href="https://gallery.rcpp.org/articles/bayesian-time-series-changepoint/" class="uri">https://gallery.rcpp.org/articles/bayesian-time-series-changepoint/</a></li>
+<li>The <a href="https://gallery.rcpp.org/">Rcpp Gallery</a> has all sorts of examples, many illustrating advanced features of Rcpp).</li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>
@@ -587,6 +1249,44 @@ Department of Statistics, University of Warwick
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
