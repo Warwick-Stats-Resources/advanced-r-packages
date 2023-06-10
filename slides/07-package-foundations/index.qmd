@@ -1,12 +1,12 @@
 ---
-title: SESSION TITLE
-subtitle: Advanced R
+title: Package Foundations
+subtitle: R Packages
 author: 
   - name: Heather Turner and Ella Kaye
   - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: yyyy-MM-dd
+date: 2023-06-20
 date-format: long
 format: 
   warwickpres-revealjs:
@@ -17,9 +17,208 @@ format:
 
 ## Overview
 
--   What we're covering
+- Why write a package?
+- Package structure and state
+- Setting up development tools
+- Creating a package with a working function
 
-# Section {background-color="#552D62"}
+# Why write a package? {.inverse}
+
+## Why write a package?
+
+-  You want to **generalise** code
+-  You want to **document** code
+-  You want to **test** code
+-  You want to **share** code
+-  You want to create **impact** from your work
+
+## Script vs package
+
+| R script                       | Package                             |
+|--------------------------------|-------------------------------------|
+| One-off data analysis          | Provides reusable components        |
+| Defined by `.R` extension      | Defined by presence of `DESCRIPTION` file |
+| `library()` calls              | Imports defined in `NAMESPACE` file |
+| Documentation in `#` comments  | Documentation in files and `Roxygen` comments |
+| Run lines or source file       | Install and restart                 |
+
+::: {.notes}
+reusable components: typically functions, but could also be R markdown template, Shiny app, data
+:::
+
+# Package structure and state {.inverse}
+
+## Package structure
+
+An R package is developed as a directory of source code files.
+
+The names of files and directories must follow the specification laid out in 
+the [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html) manual - we'll cover the main components in this workshop.
+
+Directory tree for an example RStudio package project:
+
+```{r, structure, echo = FALSE}
+# Run once, interactively, to be able to call dir_tree
+#usethis::create_package("mypackage", open = FALSE)
+fs::dir_tree("mypackage")
+```
+
+## Package states
+
+:::::: {.columns}
+
+::::: {.column width="25%"}
+- ::::{.larger125}
+  :::{.callout-note}
+  ## source
+  :::
+  ::::
+- bundled
+- binary
+- installed
+- in-memory
+:::::
+
+::::: {.column width="70%"}
+:::{.callout-note}
+## source
+What you create and work on.
+
+Specific directory structure with some particular components e.g., `DESCRIPTION`, an `/R` directory.
+:::
+:::::
+::::::
+
+## Package states
+
+:::::: {.columns}
+
+::::: {.column width="25%"}
+- source
+- ::::{.larger125}
+  :::{.callout-note}
+  ## bundled
+  :::
+  ::::
+- binary
+- installed
+- in-memory
+:::::
+
+::::: {.column width="70%"}
+:::{.callout-note}
+## bundled
+Package files compressed to single `.tar.gz` file.
+
+Also known as "source tarballs".
+
+Created by command line tool `R CMD build`
+
+Unpacked it looks very like the source package.
+:::
+:::::
+::::::
+
+::: {.notes}
+In the rare case that you need to make a bundle from a package you’re developing locally, use devtools::build(). Under the hood, this calls pkgbuild::build() and, ultimately, R CMD build, which is described further in the Building package tarballs section of Writing R Extensions.
+:::
+
+## Package states
+
+:::::: {.columns}
+
+::::: {.column width="25%"}
+- source
+- bundled
+- ::::{.larger125}
+  :::{.callout-note}
+  ## binary
+  :::
+  ::::
+- installed
+- in-memory
+:::::
+
+::::: {.column width="70%"}
+:::{.callout-note}
+## binary
+Compressed copy of the package in installed form.
+
+Also a single file.
+
+Platform specific: `.tgz` (Mac) `.zip` (Windows).
+
+Package developers submit a bundle to CRAN; CRAN makes and distributes binaries.
+:::
+:::::
+::::::
+
+::: {.notes}
+
+A package in binary form is Platform specific.
+If you write a package for distribution on CRAN, you submit a bundle to CRAN then CRAN makes and distributes binaries
+
+
+`install.packages()` is usually downloading the binary
+
+To understand the difference between package bundle and a package binary see <https://r-pkgs.org/package-structure-state.html> 
+:::
+
+## Package states
+
+:::::: {.columns}
+
+::::: {.column width="25%"}
+- source
+- bundled
+- binary
+- ::::{.larger125}
+  :::{.callout-note}
+  ## installed
+  :::
+  ::::
+- in-memory
+:::::
+
+::::: {.column width="70%"}
+:::{.callout-note}
+## installed
+A directory of files in a library directory.
+
+Any C/C++/Fortran code is in compiled form.
+
+Help files, code and optionally data are in database form.
+
+`install.packages()` can install from source or from a binary
+:::
+:::::
+::::::
+
+## Package states
+
+:::::: {.columns}
+
+::::: {.column width="25%"}
+- source
+- bundled
+- binary
+- installed 
+- ::::{.larger125}
+  :::{.callout-note}
+  ## in-memory
+  :::
+  ::::
+:::::
+
+::::: {.column width="70%"}
+:::{.callout-note}
+## in-memory
+If a package is installed, `library()` makes its function available by loading the package into memory and attaching it to the search path.
+:::
+:::::
+::::::
+
+
 
 # End Matter {background-color="#552D62"}
 
@@ -32,3 +231,54 @@ Material inspired by and remixed from:
 ## License
 
 Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target="_blank"}).
+
+```{=html}
+<!-- needs to be last chunk of presentation otherwise creates an extra slide -->
+<!-- requires Quarto v1.3 -->
+<!-- tint80 for border, tint20 for title -->
+<!-- this should hopefully no longer be necessary in Quarto 1.4 -->
+<!-- https://github.com/quarto-dev/quarto-cli/issues/5038 -->
+<style type="text/css">
+div.callout-note {
+  border-left-color: #336695 !important;
+}
+
+div.callout-note.callout-style-default .callout-title {
+  background-color: #CCD9E4 !important;
+}
+
+div.callout-caution {
+  border-left-color: #AE4240 !important;
+}
+
+div.callout-caution.callout-style-default .callout-title {
+  background-color: #ebd0cf !important;
+}
+
+div.callout-tip {
+  border-left-color: #618157 !important;
+}
+
+div.callout-tip.callout-style-default .callout-title {
+  background-color: #d8e0d5 !important;
+}
+
+div.callout-important {
+  border-left-color: #775781 !important;
+}
+
+div.callout-important.callout-style-default .callout-title {
+  background-color: #ddd5e0 !important;
+}
+
+div.callout-warning {
+  border-left-color: #956133 !important;
+}
+
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #e4d8cc !important;
+}
+</style>
+```
+
+
