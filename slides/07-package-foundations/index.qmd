@@ -19,7 +19,7 @@ format:
 
 - Why write a package?
 - Package structure and state
-- Setting up development tools
+- Package development setup
 - Creating a package with a working function
 
 # Why write a package? {.inverse}
@@ -218,11 +218,318 @@ If a package is installed, `library()` makes its function available by loading t
 :::::
 ::::::
 
+## Building/Installing Packages from Source
 
+There are various reasons we may wish to build or install from source:
 
-# End Matter {background-color="#552D62"}
+- Installing a CRAN package where a binary has not yet been built for the latest version.
+- Installing a package from GitHub/other version-controlled source code repository, e.g.
+```{r install_github, eval = FALSE}
+remotes::install_github("r-lib/revdepcheck")
+```
+- Installing our own package from the source code or building it to submit to CRAN.
 
-## Resources
+If the package includes C/C++/Fortran code, we will need a suitable compiler.
+
+# Build tools {.inverse}
+
+::: {.notes}
+Covered in the course prerequisites and in Session 6 on R with C++, but put here for completeness  
+:::
+
+## Linux
+
+Debian/Ubuntu:
+
+```{.sh}
+apt-get update
+apt-get install r-base-dev
+```
+
+Fedora/RedHat: should be set up already.
+
+## MacOS
+
+Option 1
+
+- [Register as an Apple developer (for free)](https://developer.apple.com/programs/register/)
+  - Then, in the terminal:
+  
+     ```{.sh}
+     xcode-select --install
+     ```
+
+Option 2 
+
+- Install the current release of full [Xcode from the Mac App Store](https://itunes.apple.com/ca/app/xcode/id497799835?mt=12)
+ - Within XCode go to Preferences -> Downloads and install the Command Line Tools
+- More convenient but installs a lot you don't need
+
+## Windows
+
+- Download the Rtools installer that matches your version of R from <https://cran.r-project.org/bin/windows/Rtools/>
+- Run the installer, `Rtools.exe`, keeping the default settings.
+
+# Package development setup {.inverse}
+
+## The setup we'll be using
+
+We'll be using the following tools for package development:
+
+- RStudio: to manage and edit the package source code
+- git + GitHub: to version control the package source code
+- **devtools** and **usethis** R packages: 
+    - **devtools** for functions supporting the development workflow
+    - **usethis** for setup tasks
+    - **devtools** depends on **usethis** package
+    - Integrated with RStudio: projects, menu items/shortcuts
+    - Uses system utilities internally: `R CMD` utilities bundled with R
+    
+## Follow along
+
+For the rest of this session, follow along on your own computer to make sure you're set up for package development and to create our example package.
+    
+## **devtools** and **usethis**
+
+We can use **devtools** right away to check our system is setup for package development.
+
+```{r eval = FALSE}
+install.packages("devtools")
+```
+
+```{r}
+library(devtools)
+```
+
+```{r message = TRUE}
+has_devel()
+```
+
+Installing **devtools** will also install **usethis**.    
+
+Check you have the latest version of **usethis** -- 2.2.0 was recently released -- and update if not:
+
+```{r}
+packageVersion("usethis")
+```
+
+## Create a GitHub PAT
+
+The **usethis** package uses personal access tokens (PAT) to communicate with GitHub.
+
+First, make sure you're signed into GitHub. Then run
+
+```{r}
+#| eval: false
+usethis::create_github_token()
+```
+
+- Add Note describing the computer or use- case (e.g. personal-macbook-pro-2021, project-xyz)
+- Select expiration (recommend default 30 days)
+- Check scope (default selection is fine)
+- Click 'Generate Token'
+- **Important!** Copy token to clipboard, do not close window until stored (see next slide)!
+- You may want to store token in a secure vault, like 1Password or BitWarden
+
+## Store your PAT
+
+By installing **usethis**, you will also have the **gitcreds** package to manage git credentials.
+
+Put your PAT into the Git credential store by running the following command and entering your copied PAT at the prompt (assume the PAT is on your clipboard).
+
+```{r}
+#| eval: false
+gitcreds::gitcreds_set()
+```
+
+- If you don't have a PAT stored, will prompt you to enter: paste!
+- If you do, you will be given a choice to keep/replace/see the password
+  - choose as appropriate
+  - if replacing, paste!
+
+## sitrep and vaccinate
+
+Ask for a **sit**uation **rep**ort:
+
+```{r eval = FALSE}
+usethis::git_sitrep()
+```
+
+Check that the PAT is discovered.
+
+Check that your user name and email are defined, else follow the [configuration instructions](https://hturner.github.io/advanced-r/01_open_code_and_software.html#17) from a previous Advanced R workshop.
+
+It's also a good idea to vaccinate. This implements best practice by adding files to your global `.gitignore`:
+
+```{r}
+#| eval: false
+usethis::git_vaccinate() 
+```
+
+## More on usethis and GitHub creds
+
+It is well worth reading (and following all the instructions) in the following two **usethis** vignettes:
+
+- [usethis setup](https://usethis.r-lib.org/articles/usethis-setup.html)
+- [Managing Git(Hub) Credentials](https://usethis.r-lib.org/articles/git-credentials.html)
+  - See in particular the section on [ongoing PAT maintenance](https://usethis.r-lib.org/articles/git-credentials.html#ongoing-pat-maintenance)
+
+# Create a package! {.inverse}
+
+## Package name
+
+Can only contain the characters [A-Z, a-z, 0-9, .]. Some tips:
+
+-   Unique name you can easily Google
+-   Avoid mixing upper and lower case
+-   Use abbreviations
+-   Add an r to make unique, e.g **stringr**
+-   Use wordplay, e.g. **lubridate**
+-   Avoid trademarked names
+-   Use the **available** package to check name not taken
+
+For now, we will use **mypackage**
+
+## Create a package!
+
+```{r eval = FALSE}
+usethis::create_package("~/Desktop/mypackage")
+```
+
+- Be deliberate about where you create your package.
+
+- Do not nest inside another RStudio project, R package or git repo.
+
+- You may want to use a different path!
+
+## `create_package()`
+
+What happens when we run `create_package()`?
+
+-   R will create a folder called `mypackage` which is a package and an RStudio project
+-   restart R in the new project
+-   create the some infrastructure for your package with the minimal components for a working package
+-   start the RStudio Build pane
+
+## R Studio Build pane/menu
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](images/rstudio_build_pane.png)
+:::
+
+::: {.column width="50%"}
+![](images/rstudio_build_menu.png)
+:::
+
+::::
+
+## Minimal components
+
+**usethis** will create the minimal components of a package that we have already seen:
+
+-   `DESCRIPTION` provides metadata about your package. 
+-   `NAMESPACE` declares the functions your package exports for external use and the external functions your package imports from other packages.
+-   The `/R` directory is where we will put `.R` files with function definitions.
+
+## Auxiliary files
+
+**usethis** also adds some auxiliary files:
+
+-   `mypackage.Rproj` is the file that makes this directory an RStudio Project.
+-   `.Rbuildignore` lists files that we need but that should not be included when building the R package from source.
+-   `.gitignore` anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio.
+
+# git and GitHub {.inverse}
+
+::: {.notes}
+Now will make our package a version controlled project on our local machine and then put it on GitHub.
+
+ - version control, best-practice open-source development 
+
+usethis has functions to help with this.  
+:::
+
+## Use git
+
+To make our project agGit repository, or 'repo', on our local machine we use `usethis::use_git()`
+
+Make your package a git repo:
+
+```{r eval = FALSE}
+usethis::use_git()
+```
+
+## `use_git()` output (part 1)
+
+```{r eval = FALSE}
+ ✔ Initialising Git repo
+ ✔ Adding '.Rhistory', '.Rdata', '.httr-oauth', '.DS_Store' to  '.gitignore' 
+ There are 5 uncommitted files:
+ * '.gitignore'
+ * '.Rbuildignore'
+ * 'DESCRIPTION'
+ * 'mypackage.Rproj'
+ * 'NAMESPACE'
+ Is it ok to commit them?
+
+ 1: I agree
+ 2: Absolutely not
+ 3: No way
+```
+
+Choose the affirmative option! (The exact options may vary.)
+
+## `use_git()` output (part 2)
+
+```{r eval = FALSE}
+√ Adding files
+√ Commit with message 'Initial commit'
+• A restart of RStudio is required to activate the Git pane
+Restart now?
+
+1: Nope
+2: Definitely
+3: No
+```
+
+Choose the affirmative option! (The exact options may vary.)
+
+::: {.notes}
+You should find the git pane has opened.
+:::
+
+## Use GitHub
+
+To create a copy on GitHub we use `usethis::use_github()`.
+
+```{r}
+#| eval: false
+# Choose one of the following:
+usethis::use_github() # creates a public repo
+usethis::use_github(private = TRUE)
+```
+
+This takes a local project, creates an associated repo on GitHub, adds it to your local repo as the "origin remote", and makes an initial "push" to synchronize.
+
+. . .
+
+::::{.smaller80}
+:::{.callout-note}
+## Warwick GitHub
+University of Warwick members can use the University's private GitHub instance, e.g.
+
+```{r, eval = FALSE}
+usethis::use_github("https://github.warwick.ac.uk")
+```
+However, Warwick GitHub does not support GitHub Actions or GitHub Pages, so for packages using your personal account is better -- we'll be using both Actions and Pages later.
+:::
+::::
+
+# End matter {.inverse}
+
+## References
 
 Material inspired by and remixed from:
 
