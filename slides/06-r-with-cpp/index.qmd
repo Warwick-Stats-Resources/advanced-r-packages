@@ -1,12 +1,12 @@
 ---
-title: SESSION TITLE
+title: C++ and Rcpp
 subtitle: Advanced R
 author: 
   - name: Heather Turner and Ella Kaye
   - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: yyyy-MM-dd
+date: 2023-06-20
 date-format: long
 format: 
   warwickpres-revealjs:
@@ -17,17 +17,600 @@ format:
 
 ## Overview
 
--   What we're covering
+- When to use C++
+- Getting set up
+- C++ basics and Rcpp
+- Rcpp sugar
 
-# Section {background-color="#552D62"}
+# When to use C++ {.inverse}
 
-# End Matter {background-color="#552D62"}
+## Limits of R
 
-## Resources
+Sometimes you reach the limits of R:
 
-Material inspired by and remixed from:
+  - Your code is still slow despite optimizing the computational approach and the R implementation
+  - You could speed up the R code, but it results in very obscure, convoluted code
+  
+In this case it can make sense to code parts in C++.
 
-- 
+## Typical scenarios
+
+There are some typical scenarios where C++ is likely to be a good idea
+
+- Loops that can't be vectorized because iterations depend on previous results
+- Recursive functions, or problems which involve calling functions millions of times.
+- Problems that require advanced data structures and algorithms that R doesn’t provide. 
+
+::: {.notes}
+The overhead of calling a function in C++ is much lower than in R.
+:::
+
+# Getting set up {.inverse}
+
+## Set up to use C++
+
+To use C++, you need a working C++ compiler. 
+
+On MacOS/Windows there is some setup to do, but it will also set you up to
+
+ - Develop packages in R
+ - Install packages from GitHub that include  C/C++ code
+ 
+On Linux, you will usually have a C++ compiler installed, but you might as well get set up to develop R packages too.
+
+::: {.notes}
+If you’ve followed the development tools section of the course prerequisites, you should be fully set-up for this already.
+:::
+
+## Linux
+
+Debian/Ubuntu:
+
+```{.sh}
+apt-get update
+apt-get install r-base-dev
+```
+
+Fedora/RedHat: should be set up already.
+
+## MacOS
+
+Option 1
+
+- [Register as an Apple developer (for free)](https://developer.apple.com/programs/register/)
+  - Then, in the terminal:
+  
+     ```{.sh}
+     xcode-select --install
+     ```
+
+Option 2 
+
+- Install the current release of full [Xcode from the Mac App Store](https://itunes.apple.com/ca/app/xcode/id497799835?mt=12)
+ - Within XCode go to Preferences -> Downloads and install the Command Line Tools
+- More convenient but installs a lot you don't need
+
+## Windows
+
+- Download the Rtools installer that matches your version of R from <https://cran.r-project.org/bin/windows/Rtools/>
+- Run the installer, `Rtools.exe`, keeping the default settings.
+
+# C++ basics and Rcpp {.inverse}
+
+## A first C++ function
+
+Consider an R function `add_r()` to add two numbers
+
+```{r}
+#| eval: false
+add_r <- function(x, y) x + y
+```
+
+Here's how we might write an equivalent `add_cpp()` function in C++
+```{cpp, eval = FALSE}
+double add_cpp(double x, double y) { 
+  double value = x + y;
+  return value;
+}
+```
+
+- The type for the return value is declared first
+- The type of each argument must be declared
+- The type of intermediate objects must be declared
+- Return statements must use `return`
+
+## Rcpp
+
+To use `add_cpp()` in R we need to compile the C++ code and construct an R function that connects to the compiled C++ function. 
+
+The R package **Rcpp** takes care of these steps for us. 
+
+One way is to use the `cppFunction()`, e.g.
+
+```{r}
+library(Rcpp)
+cppFunction('
+  double add_cpp(double x, double y) {
+    double value = x + y;
+    return value;
+  }
+')
+```
+
+## Using the C++ function
+
+After defining `add_cpp()` via `cppFunction()`, `add_cpp()` is available to use as a R function
+
+```{r}
+add_cpp
+add_cpp(3, 5)
+```
+
+## Stand-alone C++ files
+
+It is better to define functions in C++ files (extension `.cpp`). These files will be recognised by RStudio and other IDEs, with the usual benefits.
+
+The C++ file should have these lines at the top:
+```{cpp, eval = FALSE}
+#include <Rcpp.h>
+using namespace Rcpp;
+```
+
+- The compiler will locate the Rcpp header file with functions and class definitions supplied by **Rcpp** and include the contents.
+- Adding the namespace means that we can use **Rcpp** functions in the C++ code without prefixing the function names by `Rcpp::`.
+ 
+Above each function we want to use in R, add `// [[Rcpp::export]]`
+
+## Example C++ file
+
+The following is in the file `add_cpp2.cpp`
+
+```{cpp}
+#| eval: false
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+double add_cpp2(double x, double y) {
+  double value = x + y;
+  return value;
+}
+```
+
+## `sourceCpp()`
+
+Now we can use `sourceCpp()` to make the C++ functions available in R
+
+```{r}
+path <- here::here("C++", "add_cpp2.cpp")
+sourceCpp(path)
+add_cpp2(5, 9)
+```
+
+## Benefits of separate C++ files
+
+There are a number of benefits to writing C++ code in separate `.cpp` files, compared to `cppFunction()`
+
+- syntax highlighting
+- avoid mistakes switching from R to C code
+- line numbers for compilation errors
+- highlighting errors (e.g. missing ";")
+
+## C++ Basics
+
+ - Every statement within `{` `}` must be terminated by a `;`.
+ - Use `=` for assignment (`<-` is not valid).
+ - Addition, subtraction, multiplication and division use the same operators as R (`+`, `-`, `*`, `/`).
+ - Comparison operators are the same as R (`==`, `!=`, `>`, etc)
+ - One-line comments start with `//`.
+ - Multi-line comments use `/*` `*/` delimiters
+ 
+```{.cpp}
+/*
+Example
+multi-line comment
+*/
+```
+
+## Data types
+
+The basic C++ data types are scalars. **Rcpp** provides vector versions
+<br>
+<br>
+
+| R         | C++ (scalar) | Rcpp (vector)   |
+|-----------|--------------|-----------------|
+| numeric   | double       | NumericVector   |
+| integer   | int          | IntegerVector   |
+| character | char         | CharacterVector |
+| logical   | bool         | LogicalVector   |
+<br>
+
+**Rcpp** also provides `String` as an alternative to `char`
+
+:::{.notes}
+Care needed with NA
+double: more bits used to represent a real number vs single precision
+ - range 2^-(2^10) to 2^(2^10). vs same with 2^7
+ - precision ~15 d.p. vs 7
+::: 
+
+## Example: no inputs, scalar output
+
+```{cpp, eval = FALSE}
+int one() {
+  return 1;
+}
+```
+
+## Example: if/else (scalar input, scalar output)
+
+```{cpp, eval = FALSE}
+int signC(int x) {
+  if (x > 0) {
+    return 1;
+  } else if (x == 0) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+```
+
+## For loop syntax
+
+A C++ `for` loop has the form
+
+```{cpp, eval = FALSE}
+for (int i = 0; i < n; ++i) {
+  total += x[i];
+}
+```
+
+- Syntax: `for (initialisation; condition; increment)`
+    - Initialize integer `i` at zero
+    - Continue as long as `i` is less than `n`
+    - Increment `i` by 1 after each iteration 
+      - `++i` is equivalent to `i = i + 1`
+- `total += x[i]` is equivalent to `total = total + x[i]`
+- **Vector indices start at zero**
+
+## Example: `for` loop (vector input, scalar output)
+
+```{cpp, eval = FALSE}
+double sumC(NumericVector x) {
+  int n = x.size();
+  double total = 0;
+  for (int i = 0; i < n; ++i) {
+    total += x[i];
+  }
+  return total;
+}
+```
+
+- Use `.size()` method to find the length of a vector
+
+## Example: `while` loop (vector input, scalar output)
+
+```{cpp, eval = FALSE}
+double sumC(NumericVector x) {
+  int n = x.size();
+  double total = 0;
+  int i = 0;
+  while (i < n) {
+    total += x[i];
+    ++i;
+  }
+  return total;
+}
+```
+
+- Use `break` to break from a while or for loop
+- Use `continue` to skip to the next iteration (vs `next` in R)
+
+## Example: vector output
+
+The following computes the Euclidean distances 
+
+$$d_i  = \sqrt{(x - y_i)^2}$$
+
+```{cpp, eval = FALSE}
+NumericVector distC(double x, NumericVector y) {
+  int n = y.size();
+  NumericVector dist(n);
+  for(int i = 0; i < n; ++i) {
+    dist[i] = sqrt(pow(ys[i] - x, 2.0));
+  }
+  return out;
+}
+```
+
+- `dist(n)` is used to create a numeric vector named `dist` of length `n`. 
+- `v(n)` would create a vector named `v`.
+
+## C++ Functions
+
+`pow` is a standard C++ function for computing a value raised to a power. 
+
+Both `pow` and `sqrt` are functions from the `<cmath>` library, see e.g. [w3schools C++ math](https://www.w3schools.com/cpp/cpp_math.asp).
+
+To use `<cmath>` functions in C++ code, we would normally need to include the `<cmath>` header in our `.cpp` file. However, **Rcpp** defines its own version of these functions, so we can use them with just the **Rcpp** header.
+
+## Creating a C++ file in RStudio
+
+From the menu bar:
+
+- Go to File > New File > C++ file
+- This template already incleas the headers required for Rcpp
+- Delete the extra content, apart from the comment `//[Rcpp::export]`
+
+You can also create a C++ file from the new file drop-down in the Files pane, but this will be blank. 
+
+## Your turn
+
+1. Create a new C++ file (recommend using the RStudio template)
+2. Convert the following R function that computes a weighted mean to C++
+```{r}
+wmean_r <- function(x, w){
+  n <- length(x)
+  total <- total_w <- 0
+  for (i in 1:n){
+    total <- total + x[i] * w[i]
+    total_w <- total_w + w[i]
+  }  
+  total/total_w
+}
+```
+3. Use `sourceCpp()` to source in your function. 
+4. Use `bench::mark()` to compare `wmean_r()`, `wmean_cpp()` and the **stats** function `weighted.mean()`.
+
+```{cpp, include = FALSE}
+double wmean_cpp(NumericVector x, NumericVector w) {
+  int n = x.size();
+  double total = 0, total_w = 0;
+  for(int i = 0; i < n; ++i) {
+    total += x[i] * w[i];
+    total_w += w[i];
+  }
+  return total / total_w;
+}
+```
+
+## Missing values in C++ data types
+
+C++ data types do not handle `NA`s in input well
+
+- `int`: use a length 1 `IntegerVector` instead
+- `double`: `NA`s okay (converted to `NAN`)
+- `char`: use `String` instead
+- `bool`: `NA`s converted to `true`; use `int` instead
+
+## Missing values in Rcpp vectors
+
+Rcpp vectors handle `NA`s in the corresponding type<br><br>
+
+| Rcpp (vector)     | NA           |
+|-------------------|--------------|
+| `NumericVector`   | `NA_REAL`    |
+| `IntegerVector`   | `NA_INTEGER` |
+| `CharacterVector` | `NA_STRING`  |
+| `LogicalVector`   | `NA_LOGICAL` |
+
+## Matrices
+
+Each vector type has a corresponding matrix equivalent: `NumericMatrix`, `IntegerMatrix`, `CharacterMatrix` and `LogicalMatrix`. 
+
+Create a matrix called named `m1`
+```{cpp, eval = FALSE}
+NumericMatrix m1(10, 5);
+```
+
+- Subset with `()`, e.g. `m1(3, 2)` for the value in row 3, column 2.
+- The first element is `m1(0, 0)`.
+- Use `.nrow` and `.ncol` methods to get the number of rows and columns 
+- Assign matrix elements as follows
+```{cpp, eval = FALSE}
+m1(0, 0) = 1;
+```
+
+## Example: row sums (matrix input, vector output)
+
+```{cpp, eval = FALSE}
+NumericVector rowSumsC(NumericMatrix x) {
+  int nrow = x.nrow(), ncol = x.ncol();
+  NumericVector out(nrow);
+  
+  for (int i = 0; i < nrow; i++) {
+    double total = 0;
+    for (int j = 0; j < ncol; j++) {
+      total += x(i, j);
+    }
+    out[i] = total;
+  }
+  return out;
+}
+```
+
+
+## Statistical distributions
+
+As in R, **Rcpp** provides d/p/q/r functions for the density, distribution function, quantile function and random generation.
+- Functions in the `Rcpp::` namespace return a vector.
+- Functions in the `R::` namespace (also provided by the **Rcpp** R package) return a scalar
+
+For example we can sample a single value from a $N(0, 1)$ distribution by extracting the first element from a vector
+```{.cpp}
+rgamma(1, 3, 1 / (y * y + 4))[0];
+```
+Or use the `R::rgamma()` function to sample a single value directly
+```{.cpp}
+R::rgamma(3, 1 / (y * y + 4))
+```
+
+## Your turn (part 1)
+
+In a new C++ file, convert the following Gibbs sampler to C++
+
+```{r}
+gibbs_r <- function(N, thin) {
+  mat <- matrix(nrow = N, ncol = 2)
+  x <- y <- 0
+
+  for (i in 1:N) {
+    for (j in 1:thin) {
+      x <- rgamma(1, 3, y * y + 4)
+      y <- rnorm(1, 1 / (x + 1), 1 / sqrt(2 * (x + 1)))
+    }
+    mat[i, ] <- c(x, y)
+  }
+  mat
+}
+```
+
+```{cpp, include = FALSE}
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::export]]
+NumericMatrix gibbs_cpp(int N, int thin) {
+  NumericMatrix mat(N, 2);
+  double x = 0, y = 0;
+
+  for(int i = 0; i < N; i++) {
+    for(int j = 0; j < thin; j++) {
+      x = rgamma(1, 3, 1 / (y * y + 4))[0];
+      y = rnorm(1, 1 / (x + 1), 1 / sqrt(2 * (x + 1)))[0];
+    }
+    mat(i, 0) = x;
+    mat(i, 1) = y;
+  }
+
+  return(mat);
+}
+```
+
+```{r}
+#| include: false
+#| eval: false
+sourceCpp("solutions/gibbs.cpp")
+```
+
+## Your turn (part 2)
+
+Create a wrapper function to set the seed as follows:
+
+```{r}
+set_seed <- function(expr){
+  set.seed(1)
+  eval(expr)
+}
+```
+
+Benchmark your `gibbs_r()` and `gibbs_c()` functions with N = 100 and thin = 10, using your wrapper function to set the seed.
+
+# Rcpp sugar {.inverse}
+
+## Rcpp sugar
+
+Rcpp provides some "syntactic sugar" to allow us to write C++ code that is more like R code.
+
+One example is operating on rows or columns of matrices. So far we have seen how to update individual elements of a `NumericMatrix`. Rcpp lets us extract an update whole rows/columns, e.g.
+
+```{Rcpp, eval = FALSE}
+mat(i, _) = NumericVector::create(x,y);
+```
+
+A whole column would be extracted with `mat(_, j)`.
+
+## Vectorized functions
+
+The vectorized random generation functions are another example of Rcpp sugar. 
+
+Rcpp provide many more vectorized functions, for example:
+
+- arithmetic operators (`+`, `-`, `*`, `\`)
+- logical operators (`==`, `!`, `=<`)
+- arithmetic functions (`sqrt`, `pow`, ...)
+- statistical summaries (`mean`, `median`, )
+ 
+In addition, Rcpp provides many R-like functions, such as `which_max` or `rowSums`, see [Unofficial API documentation](https://thecoatlessprofessor.com/programming/cpp/unofficial-rcpp-api-documentation/#sugar) for a full list.
+
+## Rcpp sugar: vectorized functions
+
+Recall our distance function from earlier:
+
+```{cpp, eval = FALSE}
+NumericVector distC(double x, NumericVector y) {
+  int n = y.size();
+  NumericVector out(n);
+  for(int i = 0; i < n; ++i) {
+    out[i] = sqrt(pow(ys[i] - x, 2.0));
+  }
+  return out;
+}
+```
+
+With Rcpp vectorization, we can simplify this to:
+
+```{cpp, eval = FALSE}
+NumericVector dist_sugar(double x, NumericVector y) {
+  return sqrt(pow(x - y, 2));
+}
+```
+
+## Example: row maximums
+
+This example combines row-indexing and a vectorized function, `max()`.
+
+```{cpp, eval = FALSE}
+NumericVector row_max(NumericMatrix mat) {
+  int nrow = mat.nrow();
+  NumericVector max(nrow);
+  for (int i = 0; i < nrow; i++)
+    max[i] = max( m(i,_) );
+  return max;
+}
+```
+
+
+## Your turn
+
+The following R function can be used to simulate the value of $\pi$:
+
+```{r}
+piR <- function(N) {
+    x <- runif(N)
+    y <- runif(N)
+    d <- sqrt(x^2 + y^2)
+    return(4 * sum(d < 1.0) / N)
+}
+```
+
+Convert this to C++, taking advantage of the vectorized Rcpp functions.
+
+# End matter {.inverse}
+
+## References
+
+:::{.smaller80}
+- Similar scope to this module:
+Gillespie, C and Lovelace, R, _Efficient R programming_, _Rcpp section_, <https://csgillespie.github.io/efficientR/performance.html#rcpp>
+
+- Going a bit further:
+Wickham, H, _Advanced R_ (2nd edn), _Rewriting R code in C++ chapter_, <https://adv-r.hadley.nz/rcpp.html>
+
+- Not very polished, but broader coverage of Rcpp functionality:
+Tsuda, M.E., _Rcpp for everyone_, <https://teuder.github.io/rcpp4everyone_en/300_Rmath.html>
+
+- The **Rcpp** vignettes, accessed via `browseVignettes("Rcpp")` or [CRAN](https://CRAN.R-project.org/package=Rcpp)
+
+- The unofficial [Rcpp API documentation](https://thecoatlessprofessor.com/programming/cpp/unofficial-rcpp-api-documentation)
+
+- Case studies (optimising by improving R code and/or using C++)
+  - <https://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/>
+  - <https://gallery.rcpp.org/articles/bayesian-time-series-changepoint/>
+  - The [Rcpp Gallery](https://gallery.rcpp.org/) has all sorts of examples, many illustrating advanced features of Rcpp).
+:::
 
 ## License
 
