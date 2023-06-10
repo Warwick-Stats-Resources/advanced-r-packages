@@ -1080,21 +1080,77 @@
   {
     "objectID": "slides/07-package-foundations/index.html#overview",
     "href": "slides/07-package-foundations/index.html#overview",
-    "title": "SESSION TITLE",
+    "title": "Package Foundations",
     "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "text": "Overview\n\nWhy write a package?\nPackage structure and state\nSetting up development tools\nCreating a package with a working function"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#why-write-a-package-1",
+    "href": "slides/07-package-foundations/index.html#why-write-a-package-1",
+    "title": "Package Foundations",
+    "section": "Why write a package?",
+    "text": "Why write a package?\n\nYou want to generalise code\nYou want to document code\nYou want to test code\nYou want to share code\nYou want to create impact from your work"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#script-vs-package",
+    "href": "slides/07-package-foundations/index.html#script-vs-package",
+    "title": "Package Foundations",
+    "section": "Script vs package",
+    "text": "Script vs package\n\n\n\n\n\n\n\nR script\nPackage\n\n\n\n\nOne-off data analysis\nProvides reusable components\n\n\nDefined by .R extension\nDefined by presence of DESCRIPTION file\n\n\nlibrary() calls\nImports defined in NAMESPACE file\n\n\nDocumentation in # comments\nDocumentation in files and Roxygen comments\n\n\nRun lines or source file\nInstall and restart\n\n\n\n\nreusable components: typically functions, but could also be R markdown template, Shiny app, data"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-structure",
+    "href": "slides/07-package-foundations/index.html#package-structure",
+    "title": "Package Foundations",
+    "section": "Package structure",
+    "text": "Package structure\nAn R package is developed as a directory of source code files.\nThe names of files and directories must follow the specification laid out in the Writing R Extensions manual - we’ll cover the main components in this workshop.\nDirectory tree for an example RStudio package project:\n\n\nmypackage\n├── DESCRIPTION\n├── NAMESPACE\n├── R\n└── mypackage.Rproj"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-states",
+    "href": "slides/07-package-foundations/index.html#package-states",
+    "title": "Package Foundations",
+    "section": "Package states",
+    "text": "Package states\n\n\n\n\n\n\n\nsource\n\n\n\n\n\n\n\nbundled\nbinary\ninstalled\nin-memory\n\n\n\n\n\nsource\n\n\nWhat you create and work on.\nSpecific directory structure with some particular components e.g., DESCRIPTION, an /R directory."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-states-1",
+    "href": "slides/07-package-foundations/index.html#package-states-1",
+    "title": "Package Foundations",
+    "section": "Package states",
+    "text": "Package states\n\n\n\nsource\n\n\n\n\nbundled\n\n\n\n\n\n\n\nbinary\ninstalled\nin-memory\n\n\n\n\n\nbundled\n\n\nPackage files compressed to single .tar.gz file.\nAlso known as “source tarballs”.\nCreated by command line tool R CMD build\nUnpacked it looks very like the source package.\n\n\n\n\n\n\nIn the rare case that you need to make a bundle from a package you’re developing locally, use devtools::build(). Under the hood, this calls pkgbuild::build() and, ultimately, R CMD build, which is described further in the Building package tarballs section of Writing R Extensions."
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-states-2",
+    "href": "slides/07-package-foundations/index.html#package-states-2",
+    "title": "Package Foundations",
+    "section": "Package states",
+    "text": "Package states\n\n\n\nsource\nbundled\n\n\n\n\nbinary\n\n\n\n\n\n\n\ninstalled\nin-memory\n\n\n\n\n\nbinary\n\n\nCompressed copy of the package in installed form.\nAlso a single file.\nPlatform specific: .tgz (Mac) .zip (Windows).\nPackage developers submit a bundle to CRAN; CRAN makes and distributes binaries.\n\n\n\n\n\n\nA package in binary form is Platform specific. If you write a package for distribution on CRAN, you submit a bundle to CRAN then CRAN makes and distributes binaries\ninstall.packages() is usually downloading the binary\nTo understand the difference between package bundle and a package binary see https://r-pkgs.org/package-structure-state.html"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-states-3",
+    "href": "slides/07-package-foundations/index.html#package-states-3",
+    "title": "Package Foundations",
+    "section": "Package states",
+    "text": "Package states\n\n\n\nsource\nbundled\nbinary\n\n\n\n\ninstalled\n\n\n\n\n\n\n\nin-memory\n\n\n\n\n\ninstalled\n\n\nA directory of files in a library directory.\nAny C/C++/Fortran code is in compiled form.\nHelp files, code and optionally data are in database form.\ninstall.packages() can install from source or from a binary"
+  },
+  {
+    "objectID": "slides/07-package-foundations/index.html#package-states-4",
+    "href": "slides/07-package-foundations/index.html#package-states-4",
+    "title": "Package Foundations",
+    "section": "Package states",
+    "text": "Package states\n\n\n\nsource\nbundled\nbinary\ninstalled\n\n\n\n\nin-memory\n\n\n\n\n\n\n\n\n\n\n\n\nin-memory\n\n\nIf a package is installed, library() makes its function available by loading the package into memory and attaching it to the search path."
   },
   {
     "objectID": "slides/07-package-foundations/index.html#resources",
     "href": "slides/07-package-foundations/index.html#resources",
-    "title": "SESSION TITLE",
+    "title": "Package Foundations",
     "section": "Resources",
     "text": "Resources\nMaterial inspired by and remixed from:"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#license",
     "href": "slides/07-package-foundations/index.html#license",
-    "title": "SESSION TITLE",
+    "title": "Package Foundations",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },

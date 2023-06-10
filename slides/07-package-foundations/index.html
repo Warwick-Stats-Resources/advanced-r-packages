@@ -13,7 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <title>Advanced R and R Packages Workshop - SESSION TITLE</title>
+  <meta name="dcterms.date" content="2023-06-20">
+  <title>Advanced R and R Packages Workshop - Package Foundations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -327,8 +328,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">SESSION TITLE</h1>
-  <p class="subtitle">Advanced R</p>
+  <h1 class="title">Package Foundations</h1>
+  <p class="subtitle">R Packages</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -343,19 +344,320 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">June 20, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>What we’re covering</li>
+<li>Why write a package?</li>
+<li>Package structure and state</li>
+<li>Setting up development tools</li>
+<li>Creating a package with a working function</li>
 </ul>
 </section>
-<section id="section" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>Section</h1>
+<section>
+<section id="why-write-a-package" class="title-slide slide level1 inverse center">
+<h1>Why write a package?</h1>
 
 </section>
+<section id="why-write-a-package-1" class="slide level2">
+<h2>Why write a package?</h2>
+<ul>
+<li>You want to <strong>generalise</strong> code</li>
+<li>You want to <strong>document</strong> code</li>
+<li>You want to <strong>test</strong> code</li>
+<li>You want to <strong>share</strong> code</li>
+<li>You want to create <strong>impact</strong> from your work</li>
+</ul>
+</section>
+<section id="script-vs-package" class="slide level2">
+<h2>Script vs package</h2>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R script</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-off data analysis</td>
+<td>Provides reusable components</td>
+</tr>
+<tr class="even">
+<td>Defined by <code>.R</code> extension</td>
+<td>Defined by presence of <code>DESCRIPTION</code> file</td>
+</tr>
+<tr class="odd">
+<td><code>library()</code> calls</td>
+<td>Imports defined in <code>NAMESPACE</code> file</td>
+</tr>
+<tr class="even">
+<td>Documentation in <code>#</code> comments</td>
+<td>Documentation in files and <code>Roxygen</code> comments</td>
+</tr>
+<tr class="odd">
+<td>Run lines or source file</td>
+<td>Install and restart</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>reusable components: typically functions, but could also be R markdown template, Shiny app, data</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="package-structure-and-state" class="title-slide slide level1 inverse center">
+<h1>Package structure and state</h1>
 
+</section>
+<section id="package-structure" class="slide level2">
+<h2>Package structure</h2>
+<p>An R package is developed as a directory of source code files.</p>
+<p>The names of files and directories must follow the specification laid out in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a> manual - we’ll cover the main components in this workshop.</p>
+<p>Directory tree for an example RStudio package project:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>mypackage
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+└── mypackage.Rproj</code></pre>
+</div>
+</div>
+</section>
+<section id="package-states" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>source</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>bundled</li>
+<li>binary</li>
+<li>installed</li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>source</strong></p>
+</div>
+<div class="callout-content">
+<p>What you create and work on.</p>
+<p>Specific directory structure with some particular components e.g., <code>DESCRIPTION</code>, an <code>/R</code> directory.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="package-states-1" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li>source</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>bundled</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>binary</li>
+<li>installed</li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>bundled</strong></p>
+</div>
+<div class="callout-content">
+<p>Package files compressed to single <code>.tar.gz</code> file.</p>
+<p>Also known as “source tarballs”.</p>
+<p>Created by command line tool <code>R CMD build</code></p>
+<p>Unpacked it looks very like the source package.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>In the rare case that you need to make a bundle from a package you’re developing locally, use devtools::build(). Under the hood, this calls pkgbuild::build() and, ultimately, R CMD build, which is described further in the Building package tarballs section of Writing R Extensions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="package-states-2" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li>source</li>
+<li>bundled</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>binary</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>installed</li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>binary</strong></p>
+</div>
+<div class="callout-content">
+<p>Compressed copy of the package in installed form.</p>
+<p>Also a single file.</p>
+<p>Platform specific: <code>.tgz</code> (Mac) <code>.zip</code> (Windows).</p>
+<p>Package developers submit a bundle to CRAN; CRAN makes and distributes binaries.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>A package in binary form is Platform specific. If you write a package for distribution on CRAN, you submit a bundle to CRAN then CRAN makes and distributes binaries</p>
+<p><code>install.packages()</code> is usually downloading the binary</p>
+<p>To understand the difference between package bundle and a package binary see <a href="https://r-pkgs.org/package-structure-state.html" class="uri">https://r-pkgs.org/package-structure-state.html</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="package-states-3" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li>source</li>
+<li>bundled</li>
+<li>binary</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>installed</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>installed</strong></p>
+</div>
+<div class="callout-content">
+<p>A directory of files in a library directory.</p>
+<p>Any C/C++/Fortran code is in compiled form.</p>
+<p>Help files, code and optionally data are in database form.</p>
+<p><code>install.packages()</code> can install from source or from a binary</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="package-states-4" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li>source</li>
+<li>bundled</li>
+<li>binary</li>
+<li>installed</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>in-memory</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>in-memory</strong></p>
+</div>
+<div class="callout-content">
+<p>If a package is installed, <code>library()</code> makes its function available by loading the package into memory and attaching it to the search path.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
 <h1>End Matter</h1>
@@ -371,6 +673,52 @@ Department of Statistics, University of Warwick
 <section id="license" class="slide level2">
 <h2>License</h2>
 <p>Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>).</p>
+<!-- needs to be last chunk of presentation otherwise creates an extra slide -->
+<!-- requires Quarto v1.3 -->
+<!-- tint80 for border, tint20 for title -->
+<!-- this should hopefully no longer be necessary in Quarto 1.4 -->
+<!-- https://github.com/quarto-dev/quarto-cli/issues/5038 -->
+<style type="text/css">
+div.callout-note {
+  border-left-color: #336695 !important;
+}
+
+div.callout-note.callout-style-default .callout-title {
+  background-color: #CCD9E4 !important;
+}
+
+div.callout-caution {
+  border-left-color: #AE4240 !important;
+}
+
+div.callout-caution.callout-style-default .callout-title {
+  background-color: #ebd0cf !important;
+}
+
+div.callout-tip {
+  border-left-color: #618157 !important;
+}
+
+div.callout-tip.callout-style-default .callout-title {
+  background-color: #d8e0d5 !important;
+}
+
+div.callout-important {
+  border-left-color: #775781 !important;
+}
+
+div.callout-important.callout-style-default .callout-title {
+  background-color: #ddd5e0 !important;
+}
+
+div.callout-warning {
+  border-left-color: #956133 !important;
+}
+
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #e4d8cc !important;
+}
+</style>
 
 <div class="footer footer-default">
 
@@ -587,6 +935,44 @@ Department of Statistics, University of Warwick
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
