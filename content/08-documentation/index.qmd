@@ -37,3 +37,7 @@ Here are the slides embedded:
 - **usethis**
 
   <https://usethis.r-lib.org>
+  
+- **roxygen2**
+
+  <https://roxygen2.r-lib.org>
