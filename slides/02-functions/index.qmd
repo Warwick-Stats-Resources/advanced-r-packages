@@ -252,7 +252,7 @@ best practice to have a separate function for each task, e.g creating a plot or 
 
 Writing to file is usually best done outside a function.
 
-## Excercise 2
+## Exercise 2
 
 Copy your `qq_norm` function to the `qq` chunk and rename it `qq`. 
 

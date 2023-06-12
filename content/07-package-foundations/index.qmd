@@ -4,8 +4,6 @@ date: 2023-06-20T13:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/07-package-foundations/index.qmd){target="_blank"} in a new window. 
@@ -19,9 +17,21 @@ Here are the slides embedded:
 
 ### Reading
 
-- TITLE
+- Wickham, H and Bryan, J, _R Packages_ (2nd edn, in progress)
 
-  <LINK>
+  <https://r-pkgs.org>
+
+- R Core Team, _Writing R Extensions_
+
+  <https://cran.r-project.org/doc/manuals/r-release/R-exts.html>
 
 
 ### Packages
+
+- **devtools**
+
+  <https://devtools.r-lib.org>
+  
+- **usethis**
+
+  <https://usethis.r-lib.org>
