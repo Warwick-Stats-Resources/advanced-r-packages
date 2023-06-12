@@ -1062,6 +1062,121 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 </div>
+</section>
+<section id="use_github-output" class="slide level2">
+<h2><code>use_github()</code> output</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a> ✔ Creating GitHub repository <span class="st">'Warwick-Stats-Resources/mypackage'</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a> ✔ Setting remote <span class="st">'origin'</span> to <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage.git'</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a> ✔ Setting URL field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage'</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a> ✔ Setting BugReports field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage/issues'</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a> There is <span class="dv">1</span> uncommitted file<span class="sc">:</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a> <span class="er">*</span> <span class="st">'DESCRIPTION'</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a> Is it ok to commit it?</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a> <span class="dv">1</span><span class="sc">:</span> Nope</span>
+<span id="cb22-10"><a href="#cb22-10"></a> <span class="dv">2</span><span class="sc">:</span> For sure</span>
+<span id="cb22-11"><a href="#cb22-11"></a> <span class="dv">3</span><span class="sc">:</span> No way</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+<aside class="notes">
+<p>Take a look at the repo on GitHub. There is no <code>/R</code> folder as that folder is empty at the moment!</p>
+<p>During the demo, will need to run <code>use_github("Warwick-Stats-Resources")</code> as by default use_github goes to my personal repo</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="adding-functions" class="slide level2">
+<h2>Adding functions</h2>
+<p>Functions go in an <code>.R</code> file in the <code>/R</code> directory.</p>
+<p>There’s a <code>usethis</code> helper for adding <code>.R</code> files!</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"file_name"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>usethis::use_r()</code> adds the file extension (you don’t need to).</p>
+<div class="fragment">
+<p>Use a separate <code>.R</code> file for each function or closely related set of functions, e.g.</p>
+<ul>
+<li>a top-level function and the internal functions it calls</li>
+<li>a family of related functions</li>
+<li>a summary method and its print method</li>
+</ul>
+</div>
+</section>
+<section id="usethisuse_r" class="slide level2">
+<h2><code>usethis::use_r()</code></h2>
+<p>Create a new R file in your package called <code>animal_sounds.R</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"animal_sounds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output includes:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>• Modify <span class="st">'R/animal_sounds.R'</span>  </span>
+<span id="cb25-2"><a href="#cb25-2"></a>• Call <span class="st">`</span><span class="at">use_test()</span><span class="st">`</span> to create a matching test file </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ignore the instruction to call <code>use_test()</code> for now - we’ll cover testing later.</p>
+</section>
+<section id="add-a-function" class="slide level2">
+<h2>Add a function</h2>
+<p>Put the following toy function into your script:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>animal_sounds <span class="ot">&lt;-</span> <span class="cf">function</span>(animal, sound) {</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(sound) <span class="sc">&amp;</span> <span class="fu">length</span>(sound) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>    <span class="fu">message</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Don’t try to use the function yet!</p>
+</section>
+<section id="development-workflow" class="slide level2">
+<h2>Development workflow</h2>
+<p>In a normal script, you might use:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">source</span>(<span class="st">"R/animal_sounds.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, for building packages, we need to use the <code>devtools</code> approach.</p>
+<p>This will ensure our function has the correct namespace and can find internal functions, functions imported by our package from other packages, etc.</p>
+</section>
+<section id="development-workflow-1" class="slide level2">
+<h2>Development workflow</h2>
+
+<img data-src="images/dev_cycle_before_testing.png" alt="schematic of the development workflow. there are three boxes with arrow joining them clockwise. The boxes are (clockwise from 3' oclock) 'devtools::load_all() Cmd/Ctrl + Shift +L', 'Explore in console' and 'Modify code'" width="180" class="r-stretch quarto-figure-center"><div class="center-h">
+<p>You don’t even need to save your code!</p>
+</div>
+<aside class="notes">
+<p>devtools::load_all() simulates package installation so that you can test your function.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Load all with <code>devtools::load_all()</code> and try calling the <code>animalSounds()</code> function with appropriate values for <code>animal</code> and <code>sound</code>.</li>
+<li>Change some tiny thing about your function – maybe the animal “says” instead of “goes”.</li>
+<li>Load all with <code>devtools::load_all()</code> and try calling the updated function to see the changed behaviour.</li>
+<li>Add <code>animal_sounds.R</code> so that it is tracked by git. Make a commit with the message <code>Add animal_sounds()</code>.</li>
+<li>Push all your commits from this session.</li>
+</ol>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
@@ -1070,10 +1185,8 @@ Department of Statistics, University of Warwick
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
-<p>Material inspired by and remixed from:</p>
-<ul>
-<li></li>
-</ul>
+<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), https://r-pkgs.org.</p>
+<p>R Core Team, <em>Writing R Extensions</em>, https://cran.r-project.org/doc/manuals/r-release/R-exts.html</p>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>

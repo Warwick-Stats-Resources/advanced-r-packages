@@ -13,7 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <title>Advanced R and R Packages Workshop - SESSION TITLE</title>
+  <meta name="dcterms.date" content="2023-06-20">
+  <title>Advanced R and R Packages Workshop - Function Documentation and Dependencies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #adadbd;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #adadbd;  padding-left: 4px; }
+    div.sourceCode
+      { color: #2e2e2f;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #2e2e2f; } /* Normal */
+    code span.al { color: #ae4240; } /* Alert */
+    code span.an { color: #494957; } /* Annotation */
+    code span.at { color: #775781; } /* Attribute */
+    code span.bn { color: #ae4240; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #956133; } /* ControlFlow */
+    code span.ch { color: #618157; } /* Char */
+    code span.cn { color: #956133; } /* Constant */
+    code span.co { color: #494957; } /* Comment */
+    code span.cv { color: #494957; font-style: italic; } /* CommentVar */
+    code span.do { color: #494957; font-style: italic; } /* Documentation */
+    code span.dt { color: #ae4240; } /* DataType */
+    code span.dv { color: #ae4240; } /* DecVal */
+    code span.er { color: #ae4240; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ae4240; } /* Float */
+    code span.fu { color: #336695; } /* Function */
+    code span.im { color: #775781; } /* Import */
+    code span.in { color: #494957; } /* Information */
+    code span.kw { color: #2e2e2f; } /* Keyword */
+    code span.op { color: #494957; } /* Operator */
+    code span.ot { color: #494957; } /* Other */
+    code span.pp { color: #ae4240; } /* Preprocessor */
+    code span.re { color: #336695; } /* RegionMarker */
+    code span.sc { color: #494957; } /* SpecialChar */
+    code span.ss { color: #618157; } /* SpecialString */
+    code span.st { color: #618157; } /* String */
+    code span.va { color: #2e2e2f; } /* Variable */
+    code span.vs { color: #618157; } /* VerbatimString */
+    code span.wa { color: #494957; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -327,8 +394,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">SESSION TITLE</h1>
-  <p class="subtitle">Advanced R</p>
+  <h1 class="title">Function Documentation and Dependencies</h1>
+  <p class="subtitle">R Packages</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -343,30 +410,280 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">June 20, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>What we’re covering</li>
+<li>Documenting functions with roxygen2</li>
+<li>NAMESPACE: exporting functions</li>
+<li>NAMESPACE: importing functions</li>
 </ul>
 </section>
-<section id="section" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>Section</h1>
-
-</section>
-
 <section>
-<section id="end-matter" class="title-slide slide level1 center" data-background-color="#552D62">
-<h1>End Matter</h1>
+<section id="function-documentation-with-roxygen2" class="title-slide slide level1 inverse center">
+<h1>Function documentation with roxygen2</h1>
 
 </section>
-<section id="resources" class="slide level2">
-<h2>Resources</h2>
-<p>Material inspired by and remixed from:</p>
+<section id="roxygen2" class="slide level2">
+<h2>roxygen2</h2>
+<p>The <strong>roxygen2</strong> package generates documentation from specially formatted comments, that we write above the function code, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#' @param x A numeric vector.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li></li>
+<li><p><code>#'</code> is a roxygen comment.</p></li>
+<li><p><code>@param</code> is a roxygen tag.</p></li>
+<li><p>The <code>@param</code> tag takes an argument: the name of the parameter</p></li>
+<li><p>The remaining text (until the next tag in the file) is the documentation relevant to the tag.</p></li>
 </ul>
+</section>
+<section id="common-tags" class="slide level2">
+<h2>Common tags</h2>
+<p>There are four tags you’ll use for most functions:</p>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="citation" data-cites="param">@param</span> arg</td>
+<td>Describe inputs</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="examples">@examples</span></td>
+<td>Show how the function works</td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="return">@return</span></td>
+<td>Describe the return value (not needed if <code>NULL</code>)</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="export">@export</span></td>
+<td>Add this tag if the function should be user-visible</td>
+</tr>
+</tbody>
+</table>
+<p><br> Usual RStudio shortcuts work in the <span class="citation" data-cites="examples">@examples</span> section, allowing you to run code interactively.</p>
+<aside class="notes">
+<p>Other important ones: <span class="citation" data-cites="seealso">@seealso</span> | Pointers to related functions <span class="citation" data-cites="references">@references</span> <span class="citation" data-cites="importFRom">@importFRom</span> <span class="citation" data-cites="method">@method</span> <span class="citation" data-cites="note">@note</span> <span class="citation" data-cites="rdname">@rdname</span> <span class="citation" data-cites="keywords">@keywords</span> internal <span class="citation" data-cites="format">@format</span> (data) <span class="citation" data-cites="section">@section</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-description-block" class="slide level2">
+<h2>The description block</h2>
+<p>The roxygen comment should start with a description block.</p>
+<ul>
+<li>First sentence is the <strong>title</strong>.</li>
+<li>Next paragraph is the <strong>description</strong>.</li>
+<li>Everything else is the <strong>details</strong> (optional).</li>
+</ul>
+<pre><code>#' Title in Title Case of up to 65 Characters
+#'
+#' Mandatory description of what the function does. 
+#' Should be a short paragraph of a few lines only.
+#'
+#' The details section is optional and may be several paragraphs. It can even
+#' contain sub-sections (not illustrated here).</code></pre>
+</section>
+<section id="rstudio-helps-you-get-started" class="slide level2">
+<h2>RStudio helps you get started</h2>
+<p>Put your cursor inside a function, then select ‘Insert Roxygen Skeleton’ from the Code menu.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/insert_roxygen_skeleton.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#' Title</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#'</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#' @param animal</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#' @param sound</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#'</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#' @return</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#' @export</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#'</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#' @examples</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>animal_sounds <span class="ot">&lt;-</span> <span class="cf">function</span>(animal, sound) {</span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(sound) <span class="sc">&amp;</span> <span class="fu">length</span>(sound) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">message</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-roxygen-documentation" class="slide level2">
+<h2>Example roxygen documentation</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#' Sort a Numeric Vector in Decreasing Order</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#'</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#' Sort a numeric vector so that the values are in deceasing order.  </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#' Missing values are optionally removed or put last.</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#'</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#' @param x A numeric vector.</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#' @param na.rm A logical value indicating whether to remove missing values</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#' before sorting.</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#' @return A vector with the values sorted in descreasing order.</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#' @export</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#'</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#' @examples</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#' x &lt;- c(3, 7, 2, NA)</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#' high_to_low(x)</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#' high_to_low(x, na.rm = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="r-documentation-file" class="slide level2">
+<h2>R documentation file</h2>
+<p>roxygen2 converts the roxygen block to an <code>.Rd</code> file in the <code>/man</code> directory</p>
+<pre><code>% Generated by roxygen2: do not edit by hand
+% Please edit documentation in R/high_to_low.R
+\name{high_to_low}
+\alias{high_to_low}
+\title{Sort a Numeric Vector in Decreasing Order}
+\usage{
+high_to_low(x, na.rm = FALSE)
+}
+\arguments{
+\item{x}{A numeric vector.}
+\item{na.rm}{A logical value indicating whether to remove missing values
+before sorting.}
+}
+\value{
+...</code></pre>
+<aside class="notes">
+<p>This is in a toy package, <strong>sortnum</strong>, created for the R Forwards package development workshops:</p>
+<p>https://github.com/forwards/workshops/tree/master/sortnum</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="html-file" class="slide level2">
+<h2>HTML file</h2>
+<p>When the package is installed, the <code>.Rd</code> is converted by R to HTML on demand</p>
+
+<img data-src="images/high_to_low.png" class="r-stretch quarto-figure-center"></section>
+<section id="regular-documentation-workflow" class="slide level2">
+<h2>Regular documentation workflow</h2>
+
+<img data-src="images/documentation_workflow.png" class="r-stretch quarto-figure-center"><div class="center">
+<p>You must have loaded the package with <code>load_all()</code> at least once.</p>
+</div>
+</section></section>
+<section>
+<section id="namespace-exports" class="title-slide slide level1 inverse center">
+<h1>NAMESPACE: exports</h1>
+
+</section>
+<section id="a-namespace-splits-functions-into-two-classes" class="slide level2">
+<h2>A namespace splits functions into two classes</h2>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Internal</th>
+<th>External</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Only for use within package</td>
+<td>For use by others</td>
+</tr>
+<tr class="even">
+<td>Documentation optional</td>
+<td>Must be documented</td>
+</tr>
+<tr class="odd">
+<td>Easily changed</td>
+<td>Changing will break other people’s code</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="default-namespace" class="slide level2">
+<h2>Default NAMESPACE</h2>
+<ul>
+<li>It is best to export functions explicitly</li>
+<li>The <code>NAMESPACE</code> file as created by <code>usethis::create_package()</code> does <em>not</em> export anything by default.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>A package created from the RStudio menus via File &gt; New Project &gt; New Directory &gt; R Package creates a <code>NAMESPACE</code> that exports everything by default, with <code>exportPattern("^[[:alpha:]]+")</code></p>
+<p>This is a good reason <em>not</em> to do this: always call <code>usethis::create_package()</code> to create a package.</p>
+<p>For similar reasons, also avoid <code>package.skeleton()</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exporting-functions" class="slide level2">
+<h2>Exporting functions</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#' @export</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When we call <code>devtools::document()</code>, an <code>export()</code> directive will be added to NAMESPACE for each function that has an <code>#' @export</code> comment.</p>
+<pre><code># Generated by roxygen2: do not edit by hand
+
+export(fun1)</code></pre>
+</section>
+<section id="what-to-export" class="slide level2">
+<h2>What to export</h2>
+<p>Only export functions that you want your package users to use, i.e.&nbsp;those that are relevant to the purpose of the package.</p>
+<p>Don’t export internal helpers, e.g.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Defaults for NULL values</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="st">`</span><span class="at">%||%</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="cf">if</span> (<span class="fu">is.null</span>(a)) b <span class="cf">else</span> a</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># Remove NULLs from a list</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>compact <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  x[<span class="sc">!</span><span class="fu">vapply</span>(x, is.null, <span class="fu">logical</span>(<span class="dv">1</span>))]</span>
+<span id="cb8-7"><a href="#cb8-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<p>For the <code>animal_sounds</code> function:</p>
+<div class="smaller90">
+<ol type="1">
+<li>Insert a Roxygen skeleton using the RStudio helper.</li>
+<li>Create a draft documentation file with <code>devtools::document()</code> or <code>Cmd/Ctrl + Shift + D</code>.</li>
+<li>Click on “Diff” in the Git pane and view the changes that have been made.</li>
+<li>Preview the HTML help with <code>?animal_sounds</code>.</li>
+<li>Fill in the Roxygen skeleton for <code>animal_sounds()</code>, recreating the documentation file and previewing the HTML help to view your updates.</li>
+<li>When you have finished editing, run <code>devtools::document()</code> to ensure the <code>.Rd</code> file is in sync. Make a git commit with your updated <code>R/animal_sounds.R</code> file, the updated NAMESPACE, and the new <code>man/animal_sounds.Rd</code> file.</li>
+</ol>
+</div>
+</section></section>
+<section>
+<section id="end-matter" class="title-slide slide level1 inverse center">
+<h1>End matter</h1>
+
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), https://r-pkgs.org.</p>
+<p>R Core Team, <em>Writing R Extensions</em>, https://cran.r-project.org/doc/manuals/r-release/R-exts.html</p>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>
@@ -587,6 +904,44 @@ Department of Statistics, University of Warwick
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
