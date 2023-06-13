@@ -110,7 +110,7 @@ Put your cursor inside a function, then select 'Insert Roxygen Skeleton' from th
 animal_sounds <- function(animal, sound) {
   stopifnot(is.character(animal) & length(animal) == 1)
   stopifnot(is.character(sound) & length(sound) == 1)
-  message("The ", animal, " goes ", sound, "!")
+  paste0("The ", animal, " goes ", sound, "!")
 }
 ```
 :::
@@ -245,8 +245,7 @@ For the `animal_sounds` function:
 
 :::{.smaller90}
 1. Insert a Roxygen skeleton using the RStudio helper.
-2. Create a draft documentation file with `devtools::document()` or
-`Cmd/Ctrl + Shift + D`.
+2. Create a draft documentation file with `devtools::document()` or `Cmd/Ctrl + Shift + D`. If you get any warnings, make the necessary fixes.
 3. Click on "Diff" in the Git pane and view the changes that have been made.
 4. Preview the HTML help with `?animal_sounds`.
 5. Fill in the Roxygen skeleton for `animal_sounds()`, recreating the documentation
@@ -255,6 +254,266 @@ file and previewing the HTML help to view your updates.
 `.Rd` file is in sync. Make a git commit with your updated `R/animal_sounds.R`
 file, the updated NAMESPACE, and the new `man/animal_sounds.Rd` file.
 :::
+
+## .Rd Markup
+
+`.Rd` files recognise LaTeX-like mark-up in most text-based fields, e.g.
+
+```
+#' This is a convenience function that is a wrapper around
+#' \code{\link{sort.int}}.
+```
+
+Details can be found in the [Writing R documentation files](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files) section of the Writing R Extensions manual.
+
+## Using markdown
+
+Most commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).
+
+- Text formatting: `**bold**`, `_italic_`, `` `code` ``
+
+- Create links
+
+  * To a function in the same package: `[func()]`
+  * To a function in a different package: `[pkg::func()]`
+  * With different link text, e.g. `[link text][func()]`
+
+For more details, see the [(R)Markdown support](https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html) vignette.
+
+::: {.notes}
+Seems you no longer need to specify `pkg::` - will find the documentation in any installed package. For functions in multiple packages, e.g. `select()` help pane will offer a choice. Probably still best practice to use `pkg::` for disambiguation.
+:::
+
+## View documentation with links
+
+To view the documentation with working links, we must install the package first.
+
+![](images/documentation_workflow2.png){fig-align="center"}
+
+## Your turn
+
+1. Add some details to the help page for `animal_sounds()`, with a link to `paste0()`.
+2. Verify that no link is shown when recreating the documentation with the regular workflow.
+3. Create the documentation with the second workflow and look at the help file. Does the link to `paste0()` work?
+4. Commit all your changes to the git repo.
+
+::: {.notes}
+Now the link does seem to work when recreating the documentation with the regular workflow. Is this a change in the very latest RStudio (2023.06.0+421)?  
+:::
+
+# Dependencies {.inverse}
+
+## Dependencies
+
+Dependencies are other R packages that our package uses. There are three types of dependency:
+
+**Imports**: required packages, will be installed when our package is installed
+if they are not already installed.
+
+**Suggests**: optional packages, e.g. only used for development; only used in
+documentation. *Not* installed automatically with our package.
+
+**Depends**: essentially deprecated for packages, may be used to specify a
+minimum required version of R (i.e., version of the core packages).
+
+## Imported packages
+
+In DESCRIPTION
+
+```
+Imports: 
+    pkgname1
+    pkgname2
+```
+
+Use `::` to access functions
+```r
+new_function <- function(x, y, z) {
+  w <- pkgname1::imported_function(x, y)
+  pkgname2::imported_function(w, z)
+}
+```
+
+## Suggested packages
+
+In DESCRIPTION
+
+```
+Suggests: 
+    pkgname
+```
+
+In package functions or examples, handle the case where **pkgname** is not available:
+
+```r
+if (!requireNamespace("pkgname", quietly = TRUE)){
+  warning("pkgname must be installed to perform this function",
+          "returning NULL")
+  return(NULL)
+}
+```
+
+::: {.notes}
+Also explain conditional use in vignettes later
+
+Maybe talk about rlang here as well
+:::
+
+## `use_package()`
+
+`use_package()` will modify the DESCRIPTION and remind you how to use the function.
+
+By default, packages will be added to "Imports".
+
+```{r}
+#| eval: false
+usethis::use_package("rlang")
+usethis::use_package("glue", type = "Suggests")
+```
+
+# NAMESPACE: imports {.inverse}
+
+## You might get tired of using `::` all the time
+
+Or you might want to use an infix function
+
+```{r}
+#| eval: false
+`%>%` <- magittr::`%>%`
+
+col_summary <- function(df, fun) {
+  stopifnot(is.data.frame(df))
+
+  df %>%
+    purrr::keep(is.numeric) %>%
+    purrr::modify(fun)
+}
+```
+
+## You can `import` functions into the package
+
+```{r}
+#| eval: false
+#' @importFrom purrr keep modify
+#' @importFrom magrittr %>%
+col_summary <- function(df, fun) {
+  stopifnot(is.data.frame(df))
+
+  df %>%
+    keep(is.numeric) %>%
+    modify(fun)
+}
+```
+
+`devtools::document()` will add corresponding `import()` statements to the NAMESPACE, e.g. `import(purr, keep, modify)`.
+
+Adding formal imports is slightly more efficient than using `::`.
+
+## Package-level import file
+
+Imports belong to the package, not to individual functions, so best practice is to recognise this by storing them in a central location, e.g. `R/mypackage-package.R`
+
+```r
+#' @importFrom purrr keep modify
+#' @importFrom magrittr %>%
+NULL
+```
+
+## `usethis::use_import_from()`
+
+There can be several steps to importing a function. `usethis::use_import_from()` takes care of all of them.
+
+It will first create the package documentation file `R/mypackage-package.R` (if it doesn't already exist -- you will also need to agree to this).
+
+```{r}
+#| eval: false
+usethis::use_import_from("purrr", c("keep", "modify"))
+```
+
+```
+✔ Adding 'purrr' to Imports field in DESCRIPTION
+✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/mypackage-package.R'
+✔ Writing 'NAMESPACE'
+✔ Loading mypackage
+```
+
+::: {.notes}
+May need to close and reopen R/mypackage-package.R to see the changes.  
+:::
+
+##  It may be tempting to import a whole package...
+
+```r
+#' @import purrr
+col_summary <- function(df, fun) {
+  stopifnot(is.data.frame(df))
+
+  df %>%
+    keep(is.numeric) %>%
+    map_dfc(fun)
+}
+
+```
+
+## ...but it is dangerous
+
+```r
+#' @import pkg1
+#' @import pkg2
+fun <- function(x) {
+  fun1(x) + fun2(x)
+}
+
+```
+
+Works today...
+
+... but next year, what if **pkg2** adds a `fun1` function?
+
+## Documenting dependencies
+
+<br>
+
+Description                 | NAMESPACE
+--------------------------- | -------------
+Makes **package** available | Makes function available
+Mandatory                   | Optional (can use :: instead)
+`use_package()`             | `use_import_from()`
+
+## Example: rlang
+
+Currently we are using `stopifnot()` for argument validation
+
+```{r, eval = FALSE}
+stopifnot(is.character(animal) & length(animal) == 1)
+stopifnot(is.character(sound) & length(sound) == 1)
+```
+
+We might instead use `rlang::is_character()` with `cli::cli_abort()`
+
+```{r}
+#| error: true
+library(rlang)
+
+sound <- c("woof", "bark")
+
+if (!rlang::is_character(sound, 1)) {
+  cli::cli_abort("`sound` must be a single string!")
+}
+```
+
+::: {.notes}
+cli::cli_abort() has some really nice other capability that we'll cover later  
+:::
+
+
+## Your turn
+
+1. Use `use_package()` to add `rlang` and `cli` to `Imports`.
+2. Update `animal_sounds()` to use `is_character()` and `cli_abort` to validate the arguments, using `::` to fully qualify the function calls.
+3. Load all and try giving `animal_sounds()` invalid inputs for animal and/or sound.
+4. Commit your changes to git.
+5. Push your commits for this session.
 
 # End matter {.inverse}
 

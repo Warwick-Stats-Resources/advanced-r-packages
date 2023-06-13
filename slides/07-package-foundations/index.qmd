@@ -600,7 +600,7 @@ Put the following toy function into your script:
 animal_sounds <- function(animal, sound) {
     stopifnot(is.character(animal) & length(animal) == 1)
     stopifnot(is.character(sound) & length(sound) == 1)
-    message("The ", animal, " goes ", sound, "!")
+    paste0("The ", animal, " goes ", sound, "!")
 }
 ```
 
@@ -634,7 +634,7 @@ devtools::load_all() simulates package installation so that you can test your fu
 
 ## Your turn
 
-1. Load all with `devtools::load_all()` and try calling the `animalSounds()` function with appropriate values for `animal` and `sound`.
+1. Load all with `devtools::load_all()` and try calling the `animal_sounds()` function with appropriate values for `animal` and `sound`.
 2. Change some tiny thing about your function -- maybe the animal “says” instead 
 of “goes”.
 3. Load all with `devtools::load_all()` and try calling the updated function to see the changed behaviour.

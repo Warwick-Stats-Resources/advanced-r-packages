@@ -4,8 +4,6 @@ date: 2023-06-20T15:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/08-documentation/index.qmd){target="_blank"} in a new window. 
@@ -41,3 +39,11 @@ Here are the slides embedded:
 - **roxygen2**
 
   <https://roxygen2.r-lib.org>
+  
+- **rlang**
+
+  <https://rlang.r-lib.org>
+  
+- **cli**
+
+  <https://cli.r-lib.org>
