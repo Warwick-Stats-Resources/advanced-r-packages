@@ -519,7 +519,7 @@ Department of Statistics, University of Warwick
 <span id="cb3-10"><a href="#cb3-10"></a>animal_sounds <span class="ot">&lt;-</span> <span class="cf">function</span>(animal, sound) {</span>
 <span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
 <span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(sound) <span class="sc">&amp;</span> <span class="fu">length</span>(sound) <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">message</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">paste0</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
 <span id="cb3-14"><a href="#cb3-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -667,13 +667,293 @@ export(fun1)</code></pre>
 <div class="smaller90">
 <ol type="1">
 <li>Insert a Roxygen skeleton using the RStudio helper.</li>
-<li>Create a draft documentation file with <code>devtools::document()</code> or <code>Cmd/Ctrl + Shift + D</code>.</li>
+<li>Create a draft documentation file with <code>devtools::document()</code> or <code>Cmd/Ctrl + Shift + D</code>. If you get any warnings, make the necessary fixes.</li>
 <li>Click on “Diff” in the Git pane and view the changes that have been made.</li>
 <li>Preview the HTML help with <code>?animal_sounds</code>.</li>
 <li>Fill in the Roxygen skeleton for <code>animal_sounds()</code>, recreating the documentation file and previewing the HTML help to view your updates.</li>
 <li>When you have finished editing, run <code>devtools::document()</code> to ensure the <code>.Rd</code> file is in sync. Make a git commit with your updated <code>R/animal_sounds.R</code> file, the updated NAMESPACE, and the new <code>man/animal_sounds.Rd</code> file.</li>
 </ol>
 </div>
+</section>
+<section id="rd-markup" class="slide level2">
+<h2>.Rd Markup</h2>
+<p><code>.Rd</code> files recognise LaTeX-like mark-up in most text-based fields, e.g.</p>
+<pre><code>#' This is a convenience function that is a wrapper around
+#' \code{\link{sort.int}}.</code></pre>
+<p>Details can be found in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files">Writing R documentation files</a> section of the Writing R Extensions manual.</p>
+</section>
+<section id="using-markdown" class="slide level2">
+<h2>Using markdown</h2>
+<p>Most commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).</p>
+<ul>
+<li><p>Text formatting: <code>**bold**</code>, <code>_italic_</code>, <code>`code`</code></p></li>
+<li><p>Create links</p>
+<ul>
+<li>To a function in the same package: <code>[func()]</code></li>
+<li>To a function in a different package: <code>[pkg::func()]</code></li>
+<li>With different link text, e.g.&nbsp;<code>[link text][func()]</code></li>
+</ul></li>
+</ul>
+<p>For more details, see the <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html">(R)Markdown support</a> vignette.</p>
+<aside class="notes">
+<p>Seems you no longer need to specify <code>pkg::</code> - will find the documentation in any installed package. For functions in multiple packages, e.g.&nbsp;<code>select()</code> help pane will offer a choice. Probably still best practice to use <code>pkg::</code> for disambiguation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="view-documentation-with-links" class="slide level2">
+<h2>View documentation with links</h2>
+<p>To view the documentation with working links, we must install the package first.</p>
+
+<img data-src="images/documentation_workflow2.png" class="r-stretch quarto-figure-center"></section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Add some details to the help page for <code>animal_sounds()</code>, with a link to <code>paste0()</code>.</li>
+<li>Verify that no link is shown when recreating the documentation with the regular workflow.</li>
+<li>Create the documentation with the second workflow and look at the help file. Does the link to <code>paste0()</code> work?</li>
+<li>Commit all your changes to the git repo.</li>
+</ol>
+<aside class="notes">
+<p>Now the link does seem to work when recreating the documentation with the regular workflow. Is this a change in the very latest RStudio (2023.06.0+421)?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="dependencies" class="title-slide slide level1 inverse center">
+<h1>Dependencies</h1>
+
+</section>
+<section id="dependencies-1" class="slide level2">
+<h2>Dependencies</h2>
+<p>Dependencies are other R packages that our package uses. There are three types of dependency:</p>
+<p><strong>Imports</strong>: required packages, will be installed when our package is installed if they are not already installed.</p>
+<p><strong>Suggests</strong>: optional packages, e.g.&nbsp;only used for development; only used in documentation. <em>Not</em> installed automatically with our package.</p>
+<p><strong>Depends</strong>: essentially deprecated for packages, may be used to specify a minimum required version of R (i.e., version of the core packages).</p>
+</section>
+<section id="imported-packages" class="slide level2">
+<h2>Imported packages</h2>
+<p>In DESCRIPTION</p>
+<pre><code>Imports: 
+    pkgname1
+    pkgname2</code></pre>
+<p>Use <code>::</code> to access functions</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>new_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  w <span class="ot">&lt;-</span> pkgname1<span class="sc">::</span><span class="fu">imported_function</span>(x, y)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  pkgname2<span class="sc">::</span><span class="fu">imported_function</span>(w, z)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="suggested-packages" class="slide level2">
+<h2>Suggested packages</h2>
+<p>In DESCRIPTION</p>
+<pre><code>Suggests: 
+    pkgname</code></pre>
+<p>In package functions or examples, handle the case where <strong>pkgname</strong> is not available:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"pkgname"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)){</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">warning</span>(<span class="st">"pkgname must be installed to perform this function"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>          <span class="st">"returning NULL"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Also explain conditional use in vignettes later</p>
+<p>Maybe talk about rlang here as well</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="use_package" class="slide level2">
+<h2><code>use_package()</code></h2>
+<p><code>use_package()</code> will modify the DESCRIPTION and remind you how to use the function.</p>
+<p>By default, packages will be added to “Imports”.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">"rlang"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">"glue"</span>, <span class="at">type =</span> <span class="st">"Suggests"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="namespace-imports" class="title-slide slide level1 inverse center">
+<h1>NAMESPACE: imports</h1>
+
+</section>
+<section id="you-might-get-tired-of-using-all-the-time" class="slide level2">
+<h2>You might get tired of using <code>::</code> all the time</h2>
+<p>Or you might want to use an infix function</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="st">`</span><span class="at">%&gt;%</span><span class="st">`</span> <span class="ot">&lt;-</span> magittr<span class="sc">::</span><span class="st">`</span><span class="at">%&gt;%</span><span class="st">`</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a>col_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(df, fun) {</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(df))</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>    purrr<span class="sc">::</span><span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>    purrr<span class="sc">::</span><span class="fu">modify</span>(fun)</span>
+<span id="cb15-9"><a href="#cb15-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="you-can-import-functions-into-the-package" class="slide level2">
+<h2>You can <code>import</code> functions into the package</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#' @importFrom purrr keep modify</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>col_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(df, fun) {</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(df))</span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>    <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>    <span class="fu">modify</span>(fun)</span>
+<span id="cb16-9"><a href="#cb16-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>devtools::document()</code> will add corresponding <code>import()</code> statements to the NAMESPACE, e.g.&nbsp;<code>import(purr, keep, modify)</code>.</p>
+<p>Adding formal imports is slightly more efficient than using <code>::</code>.</p>
+</section>
+<section id="package-level-import-file" class="slide level2">
+<h2>Package-level import file</h2>
+<p>Imports belong to the package, not to individual functions, so best practice is to recognise this by storing them in a central location, e.g.&nbsp;<code>R/mypackage-package.R</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#' @importFrom purrr keep modify</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="usethisuse_import_from" class="slide level2">
+<h2><code>usethis::use_import_from()</code></h2>
+<p>There can be several steps to importing a function. <code>usethis::use_import_from()</code> takes care of all of them.</p>
+<p>It will first create the package documentation file <code>R/mypackage-package.R</code> (if it doesn’t already exist – you will also need to agree to this).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>usethis<span class="sc">::</span><span class="fu">use_import_from</span>(<span class="st">"purrr"</span>, <span class="fu">c</span>(<span class="st">"keep"</span>, <span class="st">"modify"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>✔ Adding 'purrr' to Imports field in DESCRIPTION
+✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/mypackage-package.R'
+✔ Writing 'NAMESPACE'
+✔ Loading mypackage</code></pre>
+<aside class="notes">
+<p>May need to close and reopen R/mypackage-package.R to see the changes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="it-may-be-tempting-to-import-a-whole-package" class="slide level2">
+<h2>It may be tempting to import a whole package…</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#' @import purrr</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>col_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(df, fun) {</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(df))</span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="fu">keep</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="fu">map_dfc</span>(fun)</span>
+<span id="cb20-8"><a href="#cb20-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="but-it-is-dangerous" class="slide level2">
+<h2>…but it is dangerous</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#' @import pkg1</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#' @import pkg2</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">fun1</span>(x) <span class="sc">+</span> <span class="fu">fun2</span>(x)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Works today…</p>
+<p>… but next year, what if <strong>pkg2</strong> adds a <code>fun1</code> function?</p>
+</section>
+<section id="documenting-dependencies" class="slide level2">
+<h2>Documenting dependencies</h2>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>NAMESPACE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Makes <strong>package</strong> available</td>
+<td>Makes function available</td>
+</tr>
+<tr class="even">
+<td>Mandatory</td>
+<td>Optional (can use :: instead)</td>
+</tr>
+<tr class="odd">
+<td><code>use_package()</code></td>
+<td><code>use_import_from()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-rlang" class="slide level2">
+<h2>Example: rlang</h2>
+<p>Currently we are using <code>stopifnot()</code> for argument validation</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">stopifnot</span>(<span class="fu">is.character</span>(sound) <span class="sc">&amp;</span> <span class="fu">length</span>(sound) <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We might instead use <code>rlang::is_character()</code> with <code>cli::cli_abort()</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(rlang)</span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>sound <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bark"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="dv">1</span>)) {</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`sound` must be a single string!"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! `sound` must be a single string!</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>cli::cli_abort() has some really nice other capability that we’ll cover later</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-2" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Use <code>use_package()</code> to add <code>rlang</code> and <code>cli</code> to <code>Imports</code>.</li>
+<li>Update <code>animal_sounds()</code> to use <code>is_character()</code> and <code>cli_abort</code> to validate the arguments, using <code>::</code> to fully qualify the function calls.</li>
+<li>Load all and try giving <code>animal_sounds()</code> invalid inputs for animal and/or sound.</li>
+<li>Commit your changes to git.</li>
+<li>Push your commits for this session.</li>
+</ol>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
