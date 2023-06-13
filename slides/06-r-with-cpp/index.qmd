@@ -578,7 +578,7 @@ NumericVector row_max(NumericMatrix mat) {
 The following R function can be used to simulate the value of $\pi$:
 
 ```{r}
-piR <- function(N) {
+approx_pi_r <- function(N) {
     x <- runif(N)
     y <- runif(N)
     d <- sqrt(x^2 + y^2)
@@ -587,6 +587,20 @@ piR <- function(N) {
 ```
 
 Convert this to C++, taking advantage of the vectorized Rcpp functions.
+
+```{cpp, include = FALSE}
+double approx_pi_c(const int N) {
+  NumericVector x = runif(N);
+  NumericVector y = runif(N);
+  NumericVector d = sqrt(x*x + y*y);
+  return 4.0 * sum(d < 1.0) / N;
+}
+```
+
+
+::: {.notes}
+This function gets used in an exercise in the Rcpp packages session.  
+:::
 
 # End matter {.inverse}
 

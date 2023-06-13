@@ -19,6 +19,7 @@ format:
 
 - Creating an Rcpp package
 - Rcpp development workflow
+- C++ interface
 
 # Creating an Rcpp package {.inverse}
 
@@ -246,6 +247,182 @@ add_cpp <- function(x, y) {
 to `sumC.cpp`.
 3. Run Build > Document to update the NAMESPACE and create the documentation files for the two R wrappers.
 4. Commit your changes to git.
+
+## Exporting C++ Code
+
+As we have seen, `Rcpp::compileAttributes()` creates an R interface to our exported C++ functions.
+
+To make a C++ interface for code in a `.cpp` file, we should add a custom `Rcpp::interfaces()` attribute as follows:
+
+```cpp
+#include <Rcpp.h>
+using namespace Rcpp;
+// [[Rcpp::interfaces(r, cpp)]]
+```
+
+We can specify `r` and/or `cpp` to ask for an R and/or C++ interface.
+
+::: {.notes}
+N.B. // [[Rcpp::export]] must come AFTER // [[Rcpp::interfaces]]  
+:::
+
+## C++ Interface
+
+`Rcpp::compileAttributes()` generates the following header files in `/inst/include`:
+
+ - `<packagename>_RcppExports.h`: inline definitions for all exported C++ functions.
+ - `<packagename>.h`: includes the `<packagename>_RcppExports.h`. Package authors may add additional C++ code here for sharing.
+ 
+All directories in `inst` are moved to the top level of the package directory on installation.
+
+## Your turn
+
+1. Add an `Rcpp::interfaces()` attribute to `add_cpp.cpp` to request both R and C++ interfaces for the `add_cpp` function.
+2. Run Build > Document to create the C++ interface. Take a look at the generated files.
+3. Commit your changes to git.
+
+::: {.notes}
+When I did this, it deleted `man/add_cpp.Rd`. Not sure why. I used 'revert' in the git pane to undo this.
+:::
+
+## Importing C++ code with Rcpp C++ interface
+
+To use C++ code from another package that has created a C++ interface for their Rcpp functions, in DESCRIPTION add
+```
+LinkingTo: otherpkg
+```
+e.g. with `usethis::use_package(otherpkg, type = "LinkingTo")`. Then in `.cpp` file, add the header file to includes
+```{cpp, eval = FALSE}
+#include <Rcpp.h>
+#include <otherpkg.h>
+```
+
+Then either `using namespace otherpkg;` to make the functions from `otherpackage` available globally, or `otherpkg::fn()` to access functions directly.
+
+::: {.notes}
+https://www.faqcode4u.com/faq/20021/using-c-function-from-other-package-in-rcpp
+possibly https://cran.r-project.org/web/packages/RcppClock/RcppClock.pdf
+https://dirk.eddelbuettel.com/papers/useR2017_rcpp_tutorial.pdf
+https://github.com/stla/RcppColors
+
+maybe
+https://github.com/drostlab/philentropy
+https://github.com/cran/cooltools/tree/master/inst/include
+https://github.com/YeeJeremy/rflann  
+:::
+
+## Example: Alternative Distribution Functions
+
+In the Advanced R workshop (final exercise of the Rcpp session), we wrote an Rcpp function to approximate $\pi$:
+
+```{cpp, eval = FALSE}
+double approx_pi(const int N) {
+  NumericVector x = runif(N);
+  NumericVector y = runif(N);
+  NumericVector d = sqrt(x*x + y*y);
+  return 4.0 * sum(d < 1.0) / N;
+}
+```
+
+We can try using the `dqrunif` C++ functions provided by the **dqrng** package instead of `Rcpp::runif`.
+
+[See <https://daqana.github.io/dqrng/index.html> for more info on this package.]{.smaller80}
+
+## Your turn
+
+:::{.smaller90}
+1. Install the **dqrng** package.
+2. Use `usethis::use_package()` to add `dqrng` to `LinkingTo`. It will show possible headers to include, including `dqrng.h` which provides the Rcpp exports.
+3. Create a new `.cpp` file and add the `approx_pi` function. Make sure to add the necessary headers and Rcpp attribute, so that you can use it after running `devtools::load_all()`.
+4. Add a second version of the `approx_pi` function that uses the `dqrunif` C++ functions from `dqrng` instead.
+5. Load all and use `bench::mark()` to benchmark the two versions with `N = 1e7`, setting `check = FALSE` in `bench::mark()` as the generated random numbers will differ.
+6. Commit your changes to git
+:::
+
+## Importing other C++ code  
+
+Some packages provide a custom `<packagename>.h` or other C++ headers.
+
+ - The header maybe not be called `<packagename>.h`!
+ - The namespace may have a different name from the package or the header file and may be nested.
+ - If the header include headers from other packages, you will need to add these to `LinkingTo`.
+ - If the package has custom build settings (e.g. using C++11), you will need to use these for your package.
+ 
+The documentation should clarify what is needed for a particular package.
+
+## Example: BH Package
+
+The **BH** package provides header files for the [Boost](https://www.boost.org/) C++ libraries.
+
+The header files have `.hpp` extension and are nested in directories. The namespace is similarly nested:
+ 
+```{cpp, eval = FALSE}
+#include <Rcpp.h>
+#include <boost/integer/common_factor.hpp>
+
+// [[Rcpp::export]]
+int computeGCD(int a, int b) {
+    return boost::integer::gcd(a, b);
+}
+```
+
+Include `BH` in `LinkingTo:` to add this function to a package.
+
+::: {.notes}
+gcd is a function to compute the greatest common denominator
+
+.hpp extension: header files for C++
+:::
+
+## Example: RcppArmadillo
+
+The **RcppArmadillo** package provides headers for the [Armadillo](http://arma.sourceforge.net/) library for linear algebra & scientific computing.
+
+The header to include is `RcppArmadillo.h`, which provides the `armadillo` header defining the `arma` namespace, e.g. 
+
+```{cpp, eval = FALSE}
+#include <RcppArmadillo.h>
+// [[Rcpp::export]]
+arma::vec getEigenValues(arma::mat M) {
+    return arma::eig_sym(M);
+}
+```
+
+## Using RcppArmadillo
+
+To use **RcppArmadillo** in a package, we need to 
+
+ - Add `RcppArmadillo` to `LinkingTo`
+ - Enable OpenMP support and link against the BLAS and LAPACK linear algebra libraries by defining compilation options in `src/Makevars` and `src/Makevars.win`.
+ 
+Both can be done with `usethis::use_rcpp_armadillo()`.
+
+::: {.notes}
+OpenMP for parallel processing
+
+https://stackoverflow.com/q/68959897/173755
+:::
+
+## Your turn
+
+:::{.smaller90}
+1. Run `usethis::use_rcpp_armadillo()` to set the package up to use RcppArmadillo. 
+
+    [_You may be asked whether to overwrite an existing `.cpp` file. Select one of the **negative** options. You may also be asked whether to install **RcppArmadillo**. Select the **affirmative** option._]{.smaller80}
+
+2. Create a new `.cpp` file and save it as `inner_prod.cpp`. Add the code
+```{Rcpp, eval = FALSE}
+// [[ Rcpp::export]]
+double inner_prod (arma::vec x, arma::vec y) {
+    arma::mat z = x.t() * y ;
+    return(z(0)) ;
+}
+```
+3. Run Build > Document to create the R wrapper.
+4. Run `devtools::load_all()` to load the function and try it out.
+5. Commit your changes to git.
+6. Push all your changes to git from this session.
+:::
 
 # End matter {.inverse}
 
