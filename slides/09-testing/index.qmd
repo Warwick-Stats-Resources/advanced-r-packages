@@ -17,7 +17,7 @@ format:
 
 ## Overview
 
-- Unit testing
+- Unit testing with **testthat**
 - Test driven development
 
 # Unit testing with testthat {.inverse}
@@ -54,14 +54,141 @@ usethis::use_testthat()
 
 `tests/testthat.R` loads **testthat** and the package being tested, so you don't need to add `library()` calls to the test files.
 
+## Tests are organised in three layers
+
+![](images/test_organization.png){fig-align="center"}
+
+::: {.notes}
+A file holds multiple related tests.
+
+A test groups together multiple expectations to test the output from a simple function, a range of possibilities for a single parameter from a more complicated function, or tightly related functionality from across multiple functions.
+
+An expectation is the atom of testing. It describes the expected result of a computation: Does it have the right value and right class? 
+:::
+
+## What to test
+
+Test every individual task the function completes separately.
+
+Check both for successful situations and for expected failure situations.
+
+## Expectations
+
+Three expectations cover the vast majority of cases
+
+```r
+expect_equal(object, expected)
+
+expect_error(object, regexp = NULL, class = NULL)
+
+expect_warning(object, regexp = NULL, class = NULL)
+```
+
+:::{.notes}
+It used to be standard practice to test for errors and warnings using regexp, but that has downsides - it's not always clear why a test is failing. Testing via class is a more modern, safer approach, which we'll use below.
+:::
+
+## Our example function
+
+```{r}
+animal_sounds <- function(animal, sound) {
+  
+  if (!rlang::is_character(animal, 1)) {
+    cli::cli_abort("{.var animal} must be a single string!")
+  }
+  
+  if (!rlang::is_character(sound, 1)) {
+    cli::cli_abort("{.var sound} must be a single string!")
+  }
+  
+  paste0("The ", animal, " goes ", sound, "!")
+}
+```
+
+## A sample test
+
+First, create a test file for this function, in either way:
+
+```{.r}
+# In RStudio, with `animal_sounds.R` the active file:
+usethis::use_test()  
+
+# More generally
+usethis::use_test("animal_sounds")
+```
+
+. . .
+
+:::{.callout-note}
+RStudio makes it really easy to swap between associated R scripts and tests.
+
+If the R file is open, `usethis::use_test()` (with no arguments) opens or creates the test.
+
+With the test file open, `usethis::use_r()` (with no arguments) opens or creates the R script.
+:::
+
+## Add a test
+
+In the now-created and open `tests/testthat/test-animal_sounds.R` script:
+
+```{r}
+#| echo: false
+#| message: false
+library(testthat)
+```
+
+
+```{r}
+#| eval: false
+test_that("animal_sounds produces expected strings", {
+  dog_woof <- animal_sounds("dog", "woof")
+  expect_equal(dog_woof, 
+               "The dog goes woof!")
+})
+```
+
+## Run tests 
+
+Tests can be run interactively like any other R code. The output will appear in the console, e.g. for a successful test:
+
+```
+Test passed 😀
+```
+
+Alternatively, we can run tests in the background with the output appearing in the build pane.
+
+ - `testthat::test_file()` -- run all tests in a file ('Run Tests' button)
+ - `devtools::test()` -- run all tests in a package (Ctrl/Cmd + Shift + T, or Build > Test Package)
+
+## Testing equality
+
+For numeric values, `expect_equal()` allows some tolerance:
+
+```{r, error = TRUE}
+expect_equal(10, 10 + 1e-7)
+```
+
+```{r, error = TRUE}
+expect_equal(10, 10 + 1e-4, tolerance = 1e-4)
+```
+
+```{r, error = TRUE}
+expect_equal(10, 10 + 1e-5)
+```
+
+**Note that when the expectation is met, there is nothing printed.**
+
+Use `expect_identical()` to test exact equivalence.
+
+Use `expect_equal(ignore_attr = TRUE)` to ignore different attributes (e.g. names).
 
 # End matter {.inverse}
 
 ## References
 
-Wickham, H and Bryan, J, _R Packages_ (2nd edn, in progress), https://r-pkgs.org.
+Wickham, H and Bryan, J, _R Packages_ (2nd edn, in progress), <https://r-pkgs.org>.
 
-R Core Team, _Writing R Extensions_, https://cran.r-project.org/doc/manuals/r-release/R-exts.html
+R Core Team, _Writing R Extensions_, <https://cran.r-project.org/doc/manuals/r-release/R-exts.html>
 
 ## License
 

@@ -498,12 +498,16 @@ library(rlang)
 sound <- c("woof", "bark")
 
 if (!rlang::is_character(sound, 1)) {
-  cli::cli_abort("`sound` must be a single string!")
+  cli::cli_abort("{.var sound} must be a single string!")
 }
 ```
 
 ::: {.notes}
-cli::cli_abort() has some really nice other capability that we'll cover later  
+cli::cli_abort() has some really nice capability
+- glue interpolation (not covered in this course)
+- inline classes (e.g. .var for variable) that lead to nicely formatted command-line text (see above)
+- features that make it easier to write tests (covered later in this course)
+
 :::
 
 
