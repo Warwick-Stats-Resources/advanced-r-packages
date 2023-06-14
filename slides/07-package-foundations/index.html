@@ -13,8 +13,8 @@
 
   <meta name="author" content="Heather Turner and Ella Kaye">
   <meta name="author" content="Department of Statistics, University of Warwick">
-  <meta name="dcterms.date" content="2023-06-21">
-  <title>Advanced R and R Packages Workshop - Rcpp Package Development</title>
+  <meta name="dcterms.date" content="2023-06-20">
+  <title>Advanced R and R Packages Workshop - Package Foundations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -394,7 +394,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#552D62" class="quarto-title-block center">
-  <h1 class="title">Rcpp Package Development</h1>
+  <h1 class="title">Package Foundations</h1>
   <p class="subtitle">R Packages</p>
 
 <div class="quarto-title-authors">
@@ -410,28 +410,70 @@ Department of Statistics, University of Warwick
 </div>
 </div>
 
-  <p class="date">June 21, 2023</p>
+  <p class="date">June 20, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>C++ and Rcpp</li>
-<li>Creating an Rcpp package</li>
-<li>Rcpp development workflow</li>
-<li>C++ interface</li>
-<li><strong>RcppArmadillo</strong></li>
+<li>Why write a package?</li>
+<li>Package structure and state</li>
+<li>Package development setup</li>
+<li>Creating a package with a working function</li>
 </ul>
 </section>
 <section>
-<section id="c-and-rcpp" class="title-slide slide level1 inverse center">
-<h1>C++ and Rcpp</h1>
+<section id="why-write-a-package" class="title-slide slide level1 inverse center">
+<h1>Why write a package?</h1>
 
 </section>
-<section id="recap" class="slide level2">
-<h2>Recap</h2>
-<p>This session assumes familiarity with the <a href="../../content/06-r-with-cpp/index.html">C++ and Rcpp</a> session of the Advanced R workshop.</p>
+<section id="why-write-a-package-1" class="slide level2">
+<h2>Why write a package?</h2>
+<ul>
+<li>You want to <strong>generalise</strong> code</li>
+<li>You want to <strong>document</strong> code</li>
+<li>You want to <strong>test</strong> code</li>
+<li>You want to <strong>share</strong> code</li>
+<li>You want to create <strong>impact</strong> from your work</li>
+</ul>
+</section>
+<section id="script-vs-package" class="slide level2">
+<h2>Script vs package</h2>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R script</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-off data analysis</td>
+<td>Provides reusable components</td>
+</tr>
+<tr class="even">
+<td>Defined by <code>.R</code> extension</td>
+<td>Defined by presence of <code>DESCRIPTION</code> file</td>
+</tr>
+<tr class="odd">
+<td><code>library()</code> calls</td>
+<td>Imports defined in <code>NAMESPACE</code> file</td>
+</tr>
+<tr class="even">
+<td>Documentation in <code>#</code> comments</td>
+<td>Documentation in files and <code>Roxygen</code> comments</td>
+</tr>
+<tr class="odd">
+<td>Run lines or source file</td>
+<td>Install and restart</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-<p>For the 2023 workshop, all participants should either have attended this session the day before or been e-mailed in advanced with a link to the material and told that it is a prerequisite.</p>
+<p>reusable components: typically functions, but could also be R markdown template, Shiny app, data</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -445,59 +487,102 @@ Department of Statistics, University of Warwick
       }</style></aside>
 </section></section>
 <section>
-<section id="creating-an-rcpp-package" class="title-slide slide level1 inverse center">
-<h1>Creating an Rcpp package</h1>
+<section id="package-structure-and-state" class="title-slide slide level1 inverse center">
+<h1>Package structure and state</h1>
 
 </section>
-<section id="create-a-version-controlled-package" class="slide level2">
-<h2>Create a version-controlled package</h2>
-<p>Create a new package:</p>
+<section id="package-structure" class="slide level2">
+<h2>Package structure</h2>
+<p>An R package is developed as a directory of source code files.</p>
+<p>The names of files and directories must follow the specification laid out in the <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a> manual - we’ll cover the main components in this workshop.</p>
+<p>Directory tree for an example RStudio package project:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"~/Desktop/pkgrcpp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mypackage
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+└── mypackage.Rproj</code></pre>
 </div>
-<p>Make your package a Git repo:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Link to GitHub:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Commit your changes to git with a message “use GitHub”.</p>
 </section>
-<section id="use-rcpp" class="slide level2">
-<h2>Use Rcpp</h2>
-<p>Use Rcpp and create an initial <code>.cpp</code> file:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>usethis<span class="sc">::</span><span class="fu">use_rcpp</span>(<span class="st">"add_cpp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="package-states" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
 <ul>
-<li>Creates a <code>/src</code> directory for our C++ files</li>
-<li>Sets up <code>src/.gitignore</code> to ignore compiled files</li>
-<li>Adds “Rcpp” to the “LinkingTo” and “Imports” fields in DESCRIPTION</li>
-<li>Adds <code>add_cpp.cpp</code> ready for editing.</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>source</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>bundled</li>
+<li>binary</li>
+<li>installed</li>
+<li>in-memory</li>
 </ul>
-<p>It also copies some code to the clipboard for us to add to <code>R/&lt;packagename&gt;-package.R</code> which we must create.</p>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>source</strong></p>
+</div>
+<div class="callout-content">
+<p>What you create and work on.</p>
+<p>Specific directory structure with some particular components e.g., <code>DESCRIPTION</code>, an <code>/R</code> directory.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="packagename-package.r" class="slide level2">
-<h2><code>&lt;packagename&gt;-package.R</code></h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"pkgrcpp-package.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then copy the code from the clipboard into this file:</p>
-<pre><code>## usethis namespace: start
-#' @useDynLib pkgrcpp, .registration = TRUE
-#' @importFrom Rcpp sourceCpp
-## usethis namespace: end
-NULL</code></pre>
-<p>The roxygen2 comments direct to</p>
+<section id="package-states-1" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
 <ul>
-<li>import <code>Rcpp::sourceCpp</code></li>
-<li>add <code>useDynLib(pkgrcpp,".registration=TRUE")</code> to the NAMESPACE, so that the compiled code can be loaded and all C++ routines will be registered.</li>
+<li>source</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>bundled</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>binary</li>
+<li>installed</li>
+<li>in-memory</li>
 </ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>bundled</strong></p>
+</div>
+<div class="callout-content">
+<p>Package files compressed to single <code>.tar.gz</code> file.</p>
+<p>Also known as “source tarballs”.</p>
+<p>Created by command line tool <code>R CMD build</code></p>
+<p>Unpacked it looks very like the source package.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>package level doc: https://stackoverflow.com/a/60750351/173755</p>
-<p>We’ll still need to create the package documentation (NAMESPACE) later.</p>
+<p>In the rare case that you need to make a bundle from a package you’re developing locally, use devtools::build(). Under the hood, this calls pkgbuild::build() and, ultimately, R CMD build, which is described further in the Building package tarballs section of Writing R Extensions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -510,23 +595,48 @@ NULL</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="add-an-rcpp-function" class="slide level2">
-<h2>Add an Rcpp function</h2>
-<p><code>add_cpp.cpp</code> should already have the following code:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="package-states-2" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<ul>
+<li>source</li>
+<li>bundled</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>binary</strong></p>
 </div>
-<p>Edit <code>add_cpp.cpp</code> to add a C++ function and the Rcpp export comment, e.g.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="dt">double</span> add_cpp<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="dt">double</span> value <span class="op">=</span> x <span class="op">+</span> y<span class="op">;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="cf">return</span> value<span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>installed</li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>binary</strong></p>
+</div>
+<div class="callout-content">
+<p>Compressed copy of the package in installed form.</p>
+<p>Also a single file.</p>
+<p>Platform specific: <code>.tgz</code> (Mac) <code>.zip</code> (Windows).</p>
+<p>Package developers submit a bundle to CRAN; CRAN makes and distributes binaries.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <aside class="notes">
-<p>note the header #include and the special attribute // [[Rcpp::export]]</p>
+<p>A package in binary form is Platform specific. If you write a package for distribution on CRAN, you submit a bundle to CRAN then CRAN makes and distributes binaries</p>
+<p><code>install.packages()</code> is usually downloading the binary</p>
+<p>To understand the difference between package bundle and a package binary see <a href="https://r-pkgs.org/package-structure-state.html" class="uri">https://r-pkgs.org/package-structure-state.html</a></p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -539,22 +649,326 @@ NULL</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="run-build-document" class="slide level2">
-<h2>Run Build &gt; Document</h2>
-<p>Build &gt; Document or Ctrl/Cmd + Shift + D now runs two functions:</p>
+<section id="package-states-3" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
 <ul>
-<li><p><code>Rcpp::compileAttributes()</code> looks for <code>// [[Rcpp::export]]</code> and generates</p>
+<li>source</li>
+<li>bundled</li>
+<li>binary</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>installed</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+<li>in-memory</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>installed</strong></p>
+</div>
+<div class="callout-content">
+<p>A directory of files in a library directory.</p>
+<p>Any C/C++/Fortran code is in compiled form.</p>
+<p>Help files, code and optionally data are in database form.</p>
+<p><code>install.packages()</code> can install from source or from a binary</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="package-states-4" class="slide level2">
+<h2>Package states</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
 <ul>
-<li><code>src/RcppExports.cpp</code>: C routines wrapping exported C++ functions</li>
-<li><code>R/RcppExports.R</code>: R wrappers that call the C routines.</li>
+<li>source</li>
+<li>bundled</li>
+<li>binary</li>
+<li>installed</li>
+<li><div class="larger125">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>in-memory</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>in-memory</strong></p>
+</div>
+<div class="callout-content">
+<p>If a package is installed, <code>library()</code> makes its function available by loading the package into memory and attaching it to the search path.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="buildinginstalling-packages-from-source" class="slide level2">
+<h2>Building/Installing Packages from Source</h2>
+<p>There are various reasons we may wish to build or install from source:</p>
+<ul>
+<li>Installing a CRAN package where a binary has not yet been built for the latest version.</li>
+<li>Installing a package from GitHub/other version-controlled source code repository, e.g.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"r-lib/revdepcheck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Installing our own package from the source code or building it to submit to CRAN.</li>
+</ul>
+<p>If the package includes C/C++/Fortran code, we will need a suitable compiler.</p>
+</section></section>
+<section>
+<section id="build-tools" class="title-slide slide level1 inverse center">
+<h1>Build tools</h1>
+<aside class="notes">
+<p>Covered in the course prerequisites and in Session 6 on R with C++, but put here for completeness</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="linux" class="slide level2">
+<h2>Linux</h2>
+<p>Debian/Ubuntu:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">apt-get</span> update</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">apt-get</span> install r-base-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fedora/RedHat: should be set up already.</p>
+</section>
+<section id="macos" class="slide level2">
+<h2>MacOS</h2>
+<p>Option 1</p>
+<ul>
+<li><a href="https://developer.apple.com/programs/register/">Register as an Apple developer (for free)</a>
+<ul>
+<li><p>Then, in the terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><p><code>devtools::document()</code> that converts roxygen comments as usual, in particular updating the NAMESPACE.</p>
-<pre><code>importFrom(Rcpp,sourceCpp)
-useDynLib(pkgrcpp, .registration = TRUE)</code></pre></li>
 </ul>
+<p>Option 2</p>
+<ul>
+<li>Install the current release of full <a href="https://itunes.apple.com/ca/app/xcode/id497799835?mt=12">Xcode from the Mac App Store</a></li>
+<li>Within XCode go to Preferences -&gt; Downloads and install the Command Line Tools</li>
+<li>More convenient but installs a lot you don’t need</li>
+</ul>
+</section>
+<section id="windows" class="slide level2">
+<h2>Windows</h2>
+<ul>
+<li>Download the Rtools installer that matches your version of R from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a></li>
+<li>Run the installer, <code>Rtools.exe</code>, keeping the default settings.</li>
+</ul>
+</section></section>
+<section>
+<section id="package-development-setup" class="title-slide slide level1 inverse center">
+<h1>Package development setup</h1>
+
+</section>
+<section id="the-setup-well-be-using" class="slide level2">
+<h2>The setup we’ll be using</h2>
+<p>We’ll be using the following tools for package development:</p>
+<ul>
+<li>RStudio: to manage and edit the package source code</li>
+<li>git + GitHub: to version control the package source code</li>
+<li><strong>devtools</strong> and <strong>usethis</strong> R packages:
+<ul>
+<li><strong>devtools</strong> for functions supporting the development workflow</li>
+<li><strong>usethis</strong> for setup tasks</li>
+<li><strong>devtools</strong> depends on <strong>usethis</strong> package</li>
+<li>Integrated with RStudio: projects, menu items/shortcuts</li>
+<li>Uses system utilities internally: <code>R CMD</code> utilities bundled with R</li>
+</ul></li>
+</ul>
+</section>
+<section id="follow-along" class="slide level2">
+<h2>Follow along</h2>
+<p>For the rest of this session, follow along on your own computer to make sure you’re set up for package development and to create our example package.</p>
+</section>
+<section id="devtools-and-usethis" class="slide level2">
+<h2><strong>devtools</strong> and <strong>usethis</strong></h2>
+<p>We can use <strong>devtools</strong> right away to check our system is setup for package development.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(devtools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">has_devel</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Your system is ready to build packages!</code></pre>
+</div>
+</div>
+<p>Installing <strong>devtools</strong> will also install <strong>usethis</strong>.</p>
+<p>Check you have the latest version of <strong>usethis</strong> – 2.2.0 was recently released – and update if not:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">packageVersion</span>(<span class="st">"usethis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '2.2.0'</code></pre>
+</div>
+</div>
+</section>
+<section id="create-a-github-pat" class="slide level2">
+<h2>Create a GitHub PAT</h2>
+<p>The <strong>usethis</strong> package uses personal access tokens (PAT) to communicate with GitHub.</p>
+<p>First, make sure you’re signed into GitHub. Then run</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Add Note describing the computer or use- case (e.g.&nbsp;personal-macbook-pro-2021, project-xyz)</li>
+<li>Select expiration (recommend default 30 days)</li>
+<li>Check scope (default selection is fine)</li>
+<li>Click ‘Generate Token’</li>
+<li><strong>Important!</strong> Copy token to clipboard, do not close window until stored (see next slide)!</li>
+<li>You may want to store token in a secure vault, like 1Password or BitWarden</li>
+</ul>
+</section>
+<section id="store-your-pat" class="slide level2">
+<h2>Store your PAT</h2>
+<p>By installing <strong>usethis</strong>, you will also have the <strong>gitcreds</strong> package to manage git credentials.</p>
+<p>Put your PAT into the Git credential store by running the following command and entering your copied PAT at the prompt (assume the PAT is on your clipboard).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>If you don’t have a PAT stored, will prompt you to enter: paste!</li>
+<li>If you do, you will be given a choice to keep/replace/see the password
+<ul>
+<li>choose as appropriate</li>
+<li>if replacing, paste!</li>
+</ul></li>
+</ul>
+</section>
+<section id="sitrep-and-vaccinate" class="slide level2">
+<h2>sitrep and vaccinate</h2>
+<p>Ask for a <strong>sit</strong>uation <strong>rep</strong>ort:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check that the PAT is discovered.</p>
+<p>Check that your user name and email are defined, else follow the <a href="https://hturner.github.io/advanced-r/01_open_code_and_software.html#17">configuration instructions</a> from a previous Advanced R workshop.</p>
+<p>It’s also a good idea to vaccinate. This implements best practice by adding files to your global <code>.gitignore</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>usethis<span class="sc">::</span><span class="fu">git_vaccinate</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-on-usethis-and-github-creds" class="slide level2">
+<h2>More on usethis and GitHub creds</h2>
+<p>It is well worth reading (and following all the instructions) in the following two <strong>usethis</strong> vignettes:</p>
+<ul>
+<li><a href="https://usethis.r-lib.org/articles/usethis-setup.html">usethis setup</a></li>
+<li><a href="https://usethis.r-lib.org/articles/git-credentials.html">Managing Git(Hub) Credentials</a>
+<ul>
+<li>See in particular the section on <a href="https://usethis.r-lib.org/articles/git-credentials.html#ongoing-pat-maintenance">ongoing PAT maintenance</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="create-a-package" class="title-slide slide level1 inverse center">
+<h1>Create a package!</h1>
+
+</section>
+<section id="package-name" class="slide level2">
+<h2>Package name</h2>
+<p>Can only contain the characters [A-Z, a-z, 0-9, .]. Some tips:</p>
+<ul>
+<li>Unique name you can easily Google</li>
+<li>Avoid mixing upper and lower case</li>
+<li>Use abbreviations</li>
+<li>Add an r to make unique, e.g <strong>stringr</strong></li>
+<li>Use wordplay, e.g.&nbsp;<strong>lubridate</strong></li>
+<li>Avoid trademarked names</li>
+<li>Use the <strong>available</strong> package to check name not taken</li>
+</ul>
+<p>For now, we will use <strong>mypackage</strong></p>
+</section>
+<section id="create-a-package-1" class="slide level2">
+<h2>Create a package!</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"~/Desktop/mypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Be deliberate about where you create your package.</p></li>
+<li><p>Do not nest inside another RStudio project, R package or git repo.</p></li>
+<li><p>You may want to use a different path!</p></li>
+</ul>
+</section>
+<section id="create_package" class="slide level2">
+<h2><code>create_package()</code></h2>
+<p>What happens when we run <code>create_package()</code>?</p>
+<ul>
+<li>R will create a folder called <code>mypackage</code> which is a package and an RStudio project</li>
+<li>restart R in the new project</li>
+<li>create the some infrastructure for your package with the minimal components for a working package</li>
+<li>start the RStudio Build pane</li>
+</ul>
+</section>
+<section id="r-studio-build-panemenu" class="slide level2">
+<h2>R Studio Build pane/menu</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/rstudio_build_pane.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/rstudio_build_menu.png"></p>
+</div>
+</div>
+</section>
+<section id="minimal-components" class="slide level2">
+<h2>Minimal components</h2>
+<p><strong>usethis</strong> will create the minimal components of a package that we have already seen:</p>
+<ul>
+<li><code>DESCRIPTION</code> provides metadata about your package.</li>
+<li><code>NAMESPACE</code> declares the functions your package exports for external use and the external functions your package imports from other packages.</li>
+<li>The <code>/R</code> directory is where we will put <code>.R</code> files with function definitions.</li>
+</ul>
+</section>
+<section id="auxiliary-files" class="slide level2">
+<h2>Auxiliary files</h2>
+<p><strong>usethis</strong> also adds some auxiliary files:</p>
+<ul>
+<li><code>mypackage.Rproj</code> is the file that makes this directory an RStudio Project.</li>
+<li><code>.Rbuildignore</code> lists files that we need but that should not be included when building the R package from source.</li>
+<li><code>.gitignore</code> anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio.</li>
+</ul>
+</section></section>
+<section>
+<section id="git-and-github" class="title-slide slide level1 inverse center">
+<h1>git and GitHub</h1>
 <aside class="notes">
-<p>http://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf</p>
-<p>From the menu bar it’s Build &gt; Document From the build pane, it’s Build &gt; More &gt; Document</p>
+<p>Now will make our package a version controlled project on our local machine and then put it on GitHub.</p>
+<ul>
+<li>version control, best-practice open-source development</li>
+</ul>
+<p>usethis has functions to help with this.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -567,29 +981,181 @@ useDynLib(pkgrcpp, .registration = TRUE)</code></pre></li>
           display:block!important;
       }</style></aside>
 </section>
-<section id="r-wrapper" class="slide level2">
-<h2>R wrapper</h2>
-<p>The R wrapper generated by Rcpp is as follows, in <code>R/RcppExports.R</code>:</p>
+<section id="use-git" class="slide level2">
+<h2>Use git</h2>
+<p>To make our project agGit repository, or ‘repo’, on our local machine we use <code>usethis::use_git()</code></p>
+<p>Make your package a git repo:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Generated by using Rcpp::compileAttributes() -&gt; do not edit by hand</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a>add_cpp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_pkgrcpp_add_cpp</span><span class="st">`</span>, x, y)</span>
-<span id="cb10-6"><a href="#cb10-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>usethis<span class="sc">::</span><span class="fu">use_git</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Currently this is an internal R function - we have not taken any action to add it as an export in the NAMESPACE.</p>
 </section>
-<section id="try-out-the-r-wrapper" class="slide level2">
-<h2>Try out the R wrapper</h2>
-<p><code>devtools::load_all()</code>, Ctrl/Cmd + Shift + L, makes both internal and exported functions available for testing (without using <code>:::</code> or <code>::</code>).</p>
+<section id="use_git-output-part-1" class="slide level2">
+<h2><code>use_git()</code> output (part 1)</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>devtools<span class="sc">::</span><span class="fu">load_all</span>()</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">add_ccp</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a> ✔ Initialising Git repo</span>
+<span id="cb17-2"><a href="#cb17-2"></a> ✔ Adding <span class="st">'.Rhistory'</span>, <span class="st">'.Rdata'</span>, <span class="st">'.httr-oauth'</span>, <span class="st">'.DS_Store'</span> to  <span class="st">'.gitignore'</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a> There are <span class="dv">5</span> uncommitted files<span class="sc">:</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a> <span class="er">*</span> <span class="st">'.gitignore'</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a> <span class="sc">*</span> <span class="st">'.Rbuildignore'</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a> <span class="sc">*</span> <span class="st">'DESCRIPTION'</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a> <span class="sc">*</span> <span class="st">'mypackage.Rproj'</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a> <span class="sc">*</span> <span class="st">'NAMESPACE'</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a> Is it ok to commit them?</span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a> <span class="dv">1</span><span class="sc">:</span> I agree</span>
+<span id="cb17-12"><a href="#cb17-12"></a> <span class="dv">2</span><span class="sc">:</span> Absolutely not</span>
+<span id="cb17-13"><a href="#cb17-13"></a> <span class="dv">3</span><span class="sc">:</span> No way</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+</section>
+<section id="use_git-output-part-2" class="slide level2">
+<h2><code>use_git()</code> output (part 2)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>√ Adding files</span>
+<span id="cb18-2"><a href="#cb18-2"></a>√ Commit with message <span class="st">'Initial commit'</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>• A restart of RStudio is required to activate the Git pane</span>
+<span id="cb18-4"><a href="#cb18-4"></a>Restart now?</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="dv">1</span><span class="sc">:</span> Nope</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="dv">2</span><span class="sc">:</span> Definitely</span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="dv">3</span><span class="sc">:</span> No</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+<aside class="notes">
+<p>You should find the git pane has opened.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="use-github" class="slide level2">
+<h2>Use GitHub</h2>
+<p>To create a copy on GitHub we use <code>usethis::use_github()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Choose one of the following:</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>() <span class="co"># creates a public repo</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="at">private =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This takes a local project, creates an associated repo on GitHub, adds it to your local repo as the “origin remote”, and makes an initial “push” to synchronize.</p>
+<div class="fragment">
+<div class="smaller80">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Warwick GitHub</strong></p>
+</div>
+<div class="callout-content">
+<p>University of Warwick members can use the University’s private GitHub instance, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>(<span class="st">"https://github.warwick.ac.uk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, Warwick GitHub does not support GitHub Actions or GitHub Pages, so for packages using your personal account is better – we’ll be using both Actions and Pages later.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="use_github-output" class="slide level2">
+<h2><code>use_github()</code> output</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a> ✔ Creating GitHub repository <span class="st">'Warwick-Stats-Resources/mypackage'</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a> ✔ Setting remote <span class="st">'origin'</span> to <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage.git'</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a> ✔ Setting URL field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage'</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a> ✔ Setting BugReports field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage/issues'</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a> There is <span class="dv">1</span> uncommitted file<span class="sc">:</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a> <span class="er">*</span> <span class="st">'DESCRIPTION'</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a> Is it ok to commit it?</span>
+<span id="cb22-8"><a href="#cb22-8"></a></span>
+<span id="cb22-9"><a href="#cb22-9"></a> <span class="dv">1</span><span class="sc">:</span> Nope</span>
+<span id="cb22-10"><a href="#cb22-10"></a> <span class="dv">2</span><span class="sc">:</span> For sure</span>
+<span id="cb22-11"><a href="#cb22-11"></a> <span class="dv">3</span><span class="sc">:</span> No way</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Choose the affirmative option! (The exact options may vary.)</p>
+<aside class="notes">
+<p>Take a look at the repo on GitHub. There is no <code>/R</code> folder as that folder is empty at the moment!</p>
+<p>During the demo, will need to run <code>use_github("Warwick-Stats-Resources")</code> as by default use_github goes to my personal repo</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="adding-functions" class="slide level2">
+<h2>Adding functions</h2>
+<p>Functions go in an <code>.R</code> file in the <code>/R</code> directory.</p>
+<p>There’s a <code>usethis</code> helper for adding <code>.R</code> files!</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"file_name"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>usethis::use_r()</code> adds the file extension (you don’t need to).</p>
+<div class="fragment">
+<p>Use a separate <code>.R</code> file for each function or closely related set of functions, e.g.</p>
+<ul>
+<li>a top-level function and the internal functions it calls</li>
+<li>a family of related functions</li>
+<li>a summary method and its print method</li>
+</ul>
+</div>
+</section>
+<section id="usethisuse_r" class="slide level2">
+<h2><code>usethis::use_r()</code></h2>
+<p>Create a new R file in your package called <code>animal_sounds.R</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"animal_sounds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output includes:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>• Modify <span class="st">'R/animal_sounds.R'</span>  </span>
+<span id="cb25-2"><a href="#cb25-2"></a>• Call <span class="st">`</span><span class="at">use_test()</span><span class="st">`</span> to create a matching test file </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ignore the instruction to call <code>use_test()</code> for now - we’ll cover testing later.</p>
+</section>
+<section id="add-a-function" class="slide level2">
+<h2>Add a function</h2>
+<p>Put the following toy function into your script:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>animal_sounds <span class="ot">&lt;-</span> <span class="cf">function</span>(animal, sound) {</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="fu">stopifnot</span>(<span class="fu">is.character</span>(sound) <span class="sc">&amp;</span> <span class="fu">length</span>(sound) <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>    <span class="fu">paste0</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Don’t try to use the function yet!</p>
+</section>
+<section id="development-workflow" class="slide level2">
+<h2>Development workflow</h2>
+<p>In a normal script, you might use:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">source</span>(<span class="st">"R/animal_sounds.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, for building packages, we need to use the <code>devtools</code> approach.</p>
+<p>This will ensure our function has the correct namespace and can find internal functions, functions imported by our package from other packages, etc.</p>
+</section>
+<section id="development-workflow-1" class="slide level2">
+<h2>Development workflow</h2>
+
+<img data-src="images/dev_cycle_before_testing.png" alt="schematic of the development workflow. there are three boxes with arrow joining them clockwise. The boxes are (clockwise from 3' oclock) 'devtools::load_all() Cmd/Ctrl + Shift +L', 'Explore in console' and 'Modify code'" width="180" class="r-stretch quarto-figure-center"><div class="center-h">
+<p>You don’t even need to save your code!</p>
 </div>
 <aside class="notes">
-<p>This is one advantage over install and restart.</p>
-<p>Also install and restart does not work well on Windows as the package is locked after loading with library().</p>
+<p>devtools::load_all() simulates package installation so that you can test your function.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -604,347 +1170,13 @@ useDynLib(pkgrcpp, .registration = TRUE)</code></pre></li>
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your turn</h2>
-<div class="smaller90">
 <ol type="1">
-<li>Commit the changes so far with a message “Use Rcpp and add add_cpp function”.</li>
-<li>Create a new <code>.cpp</code> file in the <code>/src</code> directory (using <code>use_rcpp</code> or File &gt; New File). Save the file as <code>sumC.cpp</code>. Add the C++ function</li>
+<li>Load all with <code>devtools::load_all()</code> and try calling the <code>animal_sounds()</code> function with appropriate values for <code>animal</code> and <code>sound</code>.</li>
+<li>Change some tiny thing about your function – maybe the animal “says” instead of “goes”.</li>
+<li>Load all with <code>devtools::load_all()</code> and try calling the updated function to see the changed behaviour.</li>
+<li>Add <code>animal_sounds.R</code> so that it is tracked by git. Make a commit with the message <code>Add animal_sounds()</code>.</li>
+<li>Push all your commits from this session.</li>
 </ol>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="dt">double</span> sumC<span class="op">(</span>NumericVector x<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="dt">int</span> n <span class="op">=</span> x<span class="op">.</span>size<span class="op">();</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="dt">double</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>    total <span class="op">+=</span> x<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="op">}</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>  <span class="cf">return</span> total<span class="op">;</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Run Build &gt; Document. Look at the changes to the repo by looking at the diff.</li>
-<li>Run <code>devtools::load_all()</code> and try out the new function.</li>
-<li>Commit your changes to git.</li>
-</ol>
-</div>
-</section></section>
-<section>
-<section id="rcpp-development-workflow" class="title-slide slide level1 inverse center">
-<h1>Rcpp development workflow</h1>
-
-</section>
-<section id="rcpp-development-workflow-1" class="slide level2">
-<h2>Rcpp development workflow</h2>
-<p>The development workflow is the same as for R:</p>
-<ul>
-<li>Modify Rcpp Code -&gt; Load All -&gt; Explore in Console.</li>
-</ul>
-<p><code>devtools::load_all()</code> will detect changes in the C++ code and</p>
-<ul>
-<li>Update <code>src/RcppExports.cpp</code> and <code>R/RcppExports.R</code></li>
-<li>Recompile the C++ code</li>
-</ul>
-</section>
-<section id="document-the-r-wrapper" class="slide level2">
-<h2>Document the R wrapper</h2>
-<ul>
-<li><p>We only need to document the R wrapper if we plan to export it.</p></li>
-<li><p>The R wrapper is generated by <code>Rcpp::compileAttributes()</code>, so we cannot add roxygen comments to export or document the function there.</p></li>
-<li><p>Instead, we add comments above our C++ function, using <code>\\'</code>instead of <code>#'</code>.</p></li>
-</ul>
-</section>
-<section id="c-roxygen" class="slide level2">
-<h2>C++ roxygen</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>In <code>add_cpp.cpp</code></p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">//' Add Two Numbers</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="co">//'</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co">//' Return the sum of two numbers.</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co">//' @param x</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="co">//' @param y</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">//' @export</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="dt">double</span> add_cpp<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">double</span> y<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a>  <span class="dt">double</span> value <span class="op">=</span> x <span class="op">+</span> y<span class="op">;</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a>  <span class="cf">return</span> value<span class="op">;</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:50%;">
-<p>In generated <code>R/RcppExports.R</code></p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#' Add Two Numbers</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#'</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#' Return the sum of two numbers.</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#' @param x</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#' @param y</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#' @export</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="sc">/</span><span class="er">/</span> [[Rcpp<span class="sc">::</span>export]]</span>
-<span id="cb14-8"><a href="#cb14-8"></a>add_cpp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb14-9"><a href="#cb14-9"></a>    <span class="fu">.Call</span>(<span class="st">`</span><span class="at">_pkgrcpp_add_cpp</span><span class="st">`</span>, x, y)</span>
-<span id="cb14-10"><a href="#cb14-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="your-turn-1" class="slide level2">
-<h2>Your turn</h2>
-<ol type="1">
-<li>Copy the documentation for <code>add_cpp</code> and add it to <code>add_cpp.cpp</code>.</li>
-<li>Using the documentation for <code>add_cpp</code> as a guide, add documentation to <code>sumC.cpp</code>.</li>
-<li>Run Build &gt; Document to update the NAMESPACE and create the documentation files for the two R wrappers.</li>
-<li>Commit your changes to git.</li>
-</ol>
-</section>
-<section id="exporting-c-code" class="slide level2">
-<h2>Exporting C++ Code</h2>
-<p>As we have seen, <code>Rcpp::compileAttributes()</code> creates an R interface to our exported C++ functions.</p>
-<p>To make a C++ interface for code in a <code>.cpp</code> file, we should add a custom <code>Rcpp::interfaces()</code> attribute as follows:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co">// [[Rcpp::interfaces(r, cpp)]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can specify <code>r</code> and/or <code>cpp</code> to ask for an R and/or C++ interface.</p>
-<aside class="notes">
-<p>N.B. // [[Rcpp::export]] must come AFTER // [[Rcpp::interfaces]]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="c-interface" class="slide level2">
-<h2>C++ Interface</h2>
-<p><code>Rcpp::compileAttributes()</code> generates the following header files in <code>/inst/include</code>:</p>
-<ul>
-<li><code>&lt;packagename&gt;_RcppExports.h</code>: inline definitions for all exported C++ functions.</li>
-<li><code>&lt;packagename&gt;.h</code>: includes the <code>&lt;packagename&gt;_RcppExports.h</code>. Package authors may add additional C++ code here for sharing.</li>
-</ul>
-<p>All directories in <code>inst</code> are moved to the top level of the package directory on installation.</p>
-</section>
-<section id="your-turn-2" class="slide level2">
-<h2>Your turn</h2>
-<ol type="1">
-<li>Add an <code>Rcpp::interfaces()</code> attribute to <code>add_cpp.cpp</code> to request both R and C++ interfaces for the <code>add_cpp</code> function.</li>
-<li>Run Build &gt; Document to create the C++ interface. Take a look at the generated files.</li>
-<li>Commit your changes to git.</li>
-</ol>
-<aside class="notes">
-<p>When I did this, it deleted <code>man/add_cpp.Rd</code>. Not sure why. I used ‘revert’ in the git pane to undo this.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="importing-c-code-with-rcpp-c-interface" class="slide level2">
-<h2>Importing C++ code with Rcpp C++ interface</h2>
-<p>To use C++ code from another package that has created a C++ interface for their Rcpp functions, in DESCRIPTION add</p>
-<pre><code>LinkingTo: otherpkg</code></pre>
-<p>e.g.&nbsp;with <code>usethis::use_package(otherpkg, type = "LinkingTo")</code>. Then in <code>.cpp</code> file, add the header file to includes</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="pp">#include </span><span class="im">&lt;otherpkg.h&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then either <code>using namespace otherpkg;</code> to make the functions from <code>otherpackage</code> available globally, or <code>otherpkg::fn()</code> to access functions directly.</p>
-<aside class="notes">
-<p>https://www.faqcode4u.com/faq/20021/using-c-function-from-other-package-in-rcpp possibly https://cran.r-project.org/web/packages/RcppClock/RcppClock.pdf https://dirk.eddelbuettel.com/papers/useR2017_rcpp_tutorial.pdf https://github.com/stla/RcppColors</p>
-<p>maybe https://github.com/drostlab/philentropy https://github.com/cran/cooltools/tree/master/inst/include https://github.com/YeeJeremy/rflann</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="example-alternative-distribution-functions" class="slide level2">
-<h2>Example: Alternative Distribution Functions</h2>
-<p>In the Advanced R workshop (final exercise of the Rcpp session), we wrote an Rcpp function to approximate <span class="math inline">\(\pi\)</span>:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1"></a><span class="dt">double</span> approx_pi<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> N<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>  NumericVector x <span class="op">=</span> runif<span class="op">(</span>N<span class="op">);</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  NumericVector y <span class="op">=</span> runif<span class="op">(</span>N<span class="op">);</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>  NumericVector d <span class="op">=</span> sqrt<span class="op">(</span>x<span class="op">*</span>x <span class="op">+</span> y<span class="op">*</span>y<span class="op">);</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="cf">return</span> <span class="fl">4.0</span> <span class="op">*</span> sum<span class="op">(</span>d <span class="op">&lt;</span> <span class="fl">1.0</span><span class="op">)</span> <span class="op">/</span> N<span class="op">;</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can try using the <code>dqrunif</code> C++ functions provided by the <strong>dqrng</strong> package instead of <code>Rcpp::runif</code>.</p>
-<p><span class="smaller80">See <a href="https://daqana.github.io/dqrng/index.html" class="uri">https://daqana.github.io/dqrng/index.html</a> for more info on this package.</span></p>
-</section>
-<section id="your-turn-3" class="slide level2">
-<h2>Your turn</h2>
-<div class="smaller90">
-<ol type="1">
-<li>Install the <strong>dqrng</strong> package.</li>
-<li>Use <code>usethis::use_package()</code> to add <code>dqrng</code> to <code>LinkingTo</code>. It will show possible headers to include, including <code>dqrng.h</code> which provides the Rcpp exports.</li>
-<li>Create a new <code>.cpp</code> file and add the <code>approx_pi</code> function. Make sure to add the necessary headers and Rcpp attribute, so that you can use it after running <code>devtools::load_all()</code>.</li>
-<li>Add a second version of the <code>approx_pi</code> function that uses the <code>dqrunif</code> C++ functions from <code>dqrng</code> instead.</li>
-<li>Load all and use <code>bench::mark()</code> to benchmark the two versions with <code>N = 1e7</code>, setting <code>check = FALSE</code> in <code>bench::mark()</code> as the generated random numbers will differ.</li>
-<li>Commit your changes to git</li>
-</ol>
-</div>
-</section>
-<section id="importing-other-c-code" class="slide level2">
-<h2>Importing other C++ code</h2>
-<p>Some packages provide a custom <code>&lt;packagename&gt;.h</code> or other C++ headers.</p>
-<ul>
-<li>The header maybe not be called <code>&lt;packagename&gt;.h</code>!</li>
-<li>The namespace may have a different name from the package or the header file and may be nested.</li>
-<li>If the header include headers from other packages, you will need to add these to <code>LinkingTo</code>.</li>
-<li>If the package has custom build settings (e.g.&nbsp;using C++11), you will need to use these for your package.</li>
-</ul>
-<p>The documentation should clarify what is needed for a particular package.</p>
-</section>
-<section id="example-bh-package" class="slide level2">
-<h2>Example: BH Package</h2>
-<p>The <strong>BH</strong> package provides header files for the <a href="https://www.boost.org/">Boost</a> C++ libraries.</p>
-<p>The header files have <code>.hpp</code> extension and are nested in directories. The namespace is similarly nested:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="pp">#include </span><span class="im">&lt;boost/integer/common_factor.hpp&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="dt">int</span> computeGCD<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a>    <span class="cf">return</span> <span class="ex">boost::</span>integer<span class="ex">::</span>gcd<span class="op">(</span>a<span class="op">,</span> b<span class="op">);</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Include <code>BH</code> in <code>LinkingTo:</code> to add this function to a package.</p>
-<aside class="notes">
-<p>gcd is a function to compute the greatest common denominator</p>
-<p>.hpp extension: header files for C++</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="rcpparmadillo" class="title-slide slide level1 inverse center">
-<h1>RcppArmadillo</h1>
-
-</section>
-<section id="rcpparmadillo-1" class="slide level2">
-<h2>RcppArmadillo</h2>
-<p>The <strong>RcppArmadillo</strong> package provides headers for the <a href="http://arma.sourceforge.net/">Armadillo</a> library for linear algebra &amp; scientific computing.</p>
-<p>The header to include is <code>RcppArmadillo.h</code>, which provides the <code>armadillo</code> header defining the <code>arma</code> namespace, e.g.&nbsp;</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a><span class="pp">#include </span><span class="im">&lt;RcppArmadillo.h&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="co">// [[Rcpp::depends(RcppArmadillo)]]</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="co">// [[Rcpp::export]]</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>arma<span class="op">::</span>vec getEigenValues<span class="op">(</span>arma<span class="op">::</span>mat M<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>    <span class="cf">return</span> arma<span class="op">::</span>eig_sym<span class="op">(</span>M<span class="op">);</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="using-rcpparmadillo" class="slide level2">
-<h2>Using RcppArmadillo</h2>
-<p>To use <strong>RcppArmadillo</strong> in a package, we need to</p>
-<ul>
-<li>Add <code>RcppArmadillo</code> to <code>LinkingTo</code></li>
-<li>Enable OpenMP support and link against the BLAS and LAPACK linear algebra libraries by defining compilation options in <code>src/Makevars</code> and <code>src/Makevars.win</code>.</li>
-</ul>
-<p>Both can be done with <code>usethis::use_rcpp_armadillo()</code>.</p>
-<p>The first time you call it, you may be asked whether to install <strong>RcppArmadillo</strong>. Choose the affirmative option.</p>
-<aside class="notes">
-<p>OpenMP for parallel processing</p>
-<p>https://stackoverflow.com/q/68959897/173755</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="notes-use_rcpp_armadillo" class="slide level2">
-<h2>Notes: <code>use_rcpp_armadillo()</code></h2>
-<ul>
-<li><p>As well as doing the general setup to allow a package to use <strong>RcppArmadillo</strong>, it also creates a <code>src</code> directory and a <code>.cpp</code> file to edit.</p></li>
-<li><p>If you already have a <code>.cpp</code> file in a <code>src</code> directory, by default it may try to overwrite it. If it does, select one of the <strong>negative</strong> options.</p>
-<ul>
-<li><p>You need to specify the name of a new <code>.cpp</code> as an argument instead, e.g.&nbsp;<code>use_rcpp_armadillo("new_file")</code></p></li>
-<li><p>The function adds to the top of the <code>.cpp</code> file</p>
-<pre><code>#include &lt;Rcpp.h&gt;
-using namespace Rcpp;</code></pre>
-<ul>
-<li><strong>This is a bug</strong>. You need instead</li>
-</ul>
-<pre><code>#include &lt;RcppArmadillo.h&gt;
-// [[Rcpp::depends(RcppArmadillo)]]</code></pre></li>
-</ul></li>
-</ul>
-</section>
-<section id="extra-note-for-apple-silicon-macs" class="slide level2">
-<h2>Extra note for Apple Silicon Macs</h2>
-<p>If you have an Apple Silicon Mac, you will also need to do the following:</p>
-<ul>
-<li><p>open your global Makevars by calling <code>usethis::edit_r_makevars()</code></p></li>
-<li><p>Add the following code:</p>
-<pre><code>FLIBS= -L/opt/R/arm64/gfortran/lib</code></pre></li>
-<li><p>Session &gt; Restart R (or Cmd + Shift + 0)</p></li>
-</ul>
-</section>
-<section id="your-turn-4" class="slide level2">
-<h2>Your turn</h2>
-<div class="smaller90">
-<ol type="1">
-<li><p>Run <code>usethis::use_rcpp_armadillo("inner_prod")</code> to set the package up to use RcppArmadillo and create a new <code>.cpp</code> file.</p></li>
-<li><p>In <code>inner_prod.cpp</code>, edit the <code>#include</code> statement for RcppArmadillo and add the code</p></li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource rcpp number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href="#cb24-1"></a>// [[ Rcpp::export]]</span>
-<span id="cb24-2"><a href="#cb24-2"></a>double inner_prod (arma::vec x, arma::vec y) {</span>
-<span id="cb24-3"><a href="#cb24-3"></a>    arma::mat z = x.t() * y ;</span>
-<span id="cb24-4"><a href="#cb24-4"></a>    return(z(0)) ;</span>
-<span id="cb24-5"><a href="#cb24-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Run Build &gt; Document to create the R wrapper.</li>
-<li>Run <code>devtools::load_all()</code> to load the function and try it out.</li>
-<li>Commit your changes to git.</li>
-<li>Push all your changes to git from this session.</li>
-</ol>
-</div>
-<aside class="notes">
-<p>There are issues with lgfortran on macOS. Currently trying to work out how to fix these.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
@@ -953,9 +1185,8 @@ using namespace Rcpp;</code></pre>
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
-<ul>
-<li>R Core Team, <em>Writing R Extensions</em>, <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html</a></li>
-</ul>
+<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), https://r-pkgs.org.</p>
+<p>R Core Team, <em>Writing R Extensions</em>, https://cran.r-project.org/doc/manuals/r-release/R-exts.html</p>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>

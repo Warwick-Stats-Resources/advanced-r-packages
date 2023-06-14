@@ -563,7 +563,7 @@ Department of Statistics, University of Warwick
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>add_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, y) 
-.Call(&lt;pointer: 0x100300b40&gt;, x, y)</code></pre>
+.Call(&lt;pointer: 0x102f74b40&gt;, x, y)</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">add_cpp</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -998,7 +998,7 @@ Department of Statistics, University of Warwick
 <h2>Your turn</h2>
 <p>The following R function can be used to simulate the value of <span class="math inline">\(\pi\)</span>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>piR <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>approx_pi_r <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
 <span id="cb33-2"><a href="#cb33-2"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
 <span id="cb33-3"><a href="#cb33-3"></a>    y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
 <span id="cb33-4"><a href="#cb33-4"></a>    d <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
@@ -1006,6 +1006,19 @@ Department of Statistics, University of Warwick
 <span id="cb33-6"><a href="#cb33-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Convert this to C++, taking advantage of the vectorized Rcpp functions.</p>
+<aside class="notes">
+<p>This function gets used in an exercise in the Rcpp packages session.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
