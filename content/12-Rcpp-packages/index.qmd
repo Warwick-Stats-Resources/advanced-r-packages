@@ -4,8 +4,6 @@ date: 2023-06-21T15:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/12-Rcpp-packages/index.qmd){target="_blank"} in a new window. 
@@ -37,3 +35,13 @@ Here are the slides embedded:
 - **usethis**
 
   <https://usethis.r-lib.org>
+  
+- **Rcpp**
+
+  - <https://www.rcpp.org>
+  - <https://github.com/RcppCore/Rcpp>
+  - <https://dirk.eddelbuettel.com/code/rcpp.html>
+  
+- **RcppArmadillo**
+
+  - <http://dirk.eddelbuettel.com/code/rcpp.armadillo.html>

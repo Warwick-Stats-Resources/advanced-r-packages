@@ -17,9 +17,20 @@ format:
 
 ## Overview
 
+- C++ and Rcpp
 - Creating an Rcpp package
 - Rcpp development workflow
 - C++ interface
+
+# C++ and Rcpp {.inverse}
+
+## Recap
+
+This session assumes familiarity with the [C++ and Rcpp](../../content/06-r-with-cpp/index.html) session of the Advanced R workshop.
+
+::: {.notes}
+For the 2023 workshop, all participants should either have attended this session the day before or been e-mailed in advanced with a link to the material and told that it is a prerequisite.
+:::
 
 # Creating an Rcpp package {.inverse}
 
@@ -382,6 +393,8 @@ The header to include is `RcppArmadillo.h`, which provides the `armadillo` heade
 
 ```{cpp, eval = FALSE}
 #include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+
 // [[Rcpp::export]]
 arma::vec getEigenValues(arma::mat M) {
     return arma::eig_sym(M);
@@ -397,20 +410,47 @@ To use **RcppArmadillo** in a package, we need to
  
 Both can be done with `usethis::use_rcpp_armadillo()`.
 
+The first time you use it, you may be asked whether to install **RcppArmadillo**. Choose the affirmative option.
+
 ::: {.notes}
 OpenMP for parallel processing
 
 https://stackoverflow.com/q/68959897/173755
 :::
 
+## Notes: `use_rcpp_armadillo()`
+
+- As well as doing the general setup to allow a package to use **RcppArmadillo**, it also creates a `src` directory and a `.cpp` file to edit.
+
+- If you already have a `.cpp` file in a `src` directory, by default it may try to overwrite it. If it does, select one of the **negative** options.
+
+  - You need to specify the name of a new `.cpp` as an argument instead, e.g. `use_rcpp_armadillo("new_file")`
+  
+  - The function adds to the top of the `.cpp` file
+  
+    ``` 
+    #include <Rcpp.h>
+    using namespace Rcpp;
+    ```
+    
+    - **This is a bug**. You need instead
+    
+    ```
+    #include <RcppArmadillo.h>
+    // [[Rcpp::depends(RcppArmadillo)]]
+    ```
+
+
+::: {.notes}
+Also adds `using namespace Rcpp;` Do we need that? 
+:::
+
 ## Your turn
 
 :::{.smaller90}
-1. Run `usethis::use_rcpp_armadillo()` to set the package up to use RcppArmadillo. 
+1. Run `usethis::use_rcpp_armadillo("inner_prod")` to set the package up to use RcppArmadillo and create a new `.cpp` file.
 
-    [_You may be asked whether to overwrite an existing `.cpp` file. Select one of the **negative** options. You may also be asked whether to install **RcppArmadillo**. Select the **affirmative** option._]{.smaller80}
-
-2. Create a new `.cpp` file and save it as `inner_prod.cpp`. Add the code
+2. In `inner_prod.cpp`, edit the `#include` statement for RcppArmadillo and add the code
 ```{Rcpp, eval = FALSE}
 // [[ Rcpp::export]]
 double inner_prod (arma::vec x, arma::vec y) {
@@ -424,11 +464,15 @@ double inner_prod (arma::vec x, arma::vec y) {
 6. Push all your changes to git from this session.
 :::
 
+::: {.notes}
+There are issues with lgfortran on macOS. Currently trying to work out how to fix these.  
+:::
+
 # End matter {.inverse}
 
 ## References
 
-R Core Team, _Writing R Extensions_, https://cran.r-project.org/doc/manuals/r-release/R-exts.html
+- R Core Team, _Writing R Extensions_, <https://cran.r-project.org/doc/manuals/r-release/R-exts.html>
 
 ## License
 
