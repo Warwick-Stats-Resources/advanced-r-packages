@@ -21,6 +21,7 @@ format:
 - Creating an Rcpp package
 - Rcpp development workflow
 - C++ interface
+- **RcppArmadillo**
 
 # C++ and Rcpp {.inverse}
 
@@ -385,7 +386,9 @@ gcd is a function to compute the greatest common denominator
 .hpp extension: header files for C++
 :::
 
-## Example: RcppArmadillo
+# RcppArmadillo {.inverse}
+
+## RcppArmadillo
 
 The **RcppArmadillo** package provides headers for the [Armadillo](http://arma.sourceforge.net/) library for linear algebra & scientific computing.
 
@@ -410,7 +413,7 @@ To use **RcppArmadillo** in a package, we need to
  
 Both can be done with `usethis::use_rcpp_armadillo()`.
 
-The first time you use it, you may be asked whether to install **RcppArmadillo**. Choose the affirmative option.
+The first time you call it, you may be asked whether to install **RcppArmadillo**. Choose the affirmative option.
 
 ::: {.notes}
 OpenMP for parallel processing
@@ -440,10 +443,21 @@ https://stackoverflow.com/q/68959897/173755
     // [[Rcpp::depends(RcppArmadillo)]]
     ```
 
+## Extra note for Apple Silicon Macs
 
-::: {.notes}
-Also adds `using namespace Rcpp;` Do we need that? 
-:::
+If you have an Apple Silicon Mac, you will also need to do the following:
+
+- open your global Makevars by calling `usethis::edit_r_makevars()`
+
+- Add the following code:
+
+  ```
+  FLIBS= -L/opt/R/arm64/gfortran/lib
+  ```
+  
+- Session > Restart R (or Cmd + Shift + 0)
+
+
 
 ## Your turn
 
