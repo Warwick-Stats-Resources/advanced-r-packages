@@ -924,7 +924,7 @@ export(fun1)</code></pre>
 <span id="cb23-3"><a href="#cb23-3"></a>sound <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bark"</span>)</span>
 <span id="cb23-4"><a href="#cb23-4"></a></span>
 <span id="cb23-5"><a href="#cb23-5"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="dv">1</span>)) {</span>
-<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`sound` must be a single string!"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"{.var sound} must be a single string!"</span>)</span>
 <span id="cb23-7"><a href="#cb23-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
@@ -932,7 +932,7 @@ export(fun1)</code></pre>
 </div>
 </div>
 <aside class="notes">
-<p>cli::cli_abort() has some really nice other capability that we’ll cover later</p>
+<p>cli::cli_abort() has some really nice capability - glue interpolation (not covered in this course) - inline classes (e.g.&nbsp;.var for variable) that lead to nicely formatted command-line text (see above) - features that make it easier to write tests (covered later in this course)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

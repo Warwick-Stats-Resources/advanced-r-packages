@@ -415,7 +415,7 @@ Department of Statistics, University of Warwick
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>Unit testing</li>
+<li>Unit testing with <strong>testthat</strong></li>
 <li>Test driven development</li>
 </ul>
 </section>
@@ -454,6 +454,134 @@ Department of Statistics, University of Warwick
 ✔ Writing 'tests/testthat.R'
 • Call `use_test()` to initialize a basic test file and open it for editing.</code></pre>
 <p><code>tests/testthat.R</code> loads <strong>testthat</strong> and the package being tested, so you don’t need to add <code>library()</code> calls to the test files.</p>
+</section>
+<section id="tests-are-organised-in-three-layers" class="slide level2">
+<h2>Tests are organised in three layers</h2>
+
+<img data-src="images/test_organization.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>A file holds multiple related tests.</p>
+<p>A test groups together multiple expectations to test the output from a simple function, a range of possibilities for a single parameter from a more complicated function, or tightly related functionality from across multiple functions.</p>
+<p>An expectation is the atom of testing. It describes the expected result of a computation: Does it have the right value and right class?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-to-test" class="slide level2">
+<h2>What to test</h2>
+<p>Test every individual task the function completes separately.</p>
+<p>Check both for successful situations and for expected failure situations.</p>
+</section>
+<section id="expectations" class="slide level2">
+<h2>Expectations</h2>
+<p>Three expectations cover the vast majority of cases</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">expect_equal</span>(object, expected)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">expect_error</span>(object, <span class="at">regexp =</span> <span class="cn">NULL</span>, <span class="at">class =</span> <span class="cn">NULL</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">expect_warning</span>(object, <span class="at">regexp =</span> <span class="cn">NULL</span>, <span class="at">class =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>It used to be standard practice to test for errors and warnings using regexp, but that has downsides - it’s not always clear why a test is failing. Testing via class is a more modern, safer approach, which we’ll use below.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="our-example-function" class="slide level2">
+<h2>Our example function</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>animal_sounds <span class="ot">&lt;-</span> <span class="cf">function</span>(animal, sound) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(animal, <span class="dv">1</span>)) {</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"{.var animal} must be a single string!"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  }</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  </span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="dv">1</span>)) {</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"{.var sound} must be a single string!"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>  }</span>
+<span id="cb4-10"><a href="#cb4-10"></a>  </span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">paste0</span>(<span class="st">"The "</span>, animal, <span class="st">" goes "</span>, sound, <span class="st">"!"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-sample-test" class="slide level2">
+<h2>A sample test</h2>
+<p>First, create a test file for this function, in either way:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># In RStudio, with `animal_sounds.R` the active file:</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>()  </span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># More generally</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>(<span class="st">"animal_sounds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>RStudio makes it really easy to swap between associated R scripts and tests.</p>
+<p>If the R file is open, <code>usethis::use_test()</code> (with no arguments) opens or creates the test.</p>
+<p>With the test file open, <code>usethis::use_r()</code> (with no arguments) opens or creates the R script.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-a-test" class="slide level2">
+<h2>Add a test</h2>
+<p>In the now-created and open <code>tests/testthat/test-animal_sounds.R</code> script:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">test_that</span>(<span class="st">"animal_sounds produces expected strings"</span>, {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  dog_woof <span class="ot">&lt;-</span> <span class="fu">animal_sounds</span>(<span class="st">"dog"</span>, <span class="st">"woof"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">expect_equal</span>(dog_woof, </span>
+<span id="cb6-4"><a href="#cb6-4"></a>               <span class="st">"The dog goes woof!"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-tests" class="slide level2">
+<h2>Run tests</h2>
+<p>Tests can be run interactively like any other R code. The output will appear in the console, e.g.&nbsp;for a successful test:</p>
+<pre><code>Test passed 😀</code></pre>
+<p>Alternatively, we can run tests in the background with the output appearing in the build pane.</p>
+<ul>
+<li><code>testthat::test_file()</code> – run all tests in a file (‘Run Tests’ button)</li>
+<li><code>devtools::test()</code> – run all tests in a package (Ctrl/Cmd + Shift + T, or Build &gt; Test Package)</li>
+</ul>
+</section>
+<section id="testing-equality" class="slide level2">
+<h2>Testing equality</h2>
+<p>For numeric values, <code>expect_equal()</code> allows some tolerance:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">expect_equal</span>(<span class="dv">10</span>, <span class="dv">10</span> <span class="sc">+</span> <span class="fl">1e-7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">expect_equal</span>(<span class="dv">10</span>, <span class="dv">10</span> <span class="sc">+</span> <span class="fl">1e-4</span>, <span class="at">tolerance =</span> <span class="fl">1e-4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">expect_equal</span>(<span class="dv">10</span>, <span class="dv">10</span> <span class="sc">+</span> <span class="fl">1e-5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: 10 not equal to 10 + 1e-05.
+1/1 mismatches
+[1] 10 - 10 == -1e-05</code></pre>
+</div>
+</div>
+<p><strong>Note that when the expectation is met, there is nothing printed.</strong></p>
+<p>Use <code>expect_identical()</code> to test exact equivalence.</p>
+<p>Use <code>expect_equal(ignore_attr = TRUE)</code> to ignore different attributes (e.g.&nbsp;names).</p>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
@@ -462,8 +590,8 @@ Department of Statistics, University of Warwick
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
-<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), https://r-pkgs.org.</p>
-<p>R Core Team, <em>Writing R Extensions</em>, https://cran.r-project.org/doc/manuals/r-release/R-exts.html</p>
+<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), <a href="https://r-pkgs.org" class="uri">https://r-pkgs.org</a>.</p>
+<p>R Core Team, <em>Writing R Extensions</em>, <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html</a></p>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>
@@ -730,6 +858,44 @@ div.callout-warning.callout-style-default .callout-title {
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
