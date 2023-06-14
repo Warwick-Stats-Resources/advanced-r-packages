@@ -620,9 +620,7 @@ This will ensure our function has the correct namespace and can find internal fu
 
 ## Development workflow
 
-```{r, echo=FALSE, fig.alt = "schematic of the development workflow. there are three boxes with arrow joining them clockwise. The boxes are (clockwise from 3' oclock) 'devtools::load_all() Cmd/Ctrl + Shift +L', 'Explore in console' and 'Modify code'"}
-knitr::include_graphics("images/dev_cycle_before_testing.png")
-```
+![](images/dev_cycle_before_testing.png)
 
 :::{.center-h}
 You don't even need to save your code!
