@@ -205,119 +205,126 @@
   {
     "objectID": "slides/09-testing/index.html#overview",
     "href": "slides/09-testing/index.html#overview",
-    "title": "Packaging Data | Testing",
+    "title": "Testing",
     "section": "Overview",
-    "text": "Overview\n\nData\nUnit testing\nTest driven development"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#including-data",
-    "href": "slides/09-testing/index.html#including-data",
-    "title": "Packaging Data | Testing",
-    "section": "Including data",
-    "text": "Including data\nThere are 3 types of data we might want to include:\n\nExported data for the user to access: put in /data\nInternal data for functions to access: put in /R/sysdata.rda\nRaw data: put in /inst/extdata"
-  },
-  {
-    "objectID": "slides/09-testing/index.html#exported-data",
-    "href": "slides/09-testing/index.html#exported-data",
-    "title": "Packaging Data | Testing",
-    "section": "Exported data",
-    "text": "Exported data\nThe data should be saved in /data as an .rda (or .RData) file.\nusethis::use_data() will do this for you, as well as a few other necessary steps:\n\nletter_indices &lt;- data.frame(letter = letters, index = seq_along(letters))\nusethis::use_data(letter_indices)\n\n✔ Adding 'R' to Depends field in DESCRIPTION\n✔ Creating 'data/'\n✔ Setting LazyData to 'true' in 'DESCRIPTION'\n✔ Saving 'letter_indices' to 'data/letter_indices.rda'\n• Document your data (see 'https://r-pkgs.org/data.html')\n\n\n\n\nNote\n\n\nFor larger datasets, you can try changing the compress argument to get the best compression."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#provenance",
-    "href": "slides/09-testing/index.html#provenance",
-    "title": "Packaging Data | Testing",
-    "section": "Provenance",
-    "text": "Provenance\nOften the data that you want to make accessible to the users is one you have created with an R script – either from scratch or from a raw data set.\nIt’s a good idea to put the R script and any corresponding raw data in /data-raw.\nusethis::use_data_raw(\"dataname\") will set this up:\n\nCreate /data-raw\nAdd /data-raw/dataname.R for you to add the code needed to create the data\nAdd ^data-raw$ to .Rbuildignore as it does not need to be included in the actual package.\n\nYou should add any raw data files (e.g. .csv files) to /data-raw."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#documenting-data",
-    "href": "slides/09-testing/index.html#documenting-data",
-    "title": "Packaging Data | Testing",
-    "section": "Documenting Data",
-    "text": "Documenting Data\nDatasets in /data are always exported, so must be documented.\nTo document a dataset, we must have an .R script in /R that contains a Roxygen block above the name of the dataset.\nAs with functions, you can choose how to arrange this, e.g. in one combined /R/data.R or in a separate R file for each dataset."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#example-letter_indices",
-    "href": "slides/09-testing/index.html#example-letter_indices",
-    "title": "Packaging Data | Testing",
-    "section": "Example: letter_indices",
-    "text": "Example: letter_indices\n#' Letters of the Roman Alphabet with Indices\n#'\n#' A dataset of lower-case letters of the Roman alphabet and their \n#' numeric index from a = 1 to z = 26.\n#'\n#' @format A data frame with 26 rows and 2 variables:\n#' \\describe{\n#'   \\item{letter}{The letter as a character string.}\n#'   \\item{index}{The corresponding numeric index.}\n#' }\n\"letter_indices\"\n#' @ examples can be used here too."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#data-source",
-    "href": "slides/09-testing/index.html#data-source",
-    "title": "Packaging Data | Testing",
-    "section": "Data source",
-    "text": "Data source\nFor collected data, the (original) source should be documented with #' @source.\nThis should either be a url, e.g.\n\n#' @source \\url{http://www.diamondse.info/}\n\n(alternatively \\href{DiamondSearchEngine}{http://www.diamondse.info/}), or a reference, e.g.\n\n#' @source Henderson and Velleman (1981), Building multiple  \n#' #' regression models interactively. *Biometrics*, **37**, 391–411."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#internal-data",
-    "href": "slides/09-testing/index.html#internal-data",
-    "title": "Packaging Data | Testing",
-    "section": "Internal data",
-    "text": "Internal data\nSometimes functions need access to reference data, e.g. constants or look-up tables, that don’t need to be shared with users.\nThese objects should be saved in a single R/sysdata.rda file.\nThis can be done with use_data(..., internal = TRUE), e.g.\n\nx &lt;- sample(1000)\nusethis::use_data(x, mtcars, internal = TRUE)\n\nThe generating code and any raw data can be put in /data-raw.\nAs the objects are not exported, they don’t need to be documented."
-  },
-  {
-    "objectID": "slides/09-testing/index.html#raw-data",
-    "href": "slides/09-testing/index.html#raw-data",
-    "title": "Packaging Data | Testing",
-    "section": "Raw data",
-    "text": "Raw data\nSometimes you want to include raw data, to use in examples or vignettes.\nThese files can be any format and should be added directly into /inst/extdata.\nWhen the package is installed, these files will be copied to the extdata directory and their path on your system can be found as follows:\n\nsystem.file(\"extdata\", \"mtcars.csv\", package = \"readr\")\n\n[1] \"/Users/u2175871/Library/R/arm64/4.3/library/readr/extdata/mtcars.csv\""
-  },
-  {
-    "objectID": "slides/09-testing/index.html#your-turn",
-    "href": "slides/09-testing/index.html#your-turn",
-    "title": "Packaging Data | Testing",
-    "section": "Your turn",
-    "text": "Your turn\n\nRun usethis::use_data_raw(\"farm_animals\").\nIn the script data-raw/farm_animals.R write some code to create a small data frame with the names of farm animals and the sound they make.\nRun all the code (including the already-present call to usethis::use_data()) to create the data and save it in /data.\nAdd an R/farm_animals.R script and add some roxygen comments to document the function.\nRun devtools::document() to create the documentation for the farm_animals data. Preview the documentation to check it.\nCommit all the changes to your repo."
+    "text": "Overview\n\nUnit testing\nTest driven development"
   },
   {
     "objectID": "slides/09-testing/index.html#why-test",
     "href": "slides/09-testing/index.html#why-test",
-    "title": "Packaging Data | Testing",
+    "title": "Testing",
     "section": "Why test?",
     "text": "Why test?\nWe build new functions one bit at a time.\nWhat if a new thing we add changes the existing functionality?\nHow can we check and be sure all the old functionality still works with New Fancy Feature?\nUnit Tests!\n\nGives confidence to package users as well"
   },
   {
     "objectID": "slides/09-testing/index.html#set-up-test-infrastructure",
     "href": "slides/09-testing/index.html#set-up-test-infrastructure",
-    "title": "Packaging Data | Testing",
+    "title": "Testing",
     "section": "Set up test infrastructure",
     "text": "Set up test infrastructure\nFrom the root of a package project:\nusethis::use_testthat()\n✔ Adding 'testthat' to Suggests field in DESCRIPTION\n✔ Setting Config/testthat/edition field in DESCRIPTION to '3'\n✔ Creating 'tests/testthat/'\n✔ Writing 'tests/testthat.R'\n• Call `use_test()` to initialize a basic test file and open it for editing.\ntests/testthat.R loads testthat and the package being tested, so you don’t need to add library() calls to the test files."
   },
   {
     "objectID": "slides/09-testing/index.html#references",
     "href": "slides/09-testing/index.html#references",
-    "title": "Packaging Data | Testing",
+    "title": "Testing",
     "section": "References",
     "text": "References\nWickham, H and Bryan, J, R Packages (2nd edn, in progress), https://r-pkgs.org.\nR Core Team, Writing R Extensions, https://cran.r-project.org/doc/manuals/r-release/R-exts.html"
   },
   {
     "objectID": "slides/09-testing/index.html#license",
     "href": "slides/09-testing/index.html#license",
-    "title": "Packaging Data | Testing",
+    "title": "Testing",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#overview",
     "href": "slides/11-data-publication-maintenance/index.html#overview",
-    "title": "SESSION TITLE",
+    "title": "Packaging Data; Publication and Maintenance",
     "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "text": "Overview\n\nPackaging data\n…"
   },
   {
-    "objectID": "slides/11-data-publication-maintenance/index.html#resources",
-    "href": "slides/11-data-publication-maintenance/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
+    "objectID": "slides/11-data-publication-maintenance/index.html#including-data",
+    "href": "slides/11-data-publication-maintenance/index.html#including-data",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Including data",
+    "text": "Including data\nThere are 3 types of data we might want to include:\n\nExported data for the user to access: put in /data\nInternal data for functions to access: put in /R/sysdata.rda\nRaw data: put in /inst/extdata"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#exported-data",
+    "href": "slides/11-data-publication-maintenance/index.html#exported-data",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Exported data",
+    "text": "Exported data\nThe data should be saved in /data as an .rda (or .RData) file.\nusethis::use_data() will do this for you, as well as a few other necessary steps:\n\nletter_indices &lt;- data.frame(letter = letters, index = seq_along(letters))\nusethis::use_data(letter_indices)\n\n✔ Adding 'R' to Depends field in DESCRIPTION\n✔ Creating 'data/'\n✔ Setting LazyData to 'true' in 'DESCRIPTION'\n✔ Saving 'letter_indices' to 'data/letter_indices.rda'\n• Document your data (see 'https://r-pkgs.org/data.html')\n\n\n\n\nNote\n\n\nFor larger datasets, you can try changing the compress argument to get the best compression."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#provenance",
+    "href": "slides/11-data-publication-maintenance/index.html#provenance",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Provenance",
+    "text": "Provenance\nOften the data that you want to make accessible to the users is one you have created with an R script – either from scratch or from a raw data set.\nIt’s a good idea to put the R script and any corresponding raw data in /data-raw.\nusethis::use_data_raw(\"dataname\") will set this up:\n\nCreate /data-raw\nAdd /data-raw/dataname.R for you to add the code needed to create the data\nAdd ^data-raw$ to .Rbuildignore as it does not need to be included in the actual package.\n\nYou should add any raw data files (e.g. .csv files) to /data-raw."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#documenting-data",
+    "href": "slides/11-data-publication-maintenance/index.html#documenting-data",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Documenting Data",
+    "text": "Documenting Data\nDatasets in /data are always exported, so must be documented.\nTo document a dataset, we must have an .R script in /R that contains a Roxygen block above the name of the dataset.\nAs with functions, you can choose how to arrange this, e.g. in one combined /R/data.R or in a separate R file for each dataset."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#example-letter_indices",
+    "href": "slides/11-data-publication-maintenance/index.html#example-letter_indices",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Example: letter_indices",
+    "text": "Example: letter_indices\n#' Letters of the Roman Alphabet with Indices\n#'\n#' A dataset of lower-case letters of the Roman alphabet and their \n#' numeric index from a = 1 to z = 26.\n#'\n#' @format A data frame with 26 rows and 2 variables:\n#' \\describe{\n#'   \\item{letter}{The letter as a character string.}\n#'   \\item{index}{The corresponding numeric index.}\n#' }\n\"letter_indices\"\n#' @ examples can be used here too."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#data-source",
+    "href": "slides/11-data-publication-maintenance/index.html#data-source",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Data source",
+    "text": "Data source\nFor collected data, the (original) source should be documented with #' @source.\nThis should either be a url, e.g.\n\n#' @source \\url{http://www.diamondse.info/}\n\n(alternatively \\href{DiamondSearchEngine}{http://www.diamondse.info/}), or a reference, e.g.\n\n#' @source Henderson and Velleman (1981), Building multiple  \n#' #' regression models interactively. *Biometrics*, **37**, 391–411."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#internal-data",
+    "href": "slides/11-data-publication-maintenance/index.html#internal-data",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Internal data",
+    "text": "Internal data\nSometimes functions need access to reference data, e.g. constants or look-up tables, that don’t need to be shared with users.\nThese objects should be saved in a single R/sysdata.rda file.\nThis can be done with use_data(..., internal = TRUE), e.g.\n\nx &lt;- sample(1000)\nusethis::use_data(x, mtcars, internal = TRUE)\n\nThe generating code and any raw data can be put in /data-raw.\nAs the objects are not exported, they don’t need to be documented."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#raw-data",
+    "href": "slides/11-data-publication-maintenance/index.html#raw-data",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Raw data",
+    "text": "Raw data\nSometimes you want to include raw data, to use in examples or vignettes.\nThese files can be any format and should be added directly into /inst/extdata.\nWhen the package is installed, these files will be copied to the extdata directory and their path on your system can be found as follows:\n\nsystem.file(\"extdata\", \"mtcars.csv\", package = \"readr\")\n\n[1] \"/Users/u2175871/Library/R/arm64/4.3/library/readr/extdata/mtcars.csv\""
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#your-turn",
+    "href": "slides/11-data-publication-maintenance/index.html#your-turn",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Your turn",
+    "text": "Your turn\n\nRun usethis::use_data_raw(\"farm_animals\").\nIn the script data-raw/farm_animals.R write some code to create a small data frame with the names of farm animals and the sound they make.\nRun all the code (including the already-present call to usethis::use_data()) to create the data and save it in /data.\nAdd an R/farm_animals.R script and add some roxygen comments to document the function.\nRun devtools::document() to create the documentation for the farm_animals data. Preview the documentation to check it.\nCommit all the changes to your repo."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#usethisuse_upkeep_issue",
+    "href": "slides/11-data-publication-maintenance/index.html#usethisuse_upkeep_issue",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "usethis::use_upkeep_issue()",
+    "text": "usethis::use_upkeep_issue()\nWRITE CONTENT FOR THIS SLIDE"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#references",
+    "href": "slides/11-data-publication-maintenance/index.html#references",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "References",
+    "text": "References\nWickham, H and Bryan, J, R Packages (2nd edn, in progress), https://r-pkgs.org.\nR Core Team, Writing R Extensions, https://cran.r-project.org/doc/manuals/r-release/R-exts.html"
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#license",
     "href": "slides/11-data-publication-maintenance/index.html#license",
-    "title": "SESSION TITLE",
+    "title": "Packaging Data; Publication and Maintenance",
     "section": "License",
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
@@ -2111,7 +2118,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and package documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging data; publication and maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
+    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n11:00–11:10\nWelcome and Introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and Methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient Programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package Foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and Package Documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging Data; Publication and Maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
   },
   {
     "objectID": "content.html",
