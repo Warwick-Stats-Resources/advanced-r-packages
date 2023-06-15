@@ -579,9 +579,207 @@ Department of Statistics, University of Warwick
 [1] 10 - 10 == -1e-05</code></pre>
 </div>
 </div>
-<p><strong>Note that when the expectation is met, there is nothing printed.</strong></p>
+<p>Note that when the expectation is met, there is nothing printed.</p>
+<div class="fragment">
 <p>Use <code>expect_identical()</code> to test exact equivalence.</p>
 <p>Use <code>expect_equal(ignore_attr = TRUE)</code> to ignore different attributes (e.g.&nbsp;names).</p>
+</div>
+</section>
+<section id="expect_error-expect_warning" class="slide level2">
+<h2><code>expect_error()</code>, <code>expect_warning()</code></h2>
+<p>When we expect an error/warning when the code is run, we need to pass the call to <code>expect_error()</code>/<code>expect_warning()</code> directly.</p>
+<p>One way is to expect a text outcome using a regular expression:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">test_that</span>(<span class="st">"handles invalid inputs"</span>, {</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="fu">expect_error</span>(<span class="fu">animal_sounds</span>(<span class="st">"dog"</span>, <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bow wow wow"</span>)), </span>
+<span id="cb12-3"><a href="#cb12-3"></a>                 <span class="st">"`sound` must be a single string"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, the <code>regexp</code> can get fiddly, especially if there are characters to escape. There is a more modern, precise way…</p>
+<aside class="notes">
+<p>have to call <code>animal_sounds</code> within <code>expect_error</code> - if we try calling it first (as we did in <code>expect_equal</code>) our code will throw an error before it has a chance to test for it!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="using-a-condition-class" class="slide level2">
+<h2>Using a condition <code>class</code></h2>
+<p>When using <code>cli::cli_abort()</code> and <code>cli::cli_warn()</code> to throw errors and warnings, we can signal the condition with a <code>class</code>, which we can then use in our tests.</p>
+<p>First, we need to modify the calls to <code>cli::cli_abort</code> in <code>animal_sounds()</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="dv">1</span>)) {</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="fu">c</span>(<span class="st">"{.var sound} must be a single string!"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4"></a>      <span class="st">"i"</span> <span class="ot">=</span> <span class="st">"It was {.type {sound}} of length {length(sound)} instead."</span>),</span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="at">class =</span> <span class="st">"error_not_single_string"</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  )</span>
+<span id="cb13-7"><a href="#cb13-7"></a>}</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co"># and same for `animal` argument</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-a-conditions-class-in-tests" class="slide level2">
+<h2>Using a condition’s class in tests</h2>
+<p>We can then check for this class in the test</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">test_that</span>(<span class="st">"handles invalid inputs"</span>, {</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="fu">expect_error</span>(<span class="fu">animal_sounds</span>(<span class="st">"dog"</span>, <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bow wow wow"</span>)), </span>
+<span id="cb14-3"><a href="#cb14-3"></a>                 <span class="at">class =</span> <span class="st">"error_not_single_string"</span>) </span>
+<span id="cb14-4"><a href="#cb14-4"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Advantages of using <code>class</code>:</p>
+<ul>
+<li>It is under your control</li>
+<li>If the condition originates from base R or another package, proceed with caution – a good reminder to re-consider the wisdom of testing a condition that is not fully under your control in the first place.</li>
+</ul>
+<p><span class="smaller80">From <a href="https://r-pkgs.org/testing-basics.html#testing-errors" class="uri">https://r-pkgs.org/testing-basics.html#testing-errors</a></span></p>
+<aside class="notes">
+<p>Need to use argument name <code>class</code> as not matched by position (regexp comes before first)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Create a test file for <code>animal_sounds()</code> and add the tests defined in the slides.</li>
+<li>Add a new expectation to the test “handles invalid inputs” to test the expected behaviour when a factor of length 1 is passed as the <code>sound</code> argument.</li>
+<li>Run the updated test by sending the code chunk to the console.</li>
+<li>Run all the tests.</li>
+<li>Commit your changes to the repo.</li>
+</ol>
+<aside class="notes">
+<p>animal_sounds(factor(“cat”), “miaow”))</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="snapshot-tests" class="slide level2">
+<h2>Snapshot tests</h2>
+<p>Sometimes it is difficult to define the expected output, e.g.&nbsp;to test images or output printed to the console. <code>expect_snapshot()</code> captures all messages, warnings, errors, and output from code.</p>
+<p>When we expect the code to throw an error (e.g.&nbsp;if we want to test the appearance of an informative message), we need to specify <code>error = TRUE</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">test_that</span>(<span class="st">"error message for invalid input"</span>, {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">expect_snapshot</span>(<span class="fu">animal_sounds</span>(<span class="st">"dog"</span>, <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bow wow wow"</span>)),</span>
+<span id="cb15-3"><a href="#cb15-3"></a>                  <span class="at">error =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Snapshot tests can not be run interactively by sending to the console, instead we must use <code>devtools::test()</code> or <code>testthat::testfile()</code>.</p>
+<aside class="notes">
+<p>expect_error for testing that an error is thrown, expect_snapshot for testing the appearance of the error message</p>
+<p>snapshot test skipped on CRAN by default - use other functions to test correctness where possible.</p>
+<p>Equivalently Build menu “Test Package” or RStudio code editor “Run tests” button</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="create-snapshot" class="slide level2">
+<h2>Create snapshot</h2>
+<p>Run the tests once to create the snapshot</p>
+<pre><code>── Warning (test-animal_sounds.R:16:3): error message for invalid input ──
+Adding new snapshot:
+Code
+  animal_sounds("dog", c("woof", "bow wow wow"))
+Error &lt;error_not_single_string&gt;
+  `sound` must be a single string!
+  i It was a character vector of length 2 instead.</code></pre>
+<p>An <code>animal_sounds.md</code> file is created in <code>tests/testhat/_snaps</code> with the code and output.</p>
+</section>
+<section id="test-against-a-snapshot" class="slide level2">
+<h2>Test against a snapshot</h2>
+<div class="smaller90">
+<p>Next time the tests are run the output will be compared against this snapshot.</p>
+<p>Suppose we update some of the error message in <code>animal_sounds</code> to</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="st">"{.var sound} must be a {.cls character} vector of length 1!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we rerun the test, we’ll get a failure:</p>
+<pre><code>── Failure (test-animal_sounds.R:16:3): error message for invalid input ──
+Snapshot of code has changed:
+old vs new
+  "Code"
+  "  animal_sounds(\"dog\", c(\"woof\", \"bow wow wow\"))"
+  "Error &lt;error_not_single_string&gt;"
+- "  `sound` must be a single string!"
++ "  `sound` must be a &lt;character&gt; vector of length 1!"
+  "  i It was a character vector of length 2 instead."
+
+* Run testthat::snapshot_accept('animal_sounds') to accept the change.
+* Run testthat::snapshot_review('animal_sounds') to interactively review the change.</code></pre>
+</div>
+<aside class="notes">
+<p>Note the next steps with snapshot_accept and snapshot_review</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="test-driven-development" class="title-slide slide level1 inverse center">
+<h1>Test driven development</h1>
+
+</section>
+<section id="so-far-weve-done-this" class="slide level2">
+<h2>So far we’ve done this</h2>
+
+<img data-src="images/dev_cycle_before_testing.png" class="r-stretch quarto-figure-center"></section>
+<section id="test-driven-development-is-a-new-workflow" class="slide level2">
+<h2>Test driven development is a new workflow</h2>
+
+<img data-src="images/dev_cycle_with_testing.png" class="r-stretch quarto-figure-center"></section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li><p>Make this test pass</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>giraffe <span class="ot">&lt;-</span> <span class="fu">animalSounds</span>(<span class="st">"giraffe"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">expect_equal</span>(giraffe, </span>
+<span id="cb19-3"><a href="#cb19-3"></a>             <span class="st">"The giraffe makes no sound."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Hint: set the default value for the sound argument to <code>NULL</code>.</p></li>
+<li><p>Commit your changes to the git repo.</p></li>
+<li><p>Push your commits from this session.</p></li>
+</ol>
+</section>
+<section id="when-you-stop-work-leave-a-test-failing." class="slide level2 inverse center center-h">
+<h2>When you stop work, leave a test failing.</h2>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">

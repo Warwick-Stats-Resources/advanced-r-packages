@@ -910,8 +910,8 @@ export(fun1)</code></pre>
 </tbody>
 </table>
 </section>
-<section id="example-rlang" class="slide level2">
-<h2>Example: rlang</h2>
+<section id="example-rlang-and-cli" class="slide level2">
+<h2>Example: rlang and cli</h2>
 <p>Currently we are using <code>stopifnot()</code> for argument validation</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">stopifnot</span>(<span class="fu">is.character</span>(animal) <span class="sc">&amp;</span> <span class="fu">length</span>(animal) <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -923,8 +923,8 @@ export(fun1)</code></pre>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a>sound <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bark"</span>)</span>
 <span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="dv">1</span>)) {</span>
-<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"{.var sound} must be a single string!"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="at">n =</span> <span class="dv">1</span>)) {</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`sound` must be a single string!"</span>)</span>
 <span id="cb23-7"><a href="#cb23-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
@@ -932,8 +932,42 @@ export(fun1)</code></pre>
 </div>
 </div>
 <aside class="notes">
-<p>cli::cli_abort() has some really nice capability - glue interpolation (not covered in this course) - inline classes (e.g.&nbsp;.var for variable) that lead to nicely formatted command-line text (see above) - features that make it easier to write tests (covered later in this course)</p>
+<p>in <code>is_character</code>, n tests for length of the vector.</p>
+<p>cli::cli_abort() has some really nice capability - glue interpolation (next slide) - inline classes (next slide) - features that make it easier to write tests (covered later in this course)</p>
 <p>https://cli.r-lib.org/reference/inline-markup.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="aside-informative-messages-with-cli" class="slide level2">
+<h2>Aside: informative messages with <code>cli</code></h2>
+<p><strong>cli</strong> functions can combine glue interpolation and inline classes to produce informative, nicely-formatted error messages.</p>
+<p>In <code>animal_sounds()</code> we can use</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>cli<span class="sc">::</span><span class="fu">cli_abort</span>(</span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">c</span>(<span class="st">"{.var animal} must be a single string!"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3"></a>    <span class="st">"i"</span> <span class="ot">=</span> <span class="st">"It was {.type {animal}} of length {length(animal)} instead."</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This gives the error message</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">animal_sounds</span>(<span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>), <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"miaow"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `animal_sounds()`:
+! `animal` must be a single string!
+ℹ It was a character vector of length 2 instead.</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Informative error messages will make using your package a much nicer experience for you and others.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -950,7 +984,7 @@ export(fun1)</code></pre>
 <h2>Your turn</h2>
 <ol type="1">
 <li>Use <code>use_package()</code> to add <code>rlang</code> and <code>cli</code> to <code>Imports</code>.</li>
-<li>Update <code>animal_sounds()</code> to use <code>is_character()</code> and <code>cli_abort</code> to validate the arguments, using <code>::</code> to fully qualify the function calls.</li>
+<li>Update <code>animal_sounds()</code> to use <code>is_character()</code> to check the arguments and <code>cli_abort</code> to throw an informative error if necessary, using <code>::</code> to fully qualify the function calls.</li>
 <li>Load all and try giving <code>animal_sounds()</code> invalid inputs for animal and/or sound.</li>
 <li>Commit your changes to git.</li>
 <li>Push your commits for this session.</li>
