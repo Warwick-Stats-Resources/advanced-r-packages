@@ -20,6 +20,7 @@ website:
       - icon: github
         href: https://github.com/Warwick-Stats-Resources/advanced-r-packages
   page-footer: "All material is shared under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target='_blank'} license."
+  page-navigation: true
   
 format:
   html:

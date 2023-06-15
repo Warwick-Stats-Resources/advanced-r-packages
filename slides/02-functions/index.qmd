@@ -487,11 +487,6 @@ Source the code
 
 ![](images/jump_to_breakpoint.png)
 
-```{r}
-here::here()
-```
-
-
 :::{.notes}
 `n` is automatically printed, so the first prompt is at the breakpoint
 :::
@@ -515,7 +510,7 @@ Bad points:
 Alternatively use `options(error = recover)`, 
 run code to debug, then set `options(error = NULL)`.
 
-## Exercise 3 {.smaller80}
+## Exercise 3 {.smaller90}
 
 Open `debug_practice.R` and source the function `f()`.
 
@@ -527,7 +522,7 @@ Try running `f(1)` - is the result what you expected? Use `debugonce()` to set d
 
 Can you think how to improve the function? See if you can modify the function to give a sensible result for any integer.
 
-# End Matter {.inverse}
+# End matter {.inverse}
 
 ## References
 

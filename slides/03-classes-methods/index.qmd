@@ -47,14 +47,14 @@ summary(penguins$flipper_length_mm)
 
 Here, we use the same function, `summary()`, on objects of classes `factor` and `integer` and get different output for each.
 
-## Why use OOP?
+## Motivation for OOP
 
 `summary()` could contain several if-else statements, but 
  
  - the code would become hard to follow
  - only the function authors (R Core) could add new implementations
  
-OOP 
+## What does OOP offer?
 
  - separates the code for different data types
  - avoids duplicating code by method inheritance from parent class(es) to child class (subclass)
@@ -97,6 +97,8 @@ attr(penguins$species, "class")
 unique(penguins$species)
 ```
 
+## S3 objects: the underlying object
+
 With `unclass()` we obtain the underlying object, here an integer vector 
 
 ```{r}
@@ -127,13 +129,15 @@ class(pi2dp) <- "pi_trunc"
 pi2dp
 ```
 
-## S3 Generic Functions
+## S3 generic functions
 
 S3 generic functions are simple wrappers to `UseMethod()`
 
 ```{r}
 print
 ```
+
+## `useMethod()`
 
 The `UseMethod()` function takes care of *method dispatch*: selecting the S3 method according to the class of the object passed as the first argument.
 
@@ -513,7 +517,11 @@ ada <- Person("Ada Lovelace", "1815-12-10", "1852-11-27")
 str(ada)
 ```
 
-[Put computation in the `initialize` method where possible, so that it can be reused by subclasses.]{.smaller80}
+
+::: {.notes}
+Put computation in the `initialize` method where possible, so that it can be reused by subclasses.
+:::
+
 
 ## Validator function
 
@@ -654,7 +662,7 @@ The `MISSING` pseudo-class is useful for dispatch on two arguments: allow differ
 5. Create a `show` method to state the size of the matrix and print the off-diagonal elements.
 :::
 
-# End Matter {.inverse}
+# End matter {.inverse}
 
 ## References
 

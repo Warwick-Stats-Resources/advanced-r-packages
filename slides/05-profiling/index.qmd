@@ -18,7 +18,7 @@ format:
 ## Overview
 
 - Profiling
-- MAYBE BRING IN SOMETHING FROM THE BOTTLENECKS SESSION? 
+- **profvis**
 
 # Profiling {.inverse}
 
@@ -58,6 +58,8 @@ bottom_level <- function() {
 ::: {.notes}
 `Sys.sleep()` can not be used as it would not show in profiling output
 :::
+
+# profvis {.inverse}
 
 ## Using profvis
 
@@ -197,9 +199,17 @@ Finally, compare `profvis(run(n, move_square))` with `profvis(run(n, move_square
 
 In the next session, we'll cover using C++ via **Rcpp** to rewrite R code that has been identified through profiling as causing bottlenecks in your code.
 
-# End Matter {.inverse}
+# End matter {.inverse}
 
 ## References
+
+- Wickham, H, _Advanced R_ (2nd edn), _Improving performance section_ 
+
+  <https://adv-r.hadley.nz/perf-improve.html>
+
+- Gillespie, C and Lovelace, R, _Efficient R programming_
+ 
+  <https://csgillespie.github.io/efficientR/>
 
 
 ## License
