@@ -520,16 +520,16 @@ Department of Statistics, University of Warwick
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>z <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ z <span class="ot">&lt;-</span> <span class="fu">c</span>(z,<span class="dv">1</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z)) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "&lt;0x10ee29580&gt;"
-[1] "&lt;0x105a42ac8&gt;"
-[1] "&lt;0x10fb33138&gt;"</code></pre>
+<pre><code>[1] "&lt;0x141f62968&gt;"
+[1] "&lt;0x142540c08&gt;"
+[1] "&lt;0x122028658&gt;"</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>z <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "&lt;0x105a00088&gt;"</code></pre>
+<pre><code>[1] "&lt;0x1424cc188&gt;"</code></pre>
 </div>
 </div>
 </div>
@@ -537,9 +537,9 @@ Department of Statistics, University of Warwick
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){z[i] <span class="ot">&lt;-</span> i;<span class="fu">print</span>(<span class="fu">tracemem</span>(z))}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tracemem[0x105a00088 -&gt; 0x1059b8508]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main 
-[1] "&lt;0x1059b8508&gt;"
-[1] "&lt;0x1059b8508&gt;"</code></pre>
+<pre><code>tracemem[0x1424cc188 -&gt; 0x151b7fe88]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main 
+[1] "&lt;0x151b7fe88&gt;"
+[1] "&lt;0x151b7fe88&gt;"</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -598,8 +598,8 @@ disabled.</code></pre>
 <pre><code># A tibble: 2 × 6
   expression             min   median `itr/sec` mem_alloc `gc/sec`
   &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-1 grow(5000)          26.8ms   29.1ms      32.9    95.6MB    60.0 
-2 pre_specify(5000)  100.8µs  105.1µs    9032.     55.8KB     7.95</code></pre>
+1 grow(5000)          25.9ms   30.6ms      32.3    95.6MB    58.9 
+2 pre_specify(5000)  100.9µs    108µs    9010.     55.8KB     6.00</code></pre>
 </div>
 </div>
 <ul>
@@ -651,12 +651,12 @@ disabled.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 8
-  expression                  n     k    min median `itr/sec` mem_alloc `gc/sec`
-  &lt;bch:expr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-1 gl(n, k, length = 1000)    10    10 3.12µs 3.57µs   256072.    12.4KB     25.6
-2 gl(n, k, length = 1000)   100    10  9.1µs 9.76µs    98261.   11.05KB     19.7
-3 gl(n, k, length = 1000)    10     1 2.79µs 3.12µs   303415.    3.95KB     30.3
-4 gl(n, k, length = 1000)   100     1 6.03µs 6.68µs   141746.    7.53KB     28.4</code></pre>
+  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`
+  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
+1 gl(n, k, length = 100…    10    10  3.2µs  3.69µs   246709.    12.4KB     24.7
+2 gl(n, k, length = 100…   100    10 9.35µs 10.21µs    94136.   11.05KB     18.8
+3 gl(n, k, length = 100…    10     1 2.83µs  3.24µs   291605.    3.95KB     29.2
+4 gl(n, k, length = 100…   100     1 6.36µs  6.97µs   138353.    7.53KB     27.7</code></pre>
 </div>
 </div>
 </div>
@@ -878,8 +878,8 @@ disabled.</code></pre>
 </div>
 </div>
 </section>
-<section id="matrices-and-recycling" class="slide level2">
-<h2>Matrices and Recycling</h2>
+<section id="matrices-and-recycling-rows" class="slide level2">
+<h2>Matrices and recycling: rows</h2>
 <p>Values are recycled down matrix, which is convenient for row-wise operations</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
@@ -896,6 +896,9 @@ disabled.</code></pre>
 [2,]    0    2    4</code></pre>
 </div>
 </div>
+</section>
+<section id="matrices-and-recycling-columns" class="slide level2">
+<h2>Matrices and recycling: columns</h2>
 <p>To do the same for columns we would need to explicitly replicate, which is not so efficient.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>M <span class="sc">-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1011,7 +1014,7 @@ $y
 <span id="cb73-2"><a href="#cb73-2"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>))</span>
 <span id="cb73-3"><a href="#cb73-3"></a><span class="fu">rnorm</span>(<span class="dv">2</span>, mu[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], sd[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.3323742  3.0602929</code></pre>
+<pre><code>[1] 1.625757 2.598334</code></pre>
 </div>
 </div>
 <p>Use this information to replace the for loop, using a single call to <code>rnorm()</code> to simulate <code>n</code> values from the mixture distribution.</p>
@@ -1030,7 +1033,7 @@ $y
 </section>
 <section id="example-setup" class="slide level2">
 <h2>Example setup</h2>
-<p>Adapted from <a href="https://henrikbengtsson.github.io/course-stanford-futureverse-2023/" class="uri">https://henrikbengtsson.github.io/course-stanford-futureverse-2023/</a></p>
+<p><span class="smaller75">Adapted from <a href="https://henrikbengtsson.github.io/course-stanford-futureverse-2023/" class="uri">https://henrikbengtsson.github.io/course-stanford-futureverse-2023/</a></span></p>
 <p>Let’s create a slow function:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>slow_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -1126,7 +1129,7 @@ $y
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
-<h1>End Matter</h1>
+<h1>End matter</h1>
 
 </section>
 <section id="references" class="slide level2">

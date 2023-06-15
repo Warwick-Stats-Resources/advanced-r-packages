@@ -445,14 +445,16 @@ Department of Statistics, University of Warwick
 </div>
 <p>Here, we use the same function, <code>summary()</code>, on objects of classes <code>factor</code> and <code>integer</code> and get different output for each.</p>
 </section>
-<section id="why-use-oop" class="slide level2">
-<h2>Why use OOP?</h2>
+<section id="motivation-for-oop" class="slide level2">
+<h2>Motivation for OOP</h2>
 <p><code>summary()</code> could contain several if-else statements, but</p>
 <ul>
 <li>the code would become hard to follow</li>
 <li>only the function authors (R Core) could add new implementations</li>
 </ul>
-<p>OOP</p>
+</section>
+<section id="what-does-oop-offer" class="slide level2">
+<h2>What does OOP offer?</h2>
 <ul>
 <li>separates the code for different data types</li>
 <li>avoids duplicating code by method inheritance from parent class(es) to child class (subclass)</li>
@@ -518,6 +520,9 @@ Department of Statistics, University of Warwick
 Levels: Adelie Chinstrap Gentoo</code></pre>
 </div>
 </div>
+</section>
+<section id="s3-objects-the-underlying-object" class="slide level2">
+<h2>S3 objects: the underlying object</h2>
 <p>With <code>unclass()</code> we obtain the underlying object, here an integer vector</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>species_no <span class="ot">&lt;-</span> <span class="fu">unclass</span>(penguins<span class="sc">$</span>species)</span>
@@ -576,17 +581,20 @@ attr(,"class")
 </div>
 </section>
 <section id="s3-generic-functions" class="slide level2">
-<h2>S3 Generic Functions</h2>
+<h2>S3 generic functions</h2>
 <p>S3 generic functions are simple wrappers to <code>UseMethod()</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x13edf3948&gt;
+&lt;bytecode: 0x117844268&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
+</section>
+<section id="usemethod" class="slide level2">
+<h2><code>useMethod()</code></h2>
 <p>The <code>UseMethod()</code> function takes care of <em>method dispatch</em>: selecting the S3 method according to the class of the object passed as the first argument.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>species[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -671,7 +679,7 @@ see '?methods' for accessing help and source code</code></pre>
         cf
     else cf[!is.na(cf)]
 }
-&lt;bytecode: 0x12e39b090&gt;
+&lt;bytecode: 0x127f7c808&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
@@ -1116,7 +1124,19 @@ Known Subclasses: "BanknoteCharacter"</code></pre>
   ..@ age_at_death : num 36</code></pre>
 </div>
 </div>
-<p><span class="smaller80">Put computation in the <code>initialize</code> method where possible, so that it can be reused by subclasses.</span></p>
+<aside class="notes">
+<p>Put computation in the <code>initialize</code> method where possible, so that it can be reused by subclasses.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="validator-function" class="slide level2">
 <h2>Validator function</h2>
@@ -1151,8 +1171,8 @@ Known Subclasses: "BanknoteCharacter"</code></pre>
 
 function (X, Y, FUN = "*", make.dimnames = FALSE, ...) 
 standardGeneric("kronecker")
-&lt;bytecode: 0x14849cb98&gt;
-&lt;environment: 0x14848dde0&gt;
+&lt;bytecode: 0x117da5b98&gt;
+&lt;environment: 0x117d98de0&gt;
 Methods may be defined for arguments: X, Y, FUN, make.dimnames
 Use  showMethods(kronecker)  for currently available ones.</code></pre>
 </div>
@@ -1296,7 +1316,7 @@ Died: 13 August 1910 (aged 90)</code></pre>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
-<h1>End Matter</h1>
+<h1>End matter</h1>
 
 </section>
 <section id="references" class="slide level2">

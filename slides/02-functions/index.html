@@ -476,11 +476,11 @@ NULL</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  9.5208424  6.2909735  3.6110063 -0.1964577 -0.2460321</code></pre>
+<pre><code>[1]  -7.029461  -4.867301 -18.711627  -9.589568   1.426949</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  6.6040133  0.2693334 -1.7166629 -2.2484395  2.4373420</code></pre>
+<pre><code>[1] -14.259629  12.279822   5.199141  10.730526   3.611994</code></pre>
 </div>
 </div>
 <p>So naming and order is important! Some guidelines</p>
@@ -938,13 +938,7 @@ Browse[2]&gt; Q</code></pre>
 <section id="start-debugging-from-breakpoints" class="slide level2">
 <h2>Start debugging from breakpoints</h2>
 
-<img data-src="images/jump_to_breakpoint.png" class="r-stretch"><div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>here<span class="sc">::</span><span class="fu">here</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/u2175871/Library/CloudStorage/OneDrive-UniversityofWarwick/Rprojs/Mine/advanced-r-packages"</code></pre>
-</div>
-</div>
-<aside class="notes">
+<img data-src="images/jump_to_breakpoint.png" class="r-stretch"><aside class="notes">
 <p><code>n</code> is automatically printed, so the first prompt is at the breakpoint</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -973,7 +967,7 @@ Browse[2]&gt; Q</code></pre>
 </ul>
 <p>Alternatively use <code>options(error = recover)</code>, run code to debug, then set <code>options(error = NULL)</code>.</p>
 </section>
-<section id="exercise-3" class="slide level2 smaller80">
+<section id="exercise-3" class="slide level2 smaller90">
 <h2>Exercise 3</h2>
 <p>Open <code>debug_practice.R</code> and source the function <code>f()</code>.</p>
 <p>Try to run <code>f(10)</code> - there’s an error! Use <code>traceback()</code> to see which function call generated the error, then fix the problem.</p>
@@ -983,7 +977,7 @@ Browse[2]&gt; Q</code></pre>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
-<h1>End Matter</h1>
+<h1>End matter</h1>
 
 </section>
 <section id="references" class="slide level2">
@@ -1010,29 +1004,29 @@ Browse[2]&gt; Q</code></pre>
 <h2>Documenting functions</h2>
 <p>Comments help to record what a function does</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># reorder x by grouping variable g</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a>groupSort <span class="ot">&lt;-</span> <span class="cf">function</span>(x, g) {</span>
-<span id="cb71-3"><a href="#cb71-3"></a>    ord <span class="ot">&lt;-</span> <span class="fu">order</span>(g) <span class="co">#indices for ascending order of g</span></span>
-<span id="cb71-4"><a href="#cb71-4"></a>    x[ord]</span>
-<span id="cb71-5"><a href="#cb71-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># reorder x by grouping variable g</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>groupSort <span class="ot">&lt;-</span> <span class="cf">function</span>(x, g) {</span>
+<span id="cb69-3"><a href="#cb69-3"></a>    ord <span class="ot">&lt;-</span> <span class="fu">order</span>(g) <span class="co">#indices for ascending order of g</span></span>
+<span id="cb69-4"><a href="#cb69-4"></a>    x[ord]</span>
+<span id="cb69-5"><a href="#cb69-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong>docstring</strong> package enables <em>roxygen</em> comments to be turned into a help file</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">library</span>(docstring)</span>
-<span id="cb72-2"><a href="#cb72-2"></a>groupSort <span class="ot">&lt;-</span> <span class="cf">function</span>(x, g) {</span>
-<span id="cb72-3"><a href="#cb72-3"></a>    <span class="co">#' Reorder a Vector by a Grouping Variable</span></span>
-<span id="cb72-4"><a href="#cb72-4"></a>    <span class="co">#'</span></span>
-<span id="cb72-5"><a href="#cb72-5"></a>    <span class="co">#' @param x a vector</span></span>
-<span id="cb72-6"><a href="#cb72-6"></a>    <span class="co">#' @param g a grouping variable</span></span>
-<span id="cb72-7"><a href="#cb72-7"></a>    ord <span class="ot">&lt;-</span> <span class="fu">order</span>(g) <span class="co">#indices for ascending order of g</span></span>
-<span id="cb72-8"><a href="#cb72-8"></a>    x[ord]</span>
-<span id="cb72-9"><a href="#cb72-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">library</span>(docstring)</span>
+<span id="cb70-2"><a href="#cb70-2"></a>groupSort <span class="ot">&lt;-</span> <span class="cf">function</span>(x, g) {</span>
+<span id="cb70-3"><a href="#cb70-3"></a>    <span class="co">#' Reorder a Vector by a Grouping Variable</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a>    <span class="co">#'</span></span>
+<span id="cb70-5"><a href="#cb70-5"></a>    <span class="co">#' @param x a vector</span></span>
+<span id="cb70-6"><a href="#cb70-6"></a>    <span class="co">#' @param g a grouping variable</span></span>
+<span id="cb70-7"><a href="#cb70-7"></a>    ord <span class="ot">&lt;-</span> <span class="fu">order</span>(g) <span class="co">#indices for ascending order of g</span></span>
+<span id="cb70-8"><a href="#cb70-8"></a>    x[ord]</span>
+<span id="cb70-9"><a href="#cb70-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="view-the-help-file-as-usual" class="slide level2">
 <h2>View the help file as usual</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>?groupSort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>?groupSort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="images/docstring_help_file.png" class="r-stretch quarto-figure-center"><p class="caption">HTML documentation generated by docstring</p><p>For fuller documentation, see the <strong>docstring</strong> vignette.</p>
@@ -1047,14 +1041,14 @@ Browse[2]&gt; Q</code></pre>
 <p>When developing a function, we will want to validate its output.</p>
 <p>A simple approach is to try different inputs</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>log_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb74-2"><a href="#cb74-2"></a>    <span class="fu">log</span>(x, <span class="dv">2</span>)</span>
-<span id="cb74-3"><a href="#cb74-3"></a>}</span>
-<span id="cb74-4"><a href="#cb74-4"></a><span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>log_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb72-2"><a href="#cb72-2"></a>    <span class="fu">log</span>(x, <span class="dv">2</span>)</span>
+<span id="cb72-3"><a href="#cb72-3"></a>}</span>
+<span id="cb72-4"><a href="#cb72-4"></a><span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
@@ -1066,24 +1060,24 @@ Browse[2]&gt; Q</code></pre>
 <p>The <strong>testthat</strong> packages allows us to create a test suite:</p>
 <p><strong>ADD LINK</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">context</span>(<span class="st">"log_2 works correctly"</span>)</span>
-<span id="cb78-2"><a href="#cb78-2"></a></span>
-<span id="cb78-3"><a href="#cb78-3"></a><span class="fu">test_that</span>(<span class="st">"log_2 returns log to base 2"</span>, {</span>
-<span id="cb78-4"><a href="#cb78-4"></a>    <span class="fu">expect_equal</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>), <span class="dv">3</span>)</span>
-<span id="cb78-5"><a href="#cb78-5"></a>    <span class="fu">expect_equal</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">0</span>), <span class="dv">0</span>)</span>
-<span id="cb78-6"><a href="#cb78-6"></a>})</span>
-<span id="cb78-7"><a href="#cb78-7"></a></span>
-<span id="cb78-8"><a href="#cb78-8"></a><span class="fu">test_that</span>(<span class="st">"negative values give error"</span>, {</span>
-<span id="cb78-9"><a href="#cb78-9"></a>    <span class="fu">expect_error</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^-</span><span class="dv">1</span>))</span>
-<span id="cb78-10"><a href="#cb78-10"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">context</span>(<span class="st">"log_2 works correctly"</span>)</span>
+<span id="cb76-2"><a href="#cb76-2"></a></span>
+<span id="cb76-3"><a href="#cb76-3"></a><span class="fu">test_that</span>(<span class="st">"log_2 returns log to base 2"</span>, {</span>
+<span id="cb76-4"><a href="#cb76-4"></a>    <span class="fu">expect_equal</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>), <span class="dv">3</span>)</span>
+<span id="cb76-5"><a href="#cb76-5"></a>    <span class="fu">expect_equal</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^</span><span class="dv">0</span>), <span class="dv">0</span>)</span>
+<span id="cb76-6"><a href="#cb76-6"></a>})</span>
+<span id="cb76-7"><a href="#cb76-7"></a></span>
+<span id="cb76-8"><a href="#cb76-8"></a><span class="fu">test_that</span>(<span class="st">"negative values give error"</span>, {</span>
+<span id="cb76-9"><a href="#cb76-9"></a>    <span class="fu">expect_error</span>(<span class="fu">log_2</span>(<span class="dv">2</span><span class="sc">^-</span><span class="dv">1</span>))</span>
+<span id="cb76-10"><a href="#cb76-10"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="running-tests" class="slide level2">
 <h2>Running tests</h2>
 <p>If we save the tests in a file, e.g.&nbsp;<code>tests.R</code>, we can use <code>test_file()</code> to run and check all tests:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">library</span>(testthat)</span>
-<span id="cb79-2"><a href="#cb79-2"></a><span class="fu">test_file</span>(<span class="st">"tests.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="fu">test_file</span>(<span class="st">"tests.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
