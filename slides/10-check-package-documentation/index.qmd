@@ -48,7 +48,7 @@ Note that this doesn't check the correctness of code - this is the role of tests
 You will get lots of output. It will end with:
 
 ```         
--- R CMD check results ---------- mypackage 0.0.0.9000 ----
+-- R CMD check results ---------- animalsounds 0.0.0.9000 ----
 Duration: 9.3s
 
 > checking DESCRIPTION meta-information ... WARNING
@@ -71,8 +71,8 @@ On running `check()` you may get an error if you are using a networked drive. Th
 On running `devtools::check()` you may get an error of the form
 
 ```         
-Updating mypackage documentation  
-Error: The specified file is not readable: path-to\mypackage\NAMESPACE  
+Updating animalsounds documentation  
+Error: The specified file is not readable: path-to\animalsounds\NAMESPACE  
 ```
 
 This can happen if your repo is on a networked drive.
@@ -83,9 +83,9 @@ This is covered in this [Stackoverflow question](https://stackoverflow.com/quest
 
 1.  Save a copy of this file: [fix_for_networked_drives.R](../../R/fix_for_networked_drives.R)
 
-    Save it somewhere other than the `mypackage` directory
+    Save it somewhere other than the `animalsounds` directory
 
-2.  Open the file from the `mypackage` project session
+2.  Open the file from the `animalsounds` project session
 
 3.  Run the whole file
 
@@ -238,6 +238,10 @@ Copyright 2023 ACME Ltd. All rights reserved.
   - Not necessary to obtain permission if open source software was part of grant proposal (as proposal will have already been checked by Research & Impact Services, who will have identified any IP issues).
 :::
 
+::: {.notes}
+Extra note from Brendan: "they don’t need to come to me with every single bit of code they open source. I’m more interested in the entirety of the project rather than approving 2000 bits of individual code!"  
+:::
+
 ## Your turn
 
 1. Open the DESCRIPTION file and add a title and description.
@@ -339,7 +343,7 @@ i.e. it's perfect for us!
 
 ## Your turn
 
-1. Create a README for `mypackage` with `usethis::use_readme_rmd()`.
+1. Create a README for `animalsounds` with `usethis::use_readme_rmd()`.
 2. Fill in the description and an example.
 3. Try adding the README in a git commit -- it should fail!. Render the README with `build_readme()`, then add both `README.Rmd` and `README.md` in a git commit.
 4. Run `usethis::use_github_action("check-release")`. It adds a badge to the README, so you will need to render the README again.
@@ -357,7 +361,7 @@ They use R markdown to integrate code and output into the documentation. Typical
  - Optional further vignette(s) going deeper on one aspect/application
  - Optional further vignette(s) for specialist audience (methodologists or developers)
  
-A vignette with the same name as the package (e.g., `vignettes/mypackage.Rmd` or `vignettes/articles/mypackage.Rmd`) automatically becomes a top-level "Get started" link.
+A vignette with the same name as the package (e.g., `vignettes/animalsounds.Rmd` or `vignettes/articles/animalsounds.Rmd`) automatically becomes a top-level "Get started" link.
  
 ::: {.notes}
 Fairly short read ~10 minutes
@@ -405,6 +409,10 @@ vignette: >
 HTML as small as possible.
 * The `vignette:` field contains special metadata needed when the package is 
 built. **Don't forget to change the title here too!**
+
+## Vignette workflow
+
+![](images/vignette_workflow.png){fig-align="center"}
 
 # End matter {.inverse}
 

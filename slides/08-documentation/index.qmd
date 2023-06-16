@@ -414,7 +414,7 @@ Here, the `@importFrom` tag is placed above the function in which the imported f
 
 ## Package-level import file
 
-Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g. `R/mypackage-package.R`
+Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g. `R/animalsounds-package.R`
 
 ```r
 #' @importFrom purrr keep modify
@@ -430,7 +430,7 @@ This removes the possibility of multiple (redundant) imports of the same functio
 
 There can be several steps to importing a function. `usethis::use_import_from()` takes care of all of them.
 
-It will first create the package documentation file `R/mypackage-package.R` (if it doesn't already exist -- you will also need to agree to this).
+It will first create the package documentation file `R/animalsounds-package.R` (if it doesn't already exist -- you will also need to agree to this).
 
 ```{r}
 #| eval: false
@@ -439,15 +439,15 @@ usethis::use_import_from("purrr", c("keep", "modify"))
 
 ```
 ✔ Adding 'purrr' to Imports field in DESCRIPTION
-✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/mypackage-package.R'
+✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/animalsounds-package.R'
 ✔ Writing 'NAMESPACE'
-✔ Loading mypackage
+✔ Loading animalsounds
 ```
 
 ::: {.notes}
 use_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).
 
-May need to close and reopen R/mypackage-package.R to see the changes.  
+May need to close and reopen R/animalsounds-package.R to see the changes.  
 :::
 
 ##  It may be tempting to import a whole package...

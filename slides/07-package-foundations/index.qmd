@@ -390,12 +390,12 @@ Can only contain the characters [A-Z, a-z, 0-9, .]. Some tips:
 -   Avoid trademarked names
 -   Use the **available** package to check name not taken
 
-For now, we will use **mypackage**
+For now, we will use **animalsounds**
 
 ## Create a package!
 
 ```{r eval = FALSE}
-usethis::create_package("~/Desktop/mypackage")
+usethis::create_package("~/Desktop/animalsounds")
 ```
 
 - Be deliberate about where you create your package.
@@ -408,7 +408,7 @@ usethis::create_package("~/Desktop/mypackage")
 
 What happens when we run `create_package()`?
 
--   R will create a folder called `mypackage` which is a package and an RStudio project
+-   R will create a folder called `animalsounds` which is a package and an RStudio project
 -   restart R in the new project
 -   create the some infrastructure for your package with the minimal components for a working package
 -   start the RStudio Build pane
@@ -439,7 +439,7 @@ What happens when we run `create_package()`?
 
 **usethis** also adds some auxiliary files:
 
--   `mypackage.Rproj` is the file that makes this directory an RStudio Project.
+-   `animalsounds.Rproj` is the file that makes this directory an RStudio Project.
 -   `.Rbuildignore` lists files that we need but that should not be included when building the R package from source.
 -   `.gitignore` anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio.
 
@@ -472,7 +472,7 @@ usethis::use_git()
  * '.gitignore'
  * '.Rbuildignore'
  * 'DESCRIPTION'
- * 'mypackage.Rproj'
+ * 'animalsounds.Rproj'
  * 'NAMESPACE'
  Is it ok to commit them?
 
@@ -540,10 +540,10 @@ usethis::use_github()
 ```
 
 ```{r eval = FALSE}
- ✔ Creating GitHub repository 'Warwick-Stats-Resources/mypackage'
- ✔ Setting remote 'origin' to 'https://github.com/Warwick-Stats-Resources/mypackage.git'
- ✔ Setting URL field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/mypackage'
- ✔ Setting BugReports field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/mypackage/issues'
+ ✔ Creating GitHub repository 'Warwick-Stats-Resources/animalsounds'
+ ✔ Setting remote 'origin' to 'https://github.com/Warwick-Stats-Resources/animalsounds.git'
+ ✔ Setting URL field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/animalsounds'
+ ✔ Setting BugReports field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/animalsounds/issues'
  There is 1 uncommitted file:
  * 'DESCRIPTION'
  Is it ok to commit it?
