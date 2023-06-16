@@ -911,12 +911,12 @@ Department of Statistics, University of Warwick
 <li>Avoid trademarked names</li>
 <li>Use the <strong>available</strong> package to check name not taken</li>
 </ul>
-<p>For now, we will use <strong>mypackage</strong></p>
+<p>For now, we will use <strong>animalsounds</strong></p>
 </section>
 <section id="create-a-package-1" class="slide level2">
 <h2>Create a package!</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"~/Desktop/mypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"~/Desktop/animalsounds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>Be deliberate about where you create your package.</p></li>
@@ -928,7 +928,7 @@ Department of Statistics, University of Warwick
 <h2><code>create_package()</code></h2>
 <p>What happens when we run <code>create_package()</code>?</p>
 <ul>
-<li>R will create a folder called <code>mypackage</code> which is a package and an RStudio project</li>
+<li>R will create a folder called <code>animalsounds</code> which is a package and an RStudio project</li>
 <li>restart R in the new project</li>
 <li>create the some infrastructure for your package with the minimal components for a working package</li>
 <li>start the RStudio Build pane</li>
@@ -957,7 +957,7 @@ Department of Statistics, University of Warwick
 <h2>Auxiliary files</h2>
 <p><strong>usethis</strong> also adds some auxiliary files:</p>
 <ul>
-<li><code>mypackage.Rproj</code> is the file that makes this directory an RStudio Project.</li>
+<li><code>animalsounds.Rproj</code> is the file that makes this directory an RStudio Project.</li>
 <li><code>.Rbuildignore</code> lists files that we need but that should not be included when building the R package from source.</li>
 <li><code>.gitignore</code> anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio.</li>
 </ul>
@@ -1000,7 +1000,7 @@ Department of Statistics, University of Warwick
 <span id="cb17-4"><a href="#cb17-4"></a> <span class="er">*</span> <span class="st">'.gitignore'</span></span>
 <span id="cb17-5"><a href="#cb17-5"></a> <span class="sc">*</span> <span class="st">'.Rbuildignore'</span></span>
 <span id="cb17-6"><a href="#cb17-6"></a> <span class="sc">*</span> <span class="st">'DESCRIPTION'</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a> <span class="sc">*</span> <span class="st">'mypackage.Rproj'</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a> <span class="sc">*</span> <span class="st">'animalsounds.Rproj'</span></span>
 <span id="cb17-8"><a href="#cb17-8"></a> <span class="sc">*</span> <span class="st">'NAMESPACE'</span></span>
 <span id="cb17-9"><a href="#cb17-9"></a> Is it ok to commit them?</span>
 <span id="cb17-10"><a href="#cb17-10"></a></span>
@@ -1084,10 +1084,10 @@ Department of Statistics, University of Warwick
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>usethis<span class="sc">::</span><span class="fu">use_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a> ✔ Creating GitHub repository <span class="st">'Warwick-Stats-Resources/mypackage'</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a> ✔ Setting remote <span class="st">'origin'</span> to <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage.git'</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a> ✔ Setting URL field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage'</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a> ✔ Setting BugReports field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/mypackage/issues'</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a> ✔ Creating GitHub repository <span class="st">'Warwick-Stats-Resources/animalsounds'</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a> ✔ Setting remote <span class="st">'origin'</span> to <span class="st">'https://github.com/Warwick-Stats-Resources/animalsounds.git'</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a> ✔ Setting URL field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/animalsounds'</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a> ✔ Setting BugReports field <span class="cf">in</span> DESCRIPTION to  <span class="st">'https://github.com/Warwick-Stats-Resources/animalsounds/issues'</span></span>
 <span id="cb22-5"><a href="#cb22-5"></a> There is <span class="dv">1</span> uncommitted file<span class="sc">:</span></span>
 <span id="cb22-6"><a href="#cb22-6"></a> <span class="er">*</span> <span class="st">'DESCRIPTION'</span></span>
 <span id="cb22-7"><a href="#cb22-7"></a> Is it ok to commit it?</span>

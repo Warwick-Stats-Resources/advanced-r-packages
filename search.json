@@ -60,21 +60,21 @@
     "href": "slides/10-check-package-documentation/index.html#run-devtoolscheck",
     "title": "Package Check and Documentation",
     "section": "Run devtools::check()",
-    "text": "Run devtools::check()\nYou will get lots of output. It will end with:\n-- R CMD check results ---------- mypackage 0.0.0.9000 ----\nDuration: 9.3s\n\n&gt; checking DESCRIPTION meta-information ... WARNING\n  Non-standard license specification:\n    `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\n  Standardizable: FALSE\n\n0 errors √ | 1 warnings x | 0 notes √\nWe haven’t yet specified a license for our package.\n\nOn running check() you may get an error if you are using a networked drive. There’s a fix coming in a few slides."
+    "text": "Run devtools::check()\nYou will get lots of output. It will end with:\n-- R CMD check results ---------- animalsounds 0.0.0.9000 ----\nDuration: 9.3s\n\n&gt; checking DESCRIPTION meta-information ... WARNING\n  Non-standard license specification:\n    `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\n  Standardizable: FALSE\n\n0 errors √ | 1 warnings x | 0 notes √\nWe haven’t yet specified a license for our package.\n\nOn running check() you may get an error if you are using a networked drive. There’s a fix coming in a few slides."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#aside-in-case-of-error",
     "href": "slides/10-check-package-documentation/index.html#aside-in-case-of-error",
     "title": "Package Check and Documentation",
     "section": "Aside: in case of error",
-    "text": "Aside: in case of error\nOn running devtools::check() you may get an error of the form\nUpdating mypackage documentation  \nError: The specified file is not readable: path-to\\mypackage\\NAMESPACE  \nThis can happen if your repo is on a networked drive.\nThis is covered in this Stackoverflow question and can be fixed."
+    "text": "Aside: in case of error\nOn running devtools::check() you may get an error of the form\nUpdating animalsounds documentation  \nError: The specified file is not readable: path-to\\animalsounds\\NAMESPACE  \nThis can happen if your repo is on a networked drive.\nThis is covered in this Stackoverflow question and can be fixed."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#aside-a-fix-for-networked-drives",
     "href": "slides/10-check-package-documentation/index.html#aside-a-fix-for-networked-drives",
     "title": "Package Check and Documentation",
     "section": "Aside: a fix for networked drives",
-    "text": "Aside: a fix for networked drives\n\nSave a copy of this file: fix_for_networked_drives.R\nSave it somewhere other than the mypackage directory\nOpen the file from the mypackage project session\nRun the whole file\n\nYou should now find that devtools::check() proceeds normally."
+    "text": "Aside: a fix for networked drives\n\nSave a copy of this file: fix_for_networked_drives.R\nSave it somewhere other than the animalsounds directory\nOpen the file from the animalsounds project session\nRun the whole file\n\nYou should now find that devtools::check() proceeds normally."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#types-of-problem",
@@ -123,7 +123,7 @@
     "href": "slides/10-check-package-documentation/index.html#licensing-considerations-at-universities",
     "title": "Package Check and Documentation",
     "section": "Licensing considerations at universities",
-    "text": "Licensing considerations at universities\n\n\n\nThis slide is specific for The University of Warwick, but similar considerations are likely to be true at other Universities.\n\n\n\n\n\nSoftware is defined as a creative output (unlike scholarly works, e.g. thesis, conference paper)\nThe university owns the IP of any software created by Warwick PhD students and staff in the course of their work\nBefore making code public or publishing software under any license, contact Brendan at B.Spillane@warwick.ac.uk\n\nPermission to publish under an open source license likely to be granted for research code\nNot necessary to obtain permission if open source software was part of grant proposal (as proposal will have already been checked by Research & Impact Services, who will have identified any IP issues)."
+    "text": "Licensing considerations at universities\n\n\n\nThis slide is specific for The University of Warwick, but similar considerations are likely to be true at other Universities.\n\n\n\n\n\nSoftware is defined as a creative output (unlike scholarly works, e.g. thesis, conference paper)\nThe university owns the IP of any software created by Warwick PhD students and staff in the course of their work\nBefore making code public or publishing software under any license, contact Brendan at B.Spillane@warwick.ac.uk\n\nPermission to publish under an open source license likely to be granted for research code\nNot necessary to obtain permission if open source software was part of grant proposal (as proposal will have already been checked by Research & Impact Services, who will have identified any IP issues).\n\n\n\n\nExtra note from Brendan: “they don’t need to come to me with every single bit of code they open source. I’m more interested in the entirety of the project rather than approving 2000 bits of individual code!”"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#your-turn",
@@ -165,14 +165,14 @@
     "href": "slides/10-check-package-documentation/index.html#your-turn-1",
     "title": "Package Check and Documentation",
     "section": "Your turn",
-    "text": "Your turn\n\nCreate a README for mypackage with usethis::use_readme_rmd().\nFill in the description and an example.\nTry adding the README in a git commit – it should fail!. Render the README with build_readme(), then add both README.Rmd and README.md in a git commit.\nRun usethis::use_github_action(\"check-release\"). It adds a badge to the README, so you will need to render the README again.\nCommit all the changes to git."
+    "text": "Your turn\n\nCreate a README for animalsounds with usethis::use_readme_rmd().\nFill in the description and an example.\nTry adding the README in a git commit – it should fail!. Render the README with build_readme(), then add both README.Rmd and README.md in a git commit.\nRun usethis::use_github_action(\"check-release\"). It adds a badge to the README, so you will need to render the README again.\nCommit all the changes to git."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#vignettes-1",
     "href": "slides/10-check-package-documentation/index.html#vignettes-1",
     "title": "Package Check and Documentation",
     "section": "Vignettes",
-    "text": "Vignettes\nVignettes are long-form documentation for your package.\nThey use R markdown to integrate code and output into the documentation. Typically:\n\nA single/main vignette showing a complete workflow.\nOptional further vignette(s) going deeper on one aspect/application\nOptional further vignette(s) for specialist audience (methodologists or developers)\n\nA vignette with the same name as the package (e.g., vignettes/mypackage.Rmd or vignettes/articles/mypackage.Rmd) automatically becomes a top-level “Get started” link.\n\nFairly short read ~10 minutes"
+    "text": "Vignettes\nVignettes are long-form documentation for your package.\nThey use R markdown to integrate code and output into the documentation. Typically:\n\nA single/main vignette showing a complete workflow.\nOptional further vignette(s) going deeper on one aspect/application\nOptional further vignette(s) for specialist audience (methodologists or developers)\n\nA vignette with the same name as the package (e.g., vignettes/animalsounds.Rmd or vignettes/articles/animalsounds.Rmd) automatically becomes a top-level “Get started” link.\n\nFairly short read ~10 minutes"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#use_vignette",
@@ -187,6 +187,13 @@
     "title": "Package Check and Documentation",
     "section": "Vignette = Rmarkdown + special metadata",
     "text": "Vignette = Rmarkdown + special metadata\n---\ntitle: \"Vignette Title\"\nauthor: \"Vignette author\"\ndate: \"2023-06-16\"\noutput: rmarkdown::html_vignette\nvignette: &gt;\n%\\VignetteIndexEntry{Vignette Title}\n%\\VignetteEngine{knitr::rmarkdown}\n%\\VignetteEncoding{UTF-8}\n---\n\n\nhtml_vignette output uses a custom style sheet to keep the file size of the HTML as small as possible.\nThe vignette: field contains special metadata needed when the package is built. Don’t forget to change the title here too!"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#vignette-workflow",
+    "href": "slides/10-check-package-documentation/index.html#vignette-workflow",
+    "title": "Package Check and Documentation",
+    "section": "Vignette workflow",
+    "text": "Vignette workflow"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#references",
@@ -375,14 +382,14 @@
     "href": "slides/08-documentation/index.html#package-level-import-file",
     "title": "Function Documentation and Dependencies",
     "section": "Package-level import file",
-    "text": "Package-level import file\nImports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g. R/mypackage-package.R\n#' @importFrom purrr keep modify\n#' @importFrom magrittr %&gt;%\nNULL\n\nThis removes the possibility of multiple (redundant) imports of the same function. But harder to remember to remove import if function changes! It’s a matter of personal taste."
+    "text": "Package-level import file\nImports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g. R/animalsounds-package.R\n#' @importFrom purrr keep modify\n#' @importFrom magrittr %&gt;%\nNULL\n\nThis removes the possibility of multiple (redundant) imports of the same function. But harder to remember to remove import if function changes! It’s a matter of personal taste."
   },
   {
     "objectID": "slides/08-documentation/index.html#usethisuse_import_from",
     "href": "slides/08-documentation/index.html#usethisuse_import_from",
     "title": "Function Documentation and Dependencies",
     "section": "usethis::use_import_from()",
-    "text": "usethis::use_import_from()\nThere can be several steps to importing a function. usethis::use_import_from() takes care of all of them.\nIt will first create the package documentation file R/mypackage-package.R (if it doesn’t already exist – you will also need to agree to this).\n\nusethis::use_import_from(\"purrr\", c(\"keep\", \"modify\"))\n\n✔ Adding 'purrr' to Imports field in DESCRIPTION\n✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/mypackage-package.R'\n✔ Writing 'NAMESPACE'\n✔ Loading mypackage\n\nuse_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).\nMay need to close and reopen R/mypackage-package.R to see the changes."
+    "text": "usethis::use_import_from()\nThere can be several steps to importing a function. usethis::use_import_from() takes care of all of them.\nIt will first create the package documentation file R/animalsounds-package.R (if it doesn’t already exist – you will also need to agree to this).\n\nusethis::use_import_from(\"purrr\", c(\"keep\", \"modify\"))\n\n✔ Adding 'purrr' to Imports field in DESCRIPTION\n✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/animalsounds-package.R'\n✔ Writing 'NAMESPACE'\n✔ Loading animalsounds\n\nuse_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).\nMay need to close and reopen R/animalsounds-package.R to see the changes."
   },
   {
     "objectID": "slides/08-documentation/index.html#it-may-be-tempting-to-import-a-whole-package",
@@ -1915,21 +1922,21 @@
     "href": "slides/07-package-foundations/index.html#package-name",
     "title": "Package Foundations",
     "section": "Package name",
-    "text": "Package name\nCan only contain the characters [A-Z, a-z, 0-9, .]. Some tips:\n\nUnique name you can easily Google\nAvoid mixing upper and lower case\nUse abbreviations\nAdd an r to make unique, e.g stringr\nUse wordplay, e.g. lubridate\nAvoid trademarked names\nUse the available package to check name not taken\n\nFor now, we will use mypackage"
+    "text": "Package name\nCan only contain the characters [A-Z, a-z, 0-9, .]. Some tips:\n\nUnique name you can easily Google\nAvoid mixing upper and lower case\nUse abbreviations\nAdd an r to make unique, e.g stringr\nUse wordplay, e.g. lubridate\nAvoid trademarked names\nUse the available package to check name not taken\n\nFor now, we will use animalsounds"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#create-a-package-1",
     "href": "slides/07-package-foundations/index.html#create-a-package-1",
     "title": "Package Foundations",
     "section": "Create a package!",
-    "text": "Create a package!\n\nusethis::create_package(\"~/Desktop/mypackage\")\n\n\nBe deliberate about where you create your package.\nDo not nest inside another RStudio project, R package or git repo.\nYou may want to use a different path!"
+    "text": "Create a package!\n\nusethis::create_package(\"~/Desktop/animalsounds\")\n\n\nBe deliberate about where you create your package.\nDo not nest inside another RStudio project, R package or git repo.\nYou may want to use a different path!"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#create_package",
     "href": "slides/07-package-foundations/index.html#create_package",
     "title": "Package Foundations",
     "section": "create_package()",
-    "text": "create_package()\nWhat happens when we run create_package()?\n\nR will create a folder called mypackage which is a package and an RStudio project\nrestart R in the new project\ncreate the some infrastructure for your package with the minimal components for a working package\nstart the RStudio Build pane"
+    "text": "create_package()\nWhat happens when we run create_package()?\n\nR will create a folder called animalsounds which is a package and an RStudio project\nrestart R in the new project\ncreate the some infrastructure for your package with the minimal components for a working package\nstart the RStudio Build pane"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#r-studio-build-panemenu",
@@ -1950,7 +1957,7 @@
     "href": "slides/07-package-foundations/index.html#auxiliary-files",
     "title": "Package Foundations",
     "section": "Auxiliary files",
-    "text": "Auxiliary files\nusethis also adds some auxiliary files:\n\nmypackage.Rproj is the file that makes this directory an RStudio Project.\n.Rbuildignore lists files that we need but that should not be included when building the R package from source.\n.gitignore anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio."
+    "text": "Auxiliary files\nusethis also adds some auxiliary files:\n\nanimalsounds.Rproj is the file that makes this directory an RStudio Project.\n.Rbuildignore lists files that we need but that should not be included when building the R package from source.\n.gitignore anticipates Git usage and ignores some standard, behind-the-scenes files created by R and RStudio."
   },
   {
     "objectID": "slides/07-package-foundations/index.html#use-git",
@@ -1964,7 +1971,7 @@
     "href": "slides/07-package-foundations/index.html#use_git-output-part-1",
     "title": "Package Foundations",
     "section": "use_git() output (part 1)",
-    "text": "use_git() output (part 1)\n\n ✔ Initialising Git repo\n ✔ Adding '.Rhistory', '.Rdata', '.httr-oauth', '.DS_Store' to  '.gitignore' \n There are 5 uncommitted files:\n * '.gitignore'\n * '.Rbuildignore'\n * 'DESCRIPTION'\n * 'mypackage.Rproj'\n * 'NAMESPACE'\n Is it ok to commit them?\n\n 1: I agree\n 2: Absolutely not\n 3: No way\n\nChoose the affirmative option! (The exact options may vary.)"
+    "text": "use_git() output (part 1)\n\n ✔ Initialising Git repo\n ✔ Adding '.Rhistory', '.Rdata', '.httr-oauth', '.DS_Store' to  '.gitignore' \n There are 5 uncommitted files:\n * '.gitignore'\n * '.Rbuildignore'\n * 'DESCRIPTION'\n * 'animalsounds.Rproj'\n * 'NAMESPACE'\n Is it ok to commit them?\n\n 1: I agree\n 2: Absolutely not\n 3: No way\n\nChoose the affirmative option! (The exact options may vary.)"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#use_git-output-part-2",
@@ -1985,7 +1992,7 @@
     "href": "slides/07-package-foundations/index.html#use_github-output",
     "title": "Package Foundations",
     "section": "use_github() output",
-    "text": "use_github() output\n\nusethis::use_github()\n\n\n ✔ Creating GitHub repository 'Warwick-Stats-Resources/mypackage'\n ✔ Setting remote 'origin' to 'https://github.com/Warwick-Stats-Resources/mypackage.git'\n ✔ Setting URL field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/mypackage'\n ✔ Setting BugReports field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/mypackage/issues'\n There is 1 uncommitted file:\n * 'DESCRIPTION'\n Is it ok to commit it?\n\n 1: Nope\n 2: For sure\n 3: No way\n\nChoose the affirmative option! (The exact options may vary.)\n\nTake a look at the repo on GitHub. There is no /R folder as that folder is empty at the moment!\nDuring the demo, will need to run use_github(\"Warwick-Stats-Resources\") as by default use_github goes to my personal repo"
+    "text": "use_github() output\n\nusethis::use_github()\n\n\n ✔ Creating GitHub repository 'Warwick-Stats-Resources/animalsounds'\n ✔ Setting remote 'origin' to 'https://github.com/Warwick-Stats-Resources/animalsounds.git'\n ✔ Setting URL field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/animalsounds'\n ✔ Setting BugReports field in DESCRIPTION to  'https://github.com/Warwick-Stats-Resources/animalsounds/issues'\n There is 1 uncommitted file:\n * 'DESCRIPTION'\n Is it ok to commit it?\n\n 1: Nope\n 2: For sure\n 3: No way\n\nChoose the affirmative option! (The exact options may vary.)\n\nTake a look at the repo on GitHub. There is no /R folder as that folder is empty at the moment!\nDuring the demo, will need to run use_github(\"Warwick-Stats-Resources\") as by default use_github goes to my personal repo"
   },
   {
     "objectID": "slides/07-package-foundations/index.html#adding-functions",
@@ -2466,42 +2473,42 @@
   {
     "objectID": "content/10-check-package-documentation/index.html",
     "href": "content/10-check-package-documentation/index.html",
-    "title": "Check and Package Documentation",
+    "title": "Package Check and Documentation",
     "section": "",
     "text": "This page and the slides for this session are still under development"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#slides",
     "href": "content/10-check-package-documentation/index.html#slides",
-    "title": "Check and Package Documentation",
+    "title": "Package Check and Documentation",
     "section": "Slides",
     "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#resources",
     "href": "content/10-check-package-documentation/index.html#resources",
-    "title": "Check and Package Documentation",
+    "title": "Package Check and Documentation",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org"
   },
   {
     "objectID": "content/08-documentation/index.html",
     "href": "content/08-documentation/index.html",
-    "title": "Documentation",
+    "title": "Function Documentation and Dependancies",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/08-documentation/index.html#slides",
     "href": "content/08-documentation/index.html#slides",
-    "title": "Documentation",
+    "title": "Function Documentation and Dependancies",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/08-documentation/index.html#resources",
     "href": "content/08-documentation/index.html#resources",
-    "title": "Documentation",
+    "title": "Function Documentation and Dependancies",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org\nroxygen2\nhttps://roxygen2.r-lib.org\nrlang\nhttps://rlang.r-lib.org\ncli\nhttps://cli.r-lib.org"
   },
@@ -2755,6 +2762,6 @@
     "href": "content.html",
     "title": "Content",
     "section": "",
-    "text": "Date\n\n\nCourse\n\n\nTitle\n\n\nPresenter\n\n\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nWelcome and Introduction\n\n\nElla Kaye, Heather Turner\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nFunctions\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nClasses and Methods\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nEfficient Programming\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nProfiling\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nC++ and Rcpp\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nPackage Foundations\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nDocumentation\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nTesting\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nCheck and Package Documentation\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nPackaging data; Publication and Maintenance\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nRcpp in Packages\n\n\nHeather Turner\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nCourse\n\n\nTitle\n\n\nPresenter\n\n\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nWelcome and Introduction\n\n\nElla Kaye, Heather Turner\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nFunctions\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nClasses and Methods\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nEfficient Programming\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nProfiling\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nC++ and Rcpp\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nPackage Foundations\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nFunction Documentation and Dependancies\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nTesting\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nPackage Check and Documentation\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nPackaging data; Publication and Maintenance\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nRcpp in Packages\n\n\nHeather Turner\n\n\n\n\n\n\nNo matching items"
   }
 ]

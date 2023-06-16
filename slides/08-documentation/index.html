@@ -834,7 +834,7 @@ export(fun1)</code></pre>
 </section>
 <section id="package-level-import-file" class="slide level2">
 <h2>Package-level import file</h2>
-<p>Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g.&nbsp;<code>R/mypackage-package.R</code></p>
+<p>Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g.&nbsp;<code>R/animalsounds-package.R</code></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#' @importFrom purrr keep modify</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -855,17 +855,17 @@ export(fun1)</code></pre>
 <section id="usethisuse_import_from" class="slide level2">
 <h2><code>usethis::use_import_from()</code></h2>
 <p>There can be several steps to importing a function. <code>usethis::use_import_from()</code> takes care of all of them.</p>
-<p>It will first create the package documentation file <code>R/mypackage-package.R</code> (if it doesn’t already exist – you will also need to agree to this).</p>
+<p>It will first create the package documentation file <code>R/animalsounds-package.R</code> (if it doesn’t already exist – you will also need to agree to this).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>usethis<span class="sc">::</span><span class="fu">use_import_from</span>(<span class="st">"purrr"</span>, <span class="fu">c</span>(<span class="st">"keep"</span>, <span class="st">"modify"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>✔ Adding 'purrr' to Imports field in DESCRIPTION
-✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/mypackage-package.R'
+✔ Adding '@importFrom purrr keep', '@importFrom purrr modify' to 'R/animalsounds-package.R'
 ✔ Writing 'NAMESPACE'
-✔ Loading mypackage</code></pre>
+✔ Loading animalsounds</code></pre>
 <aside class="notes">
 <p>use_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).</p>
-<p>May need to close and reopen R/mypackage-package.R to see the changes.</p>
+<p>May need to close and reopen R/animalsounds-package.R to see the changes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

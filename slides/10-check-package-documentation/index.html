@@ -455,7 +455,7 @@ Department of Statistics, University of Warwick
 <section id="run-devtoolscheck" class="slide level2">
 <h2>Run <code>devtools::check()</code></h2>
 <p>You will get lots of output. It will end with:</p>
-<pre><code>-- R CMD check results ---------- mypackage 0.0.0.9000 ----
+<pre><code>-- R CMD check results ---------- animalsounds 0.0.0.9000 ----
 Duration: 9.3s
 
 &gt; checking DESCRIPTION meta-information ... WARNING
@@ -483,8 +483,8 @@ Duration: 9.3s
 <section id="aside-in-case-of-error" class="slide level2">
 <h2>Aside: in case of error</h2>
 <p>On running <code>devtools::check()</code> you may get an error of the form</p>
-<pre><code>Updating mypackage documentation  
-Error: The specified file is not readable: path-to\mypackage\NAMESPACE  </code></pre>
+<pre><code>Updating animalsounds documentation  
+Error: The specified file is not readable: path-to\animalsounds\NAMESPACE  </code></pre>
 <p>This can happen if your repo is on a networked drive.</p>
 <p>This is covered in this <a href="https://stackoverflow.com/questions/40530968/overwriting-namespace-and-rd-with-roxygen2">Stackoverflow question</a> and can be fixed.</p>
 </section>
@@ -492,8 +492,8 @@ Error: The specified file is not readable: path-to\mypackage\NAMESPACE  </code><
 <h2>Aside: a fix for networked drives</h2>
 <ol type="1">
 <li><p>Save a copy of this file: <a href="../../R/fix_for_networked_drives.R">fix_for_networked_drives.R</a></p>
-<p>Save it somewhere other than the <code>mypackage</code> directory</p></li>
-<li><p>Open the file from the <code>mypackage</code> project session</p></li>
+<p>Save it somewhere other than the <code>animalsounds</code> directory</p></li>
+<li><p>Open the file from the <code>animalsounds</code> project session</p></li>
 <li><p>Run the whole file</p></li>
 </ol>
 <p>You should now find that <code>devtools::check()</code> proceeds normally.</p>
@@ -700,6 +700,19 @@ Error: The specified file is not readable: path-to\mypackage\NAMESPACE  </code><
 </ul></li>
 </ul>
 </div>
+<aside class="notes">
+<p>Extra note from Brendan: “they don’t need to come to me with every single bit of code they open source. I’m more interested in the entirety of the project rather than approving 2000 bits of individual code!”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your turn</h2>
@@ -828,7 +841,7 @@ Error: The specified file is not readable: path-to\mypackage\NAMESPACE  </code><
 <section id="your-turn-1" class="slide level2">
 <h2>Your turn</h2>
 <ol type="1">
-<li>Create a README for <code>mypackage</code> with <code>usethis::use_readme_rmd()</code>.</li>
+<li>Create a README for <code>animalsounds</code> with <code>usethis::use_readme_rmd()</code>.</li>
 <li>Fill in the description and an example.</li>
 <li>Try adding the README in a git commit – it should fail!. Render the README with <code>build_readme()</code>, then add both <code>README.Rmd</code> and <code>README.md</code> in a git commit.</li>
 <li>Run <code>usethis::use_github_action("check-release")</code>. It adds a badge to the README, so you will need to render the README again.</li>
@@ -849,7 +862,7 @@ Error: The specified file is not readable: path-to\mypackage\NAMESPACE  </code><
 <li>Optional further vignette(s) going deeper on one aspect/application</li>
 <li>Optional further vignette(s) for specialist audience (methodologists or developers)</li>
 </ul>
-<p>A vignette with the same name as the package (e.g., <code>vignettes/mypackage.Rmd</code> or <code>vignettes/articles/mypackage.Rmd</code>) automatically becomes a top-level “Get started” link.</p>
+<p>A vignette with the same name as the package (e.g., <code>vignettes/animalsounds.Rmd</code> or <code>vignettes/articles/animalsounds.Rmd</code>) automatically becomes a top-level “Get started” link.</p>
 <aside class="notes">
 <p>Fairly short read ~10 minutes</p>
 <style type="text/css">
@@ -905,7 +918,11 @@ vignette: &gt;
 <li><code>html_vignette</code> output uses a custom style sheet to keep the file size of the HTML as small as possible.</li>
 <li>The <code>vignette:</code> field contains special metadata needed when the package is built. <strong>Don’t forget to change the title here too!</strong></li>
 </ul>
-</section></section>
+</section>
+<section id="vignette-workflow" class="slide level2">
+<h2>Vignette workflow</h2>
+
+<img data-src="images/vignette_workflow.png" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
 <h1>End matter</h1>
