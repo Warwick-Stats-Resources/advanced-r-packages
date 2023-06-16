@@ -1,5 +1,5 @@
 ---
-title: "Documentation"
+title: "Function Documentation and Dependancies"
 subtitle: R Packages
 author: Heather Turner
 date: 2023-06-20T15:30:00
