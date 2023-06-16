@@ -1,5 +1,7 @@
 ---
-title: "R Packages: Testing"
+title: "Testing"
+subtitle: R Packages
+author: Heather Turner
 date: 2023-06-21T09:30:00
 date-format: long
 ---

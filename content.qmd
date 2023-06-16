@@ -7,7 +7,10 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: false
-  fields: [date, title]
+  fields: [date, subtitle, title, author]
+  field-display-names: 
+    subtitle: "Course"
+    author: "Presenter"
 page-layout: full
 title-block-banner: false
 ---

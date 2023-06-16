@@ -1,5 +1,7 @@
 ---
-title: "R Packages: Package foundations"
+title: "Package Foundations"
+subtitle: R Packages
+author: Ella Kaye
 date: 2023-06-20T13:30:00
 date-format: long
 ---

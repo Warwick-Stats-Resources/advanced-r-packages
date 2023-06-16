@@ -1,5 +1,9 @@
 ---
-title: Welcome and introduction
+title: Welcome and Introduction
+subtitle: Advanced R
+author: 
+  - name: Ella Kaye
+  - name: Heather Turner
 date: 2023-06-19T11:00:00
 date-format: long
 ---

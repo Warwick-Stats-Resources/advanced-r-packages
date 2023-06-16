@@ -1,5 +1,7 @@
 ---
-title: "Advanced R: Classes and methods"
+title: "Classes and Methods"
+subtitle: Advanced R
+author: Ella Kaye
 date: 2023-06-19T13:30:00
 date-format: long
 ---

@@ -1,5 +1,7 @@
 ---
-title: "Advanced R: C++ and Rcpp"
+title: "C++ and Rcpp"
+subtitle: Advanced R
+author: Ella Kaye
 date: 2023-06-20T11:00:00
 date-format: long
 ---
