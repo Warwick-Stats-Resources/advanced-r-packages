@@ -830,13 +830,27 @@ export(fun1)</code></pre>
 </div>
 <p><code>devtools::document()</code> will add corresponding <code>import()</code> statements to the NAMESPACE, e.g.&nbsp;<code>import(purr, keep, modify)</code>.</p>
 <p>Adding formal imports is slightly more efficient than using <code>::</code>.</p>
+<p>Here, the <code>@importFrom</code> tag is placed above the function in which the imported function is used.</p>
 </section>
 <section id="package-level-import-file" class="slide level2">
 <h2>Package-level import file</h2>
-<p>Imports belong to the package, not to individual functions, so best practice is to recognise this by storing them in a central location, e.g.&nbsp;<code>R/mypackage-package.R</code></p>
+<p>Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g.&nbsp;<code>R/mypackage-package.R</code></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#' @importFrom purrr keep modify</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co">#' @importFrom magrittr %&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>This removes the possibility of multiple (redundant) imports of the same function. But harder to remember to remove import if function changes! It’s a matter of personal taste.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="usethisuse_import_from" class="slide level2">
 <h2><code>usethis::use_import_from()</code></h2>
@@ -850,6 +864,7 @@ export(fun1)</code></pre>
 ✔ Writing 'NAMESPACE'
 ✔ Loading mypackage</code></pre>
 <aside class="notes">
+<p>use_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).</p>
 <p>May need to close and reopen R/mypackage-package.R to see the changes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -919,13 +934,11 @@ export(fun1)</code></pre>
 </div>
 <p>We might instead use <code>rlang::is_character()</code> with <code>cli::cli_abort()</code></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(rlang)</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>sound <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bark"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
-<span id="cb23-3"><a href="#cb23-3"></a>sound <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"woof"</span>, <span class="st">"bark"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="at">n =</span> <span class="dv">1</span>)) {</span>
-<span id="cb23-6"><a href="#cb23-6"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`sound` must be a single string!"</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_character</span>(sound, <span class="at">n =</span> <span class="dv">1</span>)) {</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`sound` must be a single string!"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! `sound` must be a single string!</code></pre>
