@@ -2459,252 +2459,252 @@
   {
     "objectID": "content/10-check-package-documentation/index.html",
     "href": "content/10-check-package-documentation/index.html",
-    "title": "R Packages: Check and package documentation",
+    "title": "Check and Package Documentation",
     "section": "",
     "text": "This page and the slides for this session are still under development"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#slides",
     "href": "content/10-check-package-documentation/index.html#slides",
-    "title": "R Packages: Check and package documentation",
+    "title": "Check and Package Documentation",
     "section": "Slides",
     "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#resources",
     "href": "content/10-check-package-documentation/index.html#resources",
-    "title": "R Packages: Check and package documentation",
+    "title": "Check and Package Documentation",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org"
   },
   {
     "objectID": "content/08-documentation/index.html",
     "href": "content/08-documentation/index.html",
-    "title": "R Packages: Documentation",
+    "title": "Documentation",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/08-documentation/index.html#slides",
     "href": "content/08-documentation/index.html#slides",
-    "title": "R Packages: Documentation",
+    "title": "Documentation",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/08-documentation/index.html#resources",
     "href": "content/08-documentation/index.html#resources",
-    "title": "R Packages: Documentation",
+    "title": "Documentation",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org\nroxygen2\nhttps://roxygen2.r-lib.org\nrlang\nhttps://rlang.r-lib.org\ncli\nhttps://cli.r-lib.org"
   },
   {
     "objectID": "content/11-data-publication-maintenance/index.html",
     "href": "content/11-data-publication-maintenance/index.html",
-    "title": "R Packages: Packaging data; publication and maintenance",
+    "title": "Packaging data; Publication and Maintenance",
     "section": "",
     "text": "This page and the slides for this session are still under development"
   },
   {
     "objectID": "content/11-data-publication-maintenance/index.html#slides",
     "href": "content/11-data-publication-maintenance/index.html#slides",
-    "title": "R Packages: Packaging data; publication and maintenance",
+    "title": "Packaging data; Publication and Maintenance",
     "section": "Slides",
     "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/11-data-publication-maintenance/index.html#resources",
     "href": "content/11-data-publication-maintenance/index.html#resources",
-    "title": "R Packages: Packaging data; publication and maintenance",
+    "title": "Packaging data; Publication and Maintenance",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org"
   },
   {
     "objectID": "content/12-Rcpp-packages/index.html",
     "href": "content/12-Rcpp-packages/index.html",
-    "title": "R Packages: Rcpp",
+    "title": "Rcpp in Packages",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/12-Rcpp-packages/index.html#slides",
     "href": "content/12-Rcpp-packages/index.html#slides",
-    "title": "R Packages: Rcpp",
+    "title": "Rcpp in Packages",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/12-Rcpp-packages/index.html#resources",
     "href": "content/12-Rcpp-packages/index.html#resources",
-    "title": "R Packages: Rcpp",
+    "title": "Rcpp in Packages",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org\nRcpp\n\nhttps://www.rcpp.org\nhttps://github.com/RcppCore/Rcpp\nhttps://dirk.eddelbuettel.com/code/rcpp.html\n\nRcppArmadillo\n\nhttp://dirk.eddelbuettel.com/code/rcpp.armadillo.html"
   },
   {
     "objectID": "content/02-functions/index.html",
     "href": "content/02-functions/index.html",
-    "title": "Advanced R: Functions",
+    "title": "Functions",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/02-functions/index.html#slides",
     "href": "content/02-functions/index.html#slides",
-    "title": "Advanced R: Functions",
+    "title": "Functions",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/02-functions/index.html#resources",
     "href": "content/02-functions/index.html#resources",
-    "title": "Advanced R: Functions",
+    "title": "Functions",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nFunctions chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/functions.html\nDebugging chapter from Advanced R, Hadley Wickham\nhttps://adv-r.hadley.nz/debugging.html\nDebugging from the RStudio User Guide\nhttps://docs.posit.co/ide/user/ide/guide/code/debugging.html"
   },
   {
     "objectID": "content/09-testing/index.html",
     "href": "content/09-testing/index.html",
-    "title": "R Packages: Testing",
+    "title": "Testing",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/09-testing/index.html#slides",
     "href": "content/09-testing/index.html#slides",
-    "title": "R Packages: Testing",
+    "title": "Testing",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/09-testing/index.html#resources",
     "href": "content/09-testing/index.html#resources",
-    "title": "R Packages: Testing",
+    "title": "Testing",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org\ntestthat\nhttps://testthat.r-lib.org"
   },
   {
     "objectID": "content/03-classes-methods/index.html",
     "href": "content/03-classes-methods/index.html",
-    "title": "Advanced R: Classes and methods",
+    "title": "Classes and Methods",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/03-classes-methods/index.html#slides",
     "href": "content/03-classes-methods/index.html#slides",
-    "title": "Advanced R: Classes and methods",
+    "title": "Classes and Methods",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/03-classes-methods/index.html#resources",
     "href": "content/03-classes-methods/index.html#resources",
-    "title": "Advanced R: Classes and methods",
+    "title": "Classes and Methods",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nMain reference for this section, goes a bit further (including R6): Wickham, H, Advanced R (2nd edn), Object-oriented programming section\n\nhttps://adv-r.hadley.nz/oo.html\n\nFun example creating Turtle and TurtleWithPen classes to create simple graphics by moving the turtle\nhttps://stuartlee.org/2019/07/09/s4-short-guide/"
   },
   {
     "objectID": "content/06-r-with-cpp/index.html",
     "href": "content/06-r-with-cpp/index.html",
-    "title": "Advanced R: C++ and Rcpp",
+    "title": "C++ and Rcpp",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/06-r-with-cpp/index.html#slides",
     "href": "content/06-r-with-cpp/index.html#slides",
-    "title": "Advanced R: C++ and Rcpp",
+    "title": "C++ and Rcpp",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/06-r-with-cpp/index.html#resources",
     "href": "content/06-r-with-cpp/index.html#resources",
-    "title": "Advanced R: C++ and Rcpp",
+    "title": "C++ and Rcpp",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nSimilar scope to this module: Gillespie, C and Lovelace, R, Efficient R programming, Rcpp section\nhttps://csgillespie.github.io/efficientR/performance.html#rcpp\nGoing a bit further: Wickham, H, Advanced R (2nd edn), Rewriting R code in C++ chapter\nhttps://adv-r.hadley.nz/rcpp.html\nNot very polished, but broader coverage of Rcpp functionality: Tsuda, M.E., Rcpp for everyone\nhttps://teuder.github.io/rcpp4everyone_en/300_Rmath.html\nThe Rcpp vignettes, accessed via browseVignettes(\"Rcpp\") or CRAN\nThe unofficial Rcpp API documentation\nCase studies (optimising by improving R code and/or using C++)\n\nhttps://robotwealth.com/optimising-the-rsims-package-for-fast-backtesting-in-r/\nhttps://gallery.rcpp.org/articles/bayesian-time-series-changepoint/\nThe Rcpp Gallery has all sorts of examples, many illustrating advanced features of Rcpp).\n\n\n\n\nPackages\n\nRcpp\n\nhttps://www.rcpp.org\nhttps://github.com/RcppCore/Rcpp\nhttps://dirk.eddelbuettel.com/code/rcpp.html"
   },
   {
     "objectID": "content/07-package-foundations/index.html",
     "href": "content/07-package-foundations/index.html",
-    "title": "R Packages: Package foundations",
+    "title": "Package Foundations",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/07-package-foundations/index.html#slides",
     "href": "content/07-package-foundations/index.html#slides",
-    "title": "R Packages: Package foundations",
+    "title": "Package Foundations",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/07-package-foundations/index.html#resources",
     "href": "content/07-package-foundations/index.html#resources",
-    "title": "R Packages: Package foundations",
+    "title": "Package Foundations",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org"
   },
   {
     "objectID": "content/04-efficient-programming/index.html",
     "href": "content/04-efficient-programming/index.html",
-    "title": "Advanced R: Efficient programming",
+    "title": "Efficient Programming",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/04-efficient-programming/index.html#slides",
     "href": "content/04-efficient-programming/index.html#slides",
-    "title": "Advanced R: Efficient programming",
+    "title": "Efficient Programming",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/04-efficient-programming/index.html#resources",
     "href": "content/04-efficient-programming/index.html#resources",
-    "title": "Advanced R: Efficient programming",
+    "title": "Efficient Programming",
     "section": "Resources",
     "text": "Resources\n\nReading\nGood references on optimizing R code:\n\nWickham, H, Advanced R (2nd edn), Improving performance section, https://adv-r.hadley.nz/perf-improve.html\nGillespie, C and Lovelace, R, Efficient R programming, https://csgillespie.github.io/efficientR/\n\nTutorials on the Futureverse:\n\nhttps://www.futureverse.org/tutorials.html\n\n\n\nPackages\n\nefficient\nhttps://github.com/csgillespie/efficient\nfuture and future.apply from the Futureverse\nhttps://future.futureverse.org\nhttps://future.apply.futureverse.org"
   },
   {
     "objectID": "content/01-welcome/index.html",
     "href": "content/01-welcome/index.html",
-    "title": "Welcome and introduction",
+    "title": "Welcome and Introduction",
     "section": "",
     "text": "This page and the slides for this session are still under development"
   },
   {
     "objectID": "content/01-welcome/index.html#slides",
     "href": "content/01-welcome/index.html#slides",
-    "title": "Welcome and introduction",
+    "title": "Welcome and Introduction",
     "section": "Slides",
     "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/01-welcome/index.html#resources",
     "href": "content/01-welcome/index.html#resources",
-    "title": "Welcome and introduction",
+    "title": "Welcome and Introduction",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
   },
   {
     "objectID": "content/05-profiling/index.html",
     "href": "content/05-profiling/index.html",
-    "title": "Advanced R: Profiling",
+    "title": "Profiling",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/05-profiling/index.html#slides",
     "href": "content/05-profiling/index.html#slides",
-    "title": "Advanced R: Profiling",
+    "title": "Profiling",
     "section": "",
     "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/05-profiling/index.html#resources",
     "href": "content/05-profiling/index.html#resources",
-    "title": "Advanced R: Profiling",
+    "title": "Profiling",
     "section": "Resources",
     "text": "Resources\n\nReading\n\nWickham, H, Advanced R (2nd edn), Improving performance section\nhttps://adv-r.hadley.nz/perf-improve.html\nGillespie, C and Lovelace, R, Efficient R programming\nhttps://csgillespie.github.io/efficientR/\n\n\n\nPackages\n\nprofvis\nhttps://rstudio.github.io/profvis/"
   },
@@ -2713,7 +2713,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Monday June 19th\n\n\n\nTime\nSession\n\n\n\n\n10:30–11:00\nCoffee\n\n\n11:00–11:10\nWelcome and Introduction\n\n\n11:10–12:30\nAdvanced R: Functions\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nAdvanced R: Classes and Methods\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nAdvanced R: Efficient Programming\n\n\n\n\n\nTuesday June 20th\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Package Foundations\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Documentation\n\n\n\n\n\nWednesday June 21st\n\n\n\nTime\nSession\n\n\n\n\n9:30–10:30\nR Packages: Testing\n\n\n10:30–11:00\nCoffee break\n\n\n11:00–12:30\nR Packages: Check and Package Documentation\n\n\n12:30–13:30\nLunch\n\n\n13:30–15:00\nR Packages: Packaging Data; Publication and Maintenance\n\n\n15:00–15:30\nCoffee break\n\n\n15:30–17:00\nR Packages: Rcpp"
+    "text": "Monday June 19th\n\n\n\n\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n10:30–11:00\nCoffee\n\n\n\n11:00–11:10\nWelcome and Introduction\nElla Kaye, Heather Turner\n\n\n11:10–12:30\nAdvanced R: Functions\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nAdvanced R: Classes and Methods\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nAdvanced R: Efficient Programming\nHeather Turner\n\n\n\n\n\nTuesday June 20th\n\n\n\n\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\nHeather Turner\n\n\n10:30–11:00\nCoffee break\n\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nR Packages: Package Foundations\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nR Packages: Documentation\nHeather Turner\n\n\n\n\n\nWednesday June 21st\n\n\n\n\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n9:30–10:30\nR Packages: Testing\nHeather Turner\n\n\n10:30–11:00\nCoffee break\n\n\n\n11:00–12:30\nR Packages: Check and Package Documentation\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nR Packages: Packaging Data; Publication and Maintenance\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nR Packages: Rcpp in Packages\nHeather Turner"
   },
   {
     "objectID": "prerequisites.html",
@@ -2748,6 +2748,6 @@
     "href": "content.html",
     "title": "Content",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJun 19, 2023\n\n\nWelcome and introduction\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Functions\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Classes and methods\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R: Efficient programming\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: Profiling\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R: C++ and Rcpp\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Package foundations\n\n\n\n\nJun 20, 2023\n\n\nR Packages: Documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Testing\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Check and package documentation\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Packaging data; publication and maintenance\n\n\n\n\nJun 21, 2023\n\n\nR Packages: Rcpp\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nCourse\n\n\nTitle\n\n\nPresenter\n\n\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nWelcome and Introduction\n\n\nElla Kaye, Heather Turner\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nFunctions\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nClasses and Methods\n\n\nElla Kaye\n\n\n\n\nJun 19, 2023\n\n\nAdvanced R\n\n\nEfficient Programming\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nProfiling\n\n\nHeather Turner\n\n\n\n\nJun 20, 2023\n\n\nAdvanced R\n\n\nC++ and Rcpp\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nPackage Foundations\n\n\nElla Kaye\n\n\n\n\nJun 20, 2023\n\n\nR Packages\n\n\nDocumentation\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nTesting\n\n\nHeather Turner\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nCheck and Package Documentation\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nPackaging data; Publication and Maintenance\n\n\nElla Kaye\n\n\n\n\nJun 21, 2023\n\n\nR Packages\n\n\nRcpp in Packages\n\n\nHeather Turner\n\n\n\n\n\n\nNo matching items"
   }
 ]
