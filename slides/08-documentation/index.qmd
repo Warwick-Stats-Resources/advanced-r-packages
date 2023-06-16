@@ -409,15 +409,22 @@ col_summary <- function(df, fun) {
 
 Adding formal imports is slightly more efficient than using `::`.
 
+Here, the `@importFrom` tag is placed above the function in which the imported function is used.
+
+
 ## Package-level import file
 
-Imports belong to the package, not to individual functions, so best practice is to recognise this by storing them in a central location, e.g. `R/mypackage-package.R`
+Imports belong to the package, not to individual functions, so alternatively you can recognise this by storing them in a central location, e.g. `R/mypackage-package.R`
 
 ```r
 #' @importFrom purrr keep modify
 #' @importFrom magrittr %>%
 NULL
 ```
+
+::: {.notes}
+This removes the possibility of multiple (redundant) imports of the same function. But harder to remember to remove import if function changes! It's a matter of personal taste.
+:::
 
 ## `usethis::use_import_from()`
 
@@ -438,6 +445,8 @@ usethis::use_import_from("purrr", c("keep", "modify"))
 ```
 
 ::: {.notes}
+use_import_from() is opinionated in implementing package-level import (rather than above the function in which they are used).
+
 May need to close and reopen R/mypackage-package.R to see the changes.  
 :::
 
@@ -493,8 +502,6 @@ We might instead use `rlang::is_character()` with `cli::cli_abort()`
 
 ```{r}
 #| error: true
-library(rlang)
-
 sound <- c("woof", "bark")
 
 if (!rlang::is_character(sound, n = 1)) {

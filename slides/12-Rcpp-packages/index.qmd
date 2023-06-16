@@ -162,7 +162,7 @@ Currently this is an internal R function - we have not taken any action to add i
 
 ```{r, eval = FALSE}
 devtools::load_all()
-add_ccp(3, 4)
+add_cpp(3, 4)
 ```
 
 ::: {.notes}

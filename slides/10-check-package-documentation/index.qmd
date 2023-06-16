@@ -223,6 +223,21 @@ In LICENSE:
 Copyright 2023 ACME Ltd. All rights reserved.
 ```
 
+## Licensing considerations at universities
+
+:::{.callout-note appearance="simple"}
+[This slide is specific for The University of Warwick, but similar considerations are likely to be true at other Universities.]{.smaller80}
+:::
+
+:::{.smaller75}
+- Software is defined as a creative output (unlike scholarly works, e.g. thesis, conference paper)
+- The university owns the IP of any software created by Warwick PhD students and staff in the course of their work
+- Before making code public or publishing software under any license, contact Brendan at [B.Spillane@warwick.ac.uk](mailto:B.Spillane@warwick.ac.uk)
+
+  - Permission to publish under an open source license likely to be granted for research code
+  - Not necessary to obtain permission if open source software was part of grant proposal (as proposal will have already been checked by Research & Impact Services, who will have identified any IP issues).
+:::
+
 ## Your turn
 
 1. Open the DESCRIPTION file and add a title and description.

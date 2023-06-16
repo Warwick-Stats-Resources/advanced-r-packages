@@ -455,7 +455,7 @@ usethis has functions to help with this.
 
 ## Use git
 
-To make our project agGit repository, or 'repo', on our local machine we use `usethis::use_git()`
+To make our project a git repository, or 'repo', on our local machine we use `usethis::use_git()`
 
 Make your package a git repo:
 
@@ -510,7 +510,7 @@ To create a copy on GitHub we use `usethis::use_github()`.
 #| eval: false
 # Choose one of the following:
 usethis::use_github() # creates a public repo
-usethis::use_github(private = TRUE)
+usethis::use_github(private = TRUE) # recommended
 ```
 
 This takes a local project, creates an associated repo on GitHub, adds it to your local repo as the "origin remote", and makes an initial "push" to synchronize.
@@ -528,6 +528,10 @@ usethis::use_github("https://github.warwick.ac.uk")
 However, Warwick GitHub does not support GitHub Actions or GitHub Pages, so for packages using your personal account is better -- we'll be using both Actions and Pages later.
 :::
 ::::
+
+::: {.notes}
+Promote private repo for novel package development - link to licensing issue, covered in package documentation session  
+:::
 
 ## `use_github()` output
 
