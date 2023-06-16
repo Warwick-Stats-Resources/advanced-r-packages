@@ -1,12 +1,12 @@
 ---
-title: SESSION TITLE
-subtitle: Advanced R
+title: Package Check and Documentation
+subtitle: R Packages
 author: 
   - name: Heather Turner and Ella Kaye
   - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: yyyy-MM-dd
+date: 2023-06-21
 date-format: long
 format: 
   warwickpres-revealjs:
@@ -17,18 +17,437 @@ format:
 
 ## Overview
 
--   What we're covering
+- Check your package!
+- DESCRIPTION
+- README
+- Continuous Integration (CI)
+- Vignettes
 
-# Section {background-color="#552D62"}
+# Check you package! {.inverse}
 
-# End Matter {background-color="#552D62"}
+## R CMD check
 
-## Resources
+`R CMD check` is the command line utility provided by R to check R packages.
 
-Material inspired by and remixed from:
+It checks that all the components are valid and consistent with each other, in particular:
 
-- 
+-   Metadata in DESCRIPTION
+-   Imports and exports in NAMESPACE
+-   `.Rd` files in `/man`
+
+It will also run any examples and tests you have written.
+
+`devtools::check()` will run `R CMD check` in the background, with the results shown in the Build pane.
+
+::: notes
+Note that this doesn't check the correctness of code - this is the role of tests
+:::
+
+## Run `devtools::check()`
+
+You will get lots of output. It will end with:
+
+```         
+-- R CMD check results ---------- mypackage 0.0.0.9000 ----
+Duration: 9.3s
+
+> checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+  Standardizable: FALSE
+
+0 errors √ | 1 warnings x | 0 notes √
+```
+
+We haven't yet specified a license for our package.
+
+::: notes
+On running `check()` you may get an error if you are using a networked drive. There's a fix coming in a few slides.
+:::
+
+## Aside: in case of error
+
+On running `devtools::check()` you may get an error of the form
+
+```         
+Updating mypackage documentation  
+Error: The specified file is not readable: path-to\mypackage\NAMESPACE  
+```
+
+This can happen if your repo is on a networked drive.
+
+This is covered in this [Stackoverflow question](https://stackoverflow.com/questions/40530968/overwriting-namespace-and-rd-with-roxygen2) and can be fixed.
+
+## Aside: a fix for networked drives
+
+1.  Save a copy of this file: [fix_for_networked_drives.R](../../R/fix_for_networked_drives.R)
+
+    Save it somewhere other than the `mypackage` directory
+
+2.  Open the file from the `mypackage` project session
+
+3.  Run the whole file
+
+You should now find that `devtools::check()` proceeds normally.
+
+## Types of problem
+
+<br>
+
+|             |                                               |
+|-------------|-----------------------------------------------|
+| **ERROR**   | Must fix to get the code/example/test working |
+| **WARNING** | Fix if sharing with others                    |
+| **NOTE**    | Fix if submitting to CRAN                     |
+
+<br>
+
+It is possible to submit to CRAN with a NOTE, but it's best avoided.
+
+::: notes
+NOTES best avoid for CRAN as they require a person to respond. One unavoidable case of a NOTE on CRAN submission: first submission of a package
+:::
+
+# DESCRIPTION {.inverse}
+
+::: {.notes}
+The are two types of documentation: package level and function level.
+
+The DESCRIPTION file provides some of the package level documentation (or metadata)
+:::
+
+## Metadata in `DESCRIPTION`
+
+- **Package**: The package name. The `changer` package can help you change the name!
+-  **Title**: One line, title case, with no period. Fewer than 65 characters.
+-  **Version**
+    - for release: MAJOR.MINOR.PATCH version.
+    - for development version building on version MAJOR.MINOR.PATCH, use: MAJOR.MINOR.PATCH.9000
+    - can be filled in with `usethis::use_version()`
+
+::: {.notes}
+
+Given a version number MAJOR.MINOR.PATCH, increment the:
+
+MAJOR version when you make incompatible API changes,
+MINOR version when you add functionality in a backwards compatible manner, and
+PATCH version when you make backwards compatible bug fixes.
+
+Will see usethis::use_version() in session on publication
+:::
+   
+## Metadata in `DESCRIPTION`
+
+:::{.smaller90}
+- **Authors@R**: A call to `person()` that is run to create the Author field when the package tarball is built. "aut" means author, "cre" means creator (maintainer), "ctb" means contributor. 
+
+  A placeholder call to `person()` is inserted in `DESCRIPTION` when a package is created with `usethis::create_package()` which can be edited directly:
+
+  ```{r, eval = FALSE}
+  person("A", "Person", email = "a.person@email.com", 
+         role = c("aut", "cre"),
+         comment = c(ORCID = "0000-0001-2345-6789"))
+  ```
+
+  Alternatively, this can be overwritten with a call to `usethis::use_author()`:
+  
+  ```{r, eval = FALSE}
+  use_author("A", "Person", email = "a.person@email.com", 
+       role = c("aut", "cre"),
+       comment = c(ORCID = "0000-0001-2345-6789"))
+  ```
+:::
+
+::: {.notes}
+usethis::use_author() is new in usethis 2.2.0
+:::
+
+## Metadata in `DESCRIPTION`
+
+-  **Description**: One paragraph describing what the package does. Keep the width of the paragraph to 80 characters; indent subsequent lines with 4 spaces.
+-  **License**: Will discuss later
+-  **Encoding**: How to encode text, use UTF-8 encoding.
+-  **LazyData**: If `true` data sets in the package are stored in a database during package installation and loaded from the database as required. Recommended if shipping data with package -- `usethis::use_data()` will set this for you.
+
+::: {.notes}
+usethis::create_package() sets UTF-8 encoding
+
+lazy loading means that data is only loaded if needed.
+This means that they won’t occupy any memory until you use them.
+do NOT include LazyData: true in DESCRIPTION unless you actually ship data in your package. 
+:::
+
+## Open source licenses
+
+There are three main open source licenses:
+
+- CC0: “public domain”, best for data packages.
+
+  ```{r, eval = FALSE}
+  usethis::use_cc0_license()
+  ```
+- MIT: Free for anyone to do anything with (including bundling in closed source product).
+
+  ```{r, eval = FALSE}
+  usethis::use_mit_license()
+  ```
+- GPL: Changes and bundles must also be GPL
+  ```{r, eval = FALSE}
+  usethis::use_gpl_license()
+  ```
+  [If you are including someone else's GPL code directly, you must use GPL yourself.]{.smaller80}
+
+::: {.notes}
+https://bookdown.org/rdpeng/RProgDA/open-source-licensing.html
+
+somewhat personal down to how important you consider open source to be and what you are happy with people doing with your code
+
+Suggest academic: GPL; community/other: MIT  
+:::
+
+## Proprietary packages
+
+You can use `usethis::use_proprietary()` to make it clear that your package isn’t open source.
+
+```{r, eval = FALSE}
+usethis::use_proprietary(copyright_holder = "ACME Ltd")
+```
+
+In DESCRIPTION:
+```
+License: file LICENSE
+```
+In LICENSE:
+```
+Copyright 2023 ACME Ltd. All rights reserved.
+```
+
+## Your turn
+
+1. Open the DESCRIPTION file and add a title and description.
+2. Add yourself as an author and creator.
+3. Add an MIT license.
+4. Run the package check.
+5. Commit changes to GitHub.
+
+:::{.callout-tip}
+In RStudio, you can use the 'Go to file/function' box or Ctrl + . [period] and start typing a file name to open a file for editing.
+:::
+
+# README {.inverse}
+
+## README
+
+The README is the quick start guide to your package.
+
+It should include 
+
+ - a brief overview
+ - instructions on how to install the package
+ - a few examples
+ 
+You should be able to borrow from the DESCRIPTION and help files!
+
+It's readable on the package's GitHub repo and on the homepage of its website (more on that later).
+
+## Creating a README
+
+**usethis** has functions to set up a README with/without R code
+
+```r
+usethis::use_readme_rmd()
+usethis::use_readme_md()
+```
+
+`README.Rmd` must be rendered to make `README.md` each time it 
+is changed.
+
+`usethis::use_readme_rmd()` creates a _pre-commit hook_ to check if `README.Rmd` and `README.md` are out of sync before committing.
+
+Use `build_readme()` to render with the latest version of the code.
+
+::: {.notes}
+`build_readme` creates a temporary version of the package
+:::
+
+# Continuous Integration (CI) {.inverse}
+
+::: {.notes}
+The practice of merging new code into the repository and running checks each time is known as Continuous Integration.
+:::
+
+## Running automatic checks
+
+GitHub Actions (GHAs) allow you to run code every time you push to GitHub. 
+
+The most useful ones for packages can be selected from a call to `usethis::use_github_action()`:
+
+```{.r}
+use_github_action()
+```
+
+```
+Which action do you want to add? (0 to exit)
+(See <https://github.com/r-lib/actions/tree/v2/examples> for other options) 
+
+1: check-standard: Run `R CMD check` on Linux, macOS, and Windows
+2: test-coverage: Compute test coverage and report to https://about.codecov.io
+3: pr-commands: Add /document and /style commands for pull requests
+```
+
+`check-standard` sets up a GHA that runs `R CMD check` with the latest release of R on Linux, Mac, and Windows and with both the previous release and development release of R on Linux.
+
+::: {.notes}
+This behaviour of `use_github_action()` is new in usethis 2.2.
+
+`use_github_actions()` is deprecated.
+:::
+
+## [`use_github_action("check-release")`]{.smaller90}
+
+The `check-standard` GHA is best-practice for 'serious' projects, e.g. those aiming for CRAN, but is overkill for our purposes. 
+
+We can set up a simpler GHA by specifying an alternative:
+
+```{.r}
+use_github_action("check-release")
+```
+
+This sets up a bare-minimum workflow that runs `R CMD check` with the latest release of R on Linux.
+
+It's good for simple package with no OS-sepcific code, and if you want a quick start with R CI.
+
+::: {.notes}
+i.e. it's perfect for us!  
+:::
+
+## Your turn
+
+1. Create a README for `mypackage` with `usethis::use_readme_rmd()`.
+2. Fill in the description and an example.
+3. Try adding the README in a git commit -- it should fail!. Render the README with `build_readme()`, then add both `README.Rmd` and `README.md` in a git commit.
+4. Run `usethis::use_github_action("check-release")`. It adds a badge to the README, so you will need to render the README again.
+5. Commit all the changes to git.
+
+# Vignettes {.inverse}
+
+## Vignettes
+
+Vignettes are long-form documentation for your package.
+
+They use R markdown to integrate code and output into the documentation. Typically:
+
+ - A single/main vignette showing a complete workflow. 
+ - Optional further vignette(s) going deeper on one aspect/application
+ - Optional further vignette(s) for specialist audience (methodologists or developers)
+ 
+A vignette with the same name as the package (e.g., `vignettes/mypackage.Rmd` or `vignettes/articles/mypackage.Rmd`) automatically becomes a top-level "Get started" link.
+ 
+::: {.notes}
+Fairly short read ~10 minutes
+::: 
+
+## `use_vignette()`
+
+Easiest way to get started is with `usethis::use_vignette()`
+
+```r
+usethis::use_vignette("name")
+```
+
+Adds to DESCRIPTION
+
+<pre>
+Suggests: knitr
+VignetteBuilder: knitr
+</pre>
+
+Creates `vignettes/`
+
+Drafts `vignettes/name.Rmd`
+
+::: {.notes}
+Needs to be .Rmd not .qmd. Quarto is no R-specific and CRAN can't publish .qmd files.  
+:::
+
+## Vignette = Rmarkdown + special metadata
+
+```
+---
+title: "Vignette Title"
+author: "Vignette author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+%\VignetteIndexEntry{Vignette Title}
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteEncoding{UTF-8}
+---
+
+```
+* `html_vignette` output uses a custom style sheet to keep the file size of the 
+HTML as small as possible.
+* The `vignette:` field contains special metadata needed when the package is 
+built. **Don't forget to change the title here too!**
+
+# End matter {.inverse}
+
+## References
+
+Wickham, H and Bryan, J, *R Packages* (2nd edn, in progress), <https://r-pkgs.org>.
+
+R Core Team, *Writing R Extensions*, <https://cran.r-project.org/doc/manuals/r-release/R-exts.html>
 
 ## License
 
 Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target="_blank"}).
+
+```{=html}
+<!-- needs to be last chunk of presentation otherwise creates an extra slide -->
+<!-- requires Quarto v1.3 -->
+<!-- tint80 for border, tint20 for title -->
+<!-- this should hopefully no longer be necessary in Quarto 1.4 -->
+<!-- https://github.com/quarto-dev/quarto-cli/issues/5038 -->
+<style type="text/css">
+div.callout-note {
+  border-left-color: #336695 !important;
+}
+
+div.callout-note.callout-style-default .callout-title {
+  background-color: #CCD9E4 !important;
+}
+
+div.callout-caution {
+  border-left-color: #AE4240 !important;
+}
+
+div.callout-caution.callout-style-default .callout-title {
+  background-color: #ebd0cf !important;
+}
+
+div.callout-tip {
+  border-left-color: #618157 !important;
+}
+
+div.callout-tip.callout-style-default .callout-title {
+  background-color: #d8e0d5 !important;
+}
+
+div.callout-important {
+  border-left-color: #775781 !important;
+}
+
+div.callout-important.callout-style-default .callout-title {
+  background-color: #ddd5e0 !important;
+}
+
+div.callout-warning {
+  border-left-color: #956133 !important;
+}
+
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #e4d8cc !important;
+}
+</style>
+```
