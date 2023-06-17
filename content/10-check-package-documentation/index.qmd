@@ -6,8 +6,6 @@ date: 2023-06-21T11:00:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/10-check-package-documentation/index.qmd){target="_blank"} in a new window. 
@@ -39,3 +37,7 @@ Here are the slides embedded:
 - **usethis**
 
   <https://usethis.r-lib.org>
+  
+- **pkgdown**
+
+  <https://pkgdown.r-lib.org>

@@ -22,6 +22,8 @@ format:
 - README
 - Continuous Integration (CI)
 - Vignettes
+- NEW
+- Package website with pkgdown 
 
 # Check you package! {.inverse}
 
@@ -387,7 +389,9 @@ Creates `vignettes/`
 Drafts `vignettes/name.Rmd`
 
 ::: {.notes}
-Needs to be .Rmd not .qmd. Quarto is no R-specific and CRAN can't publish .qmd files.  
+use_vignette() will fill both title fields with the "name" of the file, but you'll want to edit to something more descriptive.
+
+Needs to be .Rmd not .qmd. Quarto is not R-specific and CRAN can't publish .qmd files.  
 :::
 
 ## Vignette = Rmarkdown + special metadata
@@ -413,6 +417,138 @@ built. **Don't forget to change the title here too!**
 ## Vignette workflow
 
 ![](images/vignette_workflow.png){fig-align="center"}
+
+::: {.notes}
+Need to install package so can call with `library()`  
+:::
+
+## Your turn
+
+1. Install your **animalsounds** package and restart R (Install button).
+2. Create a simple vignette, `animalsounds`, that shows how to use `animal_sounds()`.
+3. Fix the "vignette title" in the YAML header.
+4. Knit the vignette to preview it.
+5. Run `devtools::install(build_vignettes = TRUE)` to install the package with the vignettes. Call `browseVignettes("animalsounds")` to open your vignette.
+6. Commit your changes to git.
+
+# NEWS {.inverse}
+
+## Track changes in a NEWS file
+
+```{r, eval = FALSE}
+usethis::use_news_md()
+```
+
+Add news for the latest version at the top.
+
+Use a top-level heading for each release version
+
+```r
+# animalsounds 1.0.0
+```
+
+
+## What news to include
+
+Add each change in a bulleted list:
+
+- If you have many changes, split into subsections (e.g.
+    `## Major changes`, `## Minor improvements`, `## Bug fixes`).
+- Wait until release to decide if subsections are necessary
+ 
+Note connections to GitHub:
+
+ - If related to a GitHub issue, add the issue number, e.g. (`#10`). 
+ - If related to a pull request, add the pull request number and the author, e.g. (`#101, @hadley`). 
+
+#  Package website with pkgdown {.inverse}
+
+## A package website pkgdown
+
+The **pkgdown** package is designed to make it quick and easy to build a website for your package:
+
+```{r, eval = FALSE}
+usethis::use_pkgdown()
+```
+
+Why have a website for your package?
+
+  - Google-ability
+  - Easy-to-read and browse documentation and package information in one place
+  - Examples with output!
+  
+## Build a website
+
+`pkgdown::build_site()` creates a package website based on the 
+standard documentation files.
+
+**Home page**: based on README
+
+**Reference**: 
+
+ - one page for each help file
+ - generates an index page, with functions listed alphabetically by default 
+ 
+::: {.notes}
+For packages with lots of functions, it's good to organise them by theme or functionality.
+:::
+
+## Build a website (ctd)
+
+**Articles**: one page for each vignette
+
+**Get Started**: if you have a vignette with filename = package name
+
+**News**: based on NEWS.md
+
+Plus:
+
+ - A link to your GitHub repo (if listed in the DESCRIPTION url field).
+ - A link to the License
+ - Any badges added to your README (e.g. from GitHub Actions)
+
+## Hosting your website
+
+- You can host your website directly from its GitHub repo
+- The recommended approach is to let GitHub build your page (instead of calling `pkgdown::build_site()` and committing and pushing the artifacts of the built website (i.e., html files) to GitHub
+- Add an action to your GitHub repo to be run automatically every time you push to it to rebuild the site:
+
+  ```{.r}
+  usethis::use_pkgdown_github_pages()
+  ```
+
+- The URL will be https://USERNAME.github.io/animalsounds  
+  
+::: {.notes}
+use_pkgdown_github_pages() will:
+
+ - call `use_pkgdown()` - allow it to overwrite existing `_pkgdown.yml` (will add the url)
+ - set up a `gh-pages` branch from which to deploy the site
+ - add a `pkgdown.yml` to .github/workflows
+
+Will still need to call `pkgdown::build_site()` to preview locally
+:::
+
+## Customising your website
+
+You can add more information to `_pkgdown.yml` to customise the package website:
+
+- curate the index for the Reference page - functions can be grouped and described in categories
+
+  <https://pkgdown.r-lib.org/articles/pkgdown.html#reference>
+
+- customise the appearance
+
+  <https://pkgdown.r-lib.org/articles/customise.html>
+
+## Your turn
+
+1. Run `usethis::use_pkgdown_github_pages()` -- this will ask you to install **pkgdown** if you don't already have it.
+2. Read through all the output in the console to see the many things that this function does. 
+3. Look at the diffs in the Git pane. Commit and push all changes.
+4. Go to your GitHub repo of the package. Click on **Actions**. If there's a green tick next to "pages build and deployment" then your site is ready to view!
+5. Click on the link to the website under the **About** section of the repo.
+6. (Bonus) Change the appearance of the site with a Bootswatch theme: <https://pkgdown.r-lib.org/articles/customise.html#bootswatch-themes>. 
 
 # End matter {.inverse}
 
