@@ -420,6 +420,8 @@ Department of Statistics, University of Warwick
 <li>README</li>
 <li>Continuous Integration (CI)</li>
 <li>Vignettes</li>
+<li>NEW</li>
+<li>Package website with pkgdown</li>
 </ul>
 </section>
 <section>
@@ -888,7 +890,8 @@ VignetteBuilder: knitr
 <p>Creates <code>vignettes/</code></p>
 <p>Drafts <code>vignettes/name.Rmd</code></p>
 <aside class="notes">
-<p>Needs to be .Rmd not .qmd. Quarto is no R-specific and CRAN can’t publish .qmd files.</p>
+<p>use_vignette() will fill both title fields with the “name” of the file, but you’ll want to edit to something more descriptive.</p>
+<p>Needs to be .Rmd not .qmd. Quarto is not R-specific and CRAN can’t publish .qmd files.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -906,7 +909,7 @@ VignetteBuilder: knitr
 <pre><code>---
 title: "Vignette Title"
 author: "Vignette author"
-date: "2023-06-16"
+date: "2023-06-17"
 output: rmarkdown::html_vignette
 vignette: &gt;
 %\VignetteIndexEntry{Vignette Title}
@@ -922,7 +925,161 @@ vignette: &gt;
 <section id="vignette-workflow" class="slide level2">
 <h2>Vignette workflow</h2>
 
-<img data-src="images/vignette_workflow.png" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="images/vignette_workflow.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>Need to install package so can call with <code>library()</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-2" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Install your <strong>animalsounds</strong> package and restart R (Install button).</li>
+<li>Create a simple vignette, <code>animalsounds</code>, that shows how to use <code>animal_sounds()</code>.</li>
+<li>Fix the “vignette title” in the YAML header.</li>
+<li>Knit the vignette to preview it.</li>
+<li>Run <code>devtools::install(build_vignettes = TRUE)</code> to install the package with the vignettes. Call <code>browseVignettes("animalsounds")</code> to open your vignette.</li>
+<li>Commit your changes to git.</li>
+</ol>
+</section></section>
+<section>
+<section id="news" class="title-slide slide level1 inverse center">
+<h1>NEWS</h1>
+
+</section>
+<section id="track-changes-in-a-news-file" class="slide level2">
+<h2>Track changes in a NEWS file</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>usethis<span class="sc">::</span><span class="fu">use_news_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Add news for the latest version at the top.</p>
+<p>Use a top-level heading for each release version</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># animalsounds 1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="what-news-to-include" class="slide level2">
+<h2>What news to include</h2>
+<p>Add each change in a bulleted list:</p>
+<ul>
+<li>If you have many changes, split into subsections (e.g. <code>## Major changes</code>, <code>## Minor improvements</code>, <code>## Bug fixes</code>).</li>
+<li>Wait until release to decide if subsections are necessary</li>
+</ul>
+<p>Note connections to GitHub:</p>
+<ul>
+<li>If related to a GitHub issue, add the issue number, e.g.&nbsp;(<code>#10</code>).</li>
+<li>If related to a pull request, add the pull request number and the author, e.g.&nbsp;(<code>#101, @hadley</code>).</li>
+</ul>
+</section></section>
+<section>
+<section id="package-website-with-pkgdown" class="title-slide slide level1 inverse center">
+<h1>Package website with pkgdown</h1>
+
+</section>
+<section id="a-package-website-pkgdown" class="slide level2">
+<h2>A package website pkgdown</h2>
+<p>The <strong>pkgdown</strong> package is designed to make it quick and easy to build a website for your package:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Why have a website for your package?</p>
+<ul>
+<li>Google-ability</li>
+<li>Easy-to-read and browse documentation and package information in one place</li>
+<li>Examples with output!</li>
+</ul>
+</section>
+<section id="build-a-website" class="slide level2">
+<h2>Build a website</h2>
+<p><code>pkgdown::build_site()</code> creates a package website based on the standard documentation files.</p>
+<p><strong>Home page</strong>: based on README</p>
+<p><strong>Reference</strong>:</p>
+<ul>
+<li>one page for each help file</li>
+<li>generates an index page, with functions listed alphabetically by default</li>
+</ul>
+<aside class="notes">
+<p>For packages with lots of functions, it’s good to organise them by theme or functionality.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="build-a-website-ctd" class="slide level2">
+<h2>Build a website (ctd)</h2>
+<p><strong>Articles</strong>: one page for each vignette</p>
+<p><strong>Get Started</strong>: if you have a vignette with filename = package name</p>
+<p><strong>News</strong>: based on NEWS.md</p>
+<p>Plus:</p>
+<ul>
+<li>A link to your GitHub repo (if listed in the DESCRIPTION url field).</li>
+<li>A link to the License</li>
+<li>Any badges added to your README (e.g.&nbsp;from GitHub Actions)</li>
+</ul>
+</section>
+<section id="hosting-your-website" class="slide level2">
+<h2>Hosting your website</h2>
+<ul>
+<li><p>You can host your website directly from its GitHub repo</p></li>
+<li><p>The recommended approach is to let GitHub build your page (instead of calling <code>pkgdown::build_site()</code> and committing and pushing the artifacts of the built website (i.e., html files) to GitHub</p></li>
+<li><p>Add an action to your GitHub repo to be run automatically every time you push to it to rebuild the site:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The URL will be https://USERNAME.github.io/animalsounds</p></li>
+</ul>
+<aside class="notes">
+<p>use_pkgdown_github_pages() will:</p>
+<ul>
+<li>call <code>use_pkgdown()</code> - allow it to overwrite existing <code>_pkgdown.yml</code> (will add the url)</li>
+<li>set up a <code>gh-pages</code> branch from which to deploy the site</li>
+<li>add a <code>pkgdown.yml</code> to .github/workflows</li>
+</ul>
+<p>Will still need to call <code>pkgdown::build_site()</code> to preview locally</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="customising-your-website" class="slide level2">
+<h2>Customising your website</h2>
+<p>You can add more information to <code>_pkgdown.yml</code> to customise the package website:</p>
+<ul>
+<li><p>curate the index for the Reference page - functions can be grouped and described in categories</p>
+<p><a href="https://pkgdown.r-lib.org/articles/pkgdown.html#reference" class="uri">https://pkgdown.r-lib.org/articles/pkgdown.html#reference</a></p></li>
+<li><p>customise the appearance</p>
+<p><a href="https://pkgdown.r-lib.org/articles/customise.html" class="uri">https://pkgdown.r-lib.org/articles/customise.html</a></p></li>
+</ul>
+</section>
+<section id="your-turn-3" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Run <code>usethis::use_pkgdown_github_pages()</code> – this will ask you to install <strong>pkgdown</strong> if you don’t already have it.</li>
+<li>Read through all the output in the console to see the many things that this function does.</li>
+<li>Look at the diffs in the Git pane. Commit and push all changes.</li>
+<li>Go to your GitHub repo of the package. Click on <strong>Actions</strong>. If there’s a green tick next to “pages build and deployment” then your site is ready to view!</li>
+<li>Click on the link to the website under the <strong>About</strong> section of the repo.</li>
+<li>(Bonus) Change the appearance of the site with a Bootswatch theme: <a href="https://pkgdown.r-lib.org/articles/customise.html#bootswatch-themes" class="uri">https://pkgdown.r-lib.org/articles/customise.html#bootswatch-themes</a>.</li>
+</ol>
+</section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
 <h1>End matter</h1>

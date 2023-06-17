@@ -46,7 +46,7 @@
     "href": "slides/10-check-package-documentation/index.html#overview",
     "title": "Package Check and Documentation",
     "section": "Overview",
-    "text": "Overview\n\nCheck your package!\nDESCRIPTION\nREADME\nContinuous Integration (CI)\nVignettes"
+    "text": "Overview\n\nCheck your package!\nDESCRIPTION\nREADME\nContinuous Integration (CI)\nVignettes\nNEW\nPackage website with pkgdown"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#r-cmd-check",
@@ -179,21 +179,84 @@
     "href": "slides/10-check-package-documentation/index.html#use_vignette",
     "title": "Package Check and Documentation",
     "section": "use_vignette()",
-    "text": "use_vignette()\nEasiest way to get started is with usethis::use_vignette()\nusethis::use_vignette(\"name\")\nAdds to DESCRIPTION\nSuggests: knitr\nVignetteBuilder: knitr\n\nCreates vignettes/\nDrafts vignettes/name.Rmd\n\nNeeds to be .Rmd not .qmd. Quarto is no R-specific and CRAN can’t publish .qmd files."
+    "text": "use_vignette()\nEasiest way to get started is with usethis::use_vignette()\nusethis::use_vignette(\"name\")\nAdds to DESCRIPTION\nSuggests: knitr\nVignetteBuilder: knitr\n\nCreates vignettes/\nDrafts vignettes/name.Rmd\n\nuse_vignette() will fill both title fields with the “name” of the file, but you’ll want to edit to something more descriptive.\nNeeds to be .Rmd not .qmd. Quarto is not R-specific and CRAN can’t publish .qmd files."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#vignette-rmarkdown-special-metadata",
     "href": "slides/10-check-package-documentation/index.html#vignette-rmarkdown-special-metadata",
     "title": "Package Check and Documentation",
     "section": "Vignette = Rmarkdown + special metadata",
-    "text": "Vignette = Rmarkdown + special metadata\n---\ntitle: \"Vignette Title\"\nauthor: \"Vignette author\"\ndate: \"2023-06-16\"\noutput: rmarkdown::html_vignette\nvignette: &gt;\n%\\VignetteIndexEntry{Vignette Title}\n%\\VignetteEngine{knitr::rmarkdown}\n%\\VignetteEncoding{UTF-8}\n---\n\n\nhtml_vignette output uses a custom style sheet to keep the file size of the HTML as small as possible.\nThe vignette: field contains special metadata needed when the package is built. Don’t forget to change the title here too!"
+    "text": "Vignette = Rmarkdown + special metadata\n---\ntitle: \"Vignette Title\"\nauthor: \"Vignette author\"\ndate: \"2023-06-17\"\noutput: rmarkdown::html_vignette\nvignette: &gt;\n%\\VignetteIndexEntry{Vignette Title}\n%\\VignetteEngine{knitr::rmarkdown}\n%\\VignetteEncoding{UTF-8}\n---\n\n\nhtml_vignette output uses a custom style sheet to keep the file size of the HTML as small as possible.\nThe vignette: field contains special metadata needed when the package is built. Don’t forget to change the title here too!"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#vignette-workflow",
     "href": "slides/10-check-package-documentation/index.html#vignette-workflow",
     "title": "Package Check and Documentation",
     "section": "Vignette workflow",
-    "text": "Vignette workflow"
+    "text": "Vignette workflow\n\n\nNeed to install package so can call with library()"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#your-turn-2",
+    "href": "slides/10-check-package-documentation/index.html#your-turn-2",
+    "title": "Package Check and Documentation",
+    "section": "Your turn",
+    "text": "Your turn\n\nInstall your animalsounds package and restart R (Install button).\nCreate a simple vignette, animalsounds, that shows how to use animal_sounds().\nFix the “vignette title” in the YAML header.\nKnit the vignette to preview it.\nRun devtools::install(build_vignettes = TRUE) to install the package with the vignettes. Call browseVignettes(\"animalsounds\") to open your vignette.\nCommit your changes to git."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#track-changes-in-a-news-file",
+    "href": "slides/10-check-package-documentation/index.html#track-changes-in-a-news-file",
+    "title": "Package Check and Documentation",
+    "section": "Track changes in a NEWS file",
+    "text": "Track changes in a NEWS file\n\nusethis::use_news_md()\n\nAdd news for the latest version at the top.\nUse a top-level heading for each release version\n# animalsounds 1.0.0"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#what-news-to-include",
+    "href": "slides/10-check-package-documentation/index.html#what-news-to-include",
+    "title": "Package Check and Documentation",
+    "section": "What news to include",
+    "text": "What news to include\nAdd each change in a bulleted list:\n\nIf you have many changes, split into subsections (e.g. ## Major changes, ## Minor improvements, ## Bug fixes).\nWait until release to decide if subsections are necessary\n\nNote connections to GitHub:\n\nIf related to a GitHub issue, add the issue number, e.g. (#10).\nIf related to a pull request, add the pull request number and the author, e.g. (#101, @hadley)."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#a-package-website-pkgdown",
+    "href": "slides/10-check-package-documentation/index.html#a-package-website-pkgdown",
+    "title": "Package Check and Documentation",
+    "section": "A package website pkgdown",
+    "text": "A package website pkgdown\nThe pkgdown package is designed to make it quick and easy to build a website for your package:\n\nusethis::use_pkgdown()\n\nWhy have a website for your package?\n\nGoogle-ability\nEasy-to-read and browse documentation and package information in one place\nExamples with output!"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#build-a-website",
+    "href": "slides/10-check-package-documentation/index.html#build-a-website",
+    "title": "Package Check and Documentation",
+    "section": "Build a website",
+    "text": "Build a website\npkgdown::build_site() creates a package website based on the standard documentation files.\nHome page: based on README\nReference:\n\none page for each help file\ngenerates an index page, with functions listed alphabetically by default\n\n\nFor packages with lots of functions, it’s good to organise them by theme or functionality."
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#build-a-website-ctd",
+    "href": "slides/10-check-package-documentation/index.html#build-a-website-ctd",
+    "title": "Package Check and Documentation",
+    "section": "Build a website (ctd)",
+    "text": "Build a website (ctd)\nArticles: one page for each vignette\nGet Started: if you have a vignette with filename = package name\nNews: based on NEWS.md\nPlus:\n\nA link to your GitHub repo (if listed in the DESCRIPTION url field).\nA link to the License\nAny badges added to your README (e.g. from GitHub Actions)"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#hosting-your-website",
+    "href": "slides/10-check-package-documentation/index.html#hosting-your-website",
+    "title": "Package Check and Documentation",
+    "section": "Hosting your website",
+    "text": "Hosting your website\n\nYou can host your website directly from its GitHub repo\nThe recommended approach is to let GitHub build your page (instead of calling pkgdown::build_site() and committing and pushing the artifacts of the built website (i.e., html files) to GitHub\nAdd an action to your GitHub repo to be run automatically every time you push to it to rebuild the site:\nusethis::use_pkgdown_github_pages()\nThe URL will be https://USERNAME.github.io/animalsounds\n\n\nuse_pkgdown_github_pages() will:\n\ncall use_pkgdown() - allow it to overwrite existing _pkgdown.yml (will add the url)\nset up a gh-pages branch from which to deploy the site\nadd a pkgdown.yml to .github/workflows\n\nWill still need to call pkgdown::build_site() to preview locally"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#customising-your-website",
+    "href": "slides/10-check-package-documentation/index.html#customising-your-website",
+    "title": "Package Check and Documentation",
+    "section": "Customising your website",
+    "text": "Customising your website\nYou can add more information to _pkgdown.yml to customise the package website:\n\ncurate the index for the Reference page - functions can be grouped and described in categories\nhttps://pkgdown.r-lib.org/articles/pkgdown.html#reference\ncustomise the appearance\nhttps://pkgdown.r-lib.org/articles/customise.html"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#your-turn-3",
+    "href": "slides/10-check-package-documentation/index.html#your-turn-3",
+    "title": "Package Check and Documentation",
+    "section": "Your turn",
+    "text": "Your turn\n\nRun usethis::use_pkgdown_github_pages() – this will ask you to install pkgdown if you don’t already have it.\nRead through all the output in the console to see the many things that this function does.\nLook at the diffs in the Git pane. Commit and push all changes.\nGo to your GitHub repo of the package. Click on Actions. If there’s a green tick next to “pages build and deployment” then your site is ready to view!\nClick on the link to the website under the About section of the repo.\n(Bonus) Change the appearance of the site with a Bootswatch theme: https://pkgdown.r-lib.org/articles/customise.html#bootswatch-themes."
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#references",
@@ -2475,21 +2538,21 @@
     "href": "content/10-check-package-documentation/index.html",
     "title": "Package Check and Documentation",
     "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#slides",
     "href": "content/10-check-package-documentation/index.html#slides",
     "title": "Package Check and Documentation",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/10-check-package-documentation/index.html#resources",
     "href": "content/10-check-package-documentation/index.html#resources",
     "title": "Package Check and Documentation",
     "section": "Resources",
-    "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org"
+    "text": "Resources\n\nReading\n\nWickham, H and Bryan, J, R Packages (2nd edn, in progress)\nhttps://r-pkgs.org\nR Core Team, Writing R Extensions\nhttps://cran.r-project.org/doc/manuals/r-release/R-exts.html\n\n\n\nPackages\n\ndevtools\nhttps://devtools.r-lib.org\nusethis\nhttps://usethis.r-lib.org\npkgdown\nhttps://pkgdown.r-lib.org"
   },
   {
     "objectID": "content/08-documentation/index.html",
