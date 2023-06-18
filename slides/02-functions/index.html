@@ -476,11 +476,11 @@ NULL</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -10.51262  11.04532  14.74040  14.29419 -10.01192</code></pre>
+<pre><code>[1]   0.1933526 -14.9810061  -1.8654243  -1.1631522  19.8744419</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.013509  6.566646 15.287974 -3.440278 20.330463</code></pre>
+<pre><code>[1]  4.172314  8.553952  3.585243 -5.532992 -4.600826</code></pre>
 </div>
 </div>
 <p>So naming and order is important! Some guidelines</p>
@@ -975,6 +975,19 @@ Browse[2]&gt; x
 <p>Run <code>f(10)</code> again - there is another error! Can you fix this directly given the error message?</p>
 <p>Try running <code>f(1)</code> - is the result what you expected? Use <code>debugonce()</code> to set debugging on <code>f()</code> and re-run <code>f(1)</code>. Step through the function, printing each object as it is created to see what is happening.</p>
 <p>Can you think how to improve the function? See if you can modify the function to give a sensible result for any integer.</p>
+<aside class="notes">
+<p>Won’t have seen <code>apply</code> in this course yet - that’s covered in Session 4. Maybe they’ll already know it, otherwise instructor can help, or point towards ?apply</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">

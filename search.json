@@ -991,7 +991,7 @@
     "href": "slides/02-functions/index.html#name-and-order-of-arguments",
     "title": "Functions",
     "section": "Name and order of arguments",
-    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1] -10.51262  11.04532  14.74040  14.29419 -10.01192\n\nrnorm(5, sd = 10)\n\n[1] -4.013509  6.566646 15.287974 -3.440278 20.330463\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
+    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1]   0.1933526 -14.9810061  -1.8654243  -1.1631522  19.8744419\n\nrnorm(5, sd = 10)\n\n[1]  4.172314  8.553952  3.585243 -5.532992 -4.600826\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
   },
   {
     "objectID": "slides/02-functions/index.html#using-arguments",
@@ -1180,7 +1180,7 @@
     "href": "slides/02-functions/index.html#exercise-3",
     "title": "Functions",
     "section": "Exercise 3",
-    "text": "Exercise 3\nOpen debug_practice.R and source the function f().\nTry to run f(10) - there’s an error! Use traceback() to see which function call generated the error, then fix the problem.\nRun f(10) again - there is another error! Can you fix this directly given the error message?\nTry running f(1) - is the result what you expected? Use debugonce() to set debugging on f() and re-run f(1). Step through the function, printing each object as it is created to see what is happening.\nCan you think how to improve the function? See if you can modify the function to give a sensible result for any integer."
+    "text": "Exercise 3\nOpen debug_practice.R and source the function f().\nTry to run f(10) - there’s an error! Use traceback() to see which function call generated the error, then fix the problem.\nRun f(10) again - there is another error! Can you fix this directly given the error message?\nTry running f(1) - is the result what you expected? Use debugonce() to set debugging on f() and re-run f(1). Step through the function, printing each object as it is created to see what is happening.\nCan you think how to improve the function? See if you can modify the function to give a sensible result for any integer.\n\nWon’t have seen apply in this course yet - that’s covered in Session 4. Maybe they’ll already know it, otherwise instructor can help, or point towards ?apply"
   },
   {
     "objectID": "slides/02-functions/index.html#references",
