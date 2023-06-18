@@ -427,7 +427,7 @@ traceback()
 ```
 
 ```{r, echo = FALSE}
-cat("2: f2(2) at #1\n1: f1(10)")
+cat("2: f2(x) at #1\n1: f1(10)")
 ```
 
 ## `traceback()` in RStudio
@@ -458,11 +458,11 @@ debugonce(f2)
 f1(10)
 ```
 ```{r, echo = FALSE}
-cat("debugging in: f2(2)\ndebug at #1: {\n    x + qqqq\n}\nBrowse[2]> ls()\n[1] \"x\"\nBrowse[2]> Q")
+cat("debugging in: f2(x)\ndebug at #1: {\n    x + qqqq\n}\nBrowse[2]> ls()\n[1] \"x\"\nBrowse[2]> x\n[1]> 10")
 ```
 
 When in debug mode type `n` or <kbd title = "enter">&#8629;</kbd> to step 
-to the next line and `c` to continue to the end of a loop or the end of the function.
+to the next line and `c` to continue to the end of a loop or the end of the function. `Q` quits the debugger.
 
 ## Breakpoints
 
