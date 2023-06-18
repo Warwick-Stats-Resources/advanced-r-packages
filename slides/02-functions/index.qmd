@@ -522,6 +522,10 @@ Try running `f(1)` - is the result what you expected? Use `debugonce()` to set d
 
 Can you think how to improve the function? See if you can modify the function to give a sensible result for any integer.
 
+::: {.notes}
+Won't have seen `apply` in this course yet - that's covered in Session 4. Maybe they'll already know it, otherwise instructor can help, or point towards ?apply  
+:::
+
 # End matter {.inverse}
 
 ## References
