@@ -382,7 +382,7 @@
     "href": "slides/08-documentation/index.html#your-turn",
     "title": "Function Documentation and Dependencies",
     "section": "Your turn",
-    "text": "Your turn\nFor the animal_sounds function:\n\n\nInsert a Roxygen skeleton using the RStudio helper.\nCreate a draft documentation file with devtools::document() or Cmd/Ctrl + Shift + D. If you get any warnings, make the necessary fixes.\nClick on “Diff” in the Git pane and view the changes that have been made.\nPreview the HTML help with ?animal_sounds.\nFill in the Roxygen skeleton for animal_sounds(), recreating the documentation file and previewing the HTML help to view your updates.\nWhen you have finished editing, run devtools::document() to ensure the .Rd file is in sync. Make a git commit with your updated R/animal_sounds.R file, the updated NAMESPACE, and the new man/animal_sounds.Rd file."
+    "text": "Your turn\nFor the animal_sounds function:\n\n\nInsert a Roxygen skeleton using the RStudio helper.\nCreate a draft documentation file with devtools::document() or Cmd/Ctrl + Shift + D.\nClick on “Diff” in the Git pane and view the changes that have been made.\nPreview the HTML help with ?animal_sounds.\nFill in the Roxygen skeleton for animal_sounds(), recreating the documentation file and previewing the HTML help to view your updates.\nWhen you have finished editing, run devtools::document() to ensure the .Rd file is in sync. Make a git commit with your updated R/animal_sounds.R file, the updated NAMESPACE, and the new man/animal_sounds.Rd file."
   },
   {
     "objectID": "slides/08-documentation/index.html#rd-markup",
@@ -396,21 +396,14 @@
     "href": "slides/08-documentation/index.html#using-markdown",
     "title": "Function Documentation and Dependencies",
     "section": "Using markdown",
-    "text": "Using markdown\nMost commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).\n\nText formatting: **bold**, _italic_, `code`\nCreate links\n\nTo a function in the same package: [func()]\nTo a function in a different package: [pkg::func()]\nWith different link text, e.g. [link text][func()]\n\n\nFor more details, see the (R)Markdown support vignette.\n\nSeems you no longer need to specify pkg:: - will find the documentation in any installed package. For functions in multiple packages, e.g. select() help pane will offer a choice. Probably still best practice to use pkg:: for disambiguation."
-  },
-  {
-    "objectID": "slides/08-documentation/index.html#view-documentation-with-links",
-    "href": "slides/08-documentation/index.html#view-documentation-with-links",
-    "title": "Function Documentation and Dependencies",
-    "section": "View documentation with links",
-    "text": "View documentation with links\nTo view the documentation with working links, we must install the package first."
+    "text": "Using markdown\nMost commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).\n\nText formatting: **bold**, _italic_, `code`\nCreate links\n\nTo a function in the same package: [func()]\nTo a function in a different package: [pkg::func()]\nWith different link text, e.g. [link text][func()]\n\n\nFor more details, see the (R)Markdown support vignette.\n\nSeems you no longer need to specify pkg:: - will find the documentation in any installed package. For functions in multiple packages, e.g. select() help pane will offer a choice. Probably still best practice to use pkg:: for disambiguation, though still may not be necessary for base functions"
   },
   {
     "objectID": "slides/08-documentation/index.html#your-turn-1",
     "href": "slides/08-documentation/index.html#your-turn-1",
     "title": "Function Documentation and Dependencies",
     "section": "Your turn",
-    "text": "Your turn\n\nAdd some details to the help page for animal_sounds(), with a link to paste0().\nVerify that no link is shown when recreating the documentation with the regular workflow.\nCreate the documentation with the second workflow and look at the help file. Does the link to paste0() work?\nCommit all your changes to the git repo.\n\n\nNow the link does seem to work when recreating the documentation with the regular workflow. Is this a change in the very latest RStudio (2023.06.0+421)?"
+    "text": "Your turn\n\nAdd some details to the help page for animal_sounds(), with a link to paste0() and some markdown syntax.\nAdd a link to a function from a package you don’t have installed (perhaps basemodels::dummy_classifier()).\nRun devtools::document() and check the link in the help page. What happens?\nRun devtools::check(). Does the link cause problems?\nDelete the link to the package you don’t have installed and run devtools::document() again.\nCommit all your changes to the git repo.\n\n\nIn 3, the link will still be created (and will work if you subsequently install the missing package). It’s a good idea to have the package installed so the link can be checked during R CMD check, otherwise you will get a NOTE."
   },
   {
     "objectID": "slides/08-documentation/index.html#dependencies-1",
@@ -655,7 +648,7 @@
     "href": "slides/11-data-publication-maintenance/index.html#run-as-cran-checks",
     "title": "Packaging Data; Publication and Maintenance",
     "section": "Run “as CRAN” checks",
-    "text": "Run “as CRAN” checks\nCRAN policies state that you must run R CMD check --as-cran on the tarball to be uploaded with the current version of R-devel.\nFirst make sure the package passes check locally:\ndevtools::check()\nThen allow some extra checks:\ndevtools::check(remote = TRUE, manual = TRUE)\nThen send to CRAN’s win-builder to check on R-devel\ndevtools::check_win_devel()\n\n\nFurther options: R-Hub (multiple platforms available, with different compilers) and Mac-builder (with M1)\ndevtools::check_rhub()\ndevtools::check_mac_release()"
+    "text": "Run “as CRAN” checks\nCRAN policies state that you must run R CMD check --as-cran on the tarball to be uploaded with the current version of R-devel.\nFirst make sure the package passes check locally:\ndevtools::check()\nThen allow some extra checks:\ndevtools::check(remote = TRUE, manual = TRUE)\nThen send to CRAN’s win-builder to check on R-devel\ndevtools::check_win_devel()\n\n\nFurther options: R-Hub (multiple platforms available, with different compilers) and Mac-builder (with M1)\ndevtools::check_rhub()\ndevtools::check_mac_release()\n\n\nIt’s possible that the way your libraries are set up can mask problems with check() on your local machine. For example, it’s important that your System Library just comes with base and recommended packages and that all packages that you install go in your user library. Aside: Installing R through rig takes care of this for you."
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#cran-comments.md",

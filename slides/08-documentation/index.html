@@ -667,7 +667,7 @@ export(fun1)</code></pre>
 <div class="smaller90">
 <ol type="1">
 <li>Insert a Roxygen skeleton using the RStudio helper.</li>
-<li>Create a draft documentation file with <code>devtools::document()</code> or <code>Cmd/Ctrl + Shift + D</code>. If you get any warnings, make the necessary fixes.</li>
+<li>Create a draft documentation file with <code>devtools::document()</code> or <code>Cmd/Ctrl + Shift + D</code>.</li>
 <li>Click on “Diff” in the Git pane and view the changes that have been made.</li>
 <li>Preview the HTML help with <code>?animal_sounds</code>.</li>
 <li>Fill in the Roxygen skeleton for <code>animal_sounds()</code>, recreating the documentation file and previewing the HTML help to view your updates.</li>
@@ -684,7 +684,7 @@ export(fun1)</code></pre>
 </section>
 <section id="using-markdown" class="slide level2">
 <h2>Using markdown</h2>
-<p>Most commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).</p>
+<p>Most commonly-used mark-up is easier with markdown (can be mixed with <code>.Rd</code> mark-up).</p>
 <ul>
 <li><p>Text formatting: <code>**bold**</code>, <code>_italic_</code>, <code>`code`</code></p></li>
 <li><p>Create links</p>
@@ -696,7 +696,7 @@ export(fun1)</code></pre>
 </ul>
 <p>For more details, see the <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html">(R)Markdown support</a> vignette.</p>
 <aside class="notes">
-<p>Seems you no longer need to specify <code>pkg::</code> - will find the documentation in any installed package. For functions in multiple packages, e.g.&nbsp;<code>select()</code> help pane will offer a choice. Probably still best practice to use <code>pkg::</code> for disambiguation.</p>
+<p>Seems you no longer need to specify <code>pkg::</code> - will find the documentation in any installed package. For functions in multiple packages, e.g.&nbsp;<code>select()</code> help pane will offer a choice. Probably still best practice to use <code>pkg::</code> for disambiguation, though still may not be necessary for base functions</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -709,21 +709,18 @@ export(fun1)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="view-documentation-with-links" class="slide level2">
-<h2>View documentation with links</h2>
-<p>To view the documentation with working links, we must install the package first.</p>
-
-<img data-src="images/documentation_workflow2.png" class="r-stretch quarto-figure-center"></section>
 <section id="your-turn-1" class="slide level2">
 <h2>Your turn</h2>
 <ol type="1">
-<li>Add some details to the help page for <code>animal_sounds()</code>, with a link to <code>paste0()</code>.</li>
-<li>Verify that no link is shown when recreating the documentation with the regular workflow.</li>
-<li>Create the documentation with the second workflow and look at the help file. Does the link to <code>paste0()</code> work?</li>
+<li>Add some details to the help page for <code>animal_sounds()</code>, with a link to <code>paste0()</code> and some markdown syntax.</li>
+<li>Add a link to a function from a package you don’t have installed (perhaps <code>basemodels::dummy_classifier()</code>).</li>
+<li>Run <code>devtools::document()</code> and check the link in the help page. What happens?</li>
+<li>Run <code>devtools::check()</code>. Does the link cause problems?</li>
+<li>Delete the link to the package you don’t have installed and run <code>devtools::document()</code> again.</li>
 <li>Commit all your changes to the git repo.</li>
 </ol>
 <aside class="notes">
-<p>Now the link does seem to work when recreating the documentation with the regular workflow. Is this a change in the very latest RStudio (2023.06.0+421)?</p>
+<p>In 3, the link will still be created (and will work if you subsequently install the missing package). It’s a good idea to have the package installed so the link can be checked during R CMD check, otherwise you will get a NOTE.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
