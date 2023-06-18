@@ -295,6 +295,8 @@ Seems you no longer need to specify `pkg::` - will find the documentation in any
 
 ::: {.notes}
 In 3, the link will still be created (and will work if you subsequently install the missing package). It's a good idea to have the package installed so the link can be checked during R CMD check, otherwise you will get a NOTE.
+
+**basemodels** was added to CRAN the week before the workshop was taught, so very likely to be the case that no-one present has it installed.
 :::
 
 # Dependencies {.inverse}
