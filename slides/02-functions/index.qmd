@@ -43,7 +43,7 @@ t_statistic <- function(n) {
 
 ## Naming functions
 
-As with arguments, function names are important:
+Function names are important:
 
 - use a name that describes what it returns (e.g. `t_statistic`) or what it does (e.g. `remove_na`)
 
@@ -82,26 +82,6 @@ So naming and order is important! Some guidelines
 - put rarely used arguments last, e.g. tolerance setting
 - use short but meaningful argument names
 - if relevant, use the same argument names as similar functions
-
-## Using arguments
-
-Arguments are used as objects in the function code.
-
-A new environment is created each time the function is called, separate 
-from the global workspace.
-
-```{r, error = TRUE}
-x <- 1
-y <- 3
-f <- function(x, y){
-    a <- 1
-    x <- x + a
-    x + y
-}
-f(x, y)
-x
-a
-```
 
 ## Return values (single)
 
@@ -171,8 +151,9 @@ Run this chunk to source the function, then run the `normal-QQ` chunk which uses
 
 ## Function environment
 
-A new environment is created each time the function is called, separate 
-from the global workspace.
+Arguments are used as objects in the function code.
+
+A new environment is created each time the function is called, separate from the global workspace.
 
 ```{r, error = TRUE}
 x <- 1
@@ -207,7 +188,7 @@ It is safest (and best practice) to use arguments rather than depend on global v
 
 ## Unspecified arguments
 
-`...` or the *ellipsis* allow unspecified arguments to be passed to the function. 
+`...` (the *ellipsis*) allow unspecified arguments to be passed to the function. 
 
 This device is used by functions that work with arbitrary numbers of objects, e.g. 
 ```{r}
