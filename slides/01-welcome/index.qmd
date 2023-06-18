@@ -1,5 +1,5 @@
 ---
-title: SESSION TITLE
+title: Welcome and Introduction
 subtitle: Advanced R
 author: 
   - name: Heather Turner and Ella Kaye
@@ -15,20 +15,113 @@ format:
       code-overflow: wrap
 ---
 
-## Overview
+# Hello! {.inverse .center-h}
 
--   What we're covering
+## Instructors
 
-# Section {background-color="#552D62"}
+:::: {.columns}
 
-# End Matter {background-color="#552D62"}
+::: {.column width="50%"}
+### Ella Kaye
 
-## Resources
+![](images/ellakaye-profile-less-cropped.jpeg){width=50%}
 
-Material inspired by and remixed from:
+:::{.smaller80}
+Research Software Engineer 
 
-- 
+Department of Statistics
 
-## License
+University of Warwick
 
-Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target="_blank"}).
+<https://warwick.ac.uk/ellakaye>
+:::
+:::
+
+::: {.column width="50%"}
+### Heather Turner
+
+![](images/heather_turner.jpg){width=50%}
+
+:::{.smaller80}
+RSE Fellow
+
+Department of Statistics
+
+University of Warwick
+
+<https://warwick.ac.uk/heatherturner>
+:::
+
+:::
+
+::::
+
+## Two workshops in one!
+
+- Advanced R
+
+- R Packages
+
+::: {.notes}
+Originally two-term's worth of materials
+
+Covering all this in three days - buckle up!
+:::
+
+## Course material
+
+- Website and slides 
+  
+  <https://Warwick-Stats-Resources.github.io/advanced-r-packages>
+  
+- Website and slides repo
+
+  <https://github.com/Warwick-Stats-Resources/advanced-r-packages>
+  
+- Exercises and additional material
+
+  <https://github.com/Warwick-Stats-Resources/Advanced-R-exercises>
+  
+## Schedule: Monday June 19th 
+
+:::{.smaller70}
+| Time         | Session                           | Presenter |
+|--------------|-----------------------------------| ----------|
+| 10:30--11:00 | Coffee                     | |
+| 11:00--11:10 | [Welcome and Introduction](content/01-welcome/index.qmd) | Ella Kaye, Heather Turner |
+| 11:10--12:30 | [Advanced R: Functions](content/02-functions/index.qmd)  | Ella Kaye |
+| 12:30--13:30 | Lunch                             | |
+| 13:30--15:00 | [Advanced R: Classes and Methods](content/03-classes-methods/index.qmd)   | Ella Kaye |
+| 15:00--15:30 | Coffee break                      | |
+| 15:30--17:00 | [Advanced R: Efficient Programming](content/04-efficient-programming/index.qmd) | Heather Turner |
+:::
+
+## Schedule: Tuesday June 20th 
+
+:::{.smaller75}
+| Time         | Session                           | Presenter |
+|--------------|-----------------------------------|-----------|
+| 9:30--10:30  | [Advanced R: Profiling](content/05-profiling/index.qmd)             | Heather Turner |
+| 10:30--11:00 | Coffee break                      | |
+| 11:00--12:30 | [Advanced R: C++ and Rcpp](content/06-r-with-cpp/index.qmd)          | Ella Kaye |
+| 12:30--13:30 | Lunch                             | |
+| 13:30--15:00 | [R Packages: Package Foundations](content/07-package-foundations/index.qmd)   | Ella Kaye |
+| 15:00--15:30 | Coffee break                      | |
+| 15:30--17:00 | [R Packages: Documentation](content/08-documentation/index.qmd)         | Heather Turner |
+:::
+
+## Schedule: Wednesday June 21st 
+
+:::{.smaller75}
+| Time         | Session                           | Presenter |
+|--------------|-----------------------------------| ----------|
+| 9:30--10:30  | [R Packages: Testing](content/09-testing/index.qmd)               | Heather Turner |
+| 10:30--11:00 | Coffee break                      | |
+| 11:00--12:30 | [R Packages: Check and Package Documentation](content/10-check-package-documentation/index.qmd)          | Ella Kaye |
+| 12:30--13:30 | Lunch                             | |
+| 13:30--15:00 | [R Packages: Packaging Data; Publication and Maintenance](content/11-data-publication-maintenance/index.qmd)  | Ella Kaye |
+| 15:00--15:30 | Coffee break                      | |
+| 15:30--17:00 | [R Packages: Rcpp in Packages](content/12-Rcpp-packages/index.qmd)                  | Heather Turner |
+:::
+
+# Let's begin... {.inverse .center-h}
