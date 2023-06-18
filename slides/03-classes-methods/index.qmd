@@ -655,11 +655,12 @@ The `MISSING` pseudo-class is useful for dispatch on two arguments: allow differ
 1. Create an S4 class `Diag` to represent a diagonal matrix with two slots:
  - `n` the number of rows/cols
  - `x` the numeric values of the diagonal elements
+    
     Add a prototype to specify default values.
 2. Test your class by creating a new instance first without providing any values for the slots and then providing some example values.
 3. Create an `initialize` method so that the `n` slot is computed automatically and does not have to be provided.
-4. Create a `Diag()` helper function to create a new `Diag` object, with the user only having to specify the off-diaognal elements.
-5. Create a `show` method to state the size of the matrix and print the off-diagonal elements.
+4. Create a `Diag()` helper function to create a new `Diag` object, with the user only having to specify the diagonal elements.
+5. Create a `show` method to state the size of the matrix and print the diagonal elements.
 :::
 
 # End matter {.inverse}
