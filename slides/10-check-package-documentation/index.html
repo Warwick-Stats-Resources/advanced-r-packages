@@ -534,6 +534,22 @@ Error: The specified file is not readable: path-to\animalsounds\NAMESPACE  </cod
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="check-regularly-fix-issues-as-they-arise" class="slide level2 inverse center center-h">
+<h2>Check regularly, fix issues as they arise</h2>
+<aside class="notes">
+<p>Will see later in this session how to do this automatically with Continuous Integration</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="description" class="title-slide slide level1 inverse center">
@@ -828,6 +844,7 @@ Error: The specified file is not readable: path-to\animalsounds\NAMESPACE  </cod
 <p>It’s good for simple package with no OS-sepcific code, and if you want a quick start with R CI.</p>
 <aside class="notes">
 <p>i.e.&nbsp;it’s perfect for us!</p>
+<p>Reminder to fix any issues as soon as they arise!</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -909,7 +926,7 @@ VignetteBuilder: knitr
 <pre><code>---
 title: "Vignette Title"
 author: "Vignette author"
-date: "2023-06-17"
+date: "2023-06-18"
 output: rmarkdown::html_vignette
 vignette: &gt;
 %\VignetteIndexEntry{Vignette Title}
@@ -939,6 +956,19 @@ vignette: &gt;
           display:block!important;
       }</style></aside>
 </section>
+<section id="articles" class="slide level2">
+<h2>Articles</h2>
+<p>Vignette code needs to be able to run on CRAN. There are some cases where <a href="https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option">this is not possible</a>.</p>
+<p>As an alternative, you can use articles instead of vignettes:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>usethis<span class="sc">::</span><span class="fu">use_article</span>(<span class="st">"my-article"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>✔ Adding 'rmarkdown' to Config/Needs/website
+✔ Creating 'vignettes/'
+✔ Creating 'vignettes/articles/'
+✔ Adding '*.html', '*.R' to 'vignettes/.gitignore'
+✔ Writing 'vignettes/articles/my-article.Rmd'
+• Modify 'vignettes/articles/my-article.Rmd'
+✔ Adding '^vignettes/articles$' to '.Rbuildignore'</code></pre>
+</section>
 <section id="your-turn-2" class="slide level2">
 <h2>Your turn</h2>
 <ol type="1">
@@ -958,11 +988,11 @@ vignette: &gt;
 <section id="track-changes-in-a-news-file" class="slide level2">
 <h2>Track changes in a NEWS file</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>usethis<span class="sc">::</span><span class="fu">use_news_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>usethis<span class="sc">::</span><span class="fu">use_news_md</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Add news for the latest version at the top.</p>
 <p>Use a top-level heading for each release version</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># animalsounds 1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># animalsounds 1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="what-news-to-include" class="slide level2">
 <h2>What news to include</h2>
@@ -986,7 +1016,7 @@ vignette: &gt;
 <h2>A package website pkgdown</h2>
 <p>The <strong>pkgdown</strong> package is designed to make it quick and easy to build a website for your package:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Why have a website for your package?</p>
 <ul>
@@ -1036,7 +1066,7 @@ vignette: &gt;
 <li><p>You can host your website directly from its GitHub repo</p></li>
 <li><p>The recommended approach is to let GitHub build your page (instead of calling <code>pkgdown::build_site()</code> and committing and pushing the artifacts of the built website (i.e., html files) to GitHub</p></li>
 <li><p>Add an action to your GitHub repo to be run automatically every time you push to it to rebuild the site:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown_github_pages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>The URL will be https://USERNAME.github.io/animalsounds</p></li>
 </ul>
 <aside class="notes">

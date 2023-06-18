@@ -416,8 +416,28 @@ Department of Statistics, University of Warwick
 <h2>Overview</h2>
 <ul>
 <li>Packaging data</li>
-<li>…</li>
+<li>Publication
+<ul>
+<li>GitHub</li>
+<li>R-Universe</li>
+<li>CRAN</li>
+</ul></li>
+<li>Promotion</li>
+<li>Maintenance</li>
 </ul>
+<aside class="notes">
+<p>The packaging data section would more naturally fit earlier in the course, but put here because of how the schedule has panned out.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section>
 <section id="packaging-data" class="title-slide slide level1 inverse center">
@@ -546,13 +566,434 @@ Department of Statistics, University of Warwick
 </section>
 
 <section>
+<section id="github" class="title-slide slide level1 inverse center">
+<h1>GitHub</h1>
+
+</section>
+<section id="your-package-is-already-on-github" class="slide level2">
+<h2>Your package is already on GitHub</h2>
+<p>Since your package is already on GitHub, any R user can install it with</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"USER/REPO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to tag it as a release, make sure there’s a <code>NEWS.md</code> file then run</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>usethis<span class="sc">::</span><span class="fu">use_version</span>() <span class="co"># set the release version number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check the <code>NEWS.md</code> file is up-to-date (<code>use_version()</code> will modify it) then</p>
+<pre><code>usethis::use_github_release()</code></pre>
+<p>This will bundle the source code as a <code>zip</code> and a <code>tar.gz</code> and make them available from the <strong>Releases</strong> section of the repo homepage.</p>
+<aside class="notes">
+<p>See previous session for details about NEWS.md and <code>usethis::use_news_md()</code></p>
+<p>use_github_release() is also part of the CRAN submission process, towards the end of the <code>use_release_issue()</code> to-do list.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="r-universe" class="title-slide slide level1 inverse center">
+<h1>R-Universe</h1>
+
+</section>
+<section id="r-universe-1" class="slide level2">
+<h2>R-Universe</h2>
+<p>With <a href="https://r-universe.dev/">R-Universe</a>, you can create a personal, CRAN-like repository.</p>
+<p>You’re in control of what’s published in your R-Universe!</p>
+<p>It is a good way to allow users to easily install packages without going through the rigour of the CRAN submission process.</p>
+<p>Useful resources:</p>
+<ul>
+<li>Search the whole R-universe: <a href="https://r-universe.dev/search/" class="uri">https://r-universe.dev/search/</a></li>
+<li>About the R-universe: <a href="https://ropensci.org/r-universe/" class="uri">https://ropensci.org/r-universe/</a></li>
+<li>R-universe help-page: <a href="https://github.com/r-universe-org/help" class="uri">https://github.com/r-universe-org/help</a></li>
+</ul>
+<aside class="notes">
+<p>A project from rOpenSci</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="installing-a-package-from-an-r-universe" class="slide level2">
+<h2>Installing a package from an R-universe</h2>
+<p>Binaries are built for Windows and MacOS, which a user can install using <code>install.packages()</code>, e.g.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Install 'malt' from the 'lrioudurand' universe</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">install.packages</span>(<span class="st">'malt'</span>, <span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">lrioudurand =</span> <span class="st">'https://lrioudurand.r-universe.dev'</span>,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">CRAN =</span> <span class="st">'https://cloud.r-project.org'</span>)  </span>
+<span id="cb12-5"><a href="#cb12-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Alternatively, you can first set <code>options(repos)</code> to enable favourite repositories by default:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="at">lrioudurand =</span> <span class="st">'https://lrioudurand.r-universe.dev'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">CRAN =</span> <span class="st">'https://cloud.r-project.org'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">install.packages</span>(<span class="st">"malt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>This example chosen because the universe belongs to a member of the Warwick Stats department, Lionel Riou-Durand.</p>
+<p>To make options persist across sessions, add this code to your .RProfile with <code>usethis::edit_r_profile()</code></p>
+<p>CRAN repo is listed because r-universe package may have dependencies on packages on CRAN.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="create-your-r-universe" class="slide level2">
+<h2>Create your R-universe</h2>
+<p>Follow this rOpenSci guide: <a href="https://ropensci.org/blog/2021/06/22/setup-runiverse/">How to create your personal CRAN-like repository on R-universe</a>.</p>
+<div class="smaller80">
+<p>In a nutshell:</p>
+<ol type="1">
+<li><p>Create a repository called <code>&lt;username&gt;.r-universe.dev</code> on the GitHub account for <code>username</code>, e.g.&nbsp;<a href="https://github.com/maelle/maelle.r-universe.dev" class="uri">https://github.com/maelle/maelle.r-universe.dev</a>. The repository must contain a file called <a href="https://github.com/maelle/maelle.r-universe.dev/blob/main/packages.json">packages.json</a> in the standard format, defining at least the <code>package</code> name and git <code>url</code> for the packages you want to include, e.g.</p>
+<pre><code>[
+    {
+        "package": "malt",
+        "url": "https://github.com/lrioudurand/malt"
+    }
+]</code></pre></li>
+<li><p>Install the <a href="https://github.com/apps/r-universe/installations/new">r-universe app</a> on the GitHub account that you want to enable. Choose <strong>enable for all repositories</strong> when asked.</p></li>
+</ol>
+</div>
+<aside class="notes">
+<p>Copying the example from the r-universe help page, with the example/links to Maelle, but using the example json from Lionel to be consistent with previous slide.</p>
+<p>Might be worth pointing out that with actual username, don’t need <code>&lt; &gt;</code></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-happens-next" class="slide level2">
+<h2>What happens next</h2>
+<ul>
+<li><p>After a few minutes, your source universe will appear on: <code>https://github.com/r-universe/&lt;username&gt;</code></p></li>
+<li><p>The universe automatically starts building the packages from your registry. Once finished, they will appear on <code>https://&lt;username&gt;.r-universe.dev</code></p></li>
+<li><p>The universe automatically syncs and builds your package git repos once per hour.</p></li>
+<li><p>If you encounter any issues, the actions tab in your source universe may show what is going on, for example: <a href="https://github.com/r-universe/maelle/actions" class="uri">https://github.com/r-universe/maelle/actions</a></p></li>
+</ul>
+</section></section>
+<section>
+<section id="cran" class="title-slide slide level1 inverse center">
+<h1>CRAN</h1>
+
+</section>
+<section id="why-publish-on-cran" class="slide level2">
+<h2>Why publish on CRAN?</h2>
+<ul>
+<li><p>Sign of quality</p>
+<ul>
+<li>Code is ready to be used (not a beta version)</li>
+<li>Basic standards: documented code, running examples, etc</li>
+<li>Works with current version of R and other packages</li>
+<li>Commitment of maintainer</li>
+</ul></li>
+<li><p>Discoverability</p></li>
+<li><p>Ease of installation</p></li>
+<li><p>Bioconductor, rOpenSci: even higher standards, code review</p></li>
+</ul>
+</section>
+<section id="its-an-involved-process" class="slide level2">
+<h2>It’s an involved process</h2>
+<ul>
+<li><p>Read the official <a href="https://cran.r-project.org/web/packages/submission_checklist.html">Checklist for CRAN Submissions</a> to check requirements beyond the automated checks.</p></li>
+<li><p>Read the community-created <a href="https://github.com/ThinkR-open/prepare-for-cran">Prepare for CRAN</a> checklist.</p></li>
+<li><p>Useful functions for additional checks:</p>
+<ul>
+<li><code>goodpractice::gp</code></li>
+<li><code>spelling::spell_check_package</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="usethisuse_release_issue" class="slide level2">
+<h2><code>usethis::use_release_issue()</code></h2>
+<p>This function will first ask you to select the release version (major, minor, patch) then create and open a to-do list as an issue in the package GitHub repo.</p>
+<p>For a first submission, there are around <strong>22</strong> tasks to complete, split into sections, to follow (more-or-less) in order:</p>
+<ul>
+<li>First release (one-time only)</li>
+<li>Prepare for release</li>
+<li>Submit to CRAN</li>
+<li>Wait or CRAN (things to do after package has been accepted)</li>
+</ul>
+<p>For more details on each, see the <a href="https://r-pkgs.org/release.html">Releasing to CRAN</a> chapter of the R Packages book.</p>
+<aside class="notes">
+<p>Number of tasks may vary depending on what you’ve already done (e.g.&nbsp;use_news_md will appear on list if you haven’t already got a NEWS.md file, but won’t if you do.)</p>
+<p>Some are clearly optional (e.g.&nbsp;drafting a blog post about the release) but most should be followed.</p>
+<p>Some relate to promoting the package, rather than the technicalities of releasing it.</p>
+<p>There are some different items for packages already on CRAN - not covered here - see Release chapter of R Packages for more details</p>
+<p>Will catch many common ‘gotchas’, e.g.&nbsp;Title Case for Title, checking all exported functions have <span class="citation" data-cites="returns">@returns</span> and <span class="citation" data-cites="examples">@examples</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="run-as-cran-checks" class="slide level2">
+<h2>Run “as CRAN” checks</h2>
+<p><a href="https://cran.r-project.org/web/packages/policies.html">CRAN policies</a> state that you must run <code>R CMD check --as-cran</code> <em>on the tarball to be uploaded</em> with the current version of R-devel.</p>
+<p>First make sure the package passes check locally:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then allow some extra checks:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>(<span class="at">remote =</span> <span class="cn">TRUE</span>, <span class="at">manual =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then send to CRAN’s win-builder to check on R-devel</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>devtools<span class="sc">::</span><span class="fu">check_win_devel</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="smaller80">
+<p>Further options: R-Hub (multiple platforms available, with different compilers) and Mac-builder (with M1)</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>devtools<span class="sc">::</span><span class="fu">check_rhub</span>()</span>
+<span id="cb18-2"><a href="#cb18-2"></a>devtools<span class="sc">::</span><span class="fu">check_mac_release</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="cran-comments.md" class="slide level2">
+<h2><code>cran-comments.md</code></h2>
+<p>Write submission notes, generating the <code>cran-comments.md</code> file with</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>usethis<span class="sc">::</span><span class="fu">use_cran_comments</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>
+ ## Test environments
+ * local OS X install (R-release)
+ * win-builder (R-release, R-devel) 
+
+ ## R CMD check results
+
+ 0 errors | 0 warnings | 1 note
+
+ * This is a new release.</code></pre>
+<p>There’s always one note for a new submission.</p>
+<aside class="notes">
+<p>use_cran_comments() will populate cran-comments.md with the R CMD check results section.</p>
+<p>The test environments section needs to be filled by hand</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="submit-to-cran" class="slide level2">
+<h2>Submit to CRAN</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>devtools<span class="sc">::</span><span class="fu">release</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This asks you questions which you should carefully read and answer.</p>
+<aside class="notes">
+<p>The use_release_issue() function uses devtools::submit_cran() rather than devtools::release(), but the documentation page for submit_cran() recommends using release() instead as it performs more checks.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="if-your-submission-fails" class="slide level2">
+<h2>If your submission fails</h2>
+<p>Do not despair! It happens to everyone, even R-core members.</p>
+<p>If it’s from the CRAN robot, just fix the problem &amp; resubmit.</p>
+<p>If it’s from a human, do not respond to the email and do not argue. Instead update <code>cran-comments.md</code> &amp; resubmit.</p>
+</section>
+<section id="for-resubmission" class="slide level2">
+<h2>For resubmission</h2>
+<pre><code> This is a resubmission. Compared to the last submission, I
+ have:
+
+ * First change.
+ * Second change.
+ * Third change.
+
+ --
+
+ ## Test environments
+ * local OS X install, R 3.2.2
+ * win-builder (devel and release)
+
+ ## R CMD check results
+ ...</code></pre>
+</section>
+<section id="subsequent-submissions-to-cran" class="slide level2">
+<h2>Subsequent submissions to CRAN</h2>
+<p>Proceed as before. If you have reverse dependencies you need to also run <code>R CMD check</code> on them, and notify CRAN if you have deliberately broken them.</p>
+<p>Fortunately the <strong>revdepcheck</strong> package makes this fairly easy</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"r-lib/revdepcheck"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>usethis<span class="sc">::</span><span class="fu">use_revdep</span>()</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">library</span>(revdepcheck)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">revdep_check</span>()</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="fu">revdep_report_cran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="promotion" class="title-slide slide level1 inverse center">
+<h1>Promotion</h1>
+
+</section>
+<section id="promoting-your-package" class="slide level2">
+<h2>Promoting your package</h2>
+<ul>
+<li>Some promotion will/may be done for you: <a href="https://dirk.eddelbuettel.com/cranberries/">CRANberries</a>, <a href="https://rviews.rstudio.com/">R Views</a> Monthly Top 40, search engines (vignette/pkgdown site)</li>
+<li>Some channels are obvious: personal website, blog, Mastodon (#RStats)</li>
+<li>Publicize your new package via R Weekly <a href="https://rweekly.org/" class="uri">https://rweekly.org/</a>
+<ul>
+<li>Add to the weekly news blog, see <a href="https://github.com/rweekly/rweekly.org/blob/gh-pages/CONTRIBUTING.md">CONTRIBUTING</a>, and example pull requests <a href="https://github.com/rweekly/rweekly.org/pull/279">new package</a>, <a href="https://github.com/rweekly/rweekly.org/pull/277">new version</a>.</li>
+</ul></li>
+<li>Would your package fit in a CRAN Task View? <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a>
+<ul>
+<li>Check <a href="https://github.com/cran-task-views/ctv">GitHub organization</a> for how to propose addition.</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>And Twitter, if you must.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="talks" class="slide level2">
+<h2>Talks</h2>
+<ul>
+<li>Meetups: Warwick RUG, Coventry R-Ladies (or your local groups)</li>
+<li>Conferences <a href="https://jumpingrivers.github.io/meetingsR/events.html" class="uri">https://jumpingrivers.github.io/meetingsR/events.html</a>
+<ul>
+<li><strong>General</strong>: useR!, posit::conf, satRdays</li>
+<li><strong>Specific</strong>: R/Finance, BioC, Psychoco</li>
+<li><strong>Non R-specific</strong>: Royal Statistical Society (RSS), ???</li>
+</ul></li>
+<li>Conferences provide greater exposure, particular to people working in relevant field(s).</li>
+<li>Don’t forget to share your slides! (Conference/personal website, LinkedIn, RPubs, Slideshare)</li>
+</ul>
+</section>
+<section id="paper" class="slide level2">
+<h2>Paper</h2>
+<div class="smaller90">
+<ul>
+<li>A paper not only promotes your package but benefits from peer review
+<ul>
+<li>Paper can also overlap with vignette</li>
+</ul></li>
+<li>Traditional journals:
+<ul>
+<li><strong>Open Source Software</strong>: The R Journal, Journal of Statistical Software</li>
+<li><strong>Computing</strong>: Computational Statistics and Data Analysis, Journal of Computational and Graphical Statistics, SoftwareX</li>
+<li><strong>Science</strong>: Bioinformatics, PLOS ONE, Method in Ecology and Evolution</li>
+</ul></li>
+<li>Alternative journals:
+<ul>
+<li>F1000research Bioconductor/R package gateway: publish, then open review</li>
+<li><a href="https://joss.theoj.org/">Journal Open Source Software</a>: open code review, short descriptive paper</li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+<section>
 <section id="maintenance" class="title-slide slide level1 inverse center">
 <h1>Maintenance</h1>
 
 </section>
 <section id="usethisuse_upkeep_issue" class="slide level2">
 <h2><code>usethis::use_upkeep_issue()</code></h2>
-<p>WRITE CONTENT FOR THIS SLIDE</p>
+<p>This is a new function in <strong>usethis</strong>. Like <code>usethis::use_release_issue()</code>, it opens a GitHub issue with an (opinionated) to-do list of tasks that should be ticked off for your package (at least) once a year.</p>
+<p>The <strong>tidyverse</strong> team think of this like ‘spring cleaning’ for packages.</p>
+<p>Blog post: <a href="https://www.tidyverse.org/blog/2023/06/spring-cleaning-2023/">Package spring cleaning</a></p>
+</section>
+<section id="interacting-with-users" class="slide level2">
+<h2>Interacting with users</h2>
+<ul>
+<li>Bug reports/help requests
+<ul>
+<li>Can show where documentation/tests need improving</li>
+<li>Help you find out who’s using your package and what for</li>
+<li>Can give ideas for new features</li>
+<li>Can lead to collaborations</li>
+</ul></li>
+<li>Avoid using email, so that other people can benefit
+<ul>
+<li>GitHub issues</li>
+<li>Stackoverflow questions</li>
+</ul></li>
+</ul>
+</section>
+<section id="interacting-with-developers" class="slide level2">
+<h2>Interacting with developers</h2>
+<div class="smaller80">
+<ul>
+<li><p>Write developer documentation – remember you can add non-vignette articles with <code>usethis::use_article()</code></p></li>
+<li><p>Add a code of conduct, e.g.&nbsp;Contributor Covenant</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>usethis<span class="sc">::</span><span class="fu">use_code_of_conduct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Add a CONTRIBUTING.md to your GitHub repository</p>
+<ul>
+<li>Do you have a style guide?</li>
+<li>Reminders to run check/tests/add NEWS item to pull requests</li>
+</ul></li>
+<li><p>Use tags to highlight issues: the following are promoted by GitHub, e.g.&nbsp;<code>help wanted</code>, <code>good first issue</code></p></li>
+<li><p>Add topics to your GitHub repo so potential contributors can find it<br>
+</p></li>
+</ul>
+</div>
+</section>
+<section id="consider-the-longer-term" class="slide level2">
+<h2>Consider the longer-term</h2>
+<ul>
+<li>Work on new features and bug fixes for the next release</li>
+<li>Buddy-up
+<ul>
+<li>Review each other’s code</li>
+<li>Co-author each other’s packages</li>
+</ul></li>
+<li>Take advantage of events e.g.&nbsp;<a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a>, <a href="https://closember.org/">Closember</a></li>
+<li>Start work on your next package!</li>
+</ul>
+</section>
+<section id="congratulations" class="slide level2 inverse center center-h">
+<h2>Congratulations 🎉</h2>
+<p>You have written a package!</p>
+<p>And reached the end of the R Packages workshop!</p>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 inverse center">
@@ -561,8 +1002,10 @@ Department of Statistics, University of Warwick
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
-<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), https://r-pkgs.org.</p>
-<p>R Core Team, <em>Writing R Extensions</em>, https://cran.r-project.org/doc/manuals/r-release/R-exts.html</p>
+<p>Wickham, H and Bryan, J, <em>R Packages</em> (2nd edn, in progress), <a href="https://r-pkgs.org" class="uri">https://r-pkgs.org</a>.</p>
+<p>R Core Team, <em>Writing R Extensions</em>, <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html</a></p>
+<p>rOpenSci Packages: Development, Maintenance, and Peer Review <a href="https://devguide.ropensci.org/index.html" class="uri">https://devguide.ropensci.org/index.html</a></p>
+<p>rOpenSci Statistical Software Peer Review (especially Chapter 3: Guide for Authors) <a href="https://stats-devguide.ropensci.org/pkgdev.html" class="uri">https://stats-devguide.ropensci.org/pkgdev.html</a></p>
 </section>
 <section id="license" class="slide level2">
 <h2>License</h2>

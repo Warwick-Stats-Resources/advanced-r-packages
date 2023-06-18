@@ -84,6 +84,13 @@
     "text": "Types of problem\n\n\n\n\nERROR\nMust fix to get the code/example/test working\n\n\nWARNING\nFix if sharing with others\n\n\nNOTE\nFix if submitting to CRAN\n\n\n\n\nIt is possible to submit to CRAN with a NOTE, but it’s best avoided.\n\nNOTES best avoid for CRAN as they require a person to respond. One unavoidable case of a NOTE on CRAN submission: first submission of a package"
   },
   {
+    "objectID": "slides/10-check-package-documentation/index.html#check-regularly-fix-issues-as-they-arise",
+    "href": "slides/10-check-package-documentation/index.html#check-regularly-fix-issues-as-they-arise",
+    "title": "Package Check and Documentation",
+    "section": "Check regularly, fix issues as they arise",
+    "text": "Check regularly, fix issues as they arise\n\nWill see later in this session how to do this automatically with Continuous Integration"
+  },
+  {
     "objectID": "slides/10-check-package-documentation/index.html#metadata-in-description",
     "href": "slides/10-check-package-documentation/index.html#metadata-in-description",
     "title": "Package Check and Documentation",
@@ -158,7 +165,7 @@
     "href": "slides/10-check-package-documentation/index.html#use_github_actioncheck-release",
     "title": "Package Check and Documentation",
     "section": "use_github_action(\"check-release\")",
-    "text": "use_github_action(\"check-release\")\nThe check-standard GHA is best-practice for ‘serious’ projects, e.g. those aiming for CRAN, but is overkill for our purposes.\nWe can set up a simpler GHA by specifying an alternative:\nuse_github_action(\"check-release\")\nThis sets up a bare-minimum workflow that runs R CMD check with the latest release of R on Linux.\nIt’s good for simple package with no OS-sepcific code, and if you want a quick start with R CI.\n\ni.e. it’s perfect for us!"
+    "text": "use_github_action(\"check-release\")\nThe check-standard GHA is best-practice for ‘serious’ projects, e.g. those aiming for CRAN, but is overkill for our purposes.\nWe can set up a simpler GHA by specifying an alternative:\nuse_github_action(\"check-release\")\nThis sets up a bare-minimum workflow that runs R CMD check with the latest release of R on Linux.\nIt’s good for simple package with no OS-sepcific code, and if you want a quick start with R CI.\n\ni.e. it’s perfect for us!\nReminder to fix any issues as soon as they arise!"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#your-turn-1",
@@ -186,7 +193,7 @@
     "href": "slides/10-check-package-documentation/index.html#vignette-rmarkdown-special-metadata",
     "title": "Package Check and Documentation",
     "section": "Vignette = Rmarkdown + special metadata",
-    "text": "Vignette = Rmarkdown + special metadata\n---\ntitle: \"Vignette Title\"\nauthor: \"Vignette author\"\ndate: \"2023-06-17\"\noutput: rmarkdown::html_vignette\nvignette: &gt;\n%\\VignetteIndexEntry{Vignette Title}\n%\\VignetteEngine{knitr::rmarkdown}\n%\\VignetteEncoding{UTF-8}\n---\n\n\nhtml_vignette output uses a custom style sheet to keep the file size of the HTML as small as possible.\nThe vignette: field contains special metadata needed when the package is built. Don’t forget to change the title here too!"
+    "text": "Vignette = Rmarkdown + special metadata\n---\ntitle: \"Vignette Title\"\nauthor: \"Vignette author\"\ndate: \"2023-06-18\"\noutput: rmarkdown::html_vignette\nvignette: &gt;\n%\\VignetteIndexEntry{Vignette Title}\n%\\VignetteEngine{knitr::rmarkdown}\n%\\VignetteEncoding{UTF-8}\n---\n\n\nhtml_vignette output uses a custom style sheet to keep the file size of the HTML as small as possible.\nThe vignette: field contains special metadata needed when the package is built. Don’t forget to change the title here too!"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#vignette-workflow",
@@ -194,6 +201,13 @@
     "title": "Package Check and Documentation",
     "section": "Vignette workflow",
     "text": "Vignette workflow\n\n\nNeed to install package so can call with library()"
+  },
+  {
+    "objectID": "slides/10-check-package-documentation/index.html#articles",
+    "href": "slides/10-check-package-documentation/index.html#articles",
+    "title": "Package Check and Documentation",
+    "section": "Articles",
+    "text": "Articles\nVignette code needs to be able to run on CRAN. There are some cases where this is not possible.\nAs an alternative, you can use articles instead of vignettes:\nusethis::use_article(\"my-article\")\n✔ Adding 'rmarkdown' to Config/Needs/website\n✔ Creating 'vignettes/'\n✔ Creating 'vignettes/articles/'\n✔ Adding '*.html', '*.R' to 'vignettes/.gitignore'\n✔ Writing 'vignettes/articles/my-article.Rmd'\n• Modify 'vignettes/articles/my-article.Rmd'\n✔ Adding '^vignettes/articles$' to '.Rbuildignore'"
   },
   {
     "objectID": "slides/10-check-package-documentation/index.html#your-turn-2",
@@ -515,7 +529,7 @@
     "href": "slides/11-data-publication-maintenance/index.html#overview",
     "title": "Packaging Data; Publication and Maintenance",
     "section": "Overview",
-    "text": "Overview\n\nPackaging data\n…"
+    "text": "Overview\n\nPackaging data\nPublication\n\nGitHub\nR-Universe\nCRAN\n\nPromotion\nMaintenance\n\n\nThe packaging data section would more naturally fit earlier in the course, but put here because of how the schedule has panned out."
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#including-data",
@@ -581,18 +595,165 @@
     "text": "Your turn\n\nRun usethis::use_data_raw(\"farm_animals\").\nIn the script data-raw/farm_animals.R write some code to create a small data frame with the names of farm animals and the sound they make.\nRun all the code (including the already-present call to usethis::use_data()) to create the data and save it in /data.\nAdd an R/farm_animals.R script and add some roxygen comments to document the function.\nRun devtools::document() to create the documentation for the farm_animals data. Preview the documentation to check it.\nCommit all the changes to your repo."
   },
   {
+    "objectID": "slides/11-data-publication-maintenance/index.html#your-package-is-already-on-github",
+    "href": "slides/11-data-publication-maintenance/index.html#your-package-is-already-on-github",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Your package is already on GitHub",
+    "text": "Your package is already on GitHub\nSince your package is already on GitHub, any R user can install it with\nremotes::install_github(\"USER/REPO\")\nIf you want to tag it as a release, make sure there’s a NEWS.md file then run\nusethis::use_version() # set the release version number\nCheck the NEWS.md file is up-to-date (use_version() will modify it) then\nusethis::use_github_release()\nThis will bundle the source code as a zip and a tar.gz and make them available from the Releases section of the repo homepage.\n\nSee previous session for details about NEWS.md and usethis::use_news_md()\nuse_github_release() is also part of the CRAN submission process, towards the end of the use_release_issue() to-do list."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#r-universe-1",
+    "href": "slides/11-data-publication-maintenance/index.html#r-universe-1",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "R-Universe",
+    "text": "R-Universe\nWith R-Universe, you can create a personal, CRAN-like repository.\nYou’re in control of what’s published in your R-Universe!\nIt is a good way to allow users to easily install packages without going through the rigour of the CRAN submission process.\nUseful resources:\n\nSearch the whole R-universe: https://r-universe.dev/search/\nAbout the R-universe: https://ropensci.org/r-universe/\nR-universe help-page: https://github.com/r-universe-org/help\n\n\nA project from rOpenSci"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#installing-a-package-from-an-r-universe",
+    "href": "slides/11-data-publication-maintenance/index.html#installing-a-package-from-an-r-universe",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Installing a package from an R-universe",
+    "text": "Installing a package from an R-universe\nBinaries are built for Windows and MacOS, which a user can install using install.packages(), e.g.\n\n# Install 'malt' from the 'lrioudurand' universe\ninstall.packages('malt', repos = c(\n  lrioudurand = 'https://lrioudurand.r-universe.dev',\n  CRAN = 'https://cloud.r-project.org')  \n)\n\n\nAlternatively, you can first set options(repos) to enable favourite repositories by default:\n\noptions(repos = c(\n  lrioudurand = 'https://lrioudurand.r-universe.dev',\n  CRAN = 'https://cloud.r-project.org')\n)\ninstall.packages(\"malt\")\n\n\nThis example chosen because the universe belongs to a member of the Warwick Stats department, Lionel Riou-Durand.\nTo make options persist across sessions, add this code to your .RProfile with usethis::edit_r_profile()\nCRAN repo is listed because r-universe package may have dependencies on packages on CRAN."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#create-your-r-universe",
+    "href": "slides/11-data-publication-maintenance/index.html#create-your-r-universe",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Create your R-universe",
+    "text": "Create your R-universe\nFollow this rOpenSci guide: How to create your personal CRAN-like repository on R-universe.\n\nIn a nutshell:\n\nCreate a repository called &lt;username&gt;.r-universe.dev on the GitHub account for username, e.g. https://github.com/maelle/maelle.r-universe.dev. The repository must contain a file called packages.json in the standard format, defining at least the package name and git url for the packages you want to include, e.g.\n[\n    {\n        \"package\": \"malt\",\n        \"url\": \"https://github.com/lrioudurand/malt\"\n    }\n]\nInstall the r-universe app on the GitHub account that you want to enable. Choose enable for all repositories when asked.\n\n\n\nCopying the example from the r-universe help page, with the example/links to Maelle, but using the example json from Lionel to be consistent with previous slide.\nMight be worth pointing out that with actual username, don’t need &lt; &gt;"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#what-happens-next",
+    "href": "slides/11-data-publication-maintenance/index.html#what-happens-next",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "What happens next",
+    "text": "What happens next\n\nAfter a few minutes, your source universe will appear on: https://github.com/r-universe/&lt;username&gt;\nThe universe automatically starts building the packages from your registry. Once finished, they will appear on https://&lt;username&gt;.r-universe.dev\nThe universe automatically syncs and builds your package git repos once per hour.\nIf you encounter any issues, the actions tab in your source universe may show what is going on, for example: https://github.com/r-universe/maelle/actions"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#why-publish-on-cran",
+    "href": "slides/11-data-publication-maintenance/index.html#why-publish-on-cran",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Why publish on CRAN?",
+    "text": "Why publish on CRAN?\n\nSign of quality\n\nCode is ready to be used (not a beta version)\nBasic standards: documented code, running examples, etc\nWorks with current version of R and other packages\nCommitment of maintainer\n\nDiscoverability\nEase of installation\nBioconductor, rOpenSci: even higher standards, code review"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#its-an-involved-process",
+    "href": "slides/11-data-publication-maintenance/index.html#its-an-involved-process",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "It’s an involved process",
+    "text": "It’s an involved process\n\nRead the official Checklist for CRAN Submissions to check requirements beyond the automated checks.\nRead the community-created Prepare for CRAN checklist.\nUseful functions for additional checks:\n\ngoodpractice::gp\nspelling::spell_check_package"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#usethisuse_release_issue",
+    "href": "slides/11-data-publication-maintenance/index.html#usethisuse_release_issue",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "usethis::use_release_issue()",
+    "text": "usethis::use_release_issue()\nThis function will first ask you to select the release version (major, minor, patch) then create and open a to-do list as an issue in the package GitHub repo.\nFor a first submission, there are around 22 tasks to complete, split into sections, to follow (more-or-less) in order:\n\nFirst release (one-time only)\nPrepare for release\nSubmit to CRAN\nWait or CRAN (things to do after package has been accepted)\n\nFor more details on each, see the Releasing to CRAN chapter of the R Packages book.\n\nNumber of tasks may vary depending on what you’ve already done (e.g. use_news_md will appear on list if you haven’t already got a NEWS.md file, but won’t if you do.)\nSome are clearly optional (e.g. drafting a blog post about the release) but most should be followed.\nSome relate to promoting the package, rather than the technicalities of releasing it.\nThere are some different items for packages already on CRAN - not covered here - see Release chapter of R Packages for more details\nWill catch many common ‘gotchas’, e.g. Title Case for Title, checking all exported functions have @returns and @examples"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#run-as-cran-checks",
+    "href": "slides/11-data-publication-maintenance/index.html#run-as-cran-checks",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Run “as CRAN” checks",
+    "text": "Run “as CRAN” checks\nCRAN policies state that you must run R CMD check --as-cran on the tarball to be uploaded with the current version of R-devel.\nFirst make sure the package passes check locally:\ndevtools::check()\nThen allow some extra checks:\ndevtools::check(remote = TRUE, manual = TRUE)\nThen send to CRAN’s win-builder to check on R-devel\ndevtools::check_win_devel()\n\n\nFurther options: R-Hub (multiple platforms available, with different compilers) and Mac-builder (with M1)\ndevtools::check_rhub()\ndevtools::check_mac_release()"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#cran-comments.md",
+    "href": "slides/11-data-publication-maintenance/index.html#cran-comments.md",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "cran-comments.md",
+    "text": "cran-comments.md\nWrite submission notes, generating the cran-comments.md file with\nusethis::use_cran_comments()\n\n ## Test environments\n * local OS X install (R-release)\n * win-builder (R-release, R-devel) \n\n ## R CMD check results\n\n 0 errors | 0 warnings | 1 note\n\n * This is a new release.\nThere’s always one note for a new submission.\n\nuse_cran_comments() will populate cran-comments.md with the R CMD check results section.\nThe test environments section needs to be filled by hand"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#submit-to-cran",
+    "href": "slides/11-data-publication-maintenance/index.html#submit-to-cran",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Submit to CRAN",
+    "text": "Submit to CRAN\ndevtools::release()\nThis asks you questions which you should carefully read and answer.\n\nThe use_release_issue() function uses devtools::submit_cran() rather than devtools::release(), but the documentation page for submit_cran() recommends using release() instead as it performs more checks."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#if-your-submission-fails",
+    "href": "slides/11-data-publication-maintenance/index.html#if-your-submission-fails",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "If your submission fails",
+    "text": "If your submission fails\nDo not despair! It happens to everyone, even R-core members.\nIf it’s from the CRAN robot, just fix the problem & resubmit.\nIf it’s from a human, do not respond to the email and do not argue. Instead update cran-comments.md & resubmit."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#for-resubmission",
+    "href": "slides/11-data-publication-maintenance/index.html#for-resubmission",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "For resubmission",
+    "text": "For resubmission\n This is a resubmission. Compared to the last submission, I\n have:\n\n * First change.\n * Second change.\n * Third change.\n\n --\n\n ## Test environments\n * local OS X install, R 3.2.2\n * win-builder (devel and release)\n\n ## R CMD check results\n ..."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#subsequent-submissions-to-cran",
+    "href": "slides/11-data-publication-maintenance/index.html#subsequent-submissions-to-cran",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Subsequent submissions to CRAN",
+    "text": "Subsequent submissions to CRAN\nProceed as before. If you have reverse dependencies you need to also run R CMD check on them, and notify CRAN if you have deliberately broken them.\nFortunately the revdepcheck package makes this fairly easy\nremotes::install_github(\"r-lib/revdepcheck\")\nusethis::use_revdep()\nlibrary(revdepcheck)\nrevdep_check()\nrevdep_report_cran()"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#promoting-your-package",
+    "href": "slides/11-data-publication-maintenance/index.html#promoting-your-package",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Promoting your package",
+    "text": "Promoting your package\n\nSome promotion will/may be done for you: CRANberries, R Views Monthly Top 40, search engines (vignette/pkgdown site)\nSome channels are obvious: personal website, blog, Mastodon (#RStats)\nPublicize your new package via R Weekly https://rweekly.org/\n\nAdd to the weekly news blog, see CONTRIBUTING, and example pull requests new package, new version.\n\nWould your package fit in a CRAN Task View? https://cran.r-project.org/web/views/\n\nCheck GitHub organization for how to propose addition.\n\n\n\nAnd Twitter, if you must."
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#talks",
+    "href": "slides/11-data-publication-maintenance/index.html#talks",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Talks",
+    "text": "Talks\n\nMeetups: Warwick RUG, Coventry R-Ladies (or your local groups)\nConferences https://jumpingrivers.github.io/meetingsR/events.html\n\nGeneral: useR!, posit::conf, satRdays\nSpecific: R/Finance, BioC, Psychoco\nNon R-specific: Royal Statistical Society (RSS), ???\n\nConferences provide greater exposure, particular to people working in relevant field(s).\nDon’t forget to share your slides! (Conference/personal website, LinkedIn, RPubs, Slideshare)"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#paper",
+    "href": "slides/11-data-publication-maintenance/index.html#paper",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Paper",
+    "text": "Paper\n\n\nA paper not only promotes your package but benefits from peer review\n\nPaper can also overlap with vignette\n\nTraditional journals:\n\nOpen Source Software: The R Journal, Journal of Statistical Software\nComputing: Computational Statistics and Data Analysis, Journal of Computational and Graphical Statistics, SoftwareX\nScience: Bioinformatics, PLOS ONE, Method in Ecology and Evolution\n\nAlternative journals:\n\nF1000research Bioconductor/R package gateway: publish, then open review\nJournal Open Source Software: open code review, short descriptive paper"
+  },
+  {
     "objectID": "slides/11-data-publication-maintenance/index.html#usethisuse_upkeep_issue",
     "href": "slides/11-data-publication-maintenance/index.html#usethisuse_upkeep_issue",
     "title": "Packaging Data; Publication and Maintenance",
     "section": "usethis::use_upkeep_issue()",
-    "text": "usethis::use_upkeep_issue()\nWRITE CONTENT FOR THIS SLIDE"
+    "text": "usethis::use_upkeep_issue()\nThis is a new function in usethis. Like usethis::use_release_issue(), it opens a GitHub issue with an (opinionated) to-do list of tasks that should be ticked off for your package (at least) once a year.\nThe tidyverse team think of this like ‘spring cleaning’ for packages.\nBlog post: Package spring cleaning"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#interacting-with-users",
+    "href": "slides/11-data-publication-maintenance/index.html#interacting-with-users",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Interacting with users",
+    "text": "Interacting with users\n\nBug reports/help requests\n\nCan show where documentation/tests need improving\nHelp you find out who’s using your package and what for\nCan give ideas for new features\nCan lead to collaborations\n\nAvoid using email, so that other people can benefit\n\nGitHub issues\nStackoverflow questions"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#interacting-with-developers",
+    "href": "slides/11-data-publication-maintenance/index.html#interacting-with-developers",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Interacting with developers",
+    "text": "Interacting with developers\n\n\nWrite developer documentation – remember you can add non-vignette articles with usethis::use_article()\nAdd a code of conduct, e.g. Contributor Covenant\n\nusethis::use_code_of_conduct()\n\nAdd a CONTRIBUTING.md to your GitHub repository\n\nDo you have a style guide?\nReminders to run check/tests/add NEWS item to pull requests\n\nUse tags to highlight issues: the following are promoted by GitHub, e.g. help wanted, good first issue\nAdd topics to your GitHub repo so potential contributors can find it"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#consider-the-longer-term",
+    "href": "slides/11-data-publication-maintenance/index.html#consider-the-longer-term",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Consider the longer-term",
+    "text": "Consider the longer-term\n\nWork on new features and bug fixes for the next release\nBuddy-up\n\nReview each other’s code\nCo-author each other’s packages\n\nTake advantage of events e.g. Hacktoberfest, Closember\nStart work on your next package!"
+  },
+  {
+    "objectID": "slides/11-data-publication-maintenance/index.html#congratulations",
+    "href": "slides/11-data-publication-maintenance/index.html#congratulations",
+    "title": "Packaging Data; Publication and Maintenance",
+    "section": "Congratulations 🎉",
+    "text": "Congratulations 🎉\nYou have written a package!\nAnd reached the end of the R Packages workshop!"
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#references",
     "href": "slides/11-data-publication-maintenance/index.html#references",
     "title": "Packaging Data; Publication and Maintenance",
     "section": "References",
-    "text": "References\nWickham, H and Bryan, J, R Packages (2nd edn, in progress), https://r-pkgs.org.\nR Core Team, Writing R Extensions, https://cran.r-project.org/doc/manuals/r-release/R-exts.html"
+    "text": "References\nWickham, H and Bryan, J, R Packages (2nd edn, in progress), https://r-pkgs.org.\nR Core Team, Writing R Extensions, https://cran.r-project.org/doc/manuals/r-release/R-exts.html\nrOpenSci Packages: Development, Maintenance, and Peer Review https://devguide.ropensci.org/index.html\nrOpenSci Statistical Software Peer Review (especially Chapter 3: Guide for Authors) https://stats-devguide.ropensci.org/pkgdev.html"
   },
   {
     "objectID": "slides/11-data-publication-maintenance/index.html#license",
@@ -2580,14 +2741,14 @@
     "href": "content/11-data-publication-maintenance/index.html",
     "title": "Packaging data; Publication and Maintenance",
     "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/11-data-publication-maintenance/index.html#slides",
     "href": "content/11-data-publication-maintenance/index.html#slides",
     "title": "Packaging data; Publication and Maintenance",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/11-data-publication-maintenance/index.html#resources",
