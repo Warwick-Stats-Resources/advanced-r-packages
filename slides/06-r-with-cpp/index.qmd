@@ -310,7 +310,7 @@ double sumC(NumericVector x) {
 
 ## Example: vector output
 
-The following computes the Euclidean distances 
+The following computes Euclidean distances 
 
 $$d_i  = \sqrt{(x - y_i)^2}$$
 
@@ -327,6 +327,10 @@ NumericVector distC(double x, NumericVector y) {
 
 - `dist(n)` is used to create a numeric vector named `dist` of length `n`. 
 - `v(n)` would create a vector named `v`.
+
+::: {.notes}
+This is a contrived example to demonstrate Rcpp functionality. Mathematically, it's measuring the distance between a single point, x, on the Real line and (a vector of) several other single points on the line. Given its on the Real line, absolute value is sufficient for the Euclidean distance between points - don't need pow and sqrt, but good to show them  
+:::
 
 ## C++ Functions
 
