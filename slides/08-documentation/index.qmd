@@ -244,8 +244,8 @@ compact <- function(x) {
 For the `animal_sounds` function:
 
 :::{.smaller90}
-1. Insert a Roxygen skeleton using the RStudio helper.
-2. Create a draft documentation file with `devtools::document()` or `Cmd/Ctrl + Shift + D`. If you get any warnings, make the necessary fixes.
+1. Insert a Roxygen skeleton using the RStudio helper. 
+2. Create a draft documentation file with `devtools::document()` or `Cmd/Ctrl + Shift + D`. 
 3. Click on "Diff" in the Git pane and view the changes that have been made.
 4. Preview the HTML help with `?animal_sounds`.
 5. Fill in the Roxygen skeleton for `animal_sounds()`, recreating the documentation
@@ -268,7 +268,7 @@ Details can be found in the [Writing R documentation files](https://cran.r-proje
 
 ## Using markdown
 
-Most commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-up).
+Most commonly-used mark-up is easier with markdown (can be mixed with `.Rd` mark-up).
 
 - Text formatting: `**bold**`, `_italic_`, `` `code` ``
 
@@ -281,24 +281,20 @@ Most commonly-used mark-up is easier with markdown (can be mixed with .Rd mark-u
 For more details, see the [(R)Markdown support](https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html) vignette.
 
 ::: {.notes}
-Seems you no longer need to specify `pkg::` - will find the documentation in any installed package. For functions in multiple packages, e.g. `select()` help pane will offer a choice. Probably still best practice to use `pkg::` for disambiguation.
+Seems you no longer need to specify `pkg::` - will find the documentation in any installed package. For functions in multiple packages, e.g. `select()` help pane will offer a choice. Probably still best practice to use `pkg::` for disambiguation, though still may not be necessary for base functions
 :::
-
-## View documentation with links
-
-To view the documentation with working links, we must install the package first.
-
-![](images/documentation_workflow2.png){fig-align="center"}
 
 ## Your turn
 
-1. Add some details to the help page for `animal_sounds()`, with a link to `paste0()`.
-2. Verify that no link is shown when recreating the documentation with the regular workflow.
-3. Create the documentation with the second workflow and look at the help file. Does the link to `paste0()` work?
+1. Add some details to the help page for `animal_sounds()`, with a link to `paste0()` and some markdown syntax.
+2. Add a link to a function from a package you don't have installed (perhaps `basemodels::dummy_classifier()`). 
+3. Run `devtools::document()` and check the link in the help page. What happens?
+4. Run `devtools::check()`. Does the link cause problems?
+5. Delete the link to the package you don't have installed and run `devtools::document()` again.
 4. Commit all your changes to the git repo.
 
 ::: {.notes}
-Now the link does seem to work when recreating the documentation with the regular workflow. Is this a change in the very latest RStudio (2023.06.0+421)?  
+In 3, the link will still be created (and will work if you subsequently install the missing package). It's a good idea to have the package installed so the link can be checked during R CMD check, otherwise you will get a NOTE.
 :::
 
 # Dependencies {.inverse}

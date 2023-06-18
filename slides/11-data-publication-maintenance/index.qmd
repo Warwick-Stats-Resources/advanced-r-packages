@@ -360,6 +360,10 @@ devtools::check_mac_release()
 ```
 :::
 
+::: {.notes}
+It's possible that the way your libraries are set up can mask problems with `check()` on your local machine. For example, it's important that your System Library just comes with base and recommended packages and that all packages that you install go in your user library. Aside: Installing R through `rig` takes care of this for you.  
+:::
+
 ## `cran-comments.md`
 
 Write submission notes, generating the `cran-comments.md` file with
