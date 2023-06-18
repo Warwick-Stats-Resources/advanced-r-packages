@@ -1789,7 +1789,7 @@
     "href": "slides/06-r-with-cpp/index.html#using-the-c-function",
     "title": "C++ and Rcpp",
     "section": "Using the C++ function",
-    "text": "Using the C++ function\nAfter defining add_cpp() via cppFunction(), add_cpp() is available to use as a R function\n\nadd_cpp\n\nfunction (x, y) \n.Call(&lt;pointer: 0x102f74b40&gt;, x, y)\n\nadd_cpp(3, 5)\n\n[1] 8"
+    "text": "Using the C++ function\nAfter defining add_cpp() via cppFunction(), add_cpp() is available to use as a R function\n\nadd_cpp\n\nfunction (x, y) \n.Call(&lt;pointer: 0x108908b40&gt;, x, y)\n\nadd_cpp(3, 5)\n\n[1] 8"
   },
   {
     "objectID": "slides/06-r-with-cpp/index.html#stand-alone-c-files",
@@ -1873,7 +1873,7 @@
     "href": "slides/06-r-with-cpp/index.html#example-vector-output",
     "title": "C++ and Rcpp",
     "section": "Example: vector output",
-    "text": "Example: vector output\nThe following computes the Euclidean distances\n\\[d_i  = \\sqrt{(x - y_i)^2}\\]\n\nNumericVector distC(double x, NumericVector y) {\n  int n = y.size();\n  NumericVector dist(n);\n  for(int i = 0; i &lt; n; ++i) {\n    dist[i] = sqrt(pow(ys[i] - x, 2.0));\n  }\n  return out;\n}\n\n\ndist(n) is used to create a numeric vector named dist of length n.\nv(n) would create a vector named v."
+    "text": "Example: vector output\nThe following computes Euclidean distances\n\\[d_i  = \\sqrt{(x - y_i)^2}\\]\n\nNumericVector distC(double x, NumericVector y) {\n  int n = y.size();\n  NumericVector dist(n);\n  for(int i = 0; i &lt; n; ++i) {\n    dist[i] = sqrt(pow(ys[i] - x, 2.0));\n  }\n  return out;\n}\n\n\ndist(n) is used to create a numeric vector named dist of length n.\nv(n) would create a vector named v.\n\n\nThis is a contrived example to demonstrate Rcpp functionality. Mathematically, it’s measuring the distance between a single point, x, on the Real line and (a vector of) several other single points on the line. Given its on the Real line, absolute value is sufficient for the Euclidean distance between points - don’t need pow and sqrt, but good to show them"
   },
   {
     "objectID": "slides/06-r-with-cpp/index.html#c-functions",

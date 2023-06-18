@@ -563,7 +563,7 @@ Department of Statistics, University of Warwick
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>add_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, y) 
-.Call(&lt;pointer: 0x102f74b40&gt;, x, y)</code></pre>
+.Call(&lt;pointer: 0x108908b40&gt;, x, y)</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">add_cpp</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -767,7 +767,7 @@ Department of Statistics, University of Warwick
 </section>
 <section id="example-vector-output" class="slide level2">
 <h2>Example: vector output</h2>
-<p>The following computes the Euclidean distances</p>
+<p>The following computes Euclidean distances</p>
 <p><span class="math display">\[d_i  = \sqrt{(x - y_i)^2}\]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a>NumericVector distC<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
@@ -783,6 +783,19 @@ Department of Statistics, University of Warwick
 <li><code>dist(n)</code> is used to create a numeric vector named <code>dist</code> of length <code>n</code>.</li>
 <li><code>v(n)</code> would create a vector named <code>v</code>.</li>
 </ul>
+<aside class="notes">
+<p>This is a contrived example to demonstrate Rcpp functionality. Mathematically, it’s measuring the distance between a single point, x, on the Real line and (a vector of) several other single points on the line. Given its on the Real line, absolute value is sufficient for the Euclidean distance between points - don’t need pow and sqrt, but good to show them</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="c-functions" class="slide level2">
 <h2>C++ Functions</h2>
