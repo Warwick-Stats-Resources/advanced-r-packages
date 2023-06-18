@@ -651,7 +651,7 @@ The `MISSING` pseudo-class is useful for dispatch on two arguments: allow differ
 
 ## Your turn
 
-:::{.smaller90}
+:::{.smaller80}
 1. Create an S4 class `Diag` to represent a diagonal matrix with two slots:
  - `n` the number of rows/cols
  - `x` the numeric values of the diagonal elements
