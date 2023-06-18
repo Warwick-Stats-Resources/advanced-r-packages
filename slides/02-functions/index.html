@@ -476,11 +476,11 @@ NULL</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  -7.029461  -4.867301 -18.711627  -9.589568   1.426949</code></pre>
+<pre><code>[1] -10.51262  11.04532  14.74040  14.29419 -10.01192</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -14.259629  12.279822   5.199141  10.730526   3.611994</code></pre>
+<pre><code>[1] -4.013509  6.566646 15.287974 -3.440278 20.330463</code></pre>
 </div>
 </div>
 <p>So naming and order is important! Some guidelines</p>
@@ -869,7 +869,7 @@ are not allowed</code></pre>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>2: f2(2) at #1
+<pre><code>2: f2(x) at #1
 1: f1(10)</code></pre>
 </div>
 </div>
@@ -913,16 +913,17 @@ are not allowed</code></pre>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>debugging in: f2(2)
+<pre><code>debugging in: f2(x)
 debug at #1: {
     x + qqqq
 }
 Browse[2]&gt; ls()
 [1] "x"
-Browse[2]&gt; Q</code></pre>
+Browse[2]&gt; x
+[1]&gt; 10</code></pre>
 </div>
 </div>
-<p>When in debug mode type <code>n</code> or <kbd title="enter">↵</kbd> to step to the next line and <code>c</code> to continue to the end of a loop or the end of the function.</p>
+<p>When in debug mode type <code>n</code> or <kbd title="enter">↵</kbd> to step to the next line and <code>c</code> to continue to the end of a loop or the end of the function. <code>Q</code> quits the debugger.</p>
 </section>
 <section id="breakpoints" class="slide level2">
 <h2>Breakpoints</h2>

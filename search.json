@@ -991,7 +991,7 @@
     "href": "slides/02-functions/index.html#name-and-order-of-arguments",
     "title": "Functions",
     "section": "Name and order of arguments",
-    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1]  -7.029461  -4.867301 -18.711627  -9.589568   1.426949\n\nrnorm(5, sd = 10)\n\n[1] -14.259629  12.279822   5.199141  10.730526   3.611994\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
+    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1] -10.51262  11.04532  14.74040  14.29419 -10.01192\n\nrnorm(5, sd = 10)\n\n[1] -4.013509  6.566646 15.287974 -3.440278 20.330463\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
   },
   {
     "objectID": "slides/02-functions/index.html#using-arguments",
@@ -1138,7 +1138,7 @@
     "href": "slides/02-functions/index.html#traceback",
     "title": "Functions",
     "section": "traceback()",
-    "text": "traceback()\nWhen an unexpected error occurs, there are several ways to track down the source of the error, e.g. traceback()\n\nf1 &lt;- function(x){ f2(x) }\nf2 &lt;- function(x){ x + qqqq }\nf1(10)\n\nError in f2(x): object 'qqqq' not found\n\n\n\ntraceback()\n\n\n\n2: f2(2) at #1\n1: f1(10)"
+    "text": "traceback()\nWhen an unexpected error occurs, there are several ways to track down the source of the error, e.g. traceback()\n\nf1 &lt;- function(x){ f2(x) }\nf2 &lt;- function(x){ x + qqqq }\nf1(10)\n\nError in f2(x): object 'qqqq' not found\n\n\n\ntraceback()\n\n\n\n2: f2(x) at #1\n1: f1(10)"
   },
   {
     "objectID": "slides/02-functions/index.html#traceback-in-rstudio",
@@ -1152,7 +1152,7 @@
     "href": "slides/02-functions/index.html#debugonce",
     "title": "Functions",
     "section": "debugonce()",
-    "text": "debugonce()\ndebugonce() flags a function for debugging the next time it is called\n\ndebugonce(f2)\nf1(10)\n\nError in f3(x): object 'qqqq' not found\n\n\n\n\ndebugging in: f2(2)\ndebug at #1: {\n    x + qqqq\n}\nBrowse[2]&gt; ls()\n[1] \"x\"\nBrowse[2]&gt; Q\n\n\nWhen in debug mode type n or ↵ to step to the next line and c to continue to the end of a loop or the end of the function."
+    "text": "debugonce()\ndebugonce() flags a function for debugging the next time it is called\n\ndebugonce(f2)\nf1(10)\n\nError in f3(x): object 'qqqq' not found\n\n\n\n\ndebugging in: f2(x)\ndebug at #1: {\n    x + qqqq\n}\nBrowse[2]&gt; ls()\n[1] \"x\"\nBrowse[2]&gt; x\n[1]&gt; 10\n\n\nWhen in debug mode type n or ↵ to step to the next line and c to continue to the end of a loop or the end of the function. Q quits the debugger."
   },
   {
     "objectID": "slides/02-functions/index.html#breakpoints",
