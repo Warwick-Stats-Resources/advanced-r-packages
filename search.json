@@ -2527,25 +2527,46 @@
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
-    "objectID": "slides/01-welcome/index.html#overview",
-    "href": "slides/01-welcome/index.html#overview",
-    "title": "SESSION TITLE",
-    "section": "Overview",
-    "text": "Overview\n\nWhat we’re covering"
+    "objectID": "slides/01-welcome/index.html#instructors",
+    "href": "slides/01-welcome/index.html#instructors",
+    "title": "Welcome and Introduction",
+    "section": "Instructors",
+    "text": "Instructors\n\n\nElla Kaye\n\n\nResearch Software Engineer\nDepartment of Statistics\nUniversity of Warwick\nhttps://warwick.ac.uk/ellakaye\n\n\nHeather Turner\n\n\nRSE Fellow\nDepartment of Statistics\nUniversity of Warwick\nhttps://warwick.ac.uk/heatherturner"
   },
   {
-    "objectID": "slides/01-welcome/index.html#resources",
-    "href": "slides/01-welcome/index.html#resources",
-    "title": "SESSION TITLE",
-    "section": "Resources",
-    "text": "Resources\nMaterial inspired by and remixed from:"
+    "objectID": "slides/01-welcome/index.html#two-workshops-in-one",
+    "href": "slides/01-welcome/index.html#two-workshops-in-one",
+    "title": "Welcome and Introduction",
+    "section": "Two workshops in one!",
+    "text": "Two workshops in one!\n\nAdvanced R\nR Packages\n\n\nOriginally two-term’s worth of materials\nCovering all this in three days - buckle up!"
   },
   {
-    "objectID": "slides/01-welcome/index.html#license",
-    "href": "slides/01-welcome/index.html#license",
-    "title": "SESSION TITLE",
-    "section": "License",
-    "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+    "objectID": "slides/01-welcome/index.html#course-material",
+    "href": "slides/01-welcome/index.html#course-material",
+    "title": "Welcome and Introduction",
+    "section": "Course material",
+    "text": "Course material\n\nWebsite and slides\nhttps://Warwick-Stats-Resources.github.io/advanced-r-packages\nWebsite and slides repo\nhttps://github.com/Warwick-Stats-Resources/advanced-r-packages\nExercises and additional material\nhttps://github.com/Warwick-Stats-Resources/Advanced-R-exercises"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#schedule-monday-june-19th",
+    "href": "slides/01-welcome/index.html#schedule-monday-june-19th",
+    "title": "Welcome and Introduction",
+    "section": "Schedule: Monday June 19th",
+    "text": "Schedule: Monday June 19th\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n10:30–11:00\nCoffee\n\n\n\n11:00–11:10\nWelcome and Introduction\nElla Kaye, Heather Turner\n\n\n11:10–12:30\nAdvanced R: Functions\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nAdvanced R: Classes and Methods\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nAdvanced R: Efficient Programming\nHeather Turner"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#schedule-tuesday-june-20th",
+    "href": "slides/01-welcome/index.html#schedule-tuesday-june-20th",
+    "title": "Welcome and Introduction",
+    "section": "Schedule: Tuesday June 20th",
+    "text": "Schedule: Tuesday June 20th\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n9:30–10:30\nAdvanced R: Profiling\nHeather Turner\n\n\n10:30–11:00\nCoffee break\n\n\n\n11:00–12:30\nAdvanced R: C++ and Rcpp\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nR Packages: Package Foundations\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nR Packages: Documentation\nHeather Turner"
+  },
+  {
+    "objectID": "slides/01-welcome/index.html#schedule-wednesday-june-21st",
+    "href": "slides/01-welcome/index.html#schedule-wednesday-june-21st",
+    "title": "Welcome and Introduction",
+    "section": "Schedule: Wednesday June 21st",
+    "text": "Schedule: Wednesday June 21st\n\n\n\n\nTime\nSession\nPresenter\n\n\n\n\n9:30–10:30\nR Packages: Testing\nHeather Turner\n\n\n10:30–11:00\nCoffee break\n\n\n\n11:00–12:30\nR Packages: Check and Package Documentation\nElla Kaye\n\n\n12:30–13:30\nLunch\n\n\n\n13:30–15:00\nR Packages: Packaging Data; Publication and Maintenance\nElla Kaye\n\n\n15:00–15:30\nCoffee break\n\n\n\n15:30–17:00\nR Packages: Rcpp in Packages\nHeather Turner"
   },
   {
     "objectID": "slides/05-profiling/index.html#overview",
@@ -2909,21 +2930,14 @@
     "href": "content/01-welcome/index.html",
     "title": "Welcome and Introduction",
     "section": "",
-    "text": "This page and the slides for this session are still under development"
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/01-welcome/index.html#slides",
     "href": "content/01-welcome/index.html#slides",
     "title": "Welcome and Introduction",
-    "section": "Slides",
-    "text": "Slides\nHere’s a link to the slides in a new window.\nHere are the slides embedded:"
-  },
-  {
-    "objectID": "content/01-welcome/index.html#resources",
-    "href": "content/01-welcome/index.html#resources",
-    "title": "Welcome and Introduction",
-    "section": "Resources",
-    "text": "Resources\n\nReading\n\nTITLE\n\n\n\n\nPackages"
+    "section": "",
+    "text": "Here’s a link to the slides in a new window.\nHere are the slides embedded:"
   },
   {
     "objectID": "content/05-profiling/index.html",
