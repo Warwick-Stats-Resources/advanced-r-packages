@@ -977,7 +977,7 @@
     "href": "slides/02-functions/index.html#naming-functions",
     "title": "Functions",
     "section": "Naming functions",
-    "text": "Naming functions\nAs with arguments, function names are important:\n\nuse a name that describes what it returns (e.g. t_statistic) or what it does (e.g. remove_na)\ntry to use one convention for combining words (e.g. snake case t_statistic or camel case tStatistic)\navoid using the same name as other functions"
+    "text": "Naming functions\nFunction names are important:\n\nuse a name that describes what it returns (e.g. t_statistic) or what it does (e.g. remove_na)\ntry to use one convention for combining words (e.g. snake case t_statistic or camel case tStatistic)\navoid using the same name as other functions"
   },
   {
     "objectID": "slides/02-functions/index.html#specified-arguments",
@@ -991,14 +991,7 @@
     "href": "slides/02-functions/index.html#name-and-order-of-arguments",
     "title": "Functions",
     "section": "Name and order of arguments",
-    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1]   0.1933526 -14.9810061  -1.8654243  -1.1631522  19.8744419\n\nrnorm(5, sd = 10)\n\n[1]  4.172314  8.553952  3.585243 -5.532992 -4.600826\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
-  },
-  {
-    "objectID": "slides/02-functions/index.html#using-arguments",
-    "href": "slides/02-functions/index.html#using-arguments",
-    "title": "Functions",
-    "section": "Using arguments",
-    "text": "Using arguments\nArguments are used as objects in the function code.\nA new environment is created each time the function is called, separate from the global workspace.\n\nx &lt;- 1\ny &lt;- 3\nf &lt;- function(x, y){\n    a &lt;- 1\n    x &lt;- x + a\n    x + y\n}\nf(x, y)\n\n[1] 5\n\nx\n\n[1] 1\n\na\n\nError in eval(expr, envir, enclos): object 'a' not found"
+    "text": "Name and order of arguments\nThe user can pass objects to these arguments using their names or by supplying unnamed values in the right order\n\nrnorm(5, 1, 10)\n\n[1] -14.04588166 -17.42199257  -3.58014352   8.64498494  -0.06636347\n\nrnorm(5, sd = 10)\n\n[1] -10.464871 -13.953931  -1.406384  17.915015   6.494461\n\n\nSo naming and order is important! Some guidelines\n\nput compulsory arguments first, e.g. data\nput rarely used arguments last, e.g. tolerance setting\nuse short but meaningful argument names\nif relevant, use the same argument names as similar functions"
   },
   {
     "objectID": "slides/02-functions/index.html#return-values-single",
@@ -1040,7 +1033,7 @@
     "href": "slides/02-functions/index.html#function-environment",
     "title": "Functions",
     "section": "Function environment",
-    "text": "Function environment\nA new environment is created each time the function is called, separate from the global workspace.\n\nx &lt;- 1\ny &lt;- 3\nf &lt;- function(x, y){\n    a &lt;- 1\n    x &lt;- x + a\n    x + y\n}\nf(x, y)\n\n[1] 5\n\nx\n\n[1] 1\n\na\n\nError in eval(expr, envir, enclos): object 'a' not found"
+    "text": "Function environment\nArguments are used as objects in the function code.\nA new environment is created each time the function is called, separate from the global workspace.\n\nx &lt;- 1\ny &lt;- 3\nf &lt;- function(x, y){\n    a &lt;- 1\n    x &lt;- x + a\n    x + y\n}\nf(x, y)\n\n[1] 5\n\nx\n\n[1] 1\n\na\n\nError in eval(expr, envir, enclos): object 'a' not found"
   },
   {
     "objectID": "slides/02-functions/index.html#lexical-scoping",
@@ -1054,7 +1047,7 @@
     "href": "slides/02-functions/index.html#unspecified-arguments",
     "title": "Functions",
     "section": "Unspecified arguments",
-    "text": "Unspecified arguments\n... or the ellipsis allow unspecified arguments to be passed to the function.\nThis device is used by functions that work with arbitrary numbers of objects, e.g. \n\nargs(sum)\n\nfunction (..., na.rm = FALSE) \nNULL\n\nsum(1, 4, 10, 2)\n\n[1] 17\n\n\nIt can also be used to pass on arguments to another function, e.g.\n\nt_statistic &lt;- function(x, g, ...) {\n    t.test(x ~ g, ...)$stat\n}"
+    "text": "Unspecified arguments\n... (the ellipsis) allow unspecified arguments to be passed to the function.\nThis device is used by functions that work with arbitrary numbers of objects, e.g. \n\nargs(sum)\n\nfunction (..., na.rm = FALSE) \nNULL\n\nsum(1, 4, 10, 2)\n\n[1] 17\n\n\nIt can also be used to pass on arguments to another function, e.g.\n\nt_statistic &lt;- function(x, g, ...) {\n    t.test(x ~ g, ...)$stat\n}"
   },
   {
     "objectID": "slides/02-functions/index.html#using-...",
