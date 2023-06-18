@@ -111,6 +111,12 @@ It is possible to submit to CRAN with a NOTE, but it's best avoided.
 NOTES best avoid for CRAN as they require a person to respond. One unavoidable case of a NOTE on CRAN submission: first submission of a package
 :::
 
+## Check regularly, fix issues as they arise {.inverse .center .center-h}
+
+::: {.notes}
+Will see later in this session how to do this automatically with Continuous Integration  
+:::
+
 # DESCRIPTION {.inverse}
 
 ::: {.notes}
@@ -340,7 +346,9 @@ This sets up a bare-minimum workflow that runs `R CMD check` with the latest rel
 It's good for simple package with no OS-sepcific code, and if you want a quick start with R CI.
 
 ::: {.notes}
-i.e. it's perfect for us!  
+i.e. it's perfect for us! 
+
+Reminder to fix any issues as soon as they arise!
 :::
 
 ## Your turn
@@ -421,6 +429,26 @@ built. **Don't forget to change the title here too!**
 ::: {.notes}
 Need to install package so can call with `library()`  
 :::
+
+## Articles
+
+Vignette code needs to be able to run on CRAN. There are some cases where [this is not possible](https://r-pkgs.org/vignettes.html#sec-vignettes-eval-option).
+
+As an alternative, you can use articles instead of vignettes:
+
+```{.r}
+usethis::use_article("my-article")
+```
+
+```
+✔ Adding 'rmarkdown' to Config/Needs/website
+✔ Creating 'vignettes/'
+✔ Creating 'vignettes/articles/'
+✔ Adding '*.html', '*.R' to 'vignettes/.gitignore'
+✔ Writing 'vignettes/articles/my-article.Rmd'
+• Modify 'vignettes/articles/my-article.Rmd'
+✔ Adding '^vignettes/articles$' to '.Rbuildignore'
+```
 
 ## Your turn
 

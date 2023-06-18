@@ -6,8 +6,6 @@ date: 2023-06-21T13:30:00
 date-format: long
 ---
 
-***This page and the slides for this session are still under development***
-
 ## Slides
 
 Here's a link to the [slides](/slides/11-data-publication-maintenance/index.qmd){target="_blank"} in a new window. 
