@@ -588,7 +588,7 @@ attr(,"class")
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, ...) 
 UseMethod("print")
-&lt;bytecode: 0x117844268&gt;
+&lt;bytecode: 0x105aa5868&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -679,7 +679,7 @@ see '?methods' for accessing help and source code</code></pre>
         cf
     else cf[!is.na(cf)]
 }
-&lt;bytecode: 0x127f7c808&gt;
+&lt;bytecode: 0x11e63b990&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
@@ -1171,8 +1171,8 @@ Known Subclasses: "BanknoteCharacter"</code></pre>
 
 function (X, Y, FUN = "*", make.dimnames = FALSE, ...) 
 standardGeneric("kronecker")
-&lt;bytecode: 0x117da5b98&gt;
-&lt;environment: 0x117d98de0&gt;
+&lt;bytecode: 0x1072a7398&gt;
+&lt;environment: 0x10729a5e0&gt;
 Methods may be defined for arguments: X, Y, FUN, make.dimnames
 Use  showMethods(kronecker)  for currently available ones.</code></pre>
 </div>
@@ -1303,14 +1303,15 @@ Died: 13 August 1910 (aged 90)</code></pre>
 <li>Create an S4 class <code>Diag</code> to represent a diagonal matrix with two slots:</li>
 </ol>
 <ul>
-<li><code>n</code> the number of rows/cols</li>
-<li><code>x</code> the numeric values of the diagonal elements Add a prototype to specify default values.</li>
+<li><p><code>n</code> the number of rows/cols</p></li>
+<li><p><code>x</code> the numeric values of the diagonal elements</p>
+<p>Add a prototype to specify default values.</p></li>
 </ul>
 <ol start="2" type="1">
 <li>Test your class by creating a new instance first without providing any values for the slots and then providing some example values.</li>
 <li>Create an <code>initialize</code> method so that the <code>n</code> slot is computed automatically and does not have to be provided.</li>
-<li>Create a <code>Diag()</code> helper function to create a new <code>Diag</code> object, with the user only having to specify the off-diaognal elements.</li>
-<li>Create a <code>show</code> method to state the size of the matrix and print the off-diagonal elements.</li>
+<li>Create a <code>Diag()</code> helper function to create a new <code>Diag</code> object, with the user only having to specify the diagonal elements.</li>
+<li>Create a <code>show</code> method to state the size of the matrix and print the diagonal elements.</li>
 </ol>
 </div>
 </section></section>
