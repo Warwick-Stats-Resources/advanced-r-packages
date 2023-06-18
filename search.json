@@ -1474,7 +1474,7 @@
     "href": "slides/03-classes-methods/index.html#s3-generic-functions",
     "title": "Classes and Methods",
     "section": "S3 generic functions",
-    "text": "S3 generic functions\nS3 generic functions are simple wrappers to UseMethod()\n\nprint\n\nfunction (x, ...) \nUseMethod(\"print\")\n&lt;bytecode: 0x105aa5868&gt;\n&lt;environment: namespace:base&gt;"
+    "text": "S3 generic functions\nS3 generic functions are simple wrappers to UseMethod()\n\nprint\n\nfunction (x, ...) \nUseMethod(\"print\")\n&lt;bytecode: 0x145b6ce68&gt;\n&lt;environment: namespace:base&gt;"
   },
   {
     "objectID": "slides/03-classes-methods/index.html#usemethod",
@@ -1509,7 +1509,7 @@
     "href": "slides/03-classes-methods/index.html#view-s3-methods",
     "title": "Classes and Methods",
     "section": "View S3 methods",
-    "text": "View S3 methods\nS3 methods need not be in the same package as the generic.\nFind an unexported method with getS3method()\n\ngetS3method(\"coef\", \"default\")\n\nfunction (object, complete = TRUE, ...) \n{\n    cf &lt;- object$coefficients\n    if (complete) \n        cf\n    else cf[!is.na(cf)]\n}\n&lt;bytecode: 0x11e63b990&gt;\n&lt;environment: namespace:stats&gt;\n\n\nIn code, call the generic, rather than calling the method directly."
+    "text": "View S3 methods\nS3 methods need not be in the same package as the generic.\nFind an unexported method with getS3method()\n\ngetS3method(\"coef\", \"default\")\n\nfunction (object, complete = TRUE, ...) \n{\n    cf &lt;- object$coefficients\n    if (complete) \n        cf\n    else cf[!is.na(cf)]\n}\n&lt;bytecode: 0x1157fcfc8&gt;\n&lt;environment: namespace:stats&gt;\n\n\nIn code, call the generic, rather than calling the method directly."
   },
   {
     "objectID": "slides/03-classes-methods/index.html#writing-s3-methods",
@@ -1642,7 +1642,7 @@
     "href": "slides/03-classes-methods/index.html#s4-generic-functions",
     "title": "Classes and Methods",
     "section": "S4 generic functions",
-    "text": "S4 generic functions\nS4 generic functions are (usually) a wrapper to standardGeneric(), e.g.\n\ngetGeneric(\"kronecker\")\n\nstandardGeneric for \"kronecker\" defined from package \"base\"\n\nfunction (X, Y, FUN = \"*\", make.dimnames = FALSE, ...) \nstandardGeneric(\"kronecker\")\n&lt;bytecode: 0x1072a7398&gt;\n&lt;environment: 0x10729a5e0&gt;\nMethods may be defined for arguments: X, Y, FUN, make.dimnames\nUse  showMethods(kronecker)  for currently available ones.\n\n\nBy default, all arguments apart from ... are used for method dispatch."
+    "text": "S4 generic functions\nS4 generic functions are (usually) a wrapper to standardGeneric(), e.g.\n\ngetGeneric(\"kronecker\")\n\nstandardGeneric for \"kronecker\" defined from package \"base\"\n\nfunction (X, Y, FUN = \"*\", make.dimnames = FALSE, ...) \nstandardGeneric(\"kronecker\")\n&lt;bytecode: 0x125479598&gt;\n&lt;environment: 0x12546c7e0&gt;\nMethods may be defined for arguments: X, Y, FUN, make.dimnames\nUse  showMethods(kronecker)  for currently available ones.\n\n\nBy default, all arguments apart from ... are used for method dispatch."
   },
   {
     "objectID": "slides/03-classes-methods/index.html#writing-s4-generic-functions",
