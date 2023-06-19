@@ -563,7 +563,7 @@ Department of Statistics, University of Warwick
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>add_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, y) 
-.Call(&lt;pointer: 0x108908b40&gt;, x, y)</code></pre>
+.Call(&lt;pointer: 0x101150b40&gt;, x, y)</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">add_cpp</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -941,11 +941,13 @@ Department of Statistics, University of Warwick
 <h2>Your turn (part 2)</h2>
 <p>Create a wrapper function to set the seed as follows:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>set_seed <span class="ot">&lt;-</span> <span class="cf">function</span>(expr){</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>gibbs_with_seed <span class="ot">&lt;-</span> <span class="cf">function</span>(expr){</span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">eval</span>(expr)</span>
 <span id="cb28-4"><a href="#cb28-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>We can then call <code>gibbs_r()</code> and <code>gibbs_c()</code> inside this, e.g.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">gibbs_with_seed</span>(<span class="fu">gibbs_r</span>(<span class="at">N =</span> <span class="dv">100</span>, <span class="at">thin =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Benchmark your <code>gibbs_r()</code> and <code>gibbs_c()</code> functions with N = 100 and thin = 10, using your wrapper function to set the seed.</p>
 </section></section>
 <section>
@@ -958,7 +960,7 @@ Department of Statistics, University of Warwick
 <p>Rcpp provides some “syntactic sugar” to allow us to write C++ code that is more like R code.</p>
 <p>One example is operating on rows or columns of matrices. So far we have seen how to update individual elements of a <code>NumericMatrix</code>. Rcpp lets us extract an update whole rows/columns, e.g.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource rcpp number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href="#cb29-1"></a>mat(i, _) = NumericVector::create(x,y);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource rcpp number-lines code-with-copy"><code class="sourceCode"><span id="cb30-1"><a href="#cb30-1"></a>mat(i, _) = NumericVector::create(x,y);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A whole column would be extracted with <code>mat(_, j)</code>.</p>
 </section>
@@ -978,45 +980,45 @@ Department of Statistics, University of Warwick
 <h2>Rcpp sugar: vectorized functions</h2>
 <p>Recall our distance function from earlier:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1"></a>NumericVector distC<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="dt">int</span> n <span class="op">=</span> y<span class="op">.</span>size<span class="op">();</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  NumericVector out<span class="op">(</span>n<span class="op">);</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>    out<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> sqrt<span class="op">(</span>pow<span class="op">(</span>ys<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> x<span class="op">,</span> <span class="fl">2.0</span><span class="op">));</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  <span class="op">}</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
-<span id="cb30-8"><a href="#cb30-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1"></a>NumericVector distC<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="dt">int</span> n <span class="op">=</span> y<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  NumericVector out<span class="op">(</span>n<span class="op">);</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>    out<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> sqrt<span class="op">(</span>pow<span class="op">(</span>ys<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> x<span class="op">,</span> <span class="fl">2.0</span><span class="op">));</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="op">}</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>  <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With Rcpp vectorization, we can simplify this to:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1"></a>NumericVector dist_sugar<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="cf">return</span> sqrt<span class="op">(</span>pow<span class="op">(</span>x <span class="op">-</span> y<span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1"></a>NumericVector dist_sugar<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> NumericVector y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="cf">return</span> sqrt<span class="op">(</span>pow<span class="op">(</span>x <span class="op">-</span> y<span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-row-maximums" class="slide level2">
 <h2>Example: row maximums</h2>
 <p>This example combines row-indexing and a vectorized function, <code>max()</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1"></a>NumericVector row_max<span class="op">(</span>NumericMatrix mat<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="dt">int</span> nrow <span class="op">=</span> mat<span class="op">.</span>nrow<span class="op">();</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  NumericVector max<span class="op">(</span>nrow<span class="op">);</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nrow<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>    max<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> max<span class="op">(</span> m<span class="op">(</span>i<span class="op">,</span>_<span class="op">)</span> <span class="op">);</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>  <span class="cf">return</span> max<span class="op">;</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href="#cb33-1"></a>NumericVector row_max<span class="op">(</span>NumericMatrix mat<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="dt">int</span> nrow <span class="op">=</span> mat<span class="op">.</span>nrow<span class="op">();</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  NumericVector max<span class="op">(</span>nrow<span class="op">);</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nrow<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>    max<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> max<span class="op">(</span> m<span class="op">(</span>i<span class="op">,</span>_<span class="op">)</span> <span class="op">);</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="cf">return</span> max<span class="op">;</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="your-turn-1" class="slide level2">
 <h2>Your turn</h2>
 <p>The following R function can be used to simulate the value of <span class="math inline">\(\pi\)</span>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>approx_pi_r <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
-<span id="cb33-2"><a href="#cb33-2"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb33-3"><a href="#cb33-3"></a>    y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb33-4"><a href="#cb33-4"></a>    d <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb33-5"><a href="#cb33-5"></a>    <span class="fu">return</span>(<span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(d <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">/</span> N)</span>
-<span id="cb33-6"><a href="#cb33-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>approx_pi_r <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
+<span id="cb34-2"><a href="#cb34-2"></a>    x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>    y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>    d <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb34-5"><a href="#cb34-5"></a>    <span class="fu">return</span>(<span class="dv">4</span> <span class="sc">*</span> <span class="fu">sum</span>(d <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">/</span> N)</span>
+<span id="cb34-6"><a href="#cb34-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Convert this to C++, taking advantage of the vectorized Rcpp functions.</p>
 <aside class="notes">

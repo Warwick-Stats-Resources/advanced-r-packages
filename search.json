@@ -1782,7 +1782,7 @@
     "href": "slides/06-r-with-cpp/index.html#using-the-c-function",
     "title": "C++ and Rcpp",
     "section": "Using the C++ function",
-    "text": "Using the C++ function\nAfter defining add_cpp() via cppFunction(), add_cpp() is available to use as a R function\n\nadd_cpp\n\nfunction (x, y) \n.Call(&lt;pointer: 0x108908b40&gt;, x, y)\n\nadd_cpp(3, 5)\n\n[1] 8"
+    "text": "Using the C++ function\nAfter defining add_cpp() via cppFunction(), add_cpp() is available to use as a R function\n\nadd_cpp\n\nfunction (x, y) \n.Call(&lt;pointer: 0x101150b40&gt;, x, y)\n\nadd_cpp(3, 5)\n\n[1] 8"
   },
   {
     "objectID": "slides/06-r-with-cpp/index.html#stand-alone-c-files",
@@ -1936,7 +1936,7 @@
     "href": "slides/06-r-with-cpp/index.html#your-turn-part-2",
     "title": "C++ and Rcpp",
     "section": "Your turn (part 2)",
-    "text": "Your turn (part 2)\nCreate a wrapper function to set the seed as follows:\n\nset_seed &lt;- function(expr){\n  set.seed(1)\n  eval(expr)\n}\n\nBenchmark your gibbs_r() and gibbs_c() functions with N = 100 and thin = 10, using your wrapper function to set the seed."
+    "text": "Your turn (part 2)\nCreate a wrapper function to set the seed as follows:\n\ngibbs_with_seed &lt;- function(expr){\n  set.seed(1)\n  eval(expr)\n}\n\nWe can then call gibbs_r() and gibbs_c() inside this, e.g.\ngibbs_with_seed(gibbs_r(N = 100, thin = 10))\nBenchmark your gibbs_r() and gibbs_c() functions with N = 100 and thin = 10, using your wrapper function to set the seed."
   },
   {
     "objectID": "slides/06-r-with-cpp/index.html#rcpp-sugar-1",
