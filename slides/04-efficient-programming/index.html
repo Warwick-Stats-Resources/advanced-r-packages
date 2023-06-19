@@ -519,29 +519,23 @@ Department of Statistics, University of Warwick
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>z <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){ z <span class="ot">&lt;-</span> <span class="fu">c</span>(z,<span class="dv">1</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z)) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "&lt;0x141f62968&gt;"
-[1] "&lt;0x142540c08&gt;"
-[1] "&lt;0x122028658&gt;"</code></pre>
 </div>
-</div>
+<pre><code>[1] "&lt;0x122220648&gt;"
+[1] "&lt;0x11940ba08&gt;"
+[1] "&lt;0x127b9b9c8&gt;"</code></pre>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>z <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">2</span>); <span class="fu">print</span>(<span class="fu">tracemem</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "&lt;0x1424cc188&gt;"</code></pre>
 </div>
-</div>
+<pre><code>[1] "&lt;0x1193ce2c8&gt;"</code></pre>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){z[i] <span class="ot">&lt;-</span> i;<span class="fu">print</span>(<span class="fu">tracemem</span>(z))}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tracemem[0x1424cc188 -&gt; 0x151b7fe88]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main 
-[1] "&lt;0x151b7fe88&gt;"
-[1] "&lt;0x151b7fe88&gt;"</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){ z[i] <span class="ot">&lt;-</span> i;<span class="fu">print</span>(<span class="fu">tracemem</span>(z)) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<pre><code>tracemem[0x1193ce2c8 -&gt; 0x135159648]: 
+[1] "&lt;0x135159648&gt;"
+[1] "&lt;0x135159648&gt;"</code></pre>
 <aside class="notes">
 <p>makes copy for each separate block of code e.g.&nbsp;if run with above in one go interactively no copies if run in separate chunks 1 copy</p>
 <style type="text/css">
@@ -598,8 +592,8 @@ disabled.</code></pre>
 <pre><code># A tibble: 2 × 6
   expression             min   median `itr/sec` mem_alloc `gc/sec`
   &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-1 grow(5000)          25.9ms   30.6ms      32.3    95.6MB    58.9 
-2 pre_specify(5000)  100.9µs    108µs    9010.     55.8KB     6.00</code></pre>
+1 grow(5000)            33ms   36.2ms      27.4    95.6MB    50.9 
+2 pre_specify(5000)    130µs  134.2µs    7171.     55.8KB     4.00</code></pre>
 </div>
 </div>
 <ul>
@@ -651,12 +645,12 @@ disabled.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 8
-  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`
-  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-1 gl(n, k, length = 100…    10    10  3.2µs  3.69µs   246709.    12.4KB     24.7
-2 gl(n, k, length = 100…   100    10 9.35µs 10.21µs    94136.   11.05KB     18.8
-3 gl(n, k, length = 100…    10     1 2.83µs  3.24µs   291605.    3.95KB     29.2
-4 gl(n, k, length = 100…   100     1 6.36µs  6.97µs   138353.    7.53KB     27.7</code></pre>
+  expression                n     k     min  median `itr/sec` mem_alloc `gc/sec`
+  &lt;bch:expr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;bch:t&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
+1 gl(n, k, length = 10…    10    10   4.1µs  4.84µs   188335.    12.4KB     18.8
+2 gl(n, k, length = 10…   100    10 11.77µs 12.46µs    76673.   11.05KB     15.3
+3 gl(n, k, length = 10…    10     1  3.65µs  3.94µs   239206.    3.95KB     23.9
+4 gl(n, k, length = 10…   100     1  7.83µs  8.32µs   115676.    7.53KB     23.1</code></pre>
 </div>
 </div>
 </div>
@@ -1014,7 +1008,7 @@ $y
 <span id="cb73-2"><a href="#cb73-2"></a>sd <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>))</span>
 <span id="cb73-3"><a href="#cb73-3"></a><span class="fu">rnorm</span>(<span class="dv">2</span>, mu[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], sd[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.625757 2.598334</code></pre>
+<pre><code>[1] 1.033111 2.632528</code></pre>
 </div>
 </div>
 <p>Use this information to replace the for loop, using a single call to <code>rnorm()</code> to simulate <code>n</code> values from the mixture distribution.</p>
@@ -1117,7 +1111,20 @@ $y
 <span id="cb87-2"><a href="#cb87-2"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb87-3"><a href="#cb87-3"></a>nrolls <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(N), snakes_ladders)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Use <strong>tictoc</strong> to compare the run-times. Roughly large does <code>N</code> have to be for the parallel version to be worth using?</p>
+<p>Use <strong>tictoc</strong> to compare the run-times. Roughly how large does <code>N</code> have to be for the parallel version to be worth using?</p>
+<aside class="notes">
+<p>“–with-keep.source” as this is needed for profiling in next session</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="general-principles" class="slide level2">
 <h2>General Principles</h2>

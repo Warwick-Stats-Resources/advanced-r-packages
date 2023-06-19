@@ -2300,7 +2300,7 @@
     "href": "slides/04-efficient-programming/index.html#copy-on-change",
     "title": "Efficient Programming",
     "section": "Copy-on-Change",
-    "text": "Copy-on-Change\nR usually copies an object to make changes to it.\ntracemem can be used to trace copies of an object\n\nz &lt;- NULL\nfor (i in 1:3){ z &lt;- c(z,1); print(tracemem(z)) }\n\n[1] \"&lt;0x141f62968&gt;\"\n[1] \"&lt;0x142540c08&gt;\"\n[1] \"&lt;0x122028658&gt;\"\n\n\n\n\nz &lt;- numeric(2); print(tracemem(z))\n\n[1] \"&lt;0x1424cc188&gt;\"\n\n\n\n\n\nfor (i in 1:2){z[i] &lt;- i;print(tracemem(z))}\n\ntracemem[0x1424cc188 -&gt; 0x151b7fe88]: eval eval eval_with_user_handlers withVisible withCallingHandlers handle timing_fn evaluate_call &lt;Anonymous&gt; evaluate in_dir in_input_dir eng_r block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; execute .main \n[1] \"&lt;0x151b7fe88&gt;\"\n[1] \"&lt;0x151b7fe88&gt;\"\n\n\n\nmakes copy for each separate block of code e.g. if run with above in one go interactively no copies if run in separate chunks 1 copy"
+    "text": "Copy-on-Change\nR usually copies an object to make changes to it.\ntracemem can be used to trace copies of an object\n\nz &lt;- NULL\nfor (i in 1:3){ z &lt;- c(z,1); print(tracemem(z)) }\n\n[1] \"&lt;0x122220648&gt;\"\n[1] \"&lt;0x11940ba08&gt;\"\n[1] \"&lt;0x127b9b9c8&gt;\"\n\n\nz &lt;- numeric(2); print(tracemem(z))\n\n[1] \"&lt;0x1193ce2c8&gt;\"\n\n\n\nfor (i in 1:2){ z[i] &lt;- i;print(tracemem(z)) }\n\ntracemem[0x1193ce2c8 -&gt; 0x135159648]: \n[1] \"&lt;0x135159648&gt;\"\n[1] \"&lt;0x135159648&gt;\"\n\nmakes copy for each separate block of code e.g. if run with above in one go interactively no copies if run in separate chunks 1 copy"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#benchmarking-1",
@@ -2314,7 +2314,7 @@
     "href": "slides/04-efficient-programming/index.html#benchmark",
     "title": "Efficient Programming",
     "section": "bench::mark()",
-    "text": "bench::mark()\nRun the two alternatives with bench::mark(). This function\n\nRuns alternatives ≥ 1 time; at most enough times to take 0.5s\nMakes sure the two expressions return the same result!\n\n\n\nlibrary(bench)\n(bm &lt;- bench::mark(grow(5000), pre_specify(5000)))\n\nWarning: Some expressions had a GC in every iteration; so filtering is\ndisabled.\n\n\n# A tibble: 2 × 6\n  expression             min   median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 grow(5000)          25.9ms   30.6ms      32.3    95.6MB    58.9 \n2 pre_specify(5000)  100.9µs    108µs    9010.     55.8KB     6.00\n\n\n\nGC is the garbage collector which tidies up deleted objects\nitr/sec is how many times the expression could be run in 1s"
+    "text": "bench::mark()\nRun the two alternatives with bench::mark(). This function\n\nRuns alternatives ≥ 1 time; at most enough times to take 0.5s\nMakes sure the two expressions return the same result!\n\n\n\nlibrary(bench)\n(bm &lt;- bench::mark(grow(5000), pre_specify(5000)))\n\nWarning: Some expressions had a GC in every iteration; so filtering is\ndisabled.\n\n\n# A tibble: 2 × 6\n  expression             min   median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;        &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 grow(5000)            33ms   36.2ms      27.4    95.6MB    50.9 \n2 pre_specify(5000)    130µs  134.2µs    7171.     55.8KB     4.00\n\n\n\nGC is the garbage collector which tidies up deleted objects\nitr/sec is how many times the expression could be run in 1s"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#plotting-benchmarks",
@@ -2335,7 +2335,7 @@
     "href": "slides/04-efficient-programming/index.html#benchpress",
     "title": "Efficient Programming",
     "section": "bench::press()",
-    "text": "bench::press()\n\n\nbench::press(n = c(10, 100), k = c(10, 1),\n  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels\n)\n\nRunning with:\n      n     k\n\n\n1    10    10\n\n\n2   100    10\n\n\n3    10     1\n\n\n4   100     1\n\n\n# A tibble: 4 × 8\n  expression                 n     k    min  median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;bch:&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 gl(n, k, length = 100…    10    10  3.2µs  3.69µs   246709.    12.4KB     24.7\n2 gl(n, k, length = 100…   100    10 9.35µs 10.21µs    94136.   11.05KB     18.8\n3 gl(n, k, length = 100…    10     1 2.83µs  3.24µs   291605.    3.95KB     29.2\n4 gl(n, k, length = 100…   100     1 6.36µs  6.97µs   138353.    7.53KB     27.7"
+    "text": "bench::press()\n\n\nbench::press(n = c(10, 100), k = c(10, 1),\n  bench::mark(gl(n, k, length = 1000)) # `gl` generates factor levels\n)\n\nRunning with:\n      n     k\n\n\n1    10    10\n\n\n2   100    10\n\n\n3    10     1\n\n\n4   100     1\n\n\n# A tibble: 4 × 8\n  expression                n     k     min  median `itr/sec` mem_alloc `gc/sec`\n  &lt;bch:expr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;bch:t&gt; &lt;bch:t&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n1 gl(n, k, length = 10…    10    10   4.1µs  4.84µs   188335.    12.4KB     18.8\n2 gl(n, k, length = 10…   100    10 11.77µs 12.46µs    76673.   11.05KB     15.3\n3 gl(n, k, length = 10…    10     1  3.65µs  3.94µs   239206.    3.95KB     23.9\n4 gl(n, k, length = 10…   100     1  7.83µs  8.32µs   115676.    7.53KB     23.1"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#exercise-1",
@@ -2447,7 +2447,7 @@
     "href": "slides/04-efficient-programming/index.html#exercise-2-continued",
     "title": "Efficient Programming",
     "section": "Exercise 2 (continued)",
-    "text": "Exercise 2 (continued)\nThe for loop in the previous code is suitable for vectorization: the iterations are completely independent.\nrnorm() is vectorized in the arguments mu and sd, e.g. to simulate a value from the 1st and 3rd component we could write:\n\nmu &lt;- c(0, 10, 3)\nsd &lt;- sqrt(c(1, 1, 0.1))\nrnorm(2, mu[c(1, 3)], sd[c(1, 3)])\n\n[1] 1.625757 2.598334\n\n\nUse this information to replace the for loop, using a single call to rnorm() to simulate n values from the mixture distribution.\nUse bench::mark() to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!"
+    "text": "Exercise 2 (continued)\nThe for loop in the previous code is suitable for vectorization: the iterations are completely independent.\nrnorm() is vectorized in the arguments mu and sd, e.g. to simulate a value from the 1st and 3rd component we could write:\n\nmu &lt;- c(0, 10, 3)\nsd &lt;- sqrt(c(1, 1, 0.1))\nrnorm(2, mu[c(1, 3)], sd[c(1, 3)])\n\n[1] 1.033111 2.632528\n\n\nUse this information to replace the for loop, using a single call to rnorm() to simulate n values from the mixture distribution.\nUse bench::mark() to compare the two approaches - don’t forget to set the same seed so the simulations are equivalent!"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#parallelisation-1",
@@ -2489,7 +2489,7 @@
     "href": "slides/04-efficient-programming/index.html#your-turn",
     "title": "Efficient Programming",
     "section": "Your turn!",
-    "text": "Your turn!\nThe efficient package contains a function to simulate a game of snakes and ladders, returning the number of rolls required to win.\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\nParallelise the following code:\n\nlibrary(efficient)\nN &lt;- 100\nnrolls &lt;- sapply(seq_len(N), snakes_ladders)\n\nUse tictoc to compare the run-times. Roughly large does N have to be for the parallel version to be worth using?"
+    "text": "Your turn!\nThe efficient package contains a function to simulate a game of snakes and ladders, returning the number of rolls required to win.\n\nremotes::install_github(\"csgillespie/efficient\",\n                         INSTALL_opts = \"--with-keep.source\")\n\nParallelise the following code:\n\nlibrary(efficient)\nN &lt;- 100\nnrolls &lt;- sapply(seq_len(N), snakes_ladders)\n\nUse tictoc to compare the run-times. Roughly how large does N have to be for the parallel version to be worth using?\n\n“–with-keep.source” as this is needed for profiling in next session"
   },
   {
     "objectID": "slides/04-efficient-programming/index.html#general-principles",
