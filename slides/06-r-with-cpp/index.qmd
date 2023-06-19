@@ -504,13 +504,22 @@ sourceCpp("solutions/gibbs.cpp")
 Create a wrapper function to set the seed as follows:
 
 ```{r}
-set_seed <- function(expr){
+gibbs_with_seed <- function(expr){
   set.seed(1)
   eval(expr)
 }
 ```
 
+We can then call `gibbs_r()` and `gibbs_c()` inside this, e.g.
+
+```{.r}
+gibbs_with_seed(gibbs_r(N = 100, thin = 10))
+```
+
 Benchmark your `gibbs_r()` and `gibbs_c()` functions with N = 100 and thin = 10, using your wrapper function to set the seed.
+
+
+
 
 # Rcpp sugar {.inverse}
 
