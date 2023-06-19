@@ -6,7 +6,7 @@ author:
   - name: Department of Statistics, University of Warwick
 title-slide-attributes:
   data-background-color: "#552D62"
-date: yyyy-MM-dd
+date: 2023-06-19
 date-format: long
 format: 
   warwickpres-revealjs:
