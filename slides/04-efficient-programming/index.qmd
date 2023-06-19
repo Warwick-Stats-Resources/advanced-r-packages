@@ -113,23 +113,38 @@ R usually copies an object to make changes to it.
 `tracemem` can be used to trace copies of an object
 
 ```{r trace.growing}
+#| eval: false
 z <- NULL
 for (i in 1:3){ z <- c(z,1); print(tracemem(z)) }
 ```
+```
+[1] "<0x122220648>"
+[1] "<0x11940ba08>"
+[1] "<0x127b9b9c8>"
+```
+
 
 . . .
 
 ```{r trace.growing2}
+#| eval: false
 z <- numeric(2); print(tracemem(z))
+```
+```
+[1] "<0x1193ce2c8>"
 ```
 
 . . .
 
 ```{r trace.growing3}
-#| message: false
-#| warning: false
-for (i in 1:2){z[i] <- i;print(tracemem(z))}
+#| eval: false
+for (i in 1:2){ z[i] <- i;print(tracemem(z)) }
 ``` 
+```
+tracemem[0x1193ce2c8 -> 0x135159648]: 
+[1] "<0x135159648>"
+[1] "<0x135159648>"
+```
 
 
 ::: {.notes}
