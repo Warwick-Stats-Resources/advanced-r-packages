@@ -617,7 +617,7 @@ N <- 100
 nrolls <- sapply(seq_len(N), snakes_ladders)
 ```
 
-Use **tictoc** to compare the run-times. Roughly large does `N` have to be for the parallel version to be worth using?
+Use **tictoc** to compare the run-times. Roughly how large does `N` have to be for the parallel version to be worth using?
 
 ```{r}
 #| echo: false
