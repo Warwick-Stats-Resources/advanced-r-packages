@@ -633,6 +633,10 @@ nrolls <- future_sapply(seq_len(N), snakes_ladders, future.seed = TRUE)
 toc()
 ```
 
+::: {.notes}
+"--with-keep.source" as this is needed for profiling in next session
+:::
+
 ## General Principles
 
 - Try to use vectorized functions where possible.
