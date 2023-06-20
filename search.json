@@ -480,7 +480,7 @@
     "href": "slides/08-documentation/index.html#documenting-dependencies",
     "title": "Function Documentation and Dependencies",
     "section": "Documenting dependencies",
-    "text": "Documenting dependencies\n\n\n\n\nDescription\nNAMESPACE\n\n\n\n\nMakes package available\nMakes function available\n\n\nMandatory\nOptional (can use :: instead)\n\n\nuse_package()\nuse_import_from()"
+    "text": "Documenting dependencies\n\n\n\n\nDESCRIPTION\nNAMESPACE\n\n\n\n\nMakes package available\nMakes function available\n\n\nMandatory\nOptional (can use :: instead)\n\n\nuse_package()\nuse_import_from()"
   },
   {
     "objectID": "slides/08-documentation/index.html#example-rlang-and-cli",
