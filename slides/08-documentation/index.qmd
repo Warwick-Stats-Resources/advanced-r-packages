@@ -481,7 +481,7 @@ Works today...
 
 <br>
 
-Description                 | NAMESPACE
+DESCRIPTION                 | NAMESPACE
 --------------------------- | -------------
 Makes **package** available | Makes function available
 Mandatory                   | Optional (can use :: instead)
